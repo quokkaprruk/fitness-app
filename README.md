@@ -14,9 +14,13 @@ Please follow the steps in the next section.
 
 ## Steps to Run the project:
 ### 1 Install Dependencies for the Server (Backend)
+Navigate to the server folder
 ```
-cd server // Navigate to the server folder
-npm install // Install the backend dependencies
+cd server
+```
+Install the backend dependencies
+```
+npm install 
 ```
 ### 2 Install Dependencies for the Client (Frontend)
 ```
