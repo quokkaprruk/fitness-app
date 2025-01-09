@@ -1,14 +1,13 @@
 # Project Guidelines
 
-Don't directly change the source code!
+Don't push code directly to main. Please follow the steps in the next section.
 
 ## Steps to Contribute:
+Watch this video to understand working with multiple developers: [Fork & Pull request (start at: 3.50)](https://www.youtube.com/watch?v=k5D37W6h56o)
 
-1. Copy the project (Fork).
-2. Make changes based on your tasks.
-3. Request the owner to update the code base (pull request).
+1. Copy the project (Fork). 
+2. Make changes on your forked repo based on your tasks.
+3. Request the owner to update the code base by (Pull Request).
+   
 
-## Learn More
-
-Understand working with multiple developers: [Watch Video](https://www.youtube.com/watch?v=k5D37W6h56o)
 
