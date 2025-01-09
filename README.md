@@ -33,8 +33,15 @@ npm install
 ```
 
 ## To run the project:
-### Start the Backend Server Frontend Client
-1. Go to client folder and use the command. Or go to the server folder and use the command below.
+1. To run the frontend and backend manually. Open 2 terminal windows.
+2. Terminal 1: For the backend (Node.js server)
 ```
+cd server
 npm run dev
 ```
+3. Terminal 2: For the frontend (React app)
+```
+cd client
+npm run dev
+```
+
