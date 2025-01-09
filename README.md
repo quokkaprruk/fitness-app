@@ -10,6 +10,20 @@ Please follow the steps in the next section.
 2. Then, **clone the forked repository** from your GitHub account.
 3. Make changes to the code on your local machine, **committing those changes to your forked repo**.
 4. Request the owner to update the code base by (**Pull Request**).
-   
 
 
+## Steps to Run the project:
+### 1 Install Dependencies for the Server (Backend)
+```
+cd server // Navigate to the server folder
+npm install // Install the backend dependencies
+```
+### 2 Install Dependencies for the Client (Frontend)
+```
+cd ../client // Navigate to the client folder
+npm install // Install the frontend dependencies
+```
+### 3 Start the Backend Server or Frontend Client
+```
+npm run dev
+```
