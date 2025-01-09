@@ -33,13 +33,14 @@ npm install
 ```
 
 ## To run the project:
-1. To run the frontend and backend manually. Open 2 terminal windows.
-2. Terminal 1: For the backend (Node.js server)
+1. To run the frontend and backend manually.
+2. Open 2 terminal windows.
+3. Terminal 1: For the backend (Node.js server)
 ```
 cd server
 npm run dev
 ```
-3. Terminal 2: For the frontend (React app)
+4. Terminal 2: For the frontend (React app)
 ```
 cd client
 npm run dev
