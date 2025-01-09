@@ -13,28 +13,28 @@ Please follow the steps in the next section.
 
 
 ## Steps to install dependencies:
-### 1 Install Dependencies for the Server (Backend)
-1.1 Navigate to the server folder
+### Install Dependencies for the Server (Backend)
+1 Navigate to the server folder (assume that you at the project root folder)
 ```
 cd server
 ```
-1.2 Install the backend dependencies
+2 Install the backend dependencies
 ```
 npm install 
 ```
-### 2 Install Dependencies for the Client (Frontend)
-2.1 Go to the client folder
+### Install Dependencies for the Client (Frontend)
+1 Go to the client folder (assume that you at the project root folder)
 ```
-cd ../client
+cd client
 ```
-2.2 Install the frontend dependencies
+2 Install the frontend dependencies
 ```
 npm install 
 ```
 
 ## To run the project:
-### 3 Start the Backend Server Frontend Client
-3.1 Go to client folder and use the command. Or go to the server folder and use the command below.
+### Start the Backend Server Frontend Client
+1. Go to client folder and use the command. Or go to the server folder and use the command below.
 ```
 npm run dev
 ```
