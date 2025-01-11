@@ -134,6 +134,51 @@
       "startDateTime": "2025-04-24T17:30:00Z",
       "endDateTime": "2025-04-24T18:30:00Z",
       "studentCapacity": 9
+    },
+    {
+      "classId": 16,
+      "instructorID": 1,
+      "className": "Meditation - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-20T07:00:00Z",
+      "endDateTime": "2025-04-20T08:00:00Z",
+      "studentCapacity": 6
+    },
+    {
+      "classId": 17,
+      "instructorID": 4,
+      "className": "Meditation - Intermediate",
+      "classType": "on-site",
+      "startDateTime": "2025-04-21T18:00:00Z",
+      "endDateTime": "2025-04-21T19:00:00Z",
+      "studentCapacity": 7
+    },
+    {
+      "classId": 18,
+      "instructorID": 4,
+      "className": "Meditation - Advanced",
+      "classType": "online",
+      "startDateTime": "2025-04-22T10:00:00Z",
+      "endDateTime": "2025-04-22T11:00:00Z",
+      "studentCapacity": 5
+    },
+    {
+      "classId": 19,
+      "instructorID": 1,
+      "className": "Meditation - Essential",
+      "classType": "on-site",
+      "startDateTime": "2025-04-23T07:00:00Z",
+      "endDateTime": "2025-04-23T08:00:00Z",
+      "studentCapacity": 6
+    },
+    {
+      "classId": 20,
+      "instructorID": 4,
+      "className": "Meditation - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-24T09:00:00Z",
+      "endDateTime": "2025-04-24T10:00:00Z",
+      "studentCapacity": 8
     }
   ]
 }
