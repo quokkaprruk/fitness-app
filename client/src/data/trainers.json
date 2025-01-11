@@ -1,0 +1,32 @@
+{
+  "trainers": [
+    {
+      "instructorID": 1,
+      "name": "John Doe",
+      "specialty": ["Yoga", "Meditation"],
+      "teachingMode": ["online", "on-site"],
+      "contact": "john.doe@example.com"
+    },
+    {
+      "instructorID": 2,
+      "name": "Jane Smith",
+      "specialty": ["Pilates", "Cardio Blast"],
+      "teachingMode": ["online"],
+      "contact": "jane.smith@example.com"
+    },
+    {
+      "instructorID": 3,
+      "name": "Alice Brown",
+      "specialty": ["Weight Training", "CrossFit"],
+      "teachingMode": ["on-site"],
+      "contact": "alice.brown@example.com"
+    },
+    {
+      "instructorID": 4,
+      "name": "Michael Lee",
+      "specialty": ["Cardio Blast", "Meditation"],
+      "teachingMode": ["online", "on-site"],
+      "contact": "michael.lee@example.com"
+    }
+  ]
+}

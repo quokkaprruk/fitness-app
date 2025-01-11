@@ -1,0 +1,139 @@
+{
+  "fitnessClasses": [
+    {
+      "classId": 1,
+      "instructorID": 1,
+      "className": "Yoga - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-20T08:00:00Z",
+      "endDateTime": "2025-04-20T09:00:00Z",
+      "studentCapacity": 10
+    },
+    {
+      "classId": 2,
+      "instructorID": 1,
+      "className": "Yoga - Intermediate",
+      "classType": "on-site",
+      "startDateTime": "2025-04-21T18:00:00Z",
+      "endDateTime": "2025-04-21T19:00:00Z",
+      "studentCapacity": 8
+    },
+    {
+      "classId": 3,
+      "instructorID": 1,
+      "className": "Yoga - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-22T10:00:00Z",
+      "endDateTime": "2025-04-22T11:00:00Z",
+      "studentCapacity": 6
+    },
+    {
+      "classId": 4,
+      "instructorID": 1,
+      "className": "Yoga - Advanced",
+      "classType": "on-site",
+      "startDateTime": "2025-04-23T19:00:00Z",
+      "endDateTime": "2025-04-23T20:00:00Z",
+      "studentCapacity": 5
+    },
+    {
+      "classId": 5,
+      "instructorID": 1,
+      "className": "Yoga - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-24T09:00:00Z",
+      "endDateTime": "2025-04-24T10:00:00Z",
+      "studentCapacity": 7
+    },
+    {
+      "classId": 6,
+      "instructorID": 2,
+      "className": "Pilates - Intermediate",
+      "classType": "on-site",
+      "startDateTime": "2025-04-20T10:00:00Z",
+      "endDateTime": "2025-04-20T11:00:00Z",
+      "studentCapacity": 9
+    },
+    {
+      "classId": 7,
+      "instructorID": 2,
+      "className": "Pilates - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-21T18:00:00Z",
+      "endDateTime": "2025-04-21T19:00:00Z",
+      "studentCapacity": 10
+    },
+    {
+      "classId": 8,
+      "instructorID": 2,
+      "className": "Pilates - Advanced",
+      "classType": "on-site",
+      "startDateTime": "2025-04-22T08:00:00Z",
+      "endDateTime": "2025-04-22T09:00:00Z",
+      "studentCapacity": 4
+    },
+    {
+      "classId": 9,
+      "instructorID": 2,
+      "className": "Pilates - Intermediate",
+      "classType": "online",
+      "startDateTime": "2025-04-23T19:30:00Z",
+      "endDateTime": "2025-04-23T20:30:00Z",
+      "studentCapacity": 6
+    },
+    {
+      "classId": 10,
+      "instructorID": 2,
+      "className": "Pilates - Essential",
+      "classType": "on-site",
+      "startDateTime": "2025-04-24T09:30:00Z",
+      "endDateTime": "2025-04-24T10:30:00Z",
+      "studentCapacity": 7
+    },
+    {
+      "classId": 11,
+      "instructorID": 3,
+      "className": "Weight Training - Intermediate",
+      "classType": "online",
+      "startDateTime": "2025-04-20T17:00:00Z",
+      "endDateTime": "2025-04-20T18:00:00Z",
+      "studentCapacity": 5
+    },
+    {
+      "classId": 12,
+      "instructorID": 3,
+      "className": "Weight Training - Essential",
+      "classType": "on-site",
+      "startDateTime": "2025-04-21T07:00:00Z",
+      "endDateTime": "2025-04-21T08:00:00Z",
+      "studentCapacity": 6
+    },
+    {
+      "classId": 13,
+      "instructorID": 3,
+      "className": "Weight Training - Intermediate",
+      "classType": "online",
+      "startDateTime": "2025-04-22T18:30:00Z",
+      "endDateTime": "2025-04-22T19:30:00Z",
+      "studentCapacity": 8
+    },
+    {
+      "classId": 14,
+      "instructorID": 3,
+      "className": "Weight Training - Advanced",
+      "classType": "on-site",
+      "startDateTime": "2025-04-23T08:00:00Z",
+      "endDateTime": "2025-04-23T09:00:00Z",
+      "studentCapacity": 4
+    },
+    {
+      "classId": 15,
+      "instructorID": 3,
+      "className": "Weight Training - Essential",
+      "classType": "online",
+      "startDateTime": "2025-04-24T17:30:00Z",
+      "endDateTime": "2025-04-24T18:30:00Z",
+      "studentCapacity": 9
+    }
+  ]
+}
