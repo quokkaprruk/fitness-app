@@ -1,0 +1,136 @@
+/* MemberHome.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%; /* Ensure body takes full height */
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column; /* Ensures body content is stacked vertically */
+}
+
+.member-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px; /* Space below the hero section */
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 18px;
+  color: #555;
+}
+
+.hero-section img {
+  width: 100%;
+  height: auto; /* Make sure the image adjusts to its container */
+  max-height: 400px; /* Limit the max height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+/* Class Categories Section */
+.class-categories {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Grid Layout for Categories */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
+  justify-items: center;
+  grid-template-rows: repeat(2, auto); /* Adjust rows to auto height */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Horizontally center the grid */
+}
+
+/* Category Card */
+.category-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Make card a flex container */
+  justify-content: space-between; /* Distribute space between items */
+  min-height: 400px; /* Set a minimum height instead */
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-info {
+  padding: 20px;
+}
+
+.category-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.category-info p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Reserve Button Positioned at the Bottom of Card */
+.reserve-btn {
+  background-color: #2ecc71;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: auto; /* Push button to the bottom of the card */
+  margin-bottom: 20px; /* Space from bottom of the card */
+}
+
+.reserve-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Footer Section */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #555;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: #2ecc71;
+}
+
