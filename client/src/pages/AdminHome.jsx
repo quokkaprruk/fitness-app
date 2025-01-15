@@ -1,15 +1,16 @@
 import React from "react";
 
-const AdminHome = () => {
+const AdminHomePage = () => {
   return (
-    <div>
+    <div className="admin-home">
       <h1>Welcome, Admin</h1>
-      <p>
-        Here you can manage gym operations, view reports, and update fitness
-        plans.
-      </p>
+      <div className="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        <p>This is a placeholder for the admin dashboard content.</p>
+        {/* Add more components or placeholders as needed */}
+      </div>
     </div>
   );
 };
 
-export default AdminHome;
+export default AdminHomePage;

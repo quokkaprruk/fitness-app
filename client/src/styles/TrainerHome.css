@@ -1,6 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-size: 30px;
+}
+
+.navbar-welcome {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 30px;
+}
+
+.navbar-links a:hover {
+  color: #48d1cc;
+}
+
+.icon {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #48d1cc;
+}
+
+.navbar-logo img {
+  height: 20px;
+  width: auto;
+}
+
 .trainer-home {
   padding: 20px;
-  font-family: Arial, sans-serif;
+  padding-top: 120px;
+}
+
+strong {
+  font-weight: 800;
 }
 
 h1 {
@@ -8,7 +70,17 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 50px;
+  color: #48d1cc;
+}
+
+h3 {
+  font-size: 30px;
+  color: #48d1cc;
+}
+
+p {
+  font-size: 22px;
 }
 
 .class-list {
@@ -18,20 +90,28 @@ h2 {
 
 .class-item {
   margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
+  padding: 20px;
+  border: 1px solid #ccc6c6;
   border-radius: 8px;
   background-color: #f9f9f9;
-  width: 900px;
+  width: 1000px;
+  height: 190px;
   box-sizing: border-box;
 }
 
 .schedule-change-button {
-  background-color: #4caf50;
+  background-color: #48d1cc;
   color: white;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  border: solid;
+  border-radius: 7px;
   cursor: pointer;
   margin-top: 20px;
+  font-size: 25px;
+  font-family: "Rokkitt", serif;
+}
+
+.schedule-change-button:hover {
+  background-color: #04aa6d;
+  color: white;
 }

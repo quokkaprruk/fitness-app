@@ -42,9 +42,9 @@ body {
 
 .hero-section img {
   width: 100%;
-  height: auto; /* Make sure the image adjusts to its container */
-  max-height: 400px; /* Limit the max height */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
 }
 
 /* Class Categories Section */
@@ -76,9 +76,9 @@ body {
   max-width: 280px;
   text-align: center;
   display: flex;
-  flex-direction: column; /* Make card a flex container */
-  justify-content: space-between; /* Distribute space between items */
-  min-height: 400px; /* Set a minimum height instead */
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
 }
 
 .category-card img {
@@ -110,8 +110,8 @@ body {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: auto; /* Push button to the bottom of the card */
-  margin-bottom: 20px; /* Space from bottom of the card */
+  margin-top: auto;
+  margin-bottom: 20px;
 }
 
 .reserve-btn:hover {
@@ -133,4 +133,3 @@ body {
 .social-links a:hover {
   color: #2ecc71;
 }
-

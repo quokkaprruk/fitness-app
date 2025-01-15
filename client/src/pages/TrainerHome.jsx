@@ -1,60 +1,81 @@
 import React, { useState, useEffect } from "react";
-import data from "../data/fitnessClasses.json";
-import "../styles/TrainerHome.css"; // Import the CSS file
+import data from "../data/fitnessClasses.json"; //test data
+import logo from "../logo.png"; //image of logo
+import "../styles/TrainerHome.css"; //css file
+import { FaCog, FaUser } from "react-icons/fa"; //for 'profile' and 'settings' icons on navbar
 
 const TrainerHome = () => {
-  // Replace with actual instructor details fetched from props or API
-  const instructorID = 1; // dynamic ID for the logged-in instructor
-  const instructorName = "John Doe"; // dynamic Name for the logged-in instructor
+  const instructorID = 1;
+  const instructorName = "John Doe";
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
-    // accessing the fitnessClasses array from the imported data
     const fitnessClasses = data.fitnessClasses;
-
-    // filter classes for the logged-in instructor
     const filteredSchedule = fitnessClasses.filter(
       (classItem) => classItem.instructorID === instructorID
     );
     setSchedule(filteredSchedule);
   }, [instructorID]);
 
-  // The subject line for email
+  //email subject
   const emailSubject = `Requesting schedule change for ${instructorName} (ID: ${instructorID})`;
 
   return (
-    <div className="trainer-home">
-      <h1>Welcome, Instructor {instructorName}</h1>
-      <h2>Your Schedule</h2>
-      {schedule.length === 0 ? (
-        <p>No classes scheduled.</p>
-      ) : (
-        <ul className="class-list">
-          {schedule.map((classItem) => (
-            <li key={classItem.classId} className="class-item">
-              <h3>{classItem.className}</h3>
-              <p>Type: {classItem.classType}</p>
-              <p>
-                Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
-                {new Date(classItem.endDateTime).toLocaleString()}
-              </p>
-              <p>Capacity: {classItem.studentCapacity} students</p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div>
+      {/*nav bar*/}
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {instructorName}</div>
+        <div className="navbar-links">
+          <a href="#contact">Contact</a>
+          <a href="#client-management">Client Management</a>
+          <a href="#community">Community</a>
+          <FaCog className="icon" title="Settings" />
+          <FaUser className="icon" title="Profile" />
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
 
-      <button
-        className="schedule-change-button"
-        onClick={() => {
-          // opens Trainer's default mail app with prefilled subject for requesting schedule change
-          window.location.href = `mailto:?subject=${encodeURIComponent(
-            emailSubject
-          )}`;
-        }}
-      >
-        Request Schedule Change
-      </button>
+      <div className="trainer-home">
+        <h2>Your Schedule:</h2>
+        {/*if no classes scheduled*/}
+        {schedule.length === 0 ? (
+          <p>No classes scheduled.</p>
+        ) : (
+          <ul className="class-list">
+            {schedule.map((classItem) => (
+              <li key={classItem.classId} className="class-item">
+                <h3>{classItem.className}</h3>
+                <p>
+                  <strong>Type:</strong> {classItem.classType}
+                </p>
+                <p>
+                  <strong>Time:</strong>{" "}
+                  {new Date(classItem.startDateTime).toLocaleString()} -{" "}
+                  {new Date(classItem.endDateTime).toLocaleString()}
+                </p>
+                <p>
+                  <strong>Capacity: </strong>
+                  {classItem.studentCapacity} students
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/*button to request change that opens default email app*/}
+        <button
+          className="schedule-change-button"
+          onClick={() => {
+            window.location.href = `mailto:?subject=${encodeURIComponent(
+              emailSubject
+            )}`;
+          }}
+        >
+          Request Schedule Change
+        </button>
+      </div>
     </div>
   );
 };
