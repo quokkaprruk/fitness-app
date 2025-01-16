@@ -14,8 +14,10 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
-    // Directly compare entered password with the stored password (plain text)
-    if (user.password !== password) {
+    // Compare entered password with stored hashed password
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
