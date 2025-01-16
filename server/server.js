@@ -3,15 +3,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
-require('dotenv').config(); // To use environment variables from .env
+require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(cors()); // Enable Cross-Origin Requests
-app.use(bodyParser.json()); // Parse JSON request bodies
+app.use(cors());
+app.use(bodyParser.json());
 
-// Connect to MongoDB
+// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

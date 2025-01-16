@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
       },
     },
     {
-      collection: 'customers', // Explicitly specify the collection name
+      collection: 'customers', // collection name
     }
   );
 
