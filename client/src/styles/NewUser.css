@@ -1,0 +1,253 @@
+/* NewUser.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.newUser-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.hero-section h1 {
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.hero-section p {
+  font-size: 30px;
+  color: #555;
+}
+
+.hero-section img {
+  width: 100%;
+  height: auto;
+  max-height: 1000px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Class Categories Section */
+.class-categories {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Grid Layout for Categories */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  grid-template-rows: repeat(2, auto);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Category Card */
+.category-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 335px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-info {
+  padding: 20px;
+}
+
+.category-info h3 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.category-info p {
+  font-size: 23px;
+  color: #1e1e1e;
+  margin-bottom: 20px;
+}
+
+.reserve-btn {
+  background-color: #48d1cc;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 35px;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 100px;
+}
+
+.reserve-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Footer Section */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #555;
+  text-decoration: none;
+  font-size: 23px;
+}
+
+.social-links a:hover {
+  color: #2ecc71;
+}
+
+.info-bubbles {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.info-bubble {
+  width: 400px;
+  height: 400px;
+  background-color: #f5ffff;
+  border-radius: 50%;
+  border: 1px solid #555;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(2, 2, 2, 0.853);
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.info-bubble:hover {
+  border-width: 5px !important;
+  border-color: #48d1cc !important;
+}
+
+.info-bubble img {
+  width: 100px;
+  height: 100px;
+  border-radius: 0%;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  object-fit: cover;
+}
+
+.info-bubble h3 {
+  font-size: 28px;
+  margin-bottom: 0px;
+}
+
+.info-bubble p {
+  font-size: 25px;
+  margin-bottom: 60px;
+  padding: 0 10px;
+}
+
+.info-bubbles::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 4px;
+  background-color: #ccc;
+  top: 50%;
+  left: 5%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .info-bubbles {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-bubbles::before {
+    display: none;
+  }
+}
+
+.testimonials {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.testimonials h2 {
+  margin-bottom: 30px;
+  font-size: 60px;
+  color: #1e1e1e;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: #f9f9f9;
+  border: 3px solid #48d1cc;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(22% - 5px);
+}
+
+.testimonial-card p {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.testimonial-card h4 {
+  font-size: 27px;
+  color: #555;
+}

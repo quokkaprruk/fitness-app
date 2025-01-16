@@ -26,9 +26,9 @@ const TrainerHome = () => {
       <nav className="navbar">
         <div className="navbar-welcome">Welcome, {instructorName}</div>
         <div className="navbar-links">
-          <a href="#contact">Contact</a>
-          <a href="#client-management">Client Management</a>
-          <a href="#community">Community</a>
+          <a href="/contact">Contact</a>
+          <a href="/client-management">Client Management</a>
+          <a href="/community">Community</a>
           <FaCog className="icon" title="Settings" />
           <FaUser className="icon" title="Profile" />
         </div>

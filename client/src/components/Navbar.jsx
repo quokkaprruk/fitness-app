@@ -1,43 +1,40 @@
+//navbar for new user and registered user
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import logo from "../logo.png";
+import { FaCog, FaUser } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        <h2>ISGA Gym</h2>
+      <div className="navbar-welcome">Welcome!</div>
+      <div className="navbar-links">
+        <a href="/contact">Contact</a>
+        <a href="/reservations">Reservations</a>
+        <a href="/community">Community</a>
+        {isLoggedIn ? (
+          <>
+            <a href="/progress">Progress</a>
+            <FaCog className="icon" title="Settings" />
+            <FaUser className="icon" title="Profile" />
+          </>
+        ) : (
+          <>
+            <div className="auth-buttons">
+              <Link to="/login" className="btn login-btn">
+                Login
+              </Link>
+              <Link to="/signup" className="btn signup-btn">
+                Sign Up
+              </Link>
+            </div>
+          </>
+        )}
       </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/" className="navbar-link">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/reservation" className="navbar-link">
-            Reservation
-          </Link>
-        </li>
-        <li>
-          <Link to="/classes" className="navbar-link">
-            Classes
-          </Link>
-        </li>
-        <li>
-          <Link to="/community" className="navbar-link">
-            Community
-          </Link>
-        </li>
-        <li>
-          <Link to="/profile" className="navbar-link">
-            Profile
-          </Link>
-        </li>
-      </ul>
-      <div className="navbar-auth">
-        <button className="login-btn">Login</button>
-        <button className="signup-btn">Sign Up</button>
+      <div className="navbar-logo">
+        <img src={logo} alt="Logo" />
       </div>
     </nav>
   );

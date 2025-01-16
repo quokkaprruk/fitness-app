@@ -1,64 +1,90 @@
-/* Navbar.css */
-
-/* General navbar styling */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure navbar is on top */
-  }
-  
-  .navbar-logo h2 {
-    font-size: 1.8rem;
-    margin-left: 20px;
-    color: #333;
-  }
-  
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar-links li {
-    margin: 0 20px;
-  }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    font-size: 1.1rem;
-  }
-  
-  .navbar-auth {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-  }
-  
-  .navbar-auth .login-btn,
-  .navbar-auth .signup-btn {
-    padding: 10px 20px;
-    margin-left: 10px;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .navbar-auth .login-btn {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .navbar-auth .signup-btn {
-    background-color: #2196f3;
-    color: white;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-size: 30px;
+}
+
+.navbar-spacer {
+  height: 90px;
+}
+
+.navbar-welcome {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 30px;
+}
+
+.navbar-links a:hover {
+  color: #48d1cc;
+}
+
+.icon {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #48d1cc;
+}
+
+.navbar-logo img {
+  height: 20px;
+  width: auto;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar .auth-buttons .login-btn {
+  background-color: #48d1cc;
+  color: white;
+  border: 2px solid #48d1cc;
+  height: auto;
+}
+
+.navbar .auth-buttons .signup-btn {
+  background-color: white;
+  color: #48d1cc;
+  border: 2px solid #48d1cc;
+}
+
+.navbar .auth-buttons .login-btn:hover {
+  background-color: #3ab8b3;
+  border-color: #3ab8b3;
+}
+
+.navbar .auth-buttons .signup-btn:hover {
+  background-color: #f0f0f0;
+}
