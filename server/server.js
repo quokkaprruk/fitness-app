@@ -1,28 +1,31 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
+const logger = require('./middleware/logger')
+const pino = require('pino-http')({ logger });
 require('dotenv').config();
 
 const app = express();
 
+app.use(pino);
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log('MongoDB Connection Failed:', err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    logger.info('MongoDB connection success!');
+  } catch (err) {
+    logger.error('MongoDB connection failed');
+  }
+};
 
-// Use the routes
 app.use('/api/users', userRoutes);
 
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  connectDB();
+  logger.info(`Server running on http://localhost:${PORT}`);
 });
