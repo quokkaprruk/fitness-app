@@ -52,6 +52,8 @@ const AdminHome = () => {
     endDate: "",
   });
 
+  const [editingClass, setEditingClass] = useState(null);
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const newClassEntries = [...classEntries];
@@ -110,7 +112,34 @@ const AdminHome = () => {
     }));
   };
 
-  //filter
+  const handleEdit = (classId) => {
+    const classToEdit = fitnessClasses.find((c) => c.classId === classId);
+    setEditingClass(classToEdit);
+  };
+
+  const handleSaveEdit = () => {
+    setFitnessClasses(
+      fitnessClasses.map((c) =>
+        c.classId === editingClass.classId ? editingClass : c
+      )
+    );
+    setEditingClass(null);
+  };
+
+  const handleDelete = (classId) => {
+    if (window.confirm("Are you sure you want to delete this class?")) {
+      setFitnessClasses(fitnessClasses.filter((c) => c.classId !== classId));
+    }
+  };
+
+  const handleEditInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditingClass((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const filteredClasses = fitnessClasses.filter((classItem) => {
     const { classType, instructorID, startDate, endDate } = filters;
 
@@ -149,7 +178,6 @@ const AdminHome = () => {
 
       <h1>Manage Schedules:</h1>
 
-      {/* Filter Options */}
       <div className="filter-container">
         <h3>Find Scheduled Classes</h3>
         <select
@@ -186,7 +214,6 @@ const AdminHome = () => {
         />
       </div>
 
-      {/* Display Filtered Classes */}
       <div className="class-container">
         {filteredClasses.length > 0 ? (
           filteredClasses.map((classItem) => (
@@ -207,6 +234,14 @@ const AdminHome = () => {
               <p>
                 <strong>Capacity:</strong> {classItem.studentCapacity}
               </p>
+              <div className="card-actions">
+                <button onClick={() => handleEdit(classItem.classId)} className="edit-button">
+                  Edit
+                </button>
+                <button onClick={() => handleDelete(classItem.classId)} className="delete-button">
+                  Delete
+                </button>
+              </div>
             </div>
           ))
         ) : (
@@ -214,7 +249,6 @@ const AdminHome = () => {
         )}
       </div>
 
-      {/* Form to Create New Classes */}
       <form onSubmit={handleFormSubmit} className="form-container">
         <h3>Create New Class Schedule</h3>
         {classEntries.map((entry, index) => (
@@ -302,6 +336,69 @@ const AdminHome = () => {
           </div>
         </div>
       </form>
+
+{/*Modal window to make changes to existing classes*/}
+      {editingClass && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Edit Class</h2>
+            <label>Class name: </label>
+            <input
+              type="text"
+              name="className"
+              value={editingClass.className}
+              onChange={handleEditInputChange}
+              placeholder="Class Name"
+              required
+            />
+            <label>Class type: </label>
+            <select
+              name="classType"
+              value={editingClass.classType}
+              onChange={handleEditInputChange}
+            >
+              <option value="Online">Online</option>
+              <option value="On-Site">On-Site</option>
+            </select>
+            <label>Start: </label>
+            <input
+              type="datetime-local"
+              name="startDateTime"
+              value={editingClass.startDateTime}
+              onChange={handleEditInputChange}
+              required
+            />
+            <label>End: </label>
+            <input
+              type="datetime-local"
+              name="endDateTime"
+              value={editingClass.endDateTime}
+              onChange={handleEditInputChange}
+              required
+            />
+            <label>Instructor ID: </label>
+            <input
+              type="number"
+              name="instructorID"
+              value={editingClass.instructorID}
+              onChange={handleEditInputChange}
+              placeholder="Instructor ID"
+              required
+            />
+            <label>Capacity: </label>
+            <input
+              type="number"
+              name="studentCapacity"
+              value={editingClass.studentCapacity}
+              onChange={handleEditInputChange}
+              placeholder="Student Capacity"
+              required
+            />
+            <button onClick={handleSaveEdit}>Save Changes</button>
+            <button onClick={() => setEditingClass(null)}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

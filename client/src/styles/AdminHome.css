@@ -12,58 +12,56 @@ body {
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fcfcfc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 90px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    font-size: 30px;
-  }
-  
-  .navbar-welcome {
-    font-weight: bold;
-    font-size: 30px;
-  }
-  
-  .navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 80px;
-  }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 30px;
-  }
-  
-  .navbar-links a:hover {
-    color: #48d1cc;
-  }
-  
-  .icon {
-    font-size: 30px;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .icon:hover {
-    color: #48d1cc;
-  }
-  
-  .navbar-logo img {
-    height: 20px;
-    width: auto;
-  }
-  
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-size: 30px;
+}
+
+.navbar-welcome {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 30px;
+}
+
+.navbar-links a:hover {
+  color: #48d1cc;
+}
+
+.icon {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #48d1cc;
+}
+
+.navbar-logo img {
+  height: 20px;
+  width: auto;
+}
 
 /* Header */
 h1 {
@@ -116,6 +114,29 @@ h1 {
   margin: 0 0 10px;
   font-size: 30px;
   color: #333;
+}
+
+.edit-button {
+  background: #48d1cc;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 80px;
+}
+
+.delete-button {
+  background: #ff4c4c;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  width: 80px;
 }
 
 .class-card p {
@@ -230,27 +251,95 @@ h1 {
 }
 
 .input-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .date-input {
-    display: flex;
-    align-items: center;
-  }
-  
-  .date-input label {
-    margin-right: 5px;
-    font-weight: bold;
-  }
-  
-  .form-input {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .form-input:last-child {
-    margin-right: 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.date-input {
+  display: flex;
+  align-items: center;
+}
+
+.date-input label {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-input:last-child {
+  margin-right: 0;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content label {
+  font-size: 20px;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.modal-content button {
+  background-color: #48d1cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+.modal-content button:last-child {
+  background-color: #ff4c4c;
+}
+
+.modal-content button:last-child:hover {
+  background-color: #e64545;
+}
