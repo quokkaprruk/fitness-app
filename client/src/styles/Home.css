@@ -1,4 +1,9 @@
-/* NewUser.css */
+/* Home.css */
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+}
 
 * {
   margin: 0;

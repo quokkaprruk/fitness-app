@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import logo from "../logo.png";
 import { FaCog, FaUser } from "react-icons/fa";
+import LoginPage from "../pages/Login.jsx";
 
 const Navbar = ({ isLoggedIn }) => {
   return (

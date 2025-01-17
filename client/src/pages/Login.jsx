@@ -13,10 +13,13 @@ const LoginPage = () => {
 
     try {
       // Send login request to backend
-      const response = await axios.post("http://localhost:5000/api/users/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/users/login",
+        {
+          username,
+          password,
+        }
+      );
 
       setMessage(`Success: ${response.data.message}`);
     } catch (error) {
