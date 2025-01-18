@@ -101,7 +101,7 @@ h1 {
   padding: 20px;
 }
 
-.class-card {
+.class-card-scheduled {
   background-color: #fff;
   padding: 15px;
   border: 1px solid #ddd;
@@ -110,7 +110,7 @@ h1 {
   text-align: left;
 }
 
-.class-card h4 {
+.class-card-scheduled h4 {
   margin: 0 0 10px;
   font-size: 30px;
   color: #333;
@@ -139,7 +139,7 @@ h1 {
   width: 80px;
 }
 
-.class-card p {
+.class-card-scheduled p {
   margin: 5px 0;
   font-size: 24px;
   color: #555;

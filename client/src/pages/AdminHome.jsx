@@ -217,7 +217,7 @@ const AdminHome = () => {
       <div className="class-container">
         {filteredClasses.length > 0 ? (
           filteredClasses.map((classItem) => (
-            <div key={classItem.classId} className="class-card">
+            <div key={classItem.classId} className="class-card-scheduled">
               <h4>{classItem.className}</h4>
               <p>
                 <strong>Type:</strong> {classItem.classType}
@@ -235,10 +235,16 @@ const AdminHome = () => {
                 <strong>Capacity:</strong> {classItem.studentCapacity}
               </p>
               <div className="card-actions">
-                <button onClick={() => handleEdit(classItem.classId)} className="edit-button">
+                <button
+                  onClick={() => handleEdit(classItem.classId)}
+                  className="edit-button"
+                >
                   Edit
                 </button>
-                <button onClick={() => handleDelete(classItem.classId)} className="delete-button">
+                <button
+                  onClick={() => handleDelete(classItem.classId)}
+                  className="delete-button"
+                >
                   Delete
                 </button>
               </div>
@@ -337,7 +343,7 @@ const AdminHome = () => {
         </div>
       </form>
 
-{/*Modal window to make changes to existing classes*/}
+      {/*Modal window to make changes to existing classes*/}
       {editingClass && (
         <div className="modal">
           <div className="modal-content">
