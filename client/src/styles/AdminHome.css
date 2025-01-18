@@ -343,3 +343,28 @@ h1 {
 .modal-content button:last-child:hover {
   background-color: #e64545;
 }
+
+.generate-btn {
+  background-color: #48d1cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 35px;
+  width: 370px;
+  height: 80px;
+  margin-left: auto;
+  margin-top: 100px;
+  margin-right:20px;
+}
+
+.generate-btn:hover {
+  background-color: #45a049;
+}
+
+.manage-gen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

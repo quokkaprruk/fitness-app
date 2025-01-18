@@ -176,7 +176,10 @@ const AdminHome = () => {
         </div>
       </nav>
 
-      <h1>Manage Schedules:</h1>
+      <div className="manage-gen">
+        <h1>Manage Schedules:</h1>
+        <button className="generate-btn">Generate Schedule</button>
+      </div>
 
       <div className="filter-container">
         <h3>Find Scheduled Classes</h3>

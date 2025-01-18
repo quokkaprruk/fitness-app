@@ -20,12 +20,14 @@ const Navbar = ({ isLoggedIn }) => {
         </Link>
         {isLoggedIn ? (
           <>
+            <a href="/member">Home</a>
             <a href="/progress">Progress</a>
             <FaCog className="icon" title="Settings" />
             <FaUser className="icon" title="Profile" />
           </>
         ) : (
           <>
+            <a href="/">Home</a>
             <div className="auth-buttons">
               <Link to="/login" className="btn login-btn">
                 Login
