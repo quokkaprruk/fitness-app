@@ -1,0 +1,25 @@
+{
+  "admin": [
+    {
+      "_id": "ObjectId", // MongoDB auto-generated ID
+      "profileId": "A1", // Reference to the all_user profileId from the 'users' collection
+      "firstName": "Siripa",
+      "lastName": "Purinruk",
+      "createdAt": "2025-01-17T00:00:00Z"
+    },
+    {
+      "_id": "ObjectId",
+      "profileId": "A2",
+      "firstName": "Anthony",
+      "lastName": "Sin",
+      "createdAt": "2025-01-17T00:00:00Z"
+    },
+    {
+      "_id": "ObjectId",
+      "profileId": "A3",
+      "firstName": "Luis",
+      "lastName": "Mario",
+      "createdAt": "2025-01-17T00:00:00Z"
+    }
+  ]
+}

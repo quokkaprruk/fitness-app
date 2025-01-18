@@ -1,0 +1,34 @@
+{
+  "trainer": [
+    {
+      "_id": "ObjectId", // MongoDB auto-generated ID
+      "profileId": "T1", // Reference to the all_user profileId from the 'users' collection
+      "firstName": "John",
+      "lastName": "Doe",
+      "specialty": ["Yoga", "Meditation"],
+      "teachingMode": ["online", "on-site"],
+      "createdAt": "2025-01-17T00:00:00Z",
+      "history": [] // empty teaching class history
+    },
+    {
+      "_id": "ObjectId",
+      "profileId": "T2",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "specialty": ["Pilates", "Cardio"],
+      "teachingMode": ["online", "on-site"],
+      "createdAt": "2025-01-17T00:00:00Z",
+      "history": []
+    },
+    {
+      "_id": "ObjectId",
+      "profileId": "T3",
+      "firstName": "Paul",
+      "lastName": "Pong",
+      "specialty": ["HIIT", "Weight Training"],
+      "teachingMode": ["online", "on-site"],
+      "createdAt": "2025-01-17T00:00:00Z",
+      "history": []
+    }
+  ]
+}
