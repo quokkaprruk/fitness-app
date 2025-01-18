@@ -1,5 +1,21 @@
 ## Steps to install dependencies:
 
+### Backend Routes
+
+| Base Route     | Sub Route                | Method     | Usage                                       |
+| -------------- | ------------------------ | ---------- | ------------------------------------------- |
+| /api/trainers  | /                        | GET        | get all trainers                            |
+| /api/admin     | /add-schedule            | POST       | manually save a schedule to db              |
+| /api/schedules | /                        | GET        | get all schedules                           |
+|                | /generate-schedule       | POST       | auto generate schedule button               |
+|                | /save-generated-schedule | POST       | confirm saving the generated schedule to db |
+| Row 5, C1      | Row 5, C2                | Row 5, C3  | Row 5, C4                                   |
+| Row 6, C1      | Row 6, C2                | Row 6, C3  | Row 6, C4                                   |
+| Row 7, C1      | Row 7, C2                | Row 7, C3  | Row 7, C4                                   |
+| Row 8, C1      | Row 8, C2                | Row 8, C3  | Row 8, C4                                   |
+| Row 9, C1      | Row 9, C2                | Row 9, C3  | Row 9, C4                                   |
+| Row 10, C1     | Row 10, C2               | Row 10, C3 | Row 10, C4                                  |
+
 ### Install Dependencies for the Server (Backend)
 
 1 Navigate to the server folder (assume that you at the project root folder)
