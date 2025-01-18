@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../styles/ClassList.css";
+import fitnessClasses from "../data/fitnessClasses.json"; 
 
 const ClassList = () => {
   const [classes, setClasses] = useState([]);
@@ -8,33 +8,25 @@ const ClassList = () => {
   const [error, setError] = useState(null);
   const [reserving, setReserving] = useState(false);
 
-  // Fetch classes
+  // Simulate fetching classes from the JSON file
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/classes")
-      .then((response) => {
-        setClasses(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError("Error fetching classes");
-        setIsLoading(false);
-      });
+    try {
+      setClasses(fitnessClasses.fitnessClasses); 
+      setIsLoading(false);
+    } catch (err) {
+      setError("Error loading classes data");
+      setIsLoading(false);
+    }
   }, []);
 
   // Handle class reservation
   const handleReserve = (classId) => {
     setReserving(true);
-    axios
-      .post(`http://localhost:5000/api/classes/${classId}/reserve`)
-      .then(() => {
-        alert("Reservation successful!");
-        setReserving(false);
-      })
-      .catch((error) => {
-        alert("Error reserving class: " + error.message);
-        setReserving(false);
-      });
+    
+    setTimeout(() => {
+      alert(`Reservation successful for class ID: ${classId}`);
+      setReserving(false);
+    }, 1000);
   };
 
   if (isLoading) {
@@ -50,11 +42,16 @@ const ClassList = () => {
       <h2>Available Classes</h2>
       <ul>
         {classes.map((classItem) => (
-          <li key={classItem.id} className="class-item">
-            <h3>{classItem.name}</h3>
-            <p>{classItem.description}</p>
+          <li key={classItem.classId} className="class-item">
+            <h3>{classItem.className}</h3>
+            <p>Type: {classItem.classType}</p>
+            <p>
+              Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
+              {new Date(classItem.endDateTime).toLocaleString()}
+            </p>
+            <p>Capacity: {classItem.studentCapacity}</p>
             <button
-              onClick={() => handleReserve(classItem.id)}
+              onClick={() => handleReserve(classItem.classId)}
               disabled={reserving}
             >
               {reserving ? "Reserving..." : "Reserve"}
@@ -67,3 +64,4 @@ const ClassList = () => {
 };
 
 export default ClassList;
+
