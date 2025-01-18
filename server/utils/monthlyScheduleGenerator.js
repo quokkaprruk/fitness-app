@@ -63,8 +63,6 @@ function generateMonthlySchedule(trainers) {
 
   trainers.forEach((trainer) => {
     for (let day = 1; day <= daysInMonth; day++) {
-      //   const currentDate = moment(`${year}-${month}-${day}`, "YYYY-MM-DD");
-
       let currentStartTime = moment(
         `${year}-${month}-${day} ${startTime}`,
         "YYYY-MM-DD HH:mm"
@@ -72,7 +70,6 @@ function generateMonthlySchedule(trainers) {
 
       for (let i = 0; i < dailyHours; i++) {
         // Skip scheduling between 12:01 PM and 12:59 PM
-
         if (
           currentStartTime.isSameOrAfter(
             moment(currentStartTime).set({ hour: 12, minute: 0, second: 0 })
@@ -81,7 +78,6 @@ function generateMonthlySchedule(trainers) {
             moment(currentStartTime).set({ hour: 13, minute: 0, second: 0 })
           )
         ) {
-          // Skip the class during the break period
           currentStartTime.add(1, "hour"); // Skip the hour and move to the next valid time
           continue;
         }
@@ -104,7 +100,7 @@ function generateMonthlySchedule(trainers) {
           className: `${trainer.specialty[specialtyIndex]} - ${level}`,
           classType: classType,
           instructorId: trainer._id,
-          day: dayNameStart, // should refer to weekDays ,
+          day: dayNameStart,
           startDateTime: currentStartTime.format("YYYY-MM-DDTHH:mm:ssZ"),
           endDateTime: currentStartTime
             .add(classDuration, "hours")
