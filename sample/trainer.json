@@ -1,5 +1,7 @@
+//when insert document to mongo: remove _id field so that mongo willl generate it + flatten nested arrays.
+//Example json for inserting to mongo is at the bottom of the page
 {
-  "trainer": [
+  "trainers": [
     {
       "_id": "ObjectId", // MongoDB auto-generated ID
       "profileId": "T1", // Reference to the all_user profileId from the 'users' collection
@@ -32,3 +34,25 @@
     }
   ]
 }
+/*
+[
+  {
+    "profileId": "T1",
+    "firstName": "John",
+    "lastName": "Doe",
+    "specialty": ["Yoga", "Meditation"],
+    "teachingMode": ["online", "on-site"],
+    "createdAt": "2025-01-17T00:00:00Z",
+    "history": []
+  },
+  {
+    "profileId": "T2",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "specialty": ["Pilates", "Cardio"],
+    "teachingMode": ["online", "on-site"],
+    "createdAt": "2025-01-17T00:00:00Z",
+    "history": []
+  }
+]
+*/

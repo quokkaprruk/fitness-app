@@ -83,3 +83,38 @@ note:
     }
   ]
 }
+
+/*
+For inserting document in all_users mongo
+/**
+* Paste one or more documents here
+*/
+/*
+[
+  {
+    "email": "john.doe@example.com",
+    "password": "john",
+    "role": "trainer", 
+    "profileId": "T1", 
+    "createdAt": "2025-01-17T00:00:00Z",
+    "updatedAt": "2025-01-17T00:00:00Z"
+  },
+  {
+    "email": "jane.smite@example.com",
+    "password": "jane",
+    "role": "trainer", 
+    "profileId": "T2", 
+    "createdAt": "2025-01-17T00:00:00Z",
+    "updatedAt": "2025-01-17T00:00:00Z"
+  },
+  {
+    "email": "paul.pong@example.com",
+    "password": "paul",
+    "role": "trainer", 
+    "profileId": "T3", 
+    "createdAt": "2025-01-17T00:00:00Z",
+    "updatedAt": "2025-01-17T00:00:00Z"
+  }
+]
+
+*/
