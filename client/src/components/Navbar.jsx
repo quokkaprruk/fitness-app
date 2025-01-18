@@ -15,6 +15,9 @@ const Navbar = ({ isLoggedIn }) => {
         <a href="/contact">Contact</a>
         <a href="/reservations">Reservations</a>
         <a href="/community">Community</a>
+        <Link to="/classes" className="btn classes-btn">
+          Classes
+        </Link>
         {isLoggedIn ? (
           <>
             <a href="/progress">Progress</a>
