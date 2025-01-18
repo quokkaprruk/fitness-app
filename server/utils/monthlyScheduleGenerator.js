@@ -1,5 +1,6 @@
 const moment = require("moment");
-
+const fs = require("fs");
+const path = require("path");
 const levels = ["Beginner", "Intermediate", "Advanced"];
 const dailyHours = 6; // Number of hours in a day (updated to 5)
 const classDuration = 1; // Class duration in hours
@@ -11,44 +12,34 @@ const equipmentForSpecialty = {
     "Resistance bands",
     "Jump rope",
     "Medicine ball",
-    "Mat (for floor exercises)",
-    "Timer or interval app",
+    "Mat",
   ],
   "Weight Training": [
     "Dumbbells or barbells",
     "Resistance bands",
     "Weight bench",
     "Stability ball",
-    "Mat (for floor exercises)",
+    "Mat",
     "Adjustable kettlebells",
   ],
-  Yoga: [
-    "Yoga mat (non-slip for safety)",
-    "Blocks (for support in poses)",
-    "Strap (to help with flexibility and alignment)",
-    "Cushion or bolster (for comfort in certain poses)",
-    "A quiet, calm space for relaxation",
-  ],
+  Yoga: ["Yoga mat", "Blocks", "Strap", "Cushion or bolster"],
   Meditation: [
     "Comfortable chair or cushion for sitting",
     "Meditation pillow or mat (optional for floor sitting)",
-    "Timer or meditation app",
-    "Soft lighting or calming atmosphere",
   ],
   Pilates: [
-    "Pilates mat (thicker for comfort)",
+    "Pilates mat",
     "Resistance bands",
     "Pilates ring (optional)",
-    "Small exercise ball (for added resistance)",
-    "Weights (optional for resistance work)",
-    "Foam roller (optional for stretching)",
+    "Small exercise ball",
+    "Weights (optional)",
+    "Foam roller (optional)",
   ],
   Cardio: [
     "Jump rope",
     "Stepper or stability step platform",
-    "Treadmill or stationary bike",
-    "Resistance bands (for added resistance during bodyweight exercises)",
-    "Mat (for floor exercises)",
+    "Resistance bands",
+    "Mat",
   ],
 };
 const weekDays = [
@@ -130,6 +121,12 @@ function generateMonthlySchedule(trainers) {
       }
     }
   });
+  //   fs.writeFileSync("schedule.json", JSON.stringify(schedule, null, 2), "utf-8");
+  fs.writeFileSync(
+    path.join(__dirname, "monthlySchedule.json"),
+    JSON.stringify(schedule, null, 2),
+    "utf-8"
+  );
 
   return schedule;
 }

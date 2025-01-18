@@ -10,11 +10,11 @@ const scheduleSchema = new mongoose.Schema(
     endDateTime: Date,
     studentCapacity: Number,
     currentReserved: { type: Number, default: 0 },
-    studentList: [String],
-    location: String,
+    studentList: { type: [String], default: [] },
+    location: { type: String, default: "" },
     classDetails: {
-      description: String,
-      equipmentRequired: [String],
+      description: { type: String, default: "" },
+      equipmentRequired: { type: [String], default: [] },
     },
   },
   {

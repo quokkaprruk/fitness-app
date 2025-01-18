@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/user");
 const trainerRoutes = require("./routes/trainer");
+const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/trainers", trainerRoutes);
+app.use("/api/admin", adminRoutes);
 app.use("/api/schedules", scheduleRoutes);
 
 // Server

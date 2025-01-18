@@ -21,10 +21,12 @@ const trainerSchema = new Schema(
     specialty: {
       type: [String],
       required: true,
+      default: [],
     },
     teachingMode: {
       type: [String], // can be ["online"],["on-site"], or ["online","on-site"]
       required: true,
+      default: [],
     },
     createdAt: {
       type: Date,

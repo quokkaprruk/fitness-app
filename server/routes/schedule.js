@@ -34,8 +34,14 @@ router.post("/generate-schedule", async (req, res) => {
 // : use when want to save the generated schedule to the database
 router.post("/save-generated-schedule", async (req, res) => {
   try {
-    const { schedule } = req.body; // front-end must send generated schedule data in the req.body
+    const { schedule } = req.body; //front-end must send generated schedule data in the req.body
+    // const schedule = require("../utils/monthlySchedule.json"); // for testing
 
+    // check if there's existing schedule in db
+    const existingSchedules = await Schedule.find({});
+    if (existingSchedules.length > 0) {
+      await Schedule.deleteMany({});
+    }
     // insert to the database
     const savedSchedules = await Schedule.insertMany(schedule);
 
