@@ -1,21 +1,9 @@
-// Siripa
 const moment = require("moment");
 
-// Configurations
-const dailyHours = 5; // 5 hours/day schedule for each trainer
-const classDuration = 1; // 1 hour per class
-const weekDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-const startTime = "08:00"; // Classes start at 8:00 AM
-
 const levels = ["Beginner", "Intermediate", "Advanced"];
+const dailyHours = 6; // Number of hours in a day (updated to 5)
+const classDuration = 1; // Class duration in hours
+const startTime = "08:00"; // Starting time for the schedule
 // Equipment for each class specialty
 const equipmentForSpecialty = {
   HIIT: [
@@ -63,36 +51,53 @@ const equipmentForSpecialty = {
     "Mat (for floor exercises)",
   ],
 };
+const weekDays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const year = moment().format("YYYY"); // current month
+const month = moment().format("MM"); // current year
 
-// Generate weekly schedule for trainers
-function generateWeeklySchedule(trainers) {
+// Generate monthly schedule for trainers
+function generateMonthlySchedule(trainers) {
   const schedule = [];
 
-  trainers.forEach((trainer) => {
-    weekDays.forEach((day) => {
-      let currentStartTime = moment(startTime, "HH:mm");
+  const startOfMonth = moment(`${year}-${month}-01`);
+  const daysInMonth = startOfMonth.daysInMonth();
 
-      // generate daily schedule for the trainer
+  trainers.forEach((trainer) => {
+    for (let day = 1; day <= daysInMonth; day++) {
+      //   const currentDate = moment(`${year}-${month}-${day}`, "YYYY-MM-DD");
+
+      let currentStartTime = moment(
+        `${year}-${month}-${day} ${startTime}`,
+        "YYYY-MM-DD HH:mm"
+      );
+
       for (let i = 0; i < dailyHours; i++) {
-        // skip scheduling between 12:01 PM and 12:59 PM
+        // Skip scheduling between 12:01 PM and 12:59 PM
+
         if (
-          currentStartTime.isBetween(
-            moment("12:01", "HH:mm"),
-            moment("12:59", "HH:mm"),
-            null,
-            "[)"
+          currentStartTime.isSameOrAfter(
+            moment(currentStartTime).set({ hour: 12, minute: 0, second: 0 })
+          ) &&
+          currentStartTime.isBefore(
+            moment(currentStartTime).set({ hour: 13, minute: 0, second: 0 })
           )
         ) {
-          currentStartTime.add(1, "hour"); // Skip the hour
+          // Skip the class during the break period
+          currentStartTime.add(1, "hour"); // Skip the hour and move to the next valid time
           continue;
         }
-
-        // assign 'online' or 'onsite'
         const classType = i % 2 === 0 ? "online" : "on-site";
 
-        // assign the class specialty and difficulty level
-        const specialtyIndex = i % trainer.specialty.length; // Cycle through specialties
-        const levelIndex = i % levels.length; // Cycle through levels: Beginner, Intermediate, Advanced
+        const specialtyIndex = i % trainer.specialty.length;
+        const levelIndex = i % levels.length;
         const level = levels[levelIndex];
         const currentSpecialty = trainer.specialty[specialtyIndex];
 
@@ -100,11 +105,15 @@ function generateWeeklySchedule(trainers) {
           classType === "online"
             ? equipmentForSpecialty[currentSpecialty]
             : ["water"];
+
+        const dayOfWeekStart = currentStartTime.day();
+        const dayNameStart = weekDays[dayOfWeekStart];
+
         schedule.push({
           className: `${trainer.specialty[specialtyIndex]} - ${level}`,
           classType: classType,
           instructorId: trainer._id,
-          day: day,
+          day: dayNameStart, // should refer to weekDays ,
           startDateTime: currentStartTime.format("YYYY-MM-DDTHH:mm:ssZ"),
           endDateTime: currentStartTime
             .add(classDuration, "hours")
@@ -119,10 +128,10 @@ function generateWeeklySchedule(trainers) {
           },
         });
       }
-    });
+    }
   });
 
   return schedule;
 }
 
-module.exports = { generateWeeklySchedule };
+module.exports = { generateMonthlySchedule };

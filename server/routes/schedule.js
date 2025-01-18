@@ -1,17 +1,27 @@
 const express = require("express");
 const logger = require("../middleware/logger"); // use logger
-const { generateWeeklySchedule } = require("../utils/scheduleGenerator");
+const {
+  generateMonthlySchedule,
+} = require("../utils/monthlyScheduleGenerator");
 const Trainer = require("../models/trainer");
 const Schedule = require("../models/schedule");
 const router = express.Router();
 
 // Siripa: POST route to generate the schedule
 // : use when admin clicks on 'generate-schedule' button
-router.post("/generate-schedule", async () => {
+router.post("/generate-schedule", async (req, res) => {
   try {
     const trainers = await Trainer.find(); // fetch trainer from the database
-    const schedule = generateWeeklySchedule(trainers); // Generate the schedule using the utility function
-    res.status(200).json(schedule);
+    if (trainers.length === 0) {
+      return res.status(404).json({ message: "No trainers found" });
+    }
+    const schedule = generateMonthlySchedule(trainers); // use the function in utils folder
+
+    if (schedule.length === 0) {
+      return res.status(404).json({ message: "No schedule found" });
+    } else {
+      res.status(200).json(schedule);
+    }
   } catch (error) {
     logger.error(`Error generating schedule: ${error.message}`);
     res
@@ -22,7 +32,7 @@ router.post("/generate-schedule", async () => {
 
 // Siripa: POST route to save the confirmed schedule + insert to database
 // : use when want to save the generated schedule to the database
-router.post("/save-schedule", async (req, res) => {
+router.post("/save-generated-schedule", async (req, res) => {
   try {
     const { schedule } = req.body; // front-end must send generated schedule data in the req.body
 
