@@ -29,6 +29,18 @@
   gap: 80px;
 }
 
+.navbar-links .classes-btn {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.navbar-links .classes-btn:hover {
+  color: #0056b3;
+}
+
+
 .navbar-links a {
   text-decoration: none;
   color: #333;
