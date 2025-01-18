@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css"; // Import external CSS file
+import Navbar from "../components/Navbar.jsx";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -32,6 +33,7 @@ const LoginPage = () => {
 
   return (
     <div className="container">
+      <Navbar isLoggedIn={false} />
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div className="inputGroup">
