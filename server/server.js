@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/user");
 const trainerRoutes = require("./routes/trainer");
+const scheduleRoutes = require("./routes/schedule");
 const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
 require("dotenv").config();
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/trainers", trainerRoutes);
+app.use("/api/schedules", scheduleRoutes);
 
 // Server
 const PORT = process.env.PORT || 5000;

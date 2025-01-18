@@ -42,7 +42,7 @@ router.post("/save-schedule", async (req, res) => {
 });
 
 // Siripa: GET route to get all schedules
-router.get("/all-schedules", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const schedule = await Schedule.find();
     if (schedule.length > 0) {

@@ -4,10 +4,11 @@ const logger = require("../middleware/logger"); // use logger
 const router = express.Router();
 
 // Siripa: GET: all trainer route
-router.get("/all-trainers", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const trainers = await Trainer.find();
 
+    // res.setHeader("Cache-Control", "no-store"); // Disable caching
     if (trainers.length > 0) {
       logger.info(`Successfully found ${trainers.length} trainer(s).`);
       res.status(200).json(trainers);
