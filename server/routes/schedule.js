@@ -74,6 +74,50 @@ router.get("/", async (req, res) => {
       .status(500)
       .json({ message: "Error fetching schedules", error: error.message });
   }
+
+  // GET route to get all online schedules
+  router.get("/online", async (req, res) => {
+    try {
+      const onlineSchedule = await Schedule.find({ classType: "online" }); // Filter by classType: "online"
+      if (onlineSchedule.length > 0) {
+        logger.info(
+          `Successfully found ${onlineSchedule.length} online schedule(s).`
+        );
+        res.status(200).json(onlineSchedule);
+      } else {
+        logger.info("No online schedules found");
+        res.status(200).json([]); // Return empty array if no schedules found
+      }
+    } catch (error) {
+      logger.error(`Error fetching online schedules: ${error.message}`);
+      res.status(500).json({
+        message: "Error fetching online schedules",
+        error: error.message,
+      });
+    }
+  });
+
+  // GET route to get all on-site schedules
+  router.get("/onsite", async (req, res) => {
+    try {
+      const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "online"
+      if (onSiteSchedule.length > 0) {
+        logger.info(
+          `Successfully found ${onSiteSchedule.length} on-site schedule(s).`
+        );
+        res.status(200).json(onSiteSchedule);
+      } else {
+        logger.info("No on-site schedules found");
+        res.status(200).json([]); // Return empty array if no schedules found
+      }
+    } catch (error) {
+      logger.error(`Error fetching on-site schedules: ${error.message}`);
+      res.status(500).json({
+        message: "Error fetching on-site schedules",
+        error: error.message,
+      });
+    }
+  });
 });
 
 module.exports = router;
