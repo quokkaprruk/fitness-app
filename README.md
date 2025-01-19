@@ -5,7 +5,7 @@
 | Base Route     | Sub Route                | Method     | Usage                                       |
 | -------------- | ------------------------ | ---------- | ------------------------------------------- |
 | /api/trainers  | /                        | GET        | get all trainers                            |
-| /api/admin     | /add-schedule            | POST       | manually save a schedule to db              |
+| /api/admin     | /add-schedule            | POST       | manually add a schedule to db              |
 | /api/schedules | /                        | GET        | get all schedules                           |
 |                | /online                  | GET        | get all online schedules                    |
 |                | /onsite                  | GET        | get all on-site schedules                   |
