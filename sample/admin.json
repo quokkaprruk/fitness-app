@@ -1,5 +1,5 @@
 {
-  "admin": [
+  "admins": [
     {
       "_id": "ObjectId", // MongoDB auto-generated ID
       "profileId": "A1", // Reference to the all_user profileId from the 'users' collection
