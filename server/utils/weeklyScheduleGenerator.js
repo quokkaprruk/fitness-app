@@ -3,10 +3,10 @@ const moment = require("moment");
 
 // Configurations
 const levels = ["Beginner", "Intermediate", "Advanced"];
-const dailyHours = 5; // 5 hours/day schedule for each trainer
+const dailyHours = 6; // 6 hours/day schedule for each trainer
 const classDuration = 1; // 1 hour per class
 const startTime = "08:00"; // Classes start at 8:00 AM
-// Equipment for each class specialty
+
 const equipmentForSpecialty = {
   HIIT: [
     "Dumbbells or kettlebells",
@@ -54,7 +54,6 @@ const weekDays = [
   "Sunday",
 ];
 
-// Generate weekly schedule for trainers
 function generateWeeklySchedule(trainers) {
   const schedule = [];
 
@@ -62,9 +61,7 @@ function generateWeeklySchedule(trainers) {
     weekDays.forEach((day) => {
       let currentStartTime = moment(startTime, "HH:mm");
 
-      // generate daily schedule for the trainer
       for (let i = 0; i < dailyHours; i++) {
-        // skip scheduling between 12:01 PM and 12:59 PM
         if (
           currentStartTime.isBetween(
             moment("12:01", "HH:mm"),

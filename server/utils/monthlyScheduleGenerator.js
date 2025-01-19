@@ -2,10 +2,10 @@ const moment = require("moment");
 const fs = require("fs");
 const path = require("path");
 const levels = ["Beginner", "Intermediate", "Advanced"];
-const dailyHours = 6; // Number of hours in a day (updated to 5)
-const classDuration = 1; // Class duration in hours
-const startTime = "08:00"; // Starting time for the schedule
-// Equipment for each class specialty
+const dailyHours = 6; // 6 hr a day
+const classDuration = 1;
+const startTime = "08:00";
+
 const equipmentForSpecialty = {
   HIIT: [
     "Dumbbells or kettlebells",
@@ -54,7 +54,6 @@ const weekDays = [
 const year = moment().format("YYYY"); // current month
 const month = moment().format("MM"); // current year
 
-// Generate monthly schedule for trainers
 function generateMonthlySchedule(trainers) {
   const schedule = [];
 
@@ -69,7 +68,6 @@ function generateMonthlySchedule(trainers) {
       );
 
       for (let i = 0; i < dailyHours; i++) {
-        // Skip scheduling between 12:01 PM and 12:59 PM
         if (
           currentStartTime.isSameOrAfter(
             moment(currentStartTime).set({ hour: 12, minute: 0, second: 0 })

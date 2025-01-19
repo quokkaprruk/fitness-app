@@ -5,11 +5,11 @@
 | Base Route     | Sub Route                | Method     | Usage                                       |
 | -------------- | ------------------------ | ---------- | ------------------------------------------- |
 | /api/trainers  | /                        | GET        | get all trainers                            |
-| /api/admin     | /add-schedule            | POST       | manually add a schedule to db              |
+| /api/admin     | /add-schedule            | POST       | manually add a schedule to db               |
 | /api/schedules | /                        | GET        | get all schedules                           |
 |                | /online                  | GET        | get all online schedules                    |
 |                | /onsite                  | GET        | get all on-site schedules                   |
-|                | /generate-schedule       | POST       | auto generate a monthly schedule               |
+|                | /generate-schedule       | POST       | auto generate a monthly schedule            |
 |                | /save-generated-schedule | POST       | confirm saving the generated schedule to db |
 | Row 7, C1      | Row 7, C2                | Row 7, C3  | Row 7, C4                                   |
 | Row 8, C1      | Row 8, C2                | Row 8, C3  | Row 8, C4                                   |
