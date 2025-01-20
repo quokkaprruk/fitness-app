@@ -28,6 +28,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; 
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 5px;
@@ -36,6 +37,7 @@ h2 {
   background-color: #fff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 
 .class-card:hover {
   transform: translateY(-5px);
@@ -54,17 +56,20 @@ h2 {
 }
 
 .reserve-button {
-  padding: 10px 20px;
-  background-color: #007bff;
+  padding: 8px 15px; 
+  background-color: #40e0d0; 
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  transform 0.2s ease;
+  max-width: 150px;
 }
 
 .reserve-button:hover {
-  background-color: #0056b3;
+  background-color: #32cd32;
+  transform: scale(1.05);
 }
 
