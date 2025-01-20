@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/SignUp.css";
+import Navbar from "../components/Navbar.jsx";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,8 @@ const SignUpPage = () => {
 
   return (
     <div className="sign-up-container">
+      <Navbar isLoggedIn={false} />
+      <div className="navbar-spacer"></div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSignUp}>
         <div className="inputGroup">

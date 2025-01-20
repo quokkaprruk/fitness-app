@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ClassList.css";
 import fitnessClasses from "../data/fitnessClasses.json"; 
+import Navbar from "../components/Navbar.jsx";
 
 const ClassList = () => {
   const [classes, setClasses] = useState([]);
@@ -39,6 +40,8 @@ const ClassList = () => {
 
   return (
     <div className="class-list">
+      <Navbar isLoggedIn={false} />
+      <div className="navbar-spacer"></div>
       <h2>Available Classes</h2>
       <ul>
         {classes.map((classItem) => (

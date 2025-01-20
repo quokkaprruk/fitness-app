@@ -1,0 +1,20 @@
+{
+  "customers": [
+    {
+      "_id": "ObjectId", // MongoDB auto-generated ID
+      "profileId": "M1", // Reference to the all_user profileId from the 'users' collection
+      "firstName": "Perry",
+      "lastName": "Kim",
+      "createdAt": "2025-01-17T00:00:00Z",
+      "history": [] // empty reserved class history
+    },
+    {
+      "_id": "ObjectId",
+      "profileId": "M2",
+      "firstName": "Olivia",
+      "lastName": "Lavine",
+      "createdAt": "2025-01-17T00:00:00Z",
+      "history": []
+    }
+  ]
+}

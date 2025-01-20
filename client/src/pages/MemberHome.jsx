@@ -118,7 +118,7 @@ const MemberHome = () => {
         </div>
       </section>
 
-      <Link to="/class-booking">
+      <Link to="/classes">
         <button className="reserve-btn">Reserve a Spot</button>
       </Link>
 
