@@ -1,30 +1,45 @@
-import React, { useState, useEffect } from "react";
-import data from "../data/fitnessClasses.json"; //test data
+import { useState, useEffect } from "react";
+//import data from "../data/fitnessClasses.json"; //test data
+import axios from "axios";
 import logo from "../logo.png"; //image of logo
 import "../styles/TrainerHome.css"; //css file
 import { FaCog, FaUser } from "react-icons/fa"; //for 'profile' and 'settings' icons on navbar
+import { jwtDecode } from "jwt-decode";
 
 const TrainerHome = () => {
-  const instructorID = 1;
-  const instructorName = "John Doe";
+  //const instructorID = 1;
+  //const instructorName = "John Doe";
   const [schedule, setSchedule] = useState([]);
-
+  const token = localStorage.getItem("token");
+  const decoded = jwtDecode(token);
   useEffect(() => {
-    const fitnessClasses = data.fitnessClasses;
-    const filteredSchedule = fitnessClasses.filter(
-      (classItem) => classItem.instructorID === instructorID
-    );
-    setSchedule(filteredSchedule);
-  }, [instructorID]);
-
+    if (token) {
+      console.log("Making API request for schedule with instructorId:", decoded.id);
+    
+      axios
+      .get(`http://localhost:5000/api/schedule/${decoded.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log("Schedule data received:", response.data);
+        setSchedule(response.data); 
+      })
+      .catch((error) => {
+        console.error("Error fetching schedule:", error);
+      });
+    }
+  }, [token, decoded.id]);
+  
   //email subject
-  const emailSubject = `Requesting schedule change for ${instructorName} (ID: ${instructorID})`;
+  const emailSubject = `Requesting schedule change for ${decoded.username} (ID: ${decoded.id})`;
 
   return (
     <div>
       {/*nav bar*/}
       <nav className="navbar">
-        <div className="navbar-welcome">Welcome, {instructorName}</div>
+        <div className="navbar-welcome">Welcome, {decoded.username}</div>
         <div className="navbar-links">
           <a href="/contact">Contact</a>
           <a href="/client-management">Client Management</a>
@@ -45,7 +60,7 @@ const TrainerHome = () => {
         ) : (
           <ul className="class-list">
             {schedule.map((classItem) => (
-              <li key={classItem.classId} className="class-item">
+              <li key={classItem._id} className="class-item">
                 <h3>{classItem.className}</h3>
                 <p>
                   <strong>Type:</strong> {classItem.classType}
