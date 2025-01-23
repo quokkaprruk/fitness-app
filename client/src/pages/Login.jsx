@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css"; // Import external CSS file
 import Navbar from "../components/Navbar.jsx";
+
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,6 +26,12 @@ const LoginPage = () => {
       );
 
       setMessage(`Success: ${response.data.message}`);
+      if (response.data.role == "user")
+        navigate("/member");
+      else if (response.data.role == "trainer")
+        navigate("/trainer");
+      else if (response.data.role == "admin")
+        navigate("/admin")
     } catch (error) {
       // Handle error response
       setMessage(
