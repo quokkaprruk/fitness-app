@@ -1,6 +1,8 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const router = express.Router();
+require("dotenv").config();
 
 // User login route
 router.post('/login', async (req, res) => {
@@ -19,8 +21,16 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
+    const token = jwt.sign(
+      { id: user._id, username: user.username, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '10s' } // Token expires in 1 hour
+    );
+
     res.json({
       message: 'Login successful',
+      token,
+      username: user.username,
       role: user.role,
     });
   } catch (error) {
@@ -47,7 +57,7 @@ router.post('/signup', async (req, res) => {
       email,
       username,
       password, 
-      role: 'user', // Default role
+      role: 'user',
     });
 
     await newUser.save();
@@ -62,8 +72,5 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
-
-
-
 
 module.exports = router;

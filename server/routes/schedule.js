@@ -60,6 +60,7 @@ router.post("/save-generated-schedule", async (req, res) => {
 
 // Siripa: GET route to get all schedules
 router.get("/", async (req, res) => {
+  console.log("Hello")
   try {
     const schedule = await Schedule.find();
     if (schedule.length > 0) {
@@ -186,6 +187,18 @@ router.get("/member/:profileId", async (req, res) => {
       message: "Error fetching schedules",
       error: error.message,
     });
+  }
+});
+
+// Anthony: GET route for Instuctor's Home Page. Will display their schedules
+router.get('/:instructorId', async (req, res) => {
+  const { instructorId } = req.params;
+  try {
+    const schedules = await Schedule.find({ instructorId: instructorId });
+    res.json(schedules);
+  } catch (error) {
+    console.error("Error fetching schedules:", error);
+    res.status(500).json({ message: 'Error fetching schedules' });
   }
 });
 
