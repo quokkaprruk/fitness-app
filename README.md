@@ -13,6 +13,7 @@
 |                | /save-generated-schedule | POST       | confirm saving the generated schedule to db |
 |                | /reserve                 | POST       | reserve a class and save to db              |
 |                | /member/:profileId       | GET        | get all schedules from member               |
+|                | /instructorId            | GET        | get all schedules for specific trainer      |
 | /api/          | /login                   | POST       | login with user information stored in db    |
 |                | /register                | POST       | signup with info that are stored in db      |
 
