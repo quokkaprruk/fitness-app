@@ -27,7 +27,7 @@ const SignUpPage = () => {
     <div className="sign-up-container">
       <Navbar isLoggedIn={false} />
       <div className="navbar-spacer"></div>
-      <h2>Sign Up</h2>
+      <h2 className="signup-heading">Sign Up</h2>
       <form onSubmit={handleSignUp}>
         <div className="inputGroup">
           <label htmlFor="username">Username:</label>
