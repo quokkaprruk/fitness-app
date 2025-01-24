@@ -102,7 +102,7 @@ router.get("/online", async (req, res) => {
 // GET route to get all on-site schedules
 router.get("/onsite", async (req, res) => {
   try {
-    const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "online"
+    const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "onsite"
     if (onSiteSchedule.length > 0) {
       logger.info(
         `Successfully found ${onSiteSchedule.length} on-site schedule(s).`
