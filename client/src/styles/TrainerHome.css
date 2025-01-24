@@ -93,9 +93,9 @@ p {
   padding: 20px;
   border: 1px solid #ccc6c6;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: white;
   width: 1000px;
-  height: 190px;
+  height: 250px;
   box-sizing: border-box;
 }
 

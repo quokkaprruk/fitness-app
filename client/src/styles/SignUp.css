@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-body, html {
+body,
+html {
   font-family: "Rokkitt", serif;
   margin: 0;
   padding: 0;
