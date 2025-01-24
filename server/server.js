@@ -14,7 +14,7 @@ const app = express();
 app.use(pino);
 app.use(cors());
 app.use(express.json());
-const mongoURL= `${process.env.MONGO_URL}/${process.env.DB_NAME}`
+const mongoURL = `${process.env.MONGO_URL}/${process.env.DB_NAME}`;
 
 const connectDB = async () => {
   try {
