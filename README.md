@@ -1,3 +1,13 @@
+## Models
+
+1. all_users: store login/signup information such as email and password. The `profileId` is generated on the backend during user signup and serves as a unique reference to the corresponding profile in one of the following schemas:
+
+   1.1 member_profiles: contains specific profile details of `member` role.
+   1.2 trainer_profiles: contains specific profile details of `trainer` role.
+   1.3 admin_profiles: contains specific profile details of `admin` role.
+
+2. schedule: store both online classes and on-site classes schedule.
+
 ## Frontend Routes
 
 | Path     | Component   | Purpose                   |
