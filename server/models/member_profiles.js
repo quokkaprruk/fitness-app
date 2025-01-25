@@ -33,6 +33,6 @@ const memberProfilesSchema = new Schema(
 
 const MemberProfiles = mongoose.model("Member_Profile", memberProfilesSchema);
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be 'all_users'
+// the collection name in mongo will be 'member_profiles'
 
 module.exports = MemberProfiles;

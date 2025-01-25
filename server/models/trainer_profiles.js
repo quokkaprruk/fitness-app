@@ -47,5 +47,5 @@ const TrainerProfiles = mongoose.model(
   trainerProfilesSchema
 );
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be trainers
+// the collection name in mongo will be trainer_profiles
 module.exports = TrainerProfiles;

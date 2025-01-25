@@ -30,5 +30,5 @@ const adminProfilesSchema = new Schema(
 
 const AdminProfiles = mongoose.model("Admin_Profile", adminProfilesSchema);
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be admins
+// the collection name in mongo will be admin_profiles
 module.exports = AdminProfiles;
