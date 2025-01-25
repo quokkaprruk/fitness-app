@@ -1,5 +1,6 @@
+// customer profile
 {
-  "customers": [
+  "profile": [
     {
       "_id": "ObjectId", // MongoDB auto-generated ID
       "profileId": "M1", // Reference to the all_user profileId from the 'users' collection

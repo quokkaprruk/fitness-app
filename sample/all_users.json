@@ -5,7 +5,7 @@
 note: 
 1. profileId of role admin start with "A" follow by number
 2. profileId of role trainer start with "T" follow by number
-3. profileId of role member start with "M" follow by number
+3. profileId of role customer start with "C" follow by number
 */
 {
   "all_users": [
@@ -14,7 +14,7 @@ note:
       "email": "siripa@example.com",
       "password": "##hashedpassword##",
       "role": "admin", // "trainer", "admin", "member"
-      "profileId": "A1", // Reference to trainer, admin, or member collection
+      "profileId": "A1", // Reference to trainer, admin, or member collection => default ""
       "createdAt": "2025-01-17T00:00:00Z",
       "updatedAt": "2025-01-17T00:00:00Z"
     },

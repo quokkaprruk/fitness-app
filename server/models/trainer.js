@@ -8,7 +8,7 @@ const trainerSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "all_users", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
+      ref: "All_user", // Reference to the All_user model, and mongo will know the collection related to that model
     },
     firstName: {
       type: String,
