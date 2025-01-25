@@ -8,7 +8,7 @@ const adminProfilesSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "All_user", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
+      ref: "All_User", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
     },
     firstName: {
       type: String,

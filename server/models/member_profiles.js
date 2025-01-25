@@ -7,7 +7,7 @@ const memberProfilesSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "All_user", // link to the model, and mongo will handle the collection of that model
+      ref: "All_User", // link to the model, and mongo will handle the collection of that model
     },
     firstName: {
       type: String,
