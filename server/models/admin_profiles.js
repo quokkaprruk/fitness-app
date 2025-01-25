@@ -24,11 +24,11 @@ const adminSchema = new Schema(
     },
   },
   {
-    collection: "admins", // collection name
+    collection: "admin_profiles", // collection name
   }
 );
 
-const Admin = mongoose.model("Admin", adminSchema);
+const AdminProfiles = mongoose.model("Admin_Profile", adminSchema);
 // Mongoose will create the collection with the pluralized version
 // the collection name in mongo will be admins
-module.exports = Admin;
+module.exports = AdminProfiles;

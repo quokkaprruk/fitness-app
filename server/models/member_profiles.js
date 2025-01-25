@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const profilesSchema = new Schema(
+const memberProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
@@ -27,12 +27,12 @@ const profilesSchema = new Schema(
     },
   },
   {
-    collection: "profiles", // collection name
+    collection: "member_profiles", // collection name
   }
 );
 
-const Profiles = mongoose.model("Profile", profilesSchema);
+const MemberProfiles = mongoose.model("Member_Profile", memberProfilesSchema);
 // Mongoose will create the collection with the pluralized version
 // the collection name in mongo will be 'all_users'
 
-module.exports = Profiles;
+module.exports = MemberProfiles;

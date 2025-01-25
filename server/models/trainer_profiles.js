@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Trainer schema
-const trainerSchema = new Schema(
+// Trainer profile schema
+const trainerProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
@@ -38,11 +38,14 @@ const trainerSchema = new Schema(
     },
   },
   {
-    collection: "trainers", // collection name
+    collection: "trainer_profiles", // collection name
   }
 );
 
-const Trainer = mongoose.model("Trainer", trainerSchema);
+const TrainerProfiles = mongoose.model(
+  "Trainer_Profile",
+  trainerProfilesSchema
+);
 // Mongoose will create the collection with the pluralized version
 // the collection name in mongo will be trainers
-module.exports = Trainer;
+module.exports = TrainerProfiles;

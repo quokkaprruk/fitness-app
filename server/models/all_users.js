@@ -60,7 +60,7 @@ allUsersSchema.methods.comparePassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };
 
-const AllUsers = mongoose.model("All_user", allUsersSchema);
+const AllUsers = mongoose.model("All_User", allUsersSchema);
 // Mongoose will create the collection with the pluralized version
 // the collection name in mongo will be 'all_users'
 
