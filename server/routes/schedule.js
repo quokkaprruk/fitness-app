@@ -3,16 +3,16 @@ const logger = require("../middleware/logger"); // use logger
 const {
   generateMonthlySchedule,
 } = require("../utils/monthlyScheduleGenerator");
-const Trainer = require("../models/trainer");
+const TrainerProfile = require("../models/trainer_profiles");
 const Schedule = require("../models/schedule");
-const Profile = require("../models/profile");
+const MemberProfile = require("../models/member_profiles");
 const router = express.Router();
 
 // Siripa: POST route to generate the schedule
 // : use when admin clicks on 'generate-schedule' button
 router.post("/generate-schedule", async (req, res) => {
   try {
-    const trainers = await Trainer.find(); // fetch trainer from the database
+    const trainers = await TrainerProfile.find(); // fetch trainer from the database
     if (trainers.length === 0) {
       return res.status(404).json({ message: "No trainers found" });
     }

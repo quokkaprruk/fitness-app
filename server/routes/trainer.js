@@ -1,12 +1,12 @@
 const express = require("express");
-const Trainer = require("../models/trainer");
+const TrainerProfile = require("../models/trainer_profiles");
 const logger = require("../middleware/logger"); // use logger
 const router = express.Router();
 
 // Siripa: GET: all trainer route
 router.get("/", async (req, res) => {
   try {
-    const trainers = await Trainer.find();
+    const trainers = await TrainerProfile.find();
 
     // res.setHeader("Cache-Control", "no-store"); // Disable caching
     if (trainers.length > 0) {

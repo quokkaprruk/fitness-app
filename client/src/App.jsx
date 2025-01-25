@@ -6,7 +6,7 @@ import TrainerHome from "./pages/TrainerHome";
 import AdminHome from "./pages/AdminHome";
 import Login from "./pages/Login";
 import ClassList from "./pages/ClassListing";
-import Signup from "./pages/SignUp"; 
+import Signup from "./pages/SignUp";
 
 const App = () => {
   return (
@@ -25,4 +25,3 @@ const App = () => {
 };
 
 export default App;
-
