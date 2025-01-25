@@ -33,7 +33,7 @@ const trainerProfilesSchema = new Schema(
       default: Date.now,
     },
     history: {
-      type: [Schema.Types.Mixed], // Can store an array of objects for the history (can be empty as per your example)
+      type: [Schema.Types.Mixed], // Can store an array of objects for the history
       default: [], // empty by default
     },
   },
