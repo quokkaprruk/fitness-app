@@ -3,9 +3,9 @@ const logger = require("../middleware/logger"); // use logger
 const {
   generateMonthlySchedule,
 } = require("../utils/monthlyScheduleGenerator");
-const Trainer = require("../models/trainer");
+const Trainer = require("../models/trainer_profiles");
 const Schedule = require("../models/schedule");
-const Profile = require("../models/profile");
+const MemberProfile = require("../models/member_profiles");
 const router = express.Router();
 
 // Siripa: POST route to generate the schedule

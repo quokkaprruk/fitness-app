@@ -2,7 +2,7 @@ const express = require("express");
 const logger = require("../middleware/logger"); // use logger
 const Schedule = require("../models/schedule");
 const AllUsers = require("../models/all_users");
-const Trainer = require("../models/trainer");
+const Trainer = require("../models/trainer_profiles");
 const router = express.Router();
 const { notify } = require("../utils/notify");
 

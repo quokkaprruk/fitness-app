@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Admin schema
-const adminSchema = new Schema(
+const adminProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
@@ -28,7 +28,7 @@ const adminSchema = new Schema(
   }
 );
 
-const AdminProfiles = mongoose.model("Admin_Profile", adminSchema);
+const AdminProfiles = mongoose.model("Admin_Profile", adminProfilesSchema);
 // Mongoose will create the collection with the pluralized version
 // the collection name in mongo will be admins
 module.exports = AdminProfiles;

@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const User = require("../models/profile");
+const All_User = require("../models/all_users"); // change to all_users
 const router = express.Router();
 require("dotenv").config();
 
@@ -9,7 +9,7 @@ router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await All_User.findOne({ username });
 
     if (!user) {
       return res.status(400).json({ message: "Invalid username or password" });
