@@ -1,6 +1,16 @@
-## Steps to install dependencies:
+## Frontend Routes
 
-### Backend Routes
+| Path     | Component   | Purpose                   |
+| -------- | ----------- | ------------------------- |
+| /        | NewUser     | Homepage for new users.   |
+| /member  | MemberHome  | Homepage for members.     |
+| /trainer | TrainerHome | Homepage for trainers.    |
+| /admin   | AdminHome   | Homepage for admin.       |
+| /login   | Login       | Login page.               |
+| /classes | ClassList   | List of available classes |
+| /signup  | Signup      | Signup page for new users |
+
+## Backend Routes
 
 | Base Route    | Sub Route                | Method | Usage                                       |
 | ------------- | ------------------------ | ------ | ------------------------------------------- |
@@ -16,6 +26,8 @@
 |               | /instructorId            | GET    | get all schedules for specific trainer      |
 | /api/         | /login                   | POST   | login with user information stored in db    |
 |               | /register                | POST   | signup with info that are stored in db      |
+
+## Steps to install dependencies:
 
 ### Install Dependencies for the Server (Backend)
 
