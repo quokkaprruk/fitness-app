@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
+const { hashPassword } = require("../middleware/auth");
 
 // For login functionality !
 const allUsersSchema = new Schema(
@@ -9,6 +9,11 @@ const allUsersSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true
     },
     password: {
       type: String,
@@ -30,17 +35,10 @@ const allUsersSchema = new Schema(
       required: true,
       unique: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    updatedAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     collection: "all_users", // collection name
+    timestamps: true,
   }
 );
 
@@ -48,17 +46,12 @@ allUsersSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await hashPassword(this.password)
     next();
   } catch (err) {
     next(err);
   }
 });
-
-allUsersSchema.methods.comparePassword = async function (enteredPassword) {
-  return bcrypt.compare(enteredPassword, this.password);
-};
 
 const AllUsers = mongoose.model("All_User", allUsersSchema);
 // Mongoose will create the collection with the pluralized version
