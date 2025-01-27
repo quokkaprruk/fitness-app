@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Admin schema
-const adminSchema = new Schema(
+const adminProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "all_users", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
+      ref: "All_User", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
     },
     firstName: {
       type: String,
@@ -24,11 +24,11 @@ const adminSchema = new Schema(
     },
   },
   {
-    collection: "admins", // collection name
+    collection: "admin_profiles", // collection name
   }
 );
 
-const Admin = mongoose.model("Admin", adminSchema);
+const AdminProfiles = mongoose.model("Admin_Profile", adminProfilesSchema);
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be admins
-module.exports = Admin;
+// the collection name in mongo will be admin_profiles
+module.exports = AdminProfiles;

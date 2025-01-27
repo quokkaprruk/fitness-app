@@ -14,7 +14,7 @@ note:
       "email": "siripa@example.com",
       "password": "##hashedpassword##",
       "role": "admin", // "trainer", "admin", "member"
-      "profileId": "A1", // Reference to trainer, admin, or member collection
+      "profileId": "A1", // Reference to trainer, admin, or member collection => default ""
       "createdAt": "2025-01-17T00:00:00Z",
       "updatedAt": "2025-01-17T00:00:00Z"
     },

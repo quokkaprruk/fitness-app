@@ -1,8 +1,8 @@
 {
-  "admins": [
+  "admin_profiles": [
     {
       "_id": "ObjectId", // MongoDB auto-generated ID
-      "profileId": "A1", // Reference to the all_user profileId from the 'users' collection
+      "profileId": "A1", // Reference to the all_user profileId from the 'all_users' collection
       "firstName": "Siripa",
       "lastName": "Purinruk",
       "createdAt": "2025-01-17T00:00:00Z"

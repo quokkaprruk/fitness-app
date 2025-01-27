@@ -1,32 +1,92 @@
-const express = require('express');
-const User = require('../models/user');
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const User = require("../models/all_users"); // change to all_users
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const validator = require("validator");
+const { v4: uuidv4 } = require("uuid");
+const logger = require("../middleware/logger");
+const { hashPassword, comparePassword } = require("../middleware/auth");
 
-// POST: Login route
-router.post('/login', async (req, res) => {
+require("dotenv").config();
+
+// User login route
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Find the user by username
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid username or password' });
+      return res.status(400).json({ message: "Invalid username or password" });
     }
-
-    // Compare entered password with stored hashed password
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await comparePassword(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid username or password' });
+      return res.status(400).json({ message: "Invalid username or password" });
     }
 
-    // Respond with success if credentials are correct
-    res.json({ message: 'Login successful' });
+    const token = jwt.sign(
+      { id: user._id, username: user.username, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "5m" } // Token Expiry
+    );
 
+    res.json({
+      message: "Login successful",
+      token,
+      username: user.username,
+      role: user.role,
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// User sign up route
+router.post("/signup", async (req, res) => {
+  const { email, username, password } = req.body;
+
+  if (!email || !username || !password) {
+    return res.status(400).json({ message: "Email, username, and password are required" });
+  }
+
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  if (password.length < 8) {
+    return res.status(400).json({ message: "Password must be at least 8 characters long" });
+  }
+
+  try {
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email or username already in use" });
+    }    
+
+    const profileId = uuidv4();
+
+    const newUser = new User({
+      email,
+      username,
+      password,
+      profileId, 
+      role: "member", 
+    });
+
+    await newUser.save();
+
+    res.status(201).json({
+      message: "User registered successfully",
+      username: newUser.username,
+      role: newUser.role,
+      profileId: newUser.profileId,
+    });
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 

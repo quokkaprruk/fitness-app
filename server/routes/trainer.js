@@ -1,5 +1,5 @@
 const express = require("express");
-const Trainer = require("../models/trainer");
+const Trainer = require("../models/trainer_profiles");
 const logger = require("../middleware/logger"); // use logger
 const router = express.Router();
 

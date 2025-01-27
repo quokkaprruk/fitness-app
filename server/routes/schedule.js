@@ -3,8 +3,9 @@ const logger = require("../middleware/logger"); // use logger
 const {
   generateMonthlySchedule,
 } = require("../utils/monthlyScheduleGenerator");
-const Trainer = require("../models/trainer");
+const Trainer = require("../models/trainer_profiles");
 const Schedule = require("../models/schedule");
+const MemberProfile = require("../models/member_profiles");
 const router = express.Router();
 
 // Siripa: POST route to generate the schedule
@@ -57,7 +58,7 @@ router.post("/save-generated-schedule", async (req, res) => {
   }
 });
 
-// Siripa: GET route to get all schedules
+// GET route to get all schedules
 router.get("/", async (req, res) => {
   try {
     const schedule = await Schedule.find();
@@ -74,50 +75,130 @@ router.get("/", async (req, res) => {
       .status(500)
       .json({ message: "Error fetching schedules", error: error.message });
   }
+});
 
-  // GET route to get all online schedules
-  router.get("/online", async (req, res) => {
-    try {
-      const onlineSchedule = await Schedule.find({ classType: "online" }); // Filter by classType: "online"
-      if (onlineSchedule.length > 0) {
-        logger.info(
-          `Successfully found ${onlineSchedule.length} online schedule(s).`
-        );
-        res.status(200).json(onlineSchedule);
-      } else {
-        logger.info("No online schedules found");
-        res.status(200).json([]); // Return empty array if no schedules found
-      }
-    } catch (error) {
-      logger.error(`Error fetching online schedules: ${error.message}`);
-      res.status(500).json({
-        message: "Error fetching online schedules",
-        error: error.message,
-      });
+// GET route to get all online schedules
+router.get("/online", async (req, res) => {
+  try {
+    const onlineSchedule = await Schedule.find({ classType: "online" }); // Filter by classType: "online"
+    if (onlineSchedule.length > 0) {
+      logger.info(
+        `Successfully found ${onlineSchedule.length} online schedule(s).`
+      );
+      res.status(200).json(onlineSchedule);
+    } else {
+      logger.info("No online schedules found");
+      res.status(200).json([]); // Return empty array if no schedules found
     }
-  });
+  } catch (error) {
+    logger.error(`Error fetching online schedules: ${error.message}`);
+    res.status(500).json({
+      message: "Error fetching online schedules",
+      error: error.message,
+    });
+  }
+});
 
-  // GET route to get all on-site schedules
-  router.get("/onsite", async (req, res) => {
-    try {
-      const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "online"
-      if (onSiteSchedule.length > 0) {
-        logger.info(
-          `Successfully found ${onSiteSchedule.length} on-site schedule(s).`
-        );
-        res.status(200).json(onSiteSchedule);
-      } else {
-        logger.info("No on-site schedules found");
-        res.status(200).json([]); // Return empty array if no schedules found
-      }
-    } catch (error) {
-      logger.error(`Error fetching on-site schedules: ${error.message}`);
-      res.status(500).json({
-        message: "Error fetching on-site schedules",
-        error: error.message,
-      });
+// GET route to get all on-site schedules
+router.get("/onsite", async (req, res) => {
+  try {
+    const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "onsite"
+    if (onSiteSchedule.length > 0) {
+      logger.info(
+        `Successfully found ${onSiteSchedule.length} on-site schedule(s).`
+      );
+      res.status(200).json(onSiteSchedule);
+    } else {
+      logger.info("No on-site schedules found");
+      res.status(200).json([]); // Return empty array if no schedules found
     }
-  });
+  } catch (error) {
+    logger.error(`Error fetching on-site schedules: ${error.message}`);
+    res.status(500).json({
+      message: "Error fetching on-site schedules",
+      error: error.message,
+    });
+  }
+});
+
+// Luis Mario: Reservation POST route
+router.post("/reserve", async (req, res) => {
+  try {
+    const { scheduleId, memberId } = req.body;
+
+    const schedule = await Schedule.findById(scheduleId);
+    if (!schedule) {
+      return res.status(404).json({ message: "Schedule not found" });
+    }
+
+    // Check if class is full
+    if (schedule.currentReserved >= schedule.studentCapacity) {
+      return res
+        .status(400)
+        .json({ message: `Class is full (max ${schedule.studentCapacity})` });
+    }
+
+    // Check if already registered
+    if (schedule.studentList.includes(memberId)) {
+      return res.status(400).json({ message: "Already registered" });
+    }
+
+    schedule.currentReserved += 1;
+    schedule.studentList.push(memberId);
+    await schedule.save();
+
+    logger.info(
+      `Reserved class for member ${memberId} to schedule ${schedule.id}`
+    );
+
+    return res.status(200).json({ message: "Successfully reserved class" });
+  } catch (error) {
+    logger.error(`Error reserving class ${error.message}`);
+    res.status(500).json({
+      message: "Error reserving class",
+      error: error.message,
+    });
+  }
+});
+
+// Luis Mario: GET route to view all classes for a given member
+router.get("/member/:profileId", async (req, res) => {
+  try {
+    const { profileId } = req.params;
+
+    const memberSchedules = await Schedule.find({
+      studentList: profileId,
+    });
+
+    // Log the result
+    if (memberSchedules.length === 0) {
+      logger.info(`No schedules found for member ${profileId}`);
+    } else {
+      logger.info(
+        `Successfully found ${memberSchedules.length} schedule(s) for member ${profileId}`
+      );
+    }
+
+    res.status(200).json(memberSchedules);
+  } catch (error) {
+    logger.error(`Error fetching schedules: ${error.message}`);
+    res.status(500).json({
+      message: "Error fetching schedules",
+      error: error.message,
+    });
+  }
+});
+
+// Anthony: GET route for Instuctor's Home Page. Will display their schedules
+router.get("/:instructorId", async (req, res) => {
+  const { instructorId } = req.params;
+  try {
+    const schedules = await Schedule.find({ instructorId: instructorId });
+    res.json(schedules);
+  } catch (error) {
+    console.error("Error fetching schedules:", error);
+    res.status(500).json({ message: "Error fetching schedules" });
+  }
 });
 
 module.exports = router;

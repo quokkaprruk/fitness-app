@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Trainer schema
-const trainerSchema = new Schema(
+// Trainer profile schema
+const trainerProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "all_users", // Reference to the all_users collection (profileId will reference an entry in the 'all_users' collection)
+      ref: "All_User", // Reference to the All_user model, and mongo will know the collection related to that model
     },
     firstName: {
       type: String,
@@ -33,16 +33,19 @@ const trainerSchema = new Schema(
       default: Date.now,
     },
     history: {
-      type: [Schema.Types.Mixed], // Can store an array of objects for the history (can be empty as per your example)
+      type: [Schema.Types.Mixed], // Can store an array of objects for the history
       default: [], // empty by default
     },
   },
   {
-    collection: "trainers", // collection name
+    collection: "trainer_profiles", // collection name
   }
 );
 
-const Trainer = mongoose.model("Trainer", trainerSchema);
+const TrainerProfiles = mongoose.model(
+  "Trainer_Profile",
+  trainerProfilesSchema
+);
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be trainers
-module.exports = Trainer;
+// the collection name in mongo will be trainer_profiles
+module.exports = TrainerProfiles;
