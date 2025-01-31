@@ -27,7 +27,7 @@ const subscriptionPlanSchema = new Schema(
       default: "paid",
     },
     paymentMethod: {
-      type: String, // "PayPal", "Stripe", "CreditCard", etc.
+      type: String, // paypal, credit card, etc.?
       required: true,
     },
     transactionId: { type: String }, // ref to the payment transaction, if needed in the future
