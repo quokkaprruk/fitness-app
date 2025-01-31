@@ -13,7 +13,7 @@ const allUsersSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
@@ -35,6 +35,10 @@ const allUsersSchema = new Schema(
       required: true,
       unique: true,
     },
+    subscriptionPlan: {
+      type: String,
+      enum: ["basic", "standard", "premium"],
+    },
   },
   {
     collection: "all_users", // collection name
@@ -46,7 +50,7 @@ allUsersSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   try {
-    this.password = await hashPassword(this.password)
+    this.password = await hashPassword(this.password);
     next();
   } catch (err) {
     next(err);
