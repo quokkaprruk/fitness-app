@@ -35,10 +35,6 @@ const allUsersSchema = new Schema(
       required: true,
       unique: true,
     },
-    subscriptionPlan: {
-      type: String,
-      enum: ["basic", "standard", "premium"],
-    },
   },
   {
     collection: "all_users", // collection name

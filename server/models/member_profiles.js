@@ -25,6 +25,10 @@ const memberProfilesSchema = new Schema(
       type: Array,
       default: [],
     },
+    subscriptionPlan: {
+      type: Schema.Types.ObjectId,
+      ref: "Member_Subscription",
+    },
   },
   {
     collection: "member_profiles", // collection name
