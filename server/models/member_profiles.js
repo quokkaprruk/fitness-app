@@ -17,10 +17,6 @@ const memberProfilesSchema = new Schema(
       type: String,
       default: "",
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
     history: {
       type: Array,
       default: [],
@@ -32,6 +28,7 @@ const memberProfilesSchema = new Schema(
   },
   {
     collection: "member_profiles", // collection name
+    timestamps: true,
   }
 );
 

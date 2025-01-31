@@ -28,10 +28,6 @@ const trainerProfilesSchema = new Schema(
       required: true,
       default: [],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
     history: {
       type: [Schema.Types.Mixed], // Can store an array of objects for the history
       default: [], // empty by default
@@ -39,6 +35,7 @@ const trainerProfilesSchema = new Schema(
   },
   {
     collection: "trainer_profiles", // collection name
+    timestamps: true,
   }
 );
 
