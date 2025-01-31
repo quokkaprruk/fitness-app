@@ -1,5 +1,4 @@
-//when insert document to mongo: remove _id field so that mongo willl generate it + flatten nested arrays.
-//Example json for inserting to mongo is at the bottom of the page
+//After srpint 1: these are not updated. Please check the /server/models instead
 {
   "trainer_profiles": [
     {
