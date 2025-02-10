@@ -7,6 +7,9 @@ import AdminHome from "./pages/AdminHome";
 import Login from "./pages/Login";
 import ClassList from "./pages/ClassListing";
 import Signup from "./pages/SignUp"; 
+import MembershipPage from "./pages/MembershipPage";
+import PricingPage from "./pages/PricingPage";
+import RegistrationForm from "./pages/RegistrationForm";
 
 const App = () => {
   return (
@@ -19,6 +22,9 @@ const App = () => {
         <Route path="/login" element={<Login />} /> {/* Login Page */}
         <Route path="/classes" element={<ClassList />} /> {/* Class Listing */}
         <Route path="/signup" element={<Signup />} /> {/* Signup Page */}
+        <Route path="/membership" element={<MembershipPage />} /> {/* Membership Page */}
+        <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
+        <Route path="/register" element={<RegistrationForm />} /> {/* RegistrationForm */}
       </Routes>
     </Router>
   );
