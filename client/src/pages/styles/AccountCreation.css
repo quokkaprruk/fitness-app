@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.account-creation-container {
+  background-color: #f4f4f4;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.account-creation-container h2 {
+  font-family: "Rokkitt", serif;
+  color: #007bff;
+}
+
+.account-creation-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-creation-container input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: #40e0d0;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #32cd32;
+}
