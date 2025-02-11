@@ -1,9 +1,14 @@
 {
-  "dependencies": {
-    "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.1"
+  "name": "fitness-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "vite": "^6.0.7"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
