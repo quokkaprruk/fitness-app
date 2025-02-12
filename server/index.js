@@ -35,7 +35,7 @@ const connectDB = async () => {
 
 // Handle the root route to send the index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "index.html"));
 });
 
 app.use("/api/users", userRoutes);
