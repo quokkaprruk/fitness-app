@@ -29,12 +29,13 @@ const connectDB = async () => {
   }
 };
 
-// app.get("/api", (req, res) => {
+// app.get("/", (req, res) => {
 //   res.send("Welcome to the API!");
 // });
 
+// Handle the root route to send the index.html
 app.get("/", (req, res) => {
-  res.send("Welcome to the API!");
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.use("/api/users", userRoutes);
