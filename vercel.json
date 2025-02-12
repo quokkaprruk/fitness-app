@@ -20,7 +20,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/server/server.js"
+      "destination": "/client/dist/$1"
     }
   ]
 }

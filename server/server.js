@@ -29,9 +29,9 @@ const connectDB = async () => {
   }
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the API!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the API!");
+// });
 
 app.use("/api/users", userRoutes);
 app.use("/api/trainers", trainerRoutes);
