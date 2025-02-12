@@ -17,7 +17,7 @@ const LoginPage = () => {
     try {
       // Send login request to backend
       const response = await axios.post(
-        "http://localhost:5000/api/users/login",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/login`,
         {
           username,
           password,

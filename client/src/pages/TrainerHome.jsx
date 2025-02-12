@@ -20,11 +20,16 @@ const TrainerHome = () => {
       );
 
       axios
-        .get(`http://localhost:5000/api/schedule/${decoded.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedule/${
+            decoded.id
+          }`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then((response) => {
           console.log("Schedule data received:", response.data);
           setSchedule(response.data);
