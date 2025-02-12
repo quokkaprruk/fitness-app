@@ -1,13 +1,20 @@
 const express = require("express");
+const path = require("path"); // for referencing the static files
+const { fileURLToPath } = require("url"); // for referencing the static files
 const mongoose = require("mongoose");
 const cors = require("cors");
+//import API routes
 const userRoutes = require("./routes/user");
 const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
+
 require("dotenv").config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -33,6 +40,16 @@ app.use("/api/users", userRoutes);
 app.use("/api/trainers", trainerRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/schedule", scheduleRoutes);
+
+// Serve static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+
+  // Send index.html for all other requests (client-side routing)
+  app.get("*", (req, res) => {
+    return res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  });
+}
 
 // Server
 const PORT = process.env.PORT || 5000;
