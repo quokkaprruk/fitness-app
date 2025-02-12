@@ -13,6 +13,7 @@
       }
     }
   ],
+  "routes": [{ "src": "/(.*)", "dest": "server/index.js" }],
   "rewrites": [
     {
       "source": "/api/(.*)",
