@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/SignUp.css";
+import "./styles/SignUp.css";
 import Navbar from "../components/Navbar.jsx";
 
 const SignUpPage = () => {
@@ -18,7 +18,10 @@ const SignUpPage = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/users/signup", formData)
+      .post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
+        formData
+      )
       .then((response) => setMessage("Sign-up successful!"))
       .catch((error) => setMessage("Sign-up failed: " + error.message));
   };

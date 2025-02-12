@@ -8,7 +8,7 @@ const trainerProfilesSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "All_user", // Reference to the All_user model, and mongo will know the collection related to that model
+      ref: "All_User", // Reference to the All_user model, and mongo will know the collection related to that model
     },
     firstName: {
       type: String,
@@ -28,17 +28,14 @@ const trainerProfilesSchema = new Schema(
       required: true,
       default: [],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
     history: {
-      type: [Schema.Types.Mixed], // Can store an array of objects for the history (can be empty as per your example)
+      type: [Schema.Types.Mixed], // Can store an array of objects for the history
       default: [], // empty by default
     },
   },
   {
     collection: "trainer_profiles", // collection name
+    timestamps: true,
   }
 );
 
@@ -47,5 +44,5 @@ const TrainerProfiles = mongoose.model(
   trainerProfilesSchema
 );
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be trainers
+// the collection name in mongo will be trainer_profiles
 module.exports = TrainerProfiles;

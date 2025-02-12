@@ -1,5 +1,0 @@
-route name convention:
-1. small capital only
-2. if more than 1 word, use '-' Ex. /my-world
-
-utils folder : store helper function

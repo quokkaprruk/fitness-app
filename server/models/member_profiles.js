@@ -7,7 +7,7 @@ const memberProfilesSchema = new Schema(
       type: String,
       required: true,
       unique: true, // Ensures each trainer has a unique profileId
-      ref: "All_user", // link to the model, and mongo will handle the collection of that model
+      ref: "All_User", // link to the model, and mongo will handle the collection of that model
     },
     firstName: {
       type: String,
@@ -17,22 +17,23 @@ const memberProfilesSchema = new Schema(
       type: String,
       default: "",
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
     history: {
       type: Array,
       default: [],
     },
+    subscriptionPlan: {
+      type: Schema.Types.ObjectId,
+      ref: "Member_Subscription",
+    },
   },
   {
     collection: "member_profiles", // collection name
+    timestamps: true,
   }
 );
 
 const MemberProfiles = mongoose.model("Member_Profile", memberProfilesSchema);
 // Mongoose will create the collection with the pluralized version
-// the collection name in mongo will be 'all_users'
+// the collection name in mongo will be 'member_profiles'
 
 module.exports = MemberProfiles;

@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+}
+.pricing-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pricing-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #40e0d0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 300px;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-card h3 {
+  color: #007bff;
+}
+
+.pricing-card p {
+  color: #666;
+}
+
+.pricing-button {
+  padding: 10px 20px;
+  background-color: #40e0d0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pricing-button:hover {
+  background-color: #32cd32;
+}

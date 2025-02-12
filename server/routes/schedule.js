@@ -3,7 +3,11 @@ const logger = require("../middleware/logger"); // use logger
 const {
   generateMonthlySchedule,
 } = require("../utils/monthlyScheduleGenerator");
+<<<<<<< HEAD
 const TrainerProfile = require("../models/trainer_profiles");
+=======
+const Trainer = require("../models/trainer_profiles");
+>>>>>>> d91dfa20f0c75a68c0eca259ce3009ffb5b67a14
 const Schedule = require("../models/schedule");
 const MemberProfile = require("../models/member_profiles");
 const router = express.Router();

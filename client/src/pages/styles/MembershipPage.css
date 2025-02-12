@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.membership-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+.membership-buttons {
+  margin-top: 20px;
+}
+
+.membership-button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #40e0d0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.membership-button:hover {
+  background-color: #32cd32;
+  transform: scale(1.05);
+}
