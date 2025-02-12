@@ -1,13 +1,16 @@
-//navbar for new user and registered user
-
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaCog, FaUser } from "react-icons/fa";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
-import { FaCog, FaUser } from "react-icons/fa";
-import LoginPage from "../pages/Login.jsx";
 
 const Navbar = ({ isLoggedIn }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prevState) => !prevState);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-welcome">Welcome!</div>
@@ -22,8 +25,26 @@ const Navbar = ({ isLoggedIn }) => {
           <>
             <a href="/member">Home</a>
             <a href="/progress">Progress</a>
-            <FaCog className="icon" title="Settings" />
-            <FaUser className="icon" title="Profile" />
+            <Link to="/settings">
+              <FaCog className="icon" title="Settings" />
+            </Link>
+            <div className="profile-dropdown">
+              <FaUser
+                className="icon"
+                title="Profile"
+                onClick={toggleDropdown}
+              />
+              {dropdownOpen && (
+                <div className="dropdown-menu">
+                  <Link to="/profile" className="dropdown-item">
+                    Profile
+                  </Link>
+                  <a href="/logout" className="dropdown-item">
+                    Logout
+                  </a>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <>
