@@ -29,7 +29,11 @@ const connectDB = async () => {
   }
 };
 
-app.get("/api", (req, res) => {
+// app.get("/api", (req, res) => {
+//   res.send("Welcome to the API!");
+// });
+
+app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });
 
