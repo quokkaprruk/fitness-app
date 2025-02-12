@@ -1,6 +1,4 @@
 const express = require("express");
-// const path = require("path"); // for referencing the static files
-// // for referencing the static files
 require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -31,9 +29,6 @@ mongoose
   .catch((error) => logger.error("MongoDB connection failed"));
 
 app.use(express.json());
-// app.get("/", (req, res) => {
-//   res.send("Welcome to the API!");
-// });
 
 app.use("/api/users", userRoutes);
 app.use("/api/trainers", trainerRoutes);
