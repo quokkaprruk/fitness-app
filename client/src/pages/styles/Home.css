@@ -40,6 +40,35 @@ body {
   margin-bottom: 30px;
 }
 
+.hero-section {
+  position: relative;
+  text-align: center;
+}
+
+.home-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.primary-button {
+  background-color: #40e0d0; 
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease-in-out;
+}
+
+.primary-button:hover {
+  background-color: #32cd32; 
+}
+
+
 h2 {
   font-size: 36px;
   margin-bottom: 30px;
