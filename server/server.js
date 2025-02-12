@@ -38,15 +38,15 @@ app.use("/api/trainers", trainerRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/schedule", scheduleRoutes);
 
-// // Serve static files in production
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../client/dist")));
+// Serve static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
 
-//   // Send index.html for all other requests (client-side routing)
-//   app.get("*", (req, res) => {
-//     return res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-//   });
-// }
+  // Send index.html for all other requests (client-side routing)
+  app.get("*", (req, res) => {
+    return res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  });
+}
 
 // Server
 const PORT = process.env.PORT || 5000;
