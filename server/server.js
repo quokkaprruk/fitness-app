@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path"); // for referencing the static files
-const { fileURLToPath } = require("url"); // for referencing the static files
+// for referencing the static files
 const mongoose = require("mongoose");
 const cors = require("cors");
 //import API routes
@@ -12,9 +12,6 @@ const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
 
 require("dotenv").config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 
