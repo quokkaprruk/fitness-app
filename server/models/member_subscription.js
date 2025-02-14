@@ -1,3 +1,6 @@
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
 const subscriptionPlanSchema = new Schema(
   {
     userId: {
@@ -11,7 +14,7 @@ const subscriptionPlanSchema = new Schema(
       required: true,
     },
     price: {
-      type: Number, // Store the price of the plan in cents to avoid decimal issues
+      type: Number,
       required: true,
     },
     startDate: { type: Date, default: Date.now },

@@ -13,7 +13,7 @@ const todoSchema = new Schema(
       default: "",
     },
     currentGoals: {
-      type: [String], // Array of strings
+      type: [String], // string array
       default: [],
     },
     achievedGoals: {
