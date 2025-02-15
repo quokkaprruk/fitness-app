@@ -11,6 +11,8 @@ import MembershipPage from "./pages/MembershipPage";
 import PricingPage from "./pages/PricingPage";
 import RegistrationForm from "./pages/RegistrationForm";
 import ContactPage from "./pages/ContactPage";
+import Profile from "./pages/Profile";
+import Progress from "./pages/Progress";
 
 const App = () => {
   return (
@@ -28,8 +30,9 @@ const App = () => {
         <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
         <Route path="/register" element={<RegistrationForm />} />{" "}
         {/* RegistrationForm */}
-        <Route path="/contact" element={<ContactPage />} />{" "}
-        {/* Contact Page */}
+        <Route path="/contact" element={<ContactPage />} /> {/* Contact Page */}
+        <Route path="/profile" element={<Profile />} />{" "}
+        <Route path="/progress" element={<Progress />} />{" "}
       </Routes>
     </Router>
   );
