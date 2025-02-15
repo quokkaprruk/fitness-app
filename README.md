@@ -3,8 +3,10 @@
 1. all_users: store login/signup information such as email and password. The `profileId` is generated on the backend during user signup and serves as a unique reference to the corresponding profile in one of the following schemas:
 
    1.1 member_profiles: contains specific profile details of `member` role and it serves a unique reference to the following schema.
-   1.1.1 member_subscription: contains member's subscription information.
-   1.1.2 member_todo: contains member's goals, current goal, achieved goal.
+
+   &emsp;1.1.1 member_subscription: contains member's subscription information.
+
+   &emsp;1.1.2 member_todo: contains member's goals, current goal, achieved goal.
 
    1.2 trainer_profiles: contains specific profile details of `trainer` role.
 
