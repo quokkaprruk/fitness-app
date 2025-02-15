@@ -14,7 +14,6 @@ body {
 html,
 body {
   height: 100%;
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -255,4 +254,10 @@ h2 {
 .testimonial-card h4 {
   font-size: 27px;
   color: #555;
+}
+
+.become-member-btn {
+  background-color: #1e1e1e;
+  font-size: 40px;
+  width: 600px;
 }

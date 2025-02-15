@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/Home.css"; //css file
 import Navbar from "../components/Navbar.jsx";
-import MainImg from "../memberPagePic.png";
+import MainImg from "../homePicture.png";
 import Benefits from "../benefits.png";
 import Free from "../free.png";
 import Calendar from "../noCommit.png";

@@ -134,7 +134,7 @@ const Profile = () => {
             onChange={handleProfilePicChange}
           />
         </div>
-        <h2>Profile Information</h2>
+        <h2 className="info-heading">Profile Information</h2>
         {isEditingProfile ? (
           <form onSubmit={(e) => { e.preventDefault(); saveProfileInfo(); }}>
             <table>

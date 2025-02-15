@@ -53,7 +53,7 @@ html {
   cursor: pointer !important;
 }
 
-h2 {
+.info-heading h2 {
   margin-bottom: 15px !important;
   color: #333 !important;
   text-align: center !important;
