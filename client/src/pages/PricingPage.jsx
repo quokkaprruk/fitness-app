@@ -11,7 +11,7 @@ const PricingPage = () => {
     <div>
       <Navbar isLoggedIn={false} />
       <div className="navbar-spacer"></div>
-      <h2 className="membership-heading">Membership Plans</h2>
+      <h2 className="plans-heading">Membership Plans</h2>
       <div className="pricing-container">
         <div className="pricing-grid">
           <div className="pricing-card">
