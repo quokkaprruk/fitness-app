@@ -103,12 +103,10 @@ const Profile = () => {
 
   const saveProfileInfo = () => {
     setIsEditingProfile(false);
-    // Here you would typically send the updated data to your server
   };
 
   const saveHealthInfo = () => {
     setIsEditingHealth(false);
-    // Here you would typically send the updated data to your server
   };
 
   return (
