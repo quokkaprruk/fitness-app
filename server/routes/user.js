@@ -6,11 +6,10 @@ const AdminProfiles = require("../models/admin_profiles");
 const MemberProfiles = require("../models/member_profiles");
 const TrainerProfiles = require("../models/trainer_profiles");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const validator = require("validator");
 const { v4: uuidv4 } = require("uuid");
 const logger = require("../middleware/logger");
-const { hashPassword, comparePassword } = require("../middleware/auth");
+const { comparePassword } = require("../middleware/auth");
 const AllUsers = require("../models/all_users");
 
 require("dotenv").config();
@@ -88,6 +87,14 @@ router.post("/signup", async (req, res) => {
     });
 
     await newUser.save();
+
+    // // Anthony
+    // // Create new profile when user signs up
+    const newUserProfile = new MemberProfiles({
+      profileId,
+    });
+
+    await newUserProfile.save();
 
     res.status(201).json({
       message: "User registered successfully",
