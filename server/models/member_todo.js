@@ -8,10 +8,6 @@ const todoSchema = new Schema(
       ref: "Member_Profile",
       required: true,
     },
-    goal: {
-      type: String,
-      default: "",
-    },
     currentGoals: {
       type: [String], // string array
       default: [],
