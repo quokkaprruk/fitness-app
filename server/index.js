@@ -12,14 +12,17 @@ const pino = require("pino-http")({ logger });
 
 const app = express();
 
-// CORS Configuration (put this here)
 const corsOptions = {
-  origin: "https://fitness-app-frontend-prj666.vercel.app/", // Replace with your actual frontend URL
+  origin: [
+    "http://localhost:5173", // Local development frontend
+    "https://fitness-app-frontend-prj666.vercel.app", // Vercel production frontend
+  ],
   methods: "GET,POST,PUT,DELETE",
-  credentials: true, // If using cookies or sessions
+  credentials: true, // If you're using cookies or sessions
+  allowedHeaders: "Content-Type, Authorization",
 };
 
-app.use(cors(corsOptions)); // Apply CORS to all routes
+app.use(cors(corsOptions));
 
 app.use(pino);
 app.use(cors());
