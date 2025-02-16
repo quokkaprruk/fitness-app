@@ -6,12 +6,12 @@ const AdminProfiles = require("../models/admin_profiles");
 const MemberProfiles = require("../models/member_profiles");
 const TrainerProfiles = require("../models/trainer_profiles");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 const validator = require("validator");
 const { v4: uuidv4 } = require("uuid");
 const logger = require("../middleware/logger");
-const { comparePassword } = require("../middleware/auth");
+const { hashPassword, comparePassword } = require("../middleware/auth");
 const AllUsers = require("../models/all_users");
-
 require("dotenv").config();
 
 // User login route
@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
 
 // User sign up route
 router.post("/signup", async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, username, password, role = "member" } = req.body;
 
   if (!email || !username || !password) {
     return res
@@ -77,7 +77,6 @@ router.post("/signup", async (req, res) => {
     }
 
     const profileId = uuidv4();
-
     const newUser = new User({
       email,
       username,
@@ -88,13 +87,23 @@ router.post("/signup", async (req, res) => {
 
     await newUser.save();
 
-    // // Anthony
-    // // Create new profile when user signs up
-    const newUserProfile = new MemberProfiles({
-      profileId,
-    });
+    let profileModel;
+    switch (role) {
+      case "admin":
+        profileModel = AdminProfiles;
+        break;
+      case "member":
+        profileModel = MemberProfiles;
+        break;
+      case "trainer":
+        profileModel = TrainerProfiles;
+        break;
+      default:
+        return res.status(400).json({ message: "Invalid role specified." });
+    }
 
-    await newUserProfile.save();
+    const newProfile = new profileModel({ profileId });
+    await newProfile.save();
 
     res.status(201).json({
       message: "User registered successfully",
