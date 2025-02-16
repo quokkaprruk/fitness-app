@@ -14,6 +14,7 @@ const { hashPassword, comparePassword } = require("../middleware/auth");
 const AllUsers = require("../models/all_users");
 const MemberTodo = require("../models/member_todo");
 const MemberSubscriptionPlan = require("../models/member_subscription");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 // User login route
@@ -53,6 +54,8 @@ router.post("/login", async (req, res) => {
 // User sign up route
 router.post("/signup", async (req, res) => {
   const { email, username, password, role = "member" } = req.body;
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
   if (!email || !username || !password) {
     return res
@@ -87,7 +90,7 @@ router.post("/signup", async (req, res) => {
       role: "member",
     });
 
-    await newUser.save();
+    await newUser.save({ session });
 
     let profileModel;
     switch (role) {
@@ -105,17 +108,17 @@ router.post("/signup", async (req, res) => {
     }
 
     const newProfile = new profileModel({ profileId });
-    await newProfile.save();
+    await newProfile.save({session});
 
     if (role === "member") {
       const newTodo = new MemberTodo({
         profileId: newProfile._id,
         goal: "Set your first goal!",
       });
-      await newTodo.save();
+      await newTodo.save({session});
 
       newProfile.todoPlan.push(newTodo._id);
-      await newProfile.save();
+      await newProfile.save({session});
     }
 
     const freeSubscription = new MemberSubscriptionPlan({
@@ -127,10 +130,13 @@ router.post("/signup", async (req, res) => {
       subscriptionStatus: "active",
     });
 
-    await freeSubscription.save();
+    await freeSubscription.save({ session });
     newProfile.subscriptionPlan = freeSubscription._id;
-    await newProfile.save();
 
+    await newProfile.save({ session });
+    
+    await session.commitTransaction();
+    session.endSession();
 
     res.status(201).json({
       message: "User registered successfully",
@@ -139,6 +145,8 @@ router.post("/signup", async (req, res) => {
       profileId: newUser.profileId,
     });
   } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
     console.error("Server Error:", error);
     res.status(500).json({ message: "Server error" });
   }
