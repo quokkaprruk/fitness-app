@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const todoSchema = new Schema(
   {
-    userId: {
+    profileId: {
       type: Schema.Types.ObjectId,
       ref: "Member_Profile",
       required: true,
