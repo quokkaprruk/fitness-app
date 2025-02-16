@@ -17,7 +17,7 @@ const subscriptionPlanSchema = new Schema(
     price: {
       type: Number,
       required: true,
-      enum: [0, 40.99, 100.99], // Remove quotes to use numbers
+      enum: [0, 40.99, 100.99],
       default: 0,
     },
     startDate: { type: Date, default: Date.now },
