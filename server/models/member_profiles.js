@@ -5,7 +5,7 @@ const memberProfilesSchema = new Schema(
   {
     profileId: {
       type: String,
-      required: true,
+      required: true, // should 'type: Schema.Types.ObjectId'
       unique: true, // Ensures each trainer has a unique profileId
       ref: "All_User", // link to the model, and mongo will handle the collection of that model
     },
@@ -75,6 +75,7 @@ const memberProfilesSchema = new Schema(
       default: "",
     },
     history: [
+      //class reserved history
       { type: mongoose.Schema.Types.ObjectId, ref: "Schedule", default: [] },
     ],
     subscriptionPlan: {

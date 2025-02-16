@@ -25,12 +25,6 @@ const allUsersSchema = new Schema(
       required: true,
     },
     profileId: {
-      /* Convention:
-    1. profileId of role admin start with "A" follow by number
-    2. profileId of role trainer start with "T" follow by number
-    3. profileId of role member start with "M" follow by number
-    */
-      //when sign up, by default => everyone is "M+number" (profile id must be unique)
       type: String,
       required: true,
       unique: true,

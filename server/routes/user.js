@@ -108,21 +108,21 @@ router.post("/signup", async (req, res) => {
     }
 
     const newProfile = new profileModel({ profileId });
-    await newProfile.save({session});
+    await newProfile.save({ session });
 
     if (role === "member") {
       const newTodo = new MemberTodo({
-        profileId: newProfile._id,
+        memberProfileObjectId: newProfile._id,
         goal: "Set your first goal!",
       });
-      await newTodo.save({session});
+      await newTodo.save({ session });
 
       newProfile.todoPlan.push(newTodo._id);
-      await newProfile.save({session});
+      await newProfile.save({ session });
     }
 
     const freeSubscription = new MemberSubscriptionPlan({
-      profileId: newProfile._id,
+      memberProfileObjectId: newProfile._id,
       planType: "free",
       price: 0,
       startDate: new Date(),
@@ -134,7 +134,7 @@ router.post("/signup", async (req, res) => {
     newProfile.subscriptionPlan = freeSubscription._id;
 
     await newProfile.save({ session });
-    
+
     await session.commitTransaction();
     session.endSession();
 
