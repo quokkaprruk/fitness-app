@@ -12,6 +12,7 @@ const { v4: uuidv4 } = require("uuid");
 const logger = require("../middleware/logger");
 const { hashPassword, comparePassword } = require("../middleware/auth");
 const AllUsers = require("../models/all_users");
+const MemberTodo = require("../models/member_todo");
 require("dotenv").config();
 
 // User login route
@@ -37,7 +38,7 @@ router.post("/login", async (req, res) => {
     );
 
     res.json({
-      message: "Login successful",
+      message: "Login successful. Redirecting to login page.",
       token,
       username: user.username,
       role: user.role,
@@ -104,6 +105,18 @@ router.post("/signup", async (req, res) => {
 
     const newProfile = new profileModel({ profileId });
     await newProfile.save();
+
+    if (role === "member") {
+      const newTodo = new MemberTodo({
+        userId: newProfile._id,
+        goal: "Set your first goal!",
+      });
+      await newTodo.save();
+
+      newProfile.todoPlan.push(newTodo._id);
+      await newProfile.save();
+    }
+
 
     res.status(201).json({
       message: "User registered successfully",
