@@ -13,6 +13,7 @@ const logger = require("../middleware/logger");
 const { hashPassword, comparePassword } = require("../middleware/auth");
 const AllUsers = require("../models/all_users");
 const MemberTodo = require("../models/member_todo");
+const MemberSubscriptionPlan = require("../models/member_subscription");
 require("dotenv").config();
 
 // User login route
@@ -108,7 +109,7 @@ router.post("/signup", async (req, res) => {
 
     if (role === "member") {
       const newTodo = new MemberTodo({
-        userId: newProfile._id,
+        profileId: newProfile._id,
         goal: "Set your first goal!",
       });
       await newTodo.save();
@@ -116,6 +117,19 @@ router.post("/signup", async (req, res) => {
       newProfile.todoPlan.push(newTodo._id);
       await newProfile.save();
     }
+
+    const freeSubscription = new MemberSubscriptionPlan({
+      profileId: newProfile._id,
+      planType: "free",
+      price: 0,
+      startDate: new Date(),
+      endDate: null,
+      subscriptionStatus: "active",
+    });
+
+    await freeSubscription.save();
+    newProfile.subscriptionPlan = freeSubscription._id;
+    await newProfile.save();
 
 
     res.status(201).json({
