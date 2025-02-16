@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const subscriptionPlanSchema = new Schema(
   {
-    profileId: {
+    memberProfileObjectId: {
       type: Schema.Types.ObjectId,
       ref: "Member_Profile",
       required: true,
