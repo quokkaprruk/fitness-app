@@ -42,6 +42,10 @@
 |               | /instructorId            | GET    | get all schedules for specific trainer      |
 | /api/         | /login                   | POST   | login with user information stored in db    |
 |               | /register                | POST   | signup with info that are stored in db      |
+|               | /profile/:profileId      | GET    | return the { user, profile }                |
+|               | /profile/:profileId      | POST   | updates and return an existing profile      |
+
+Updates an existing profile and returns the updated profile.
 
 ## Steps to install dependencies:
 
