@@ -11,14 +11,14 @@ const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
 
 const app = express();
-//  // Vercel production frontend
+
 const corsOptions = {
   origin: [
     "http://localhost:5173",
     "https://fitness-app-frontend-prj666.vercel.app",
-  ], // Local development frontend
+  ], // Local development frontend & Vercel production frontend
   methods: "GET,POST,PUT,DELETE",
-  credentials: true, // If using cookies or sessions
+  credentials: true, // if using cookies or sessions
   allowedHeaders: "Content-Type, Authorization",
 };
 
@@ -28,8 +28,8 @@ app.use(express.json());
 app.use(pino);
 app.use((req, res, next) => {
   const allowedOrigins = [
-    "http://localhost:5173", // Local development frontend
-    "https://fitness-app-frontend-prj666.vercel.app", // Vercel production frontend
+    "http://localhost:5173",
+    "https://fitness-app-frontend-prj666.vercel.app",
   ];
 
   const origin = req.headers.origin;
@@ -67,5 +67,5 @@ mongoose
   })
   .catch((error) => {
     logger.error("MongoDB connection failed:", error);
-    process.exit(1); // Exit the process if MongoDB connection fails
+    process.exit(1); //exit the process if connection fails
   });
