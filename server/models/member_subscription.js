@@ -10,14 +10,14 @@ const subscriptionPlanSchema = new Schema(
     },
     planType: {
       type: String,
-      enum: ["free", "standard", "premium"],
+      enum: ["free", "basic", "standard", "premium"],
       required: true,
       default: "free",
     },
     price: {
       type: Number,
       required: true,
-      enum: [0, 40.99, 100.99],
+      enum: [0, 10, 20, 30],
       default: 0,
     },
     startDate: { type: Date, default: Date.now },
