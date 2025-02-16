@@ -117,7 +117,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// GET profile by all_users's profileId
+// Siripa: GET profile by all_users's profileId
 router.get("/profile/:profileId", async (req, res) => {
   const { profileId } = req.params;
 
