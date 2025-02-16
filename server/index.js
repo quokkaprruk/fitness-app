@@ -11,11 +11,14 @@ const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
 
 const app = express();
-// "https://fitness-app-frontend-prj666.vercel.app", // Vercel production frontend
+//  // Vercel production frontend
 const corsOptions = {
-  origin: "http://localhost:5173", // Local development frontend
+  origin: [
+    "http://localhost:5173",
+    "https://fitness-app-frontend-prj666.vercel.app",
+  ], // Local development frontend
   methods: "GET,POST,PUT,DELETE",
-  credentials: true, // If you're using cookies or sessions
+  credentials: true, // If using cookies or sessions
   allowedHeaders: "Content-Type, Authorization",
 };
 
@@ -44,7 +47,7 @@ mongoose
       logger.info(`Server running on http://localhost:${PORT}`);
     });
 
-    app.use(express.json());
+    // app.use(express.json());
 
     // API routes
     app.use("/api/users", userRoutes);
