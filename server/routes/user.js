@@ -15,6 +15,7 @@ const AllUsers = require("../models/all_users");
 const MemberTodo = require("../models/member_todo");
 const MemberSubscriptionPlan = require("../models/member_subscription");
 const mongoose = require("mongoose");
+const { notify } = require("../utils/notify");
 require("dotenv").config();
 
 // User login route
@@ -27,6 +28,7 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "Invalid username or password" });
     }
+
     const isMatch = await comparePassword(password, user.password);
 
     if (!isMatch) {
@@ -36,7 +38,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { id: user._id, username: user.username, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "5m" } // Token Expiry
+      { expiresIn: "5m" } // Token Expiry = 5 minutes
     );
 
     res.json({
@@ -149,6 +151,71 @@ router.post("/signup", async (req, res) => {
     session.endSession();
     console.error("Server Error:", error);
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.post("/reset-password/:token", async (req, res) => {
+  try {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    if (!newPassword || newPassword.length < 8) {
+      return res.status(400).json({ message: "Password must be at least 8 characters long." });
+    }
+
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (error) {
+      return res.status(400).json({ message: "Invalid or expired token." });
+    }
+
+    // Find the user by ID from token
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    user.password = newPassword; // Password is already being hashed when you save.
+
+    await user.save();
+
+    res.json({ message: "Password successfully reset. Please log in with your new password." });
+
+  } catch (error) {
+    logger.error("Reset Password Error:", error);
+    res.status(500).json({ message: "Server error." });
+  }
+});
+
+router.post("/forgot-password", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Email not found." });
+    }
+
+    const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "15m" });
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+    const emailSent = await notify(
+      email,
+      "Password Reset Request",
+      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`
+    );
+
+    if (emailSent) {
+      res.json({ message: "Reset link sent! Check your email." });
+    } else {
+      res.status(500).json({ message: "Error sending reset link." });
+    }
+
+  } catch (error) {
+    logger.error("Error sending reset email:", error);
+    res.status(500).json({ message: "Server error." });
   }
 });
 
@@ -277,4 +344,27 @@ router.post("/profile/:profileId", async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
+
+router.post("/verify-email", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: "Email is required." });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (user) {
+      res.json({ exists: true });
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error("Error verifying email:", error);
+    res.status(500).json({ message: "Server error." });
+  }
+});
+
+
 module.exports = router;
