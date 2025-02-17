@@ -17,8 +17,10 @@ const ManageMembership = () => {
 
   return (
     <div className="membership-container">
-      <h2>Manage Your Membership</h2>
-      <p>Current Plan: <strong>{membership}</strong></p>
+      <h2 className="manage-heading">Manage Your Membership</h2>
+      <p className="manage-para">
+        Current Plan: <strong>{membership}</strong>
+      </p>
 
       {!isCancelled ? (
         <button className="cancel-btn" onClick={handleCancel}>
