@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../pages/styles/Membership.css";
+import "./styles/Membership.css";
 
 const ManageMembership = () => {
   const [membership, setMembership] = useState("Premium");
