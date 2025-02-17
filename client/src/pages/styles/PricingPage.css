@@ -1,59 +1,79 @@
-@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
-
-body {
-  font-family: "Rokkitt", serif;
-}
-.pricing-container {
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Center heading and place it above the pricing container */
+.plans-heading {
   text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
 }
 
-.pricing-grid {
+/* Pricing container styling */
+.pricing-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
 }
 
+/* Pricing grid layout */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Wider boxes */
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px; /* Ensure grid doesn't get too narrow */
+}
+
+/* Individual card styling */
 .pricing-card {
+  border: 2px solid #00d2d2;
+  border-radius: 12px;
+  padding: 2rem;
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #40e0d0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 100%;
 }
 
-.pricing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
+/* Card headings and text */
 .pricing-card h3 {
-  color: #007bff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007777;
 }
 
 .pricing-card p {
-  color: #666;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  font-weight: bold;
 }
 
+/* List items */
+.pricing-card ul {
+  list-style-type: disc; /* Adds bullet points */
+  padding-left: 1.5rem; /* Indent bullets */
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Button styling */
 .pricing-button {
-  padding: 10px 20px;
-  background-color: #40e0d0;
-  color: white;
+  background-color: #00d2d2;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0.8rem;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  align-self: center;
+  margin-top: auto;
+  width: 200px;
 }
 
 .pricing-button:hover {
-  background-color: #32cd32;
+  background-color: #007777;
 }

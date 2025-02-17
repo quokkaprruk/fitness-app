@@ -2,7 +2,11 @@
 
 1. all_users: store login/signup information such as email and password. The `profileId` is generated on the backend during user signup and serves as a unique reference to the corresponding profile in one of the following schemas:
 
-   1.1 member_profiles: contains specific profile details of `member` role.
+   1.1 member_profiles: contains specific profile details of `member` role and it serves a unique reference to the following schema.
+
+   &emsp;1.1.1 member_subscription: contains member's subscription information.
+
+   &emsp;1.1.2 member_todo: contains member's goals, current goal, achieved goal.
 
    1.2 trainer_profiles: contains specific profile details of `trainer` role.
 
@@ -38,6 +42,10 @@
 |               | /instructorId            | GET    | get all schedules for specific trainer      |
 | /api/         | /login                   | POST   | login with user information stored in db    |
 |               | /register                | POST   | signup with info that are stored in db      |
+|               | /profile/:profileId      | GET    | return the { user, profile }                |
+|               | /profile/:profileId      | POST   | updates and return an existing profile      |
+
+Updates an existing profile and returns the updated profile.
 
 ## Steps to install dependencies:
 

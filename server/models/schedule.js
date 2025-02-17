@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const scheduleSchema = new mongoose.Schema(
+const scheduleSchema = new Schema(
   {
     className: String,
     classType: String,

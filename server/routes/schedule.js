@@ -58,7 +58,7 @@ router.post("/save-generated-schedule", async (req, res) => {
   }
 });
 
-// GET route to get all schedules
+// Siripa: GET route to get all schedules
 router.get("/", async (req, res) => {
   try {
     const schedule = await Schedule.find();
@@ -77,7 +77,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET route to get all online schedules
+// Siripa: GET route to get all online schedules
 router.get("/online", async (req, res) => {
   try {
     const onlineSchedule = await Schedule.find({ classType: "online" }); // Filter by classType: "online"
@@ -99,7 +99,7 @@ router.get("/online", async (req, res) => {
   }
 });
 
-// GET route to get all on-site schedules
+// Siripa: GET route to get all on-site schedules
 router.get("/onsite", async (req, res) => {
   try {
     const onSiteSchedule = await Schedule.find({ classType: "on-site" }); // Filter by classType: "onsite"

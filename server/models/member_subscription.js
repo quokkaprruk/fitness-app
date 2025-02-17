@@ -1,34 +1,39 @@
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
 const subscriptionPlanSchema = new Schema(
   {
-    userId: {
+    memberProfileObjectId: {
       type: Schema.Types.ObjectId,
       ref: "Member_Profile",
       required: true,
     },
     planType: {
       type: String,
-      enum: ["basic", "standard", "premium"],
+      enum: ["free", "basic", "standard", "premium"],
       required: true,
+      default: "free",
     },
     price: {
-      type: Number, // Store the price of the plan in cents to avoid decimal issues
+      type: Number,
       required: true,
+      enum: [0, 10, 20, 30],
+      default: 0,
     },
     startDate: { type: Date, default: Date.now },
-    endDate: { type: Date, required: true },
-    status: {
+    endDate: { type: Date }, //endDate of subscription if member chose paid plan
+    subscriptionStatus: {
       type: String,
       enum: ["active", "cancelled"],
       default: "active",
     },
     paymentStatus: {
       type: String,
-      enum: ["paid", "pending", "failed", "refunded"],
-      default: "paid",
+      enum: ["N/A", "paid", "pending", "failed", "refunded"],
+      default: "N/A",
     },
     paymentMethod: {
       type: String, // paypal, credit card, etc.?
-      required: true,
     },
     transactionId: { type: String }, // ref to the payment transaction, if needed in the future
   },

@@ -25,12 +25,12 @@
 
 .navbar-links {
   display: flex;
-  align-items: center;
+  align-items: center; /* Aligns text and icons on the same line */
   gap: 80px;
 }
 
 .navbar-links .classes-btn {
-  color: #007BFF;
+  color: #007bff;
   text-decoration: none;
   font-weight: bold;
   margin: 0 10px;
@@ -39,7 +39,6 @@
 .navbar-links .classes-btn:hover {
   color: #0056b3;
 }
-
 
 .navbar-links a {
   text-decoration: none;
@@ -55,6 +54,7 @@
   font-size: 30px;
   color: #333;
   cursor: pointer;
+  vertical-align: middle; /* Ensures icons align with text */
 }
 
 .icon:hover {
@@ -101,61 +101,42 @@
   background-color: #f0f0f0;
 }
 
-.admin-btn {
-  background-color: #ff6347;
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease-in-out;
-  border: 2px solid #ff6347;
-}
-
-.admin-btn:hover {
-  background-color: #ff4500;
-  border-color: #ff4500;
-}
-
-.profile-dropdown {
+/* Dropdown Styling */
+.navbar-links .profile-dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-menu {
+.navbar-links .profile-dropdown .dropdown-menu {
   position: absolute;
   top: 40px;
-  right: 0;
+  left: 0;
   background-color: white;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
   border-radius: 5px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
   display: none;
-  min-width: 180px;
+  width: 180px;
+  z-index: 1000;
 }
 
-.profile-dropdown:hover .dropdown-menu {
-  display: block;
+.navbar-links .profile-dropdown:hover .dropdown-menu {
+  display: block; /* Show menu on hover */
 }
 
-.dropdown-item {
-  padding: 10px 15px;
-  display: block;
+.navbar-links .profile-dropdown .dropdown-item {
+  padding: 12px 20px;
+  font-size: 25px;
   color: #333;
   text-decoration: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.dropdown-item:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown-item .icon {
-  margin-right: 8px;
-}
-
-/* Hover effects for profile icon */
-.profile-dropdown:hover .icon {
+.navbar-links .profile-dropdown .dropdown-item:hover {
+  background-color: #f0f0f0;
   color: #48d1cc;
+  border-radius: 0;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./styles/SignUp.css";
 import Navbar from "../components/Navbar.jsx";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const SignUpPage = () => {
   });
   const [message, setMessage] = useState("");
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,7 +24,13 @@ const SignUpPage = () => {
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
         formData
       )
-      .then((response) => setMessage("Sign-up successful!"))
+      .then((response) => {
+        setMessage("Sign-up successful! Redirecting to login page.")
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+        
+      })
       .catch((error) => setMessage("Sign-up failed: " + error.message));
   };
 

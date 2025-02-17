@@ -22,6 +22,10 @@ const NewUser = () => {
         />
       </header>
 
+      <Link to="/membership">
+        <button className="become-member-btn">Become a Member</button>
+      </Link>
+
       {/* Class Categories - Cards*/}
       <section className="class-categories">
         <h2>Tailored Workout Classes – Book Your Perfect Session Anytime</h2>
