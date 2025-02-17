@@ -1,7 +1,7 @@
 //navbar for new user and registered user
 
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
 import { FaCog, FaUser, FaSignOutAlt } from "react-icons/fa";

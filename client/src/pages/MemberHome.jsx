@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/Home.css"; // CSS file
+import "./styles/Home.css"; // CSS file
 import Navbar from "../components/Navbar.jsx";
 import MainImg from "../homePicture.png";
 import Benefits from "../benefits.png";
