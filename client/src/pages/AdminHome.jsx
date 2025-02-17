@@ -1,4 +1,4 @@
-import "../styles/AdminHome.css";
+import "./styles/AdminHome.css";
 import React, { useState } from "react";
 import { FaCog, FaUser, FaPlus, FaMinus } from "react-icons/fa";
 import logo from "../logo.png";

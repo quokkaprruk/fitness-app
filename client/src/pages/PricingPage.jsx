@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/PricingPage.css";
+import "./styles/PricingPage.css";
 
 const PricingPage = () => {
   const navigate = useNavigate();
@@ -12,17 +12,32 @@ const PricingPage = () => {
         <div className="plan">
           <h3>Basic</h3>
           <p>$10/month</p>
-          <button onClick={() => navigate("/register")} className="select-button">Select</button>
+          <button
+            onClick={() => navigate("/register")}
+            className="select-button"
+          >
+            Select
+          </button>
         </div>
         <div className="plan">
           <h3>Premium</h3>
           <p>$20/month</p>
-          <button onClick={() => navigate("/register")} className="select-button">Select</button>
+          <button
+            onClick={() => navigate("/register")}
+            className="select-button"
+          >
+            Select
+          </button>
         </div>
         <div className="plan">
           <h3>VIP</h3>
           <p>$30/month</p>
-          <button onClick={() => navigate("/register")} className="select-button">Select</button>
+          <button
+            onClick={() => navigate("/register")}
+            className="select-button"
+          >
+            Select
+          </button>
         </div>
       </div>
     </div>

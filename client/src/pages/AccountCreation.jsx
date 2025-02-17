@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/AccountCreation.css";
+import "./styles/AccountCreation.css";
 
 const AdminAccountCreation = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,9 @@ const AdminAccountCreation = () => {
           <option value="admin">Admin</option>
         </select>
 
-        <button type="submit" className="submit-button">Create Account</button>
+        <button type="submit" className="submit-button">
+          Create Account
+        </button>
       </form>
     </div>
   );

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //import data from "../data/fitnessClasses.json"; //test data
 import axios from "axios";
 import logo from "../logo.png"; //image of logo
-import "../styles/TrainerHome.css"; //css file
+import "./styles/TrainerHome.css"; //css file
 import { FaCog, FaUser } from "react-icons/fa"; //for 'profile' and 'settings' icons on navbar
 import { jwtDecode } from "jwt-decode";
 
@@ -14,24 +14,32 @@ const TrainerHome = () => {
   const decoded = jwtDecode(token);
   useEffect(() => {
     if (token) {
-      console.log("Making API request for schedule with instructorId:", decoded.id);
-    
+      console.log(
+        "Making API request for schedule with instructorId:",
+        decoded.id
+      );
+
       axios
-      .get(`http://localhost:5000/api/schedule/${decoded.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        console.log("Schedule data received:", response.data);
-        setSchedule(response.data); 
-      })
-      .catch((error) => {
-        console.error("Error fetching schedule:", error);
-      });
+        .get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedule/${
+            decoded.id
+          }`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log("Schedule data received:", response.data);
+          setSchedule(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching schedule:", error);
+        });
     }
   }, [token, decoded.id]);
-  
+
   //email subject
   const emailSubject = `Requesting schedule change for ${decoded.username} (ID: ${decoded.id})`;
 

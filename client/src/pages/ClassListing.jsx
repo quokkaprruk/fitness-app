@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/ClassList.css";
+import "./styles/ClassList.css";
 import fitnessClasses from "../data/fitnessClasses.json";
 import Navbar from "../components/Navbar.jsx";
 
@@ -54,22 +54,34 @@ const ClassList = () => {
     let filtered = classes;
 
     if (filters.classType) {
-      filtered = filtered.filter((classItem) => classItem.classType === filters.classType);
+      filtered = filtered.filter(
+        (classItem) => classItem.classType === filters.classType
+      );
     }
 
     if (filters.timeOfDay) {
       const hours = new Date().getHours();
       if (filters.timeOfDay === "Morning") {
-        filtered = filtered.filter((classItem) => new Date(classItem.startDateTime).getHours() < 12);
+        filtered = filtered.filter(
+          (classItem) => new Date(classItem.startDateTime).getHours() < 12
+        );
       } else if (filters.timeOfDay === "Afternoon") {
-        filtered = filtered.filter((classItem) => new Date(classItem.startDateTime).getHours() >= 12 && new Date(classItem.startDateTime).getHours() < 18);
+        filtered = filtered.filter(
+          (classItem) =>
+            new Date(classItem.startDateTime).getHours() >= 12 &&
+            new Date(classItem.startDateTime).getHours() < 18
+        );
       } else if (filters.timeOfDay === "Evening") {
-        filtered = filtered.filter((classItem) => new Date(classItem.startDateTime).getHours() >= 18);
+        filtered = filtered.filter(
+          (classItem) => new Date(classItem.startDateTime).getHours() >= 18
+        );
       }
     }
 
     if (filters.difficultyLevel) {
-      filtered = filtered.filter((classItem) => classItem.difficultyLevel === filters.difficultyLevel);
+      filtered = filtered.filter(
+        (classItem) => classItem.difficultyLevel === filters.difficultyLevel
+      );
     }
 
     setFilteredClasses(filtered);
@@ -91,21 +103,33 @@ const ClassList = () => {
 
       {/* Filters Section */}
       <div className="filters">
-        <select name="classType" onChange={handleFilterChange} value={filters.classType}>
+        <select
+          name="classType"
+          onChange={handleFilterChange}
+          value={filters.classType}
+        >
           <option value="">All Class Types</option>
           <option value="Yoga">Yoga</option>
           <option value="Pilates">Pilates</option>
           <option value="Cardio">Cardio</option>
         </select>
 
-        <select name="timeOfDay" onChange={handleFilterChange} value={filters.timeOfDay}>
+        <select
+          name="timeOfDay"
+          onChange={handleFilterChange}
+          value={filters.timeOfDay}
+        >
           <option value="">All Times of Day</option>
           <option value="Morning">Morning</option>
           <option value="Afternoon">Afternoon</option>
           <option value="Evening">Evening</option>
         </select>
 
-        <select name="difficultyLevel" onChange={handleFilterChange} value={filters.difficultyLevel}>
+        <select
+          name="difficultyLevel"
+          onChange={handleFilterChange}
+          value={filters.difficultyLevel}
+        >
           <option value="">All Difficulty Levels</option>
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
@@ -119,7 +143,8 @@ const ClassList = () => {
           <li key={classItem.classId} className="class-item">
             <h3>{classItem.className}</h3>
             <p>Type: {classItem.classType}</p>
-            <p>Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
+            <p>
+              Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
               {new Date(classItem.endDateTime).toLocaleString()}
             </p>
             <p>Capacity: {classItem.studentCapacity}</p>
