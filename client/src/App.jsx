@@ -5,6 +5,7 @@ import MemberHome from "./pages/MemberHome";
 import TrainerHome from "./pages/TrainerHome";
 import AdminHome from "./pages/AdminHome";
 import Login from "./pages/Login";
+import ResetPasswordPage from "./pages/ResetPassword";
 import ClassList from "./pages/ClassListing";
 import Signup from "./pages/SignUp";
 import MembershipPage from "./pages/MembershipPage";
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/trainer" element={<TrainerHome />} /> {/* Trainer Home */}
         <Route path="/admin" element={<AdminHome />} /> {/* Admin Home */}
         <Route path="/login" element={<Login />} /> {/* Login Page */}
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="/classes" element={<ClassList />} /> {/* Class Listing */}
         <Route path="/signup" element={<Signup />} /> {/* Signup Page */}
         <Route path="/membership" element={<MembershipPage />} />{" "}
