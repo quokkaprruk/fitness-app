@@ -100,3 +100,62 @@
 .navbar .auth-buttons .signup-btn:hover {
   background-color: #f0f0f0;
 }
+
+.admin-btn {
+  background-color: #ff6347;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out;
+  border: 2px solid #ff6347;
+}
+
+.admin-btn:hover {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  display: none;
+  min-width: 180px;
+}
+
+.profile-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-item .icon {
+  margin-right: 8px;
+}
+
+/* Hover effects for profile icon */
+.profile-dropdown:hover .icon {
+  color: #48d1cc;
+}

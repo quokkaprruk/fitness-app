@@ -25,6 +25,8 @@ const App = () => {
         <Route path="/membership" element={<MembershipPage />} /> {/* Membership Page */}
         <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
         <Route path="/register" element={<RegistrationForm />} /> {/* RegistrationForm */}
+        <Route path="/admin/create-trainer" element={<AdminCreateTrainer />} /> {/*Trainer Creation Form*/}
+        <Route path="/manage-membership" element={<ManageMembership />} />
       </Routes>
     </Router>
   );

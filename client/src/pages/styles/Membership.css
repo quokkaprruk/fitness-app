@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.membership-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+}
+
+.membership-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.membership-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.cancel-button {
+  background-color: #ff6347;
+  color: white;
+  border: 2px solid #ff6347;
+}
+
+.cancel-button:hover {
+  background-color: #ff4500;
+  border-color: #ff4500;
+  transform: scale(1.05);
+}
+
+.upgrade-button {
+  background-color: #32cd32;
+  color: white;
+  border: 2px solid #32cd32;
+}
+
+.upgrade-button:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+  transform: scale(1.05);
+}

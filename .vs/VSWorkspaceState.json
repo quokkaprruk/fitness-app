@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\sample"
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\components",
+    "\\client\\src\\data",
+    "\\client\\src\\pages",
+    "\\client\\src\\pages\\styles",
+    "\\server",
+    "\\server\\middleware",
+    "\\server\\routes"
   ],
-  "SelectedNode": "\\sample\\all_users.json",
+  "SelectedNode": "\\client\\src\\pages\\MemberHome.jsx",
   "PreviewInSolutionExplorer": false
 }

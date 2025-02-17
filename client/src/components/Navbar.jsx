@@ -4,10 +4,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
-import { FaCog, FaUser } from "react-icons/fa";
+import { FaCog, FaUser, FaSignOutAlt } from "react-icons/fa";
 import LoginPage from "../pages/Login.jsx";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = ({ isLoggedIn, handleLogout }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const logoutHandler = () => {
+    handleLogout(); 
+    navigate("/"); 
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-welcome">Welcome!</div>
@@ -23,7 +35,25 @@ const Navbar = ({ isLoggedIn }) => {
             <a href="/member">Home</a>
             <a href="/progress">Progress</a>
             <FaCog className="icon" title="Settings" />
-            <FaUser className="icon" title="Profile" />
+            <div className="profile-dropdown">
+              <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+              {showDropdown && (
+                <div className="dropdown-menu">
+                  <Link to="/profile" className="dropdown-item">
+                    Profile
+                  </Link>
+                  <Link to="/manage-membership" className="dropdown-item">
+                    Manage Membership
+                  </Link>
+                  <div className="dropdown-item" onClick={logoutHandler}>
+                    <FaSignOutAlt className="icon" /> Logout
+                  </div>
+                </div>
+              )}
+            </div>
+            <Link to="/admin/create-trainer" className="btn admin-btn">
+              Create Trainer
+            </Link>
           </>
         ) : (
           <>
