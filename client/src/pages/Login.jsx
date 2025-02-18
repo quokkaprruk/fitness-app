@@ -8,36 +8,62 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [showReset, setShowReset] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setMessage(""); // Clear any previous messages
-
+    setMessage("");
     try {
-      // Send login request to backend
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/login`,
-        {
-          username,
-          password,
-        }
+        { username, password }
       );
-
-      setMessage(`Success: ${response.data.message}`);
+      setMessage(`Success: ${response.data.message}.`);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem(
         "user",
         JSON.stringify({ username: response.data.username })
       );
-      if (response.data.role == "member") navigate("/member");
-      else if (response.data.role == "trainer") navigate("/trainer");
-      else if (response.data.role == "admin") navigate("/admin");
+      if (response.data.role === "member") {
+        setTimeout(() => {
+          navigate("/member");
+        }, 1500);
+      }
+      else if (response.data.role === "trainer") {
+        setTimeout(() => {
+          navigate("/trainer");
+        }, 1500);
+      }
+      else if (response.data.role === "admin") {
+        setTimeout(() => {
+          navigate("/admin");
+        }, 1500);
+      }
     } catch (error) {
-      // Handle error response
-      setMessage(
-        error.response?.data?.message || "Login failed. Please try again."
+      setMessage(error.response?.data?.message || "Login failed. Please try again.");
+    }
+  };
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    setMessage("");
+
+    if (!email) {
+      setMessage("Please enter your email.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/forgot-password`,
+        { email }
       );
+
+      setMessage(response.data.message || "Reset link sent! Check your email.");
+    } catch (error) {
+      setMessage(error.response?.data?.message || "Error sending reset link.");
     }
   };
 
@@ -66,10 +92,25 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button className="login-btn" type="submit">
-          Login
-        </button>
+        <button className="login-btn" type="submit">Login</button>
       </form>
+      <p className="forgot-password" onClick={() => setShowReset(!showReset)}>Forgot Password?</p>
+      {showReset && (
+        <form onSubmit={handleResetPassword} className="reset-form">
+          <h3>Reset Password</h3>
+          <div className="inputGroup">
+            <label htmlFor="email">Enter your email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <button className="reset-btn" type="submit">Send Reset Email</button>
+        </form>
+      )}
       {message && <p className="message">{message}</p>}
     </div>
   );
