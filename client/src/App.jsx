@@ -17,21 +17,6 @@ import Progress from "./pages/Progress";
 import ManageMembership from "./pages/ManageMembership";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Check if the user is logged in on initial load
-  useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
-      setIsLoggedIn(true); // If token exists, user is logged in
-    }
-  }, []);
-
-  const handleLogout = () => {
-    setIsLoggedIn(false); // Set logged-in state to false
-    localStorage.removeItem("authToken"); // Remove the stored token
-  };
-
   return (
     <Router>
       <Routes>
