@@ -33,7 +33,7 @@ const allUsersSchema = new Schema(
   {
     collection: "all_users", // collection name
     timestamps: true,
-  }
+  },
 );
 
 allUsersSchema.pre("save", async function (next) {

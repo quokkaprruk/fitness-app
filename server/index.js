@@ -8,6 +8,7 @@ const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const logger = require("./middleware/logger");
+const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
 const pino = require("pino-http")({ logger });
 
 const app = express();
@@ -61,9 +62,16 @@ mongoose
 
     // API routes
     app.use("/api/users", userRoutes);
-    app.use("/api/trainers", trainerRoutes);
-    app.use("/api/admin", adminRoutes);
-    app.use("/api/schedule", scheduleRoutes);
+    app.use("/api/trainers", checkTrainerRole, trainerRoutes);
+    app.use("/api/admin", checkAdminRole, adminRoutes);
+    app.use("/api/schedules", scheduleRoutes);
+    app.use((err, _req, res, _next) => {
+      if (err.name === "UnauthorizedError") {
+        res.status(401).json({ message: "Invalid token" });
+      } else {
+        res.status(500).json({ message: "Internal server error" });
+      }
+    });
   })
   .catch((error) => {
     logger.error("MongoDB connection failed:", error);
