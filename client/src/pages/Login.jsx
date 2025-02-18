@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./styles/Login.css"; // Import external CSS file
+import "./styles/Login.css";
 import Navbar from "../components/Navbar.jsx";
 
 const LoginPage = () => {
@@ -30,7 +30,7 @@ const LoginPage = () => {
         "user",
         JSON.stringify({ username: response.data.username })
       );
-      if (response.data.role == "user") navigate("/member");
+      if (response.data.role == "member") navigate("/member");
       else if (response.data.role == "trainer") navigate("/trainer");
       else if (response.data.role == "admin") navigate("/admin");
     } catch (error) {
