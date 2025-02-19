@@ -17,6 +17,7 @@ const MemberSubscriptionPlan = require("../models/member_subscription");
 const mongoose = require("mongoose");
 const { notify } = require("../utils/notify");
 const { checkUserOwnership } = require("../middleware/roleAuth");
+const goalsRoutes = require("./goals");
 require("dotenv").config();
 
 // User login route
@@ -417,5 +418,7 @@ router.post("/verify-email", async (req, res) => {
     res.status(500).json({ message: "Server error." });
   }
 });
+
+router.use("/goals", checkUserOwnership, goalsRoutes);
 
 module.exports = router;
