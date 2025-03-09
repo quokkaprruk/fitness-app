@@ -65,6 +65,7 @@ mongoose
     app.use("/api/trainers", checkTrainerRole, trainerRoutes);
     app.use("/api/admin", checkAdminRole, adminRoutes);
     app.use("/api/schedules", scheduleRoutes);
+    app.use("/api/payment", paymentRoutes);
     app.use((err, _req, res, _next) => {
       if (err.name === "UnauthorizedError") {
         res.status(401).json({ message: "Invalid token" });
