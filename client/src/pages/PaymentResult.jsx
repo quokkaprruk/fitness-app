@@ -21,7 +21,8 @@ const PaymentResult = () => {
             <div className="success-banner-image"></div>
             <h2>Payment Successful!</h2>
             <p>
-              Thank you for subscribing to our membership plan. <br />
+              Thank you for subscribing to our <br />
+              membership plan.
             </p>
           </div>
           <div className="button-wrapper">
