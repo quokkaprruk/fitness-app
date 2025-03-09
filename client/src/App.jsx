@@ -14,6 +14,8 @@ import RegistrationForm from "./pages/RegistrationForm";
 import ContactPage from "./pages/ContactPage";
 import Profile from "./pages/Profile";
 import Progress from "./pages/Progress";
+import Payment from "./pages/Payment";
+import PaymentResult from "./pages/PaymentResult";
 
 const App = () => {
   return (
@@ -35,6 +37,9 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} /> {/* Contact Page */}
         <Route path="/profile" element={<Profile />} />{" "}
         <Route path="/progress" element={<Progress />} />{" "}
+        <Route path="/payment" element={<Payment />} />{" "}
+        <Route path="/success" element={<PaymentResult />} />
+        <Route path="/cancel" element={<PaymentResult />} />
       </Routes>
     </Router>
   );

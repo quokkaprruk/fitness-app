@@ -7,6 +7,8 @@ const userRoutes = require("./routes/user");
 const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
+const paymentRoutes = require("./routes/payment");
+
 const logger = require("./middleware/logger");
 const pino = require("pino-http")({ logger });
 
@@ -57,13 +59,12 @@ mongoose
       logger.info(`Server running on http://localhost:${PORT}`);
     });
 
-    // app.use(express.json());
-
     // API routes
     app.use("/api/users", userRoutes);
     app.use("/api/trainers", trainerRoutes);
     app.use("/api/admin", adminRoutes);
     app.use("/api/schedule", scheduleRoutes);
+    app.use("/api/payment", paymentRoutes);
   })
   .catch((error) => {
     logger.error("MongoDB connection failed:", error);

@@ -1,12 +1,35 @@
+// PricingPage.jsx
+// Siripa
 // import React from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./styles/PricingPage.css";
 import Navbar from "../components/Navbar.jsx";
 
+const Payment = () => {
+  const handleCheckout = async (planName, price) => {
+    try {
+      // Send POST request with axios
+      const response = await axios.post(
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/payment/checkout`,
+        { plan_name: planName, price }
+      );
 
-const PricingPage = () => {
-  const navigate = useNavigate();
+      // Log the response to see what data is returned
+      console.log({ data: response.data });
 
+      // If the URL is available, redirect the user to Stripe Checkout page
+      if (response.data) {
+        window.location.href = response.data?.session?.url;
+      } else {
+        alert("Error starting checkout");
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      alert("Payment failed, Server Error");
+    }
+  };
   return (
     <div>
       <Navbar isLoggedIn={false} />
@@ -26,7 +49,7 @@ const PricingPage = () => {
               <li>Real-time chat with trainers</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => handleCheckout("Basic Plan", 10)} //call the post backend with name: basic and price 10
               className="pricing-button"
             >
               Select
@@ -45,7 +68,7 @@ const PricingPage = () => {
               <li>Equipment reservation</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => handleCheckout("Standard Plan", 20)} //call the post backend with name: standard and price 20
               className="pricing-button"
             >
               Select
@@ -65,7 +88,7 @@ const PricingPage = () => {
               <li>Exclusive wellness events</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => handleCheckout("Premium Plan", 30)} //call the post backend with name: premium and price 30
               className="pricing-button"
             >
               Select
@@ -77,4 +100,4 @@ const PricingPage = () => {
   );
 };
 
-export default PricingPage;
+export default Payment;
