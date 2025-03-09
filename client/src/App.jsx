@@ -14,6 +14,7 @@ import RegistrationForm from "./pages/RegistrationForm";
 import ContactPage from "./pages/ContactPage";
 import Profile from "./pages/Profile";
 import Progress from "./pages/Progress";
+import ManageMembership from "./pages/ManageMembership";
 import Payment from "./pages/Payment";
 import PaymentResult from "./pages/PaymentResult";
 
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/payment" element={<Payment />} />{" "}
         <Route path="/success" element={<PaymentResult />} />
         <Route path="/cancel" element={<PaymentResult />} />
+        <Route path="/manage-membership" element={<ManageMembership />} />
       </Routes>
     </Router>
   );

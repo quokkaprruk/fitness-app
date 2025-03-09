@@ -16,6 +16,7 @@ const MemberTodo = require("../models/member_todo");
 const MemberSubscriptionPlan = require("../models/member_subscription");
 const mongoose = require("mongoose");
 const { notify } = require("../utils/notify");
+const { checkUserOwnership } = require("../middleware/roleAuth");
 require("dotenv").config();
 
 // User login route
@@ -36,9 +37,14 @@ router.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user._id, username: user.username, role: user.role },
+      {
+        id: user._id,
+        username: user.username,
+        role: user.role,
+        profileId: user.profileId,
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "5m" } // Token Expiry = 5 minutes
+      { expiresIn: "5m" }, // Token Expiry = 5 minutes
     );
 
     res.json({
@@ -53,16 +59,34 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Helper function to get required fields from a model's schema
+function getRequiredFields(model) {
+  const requiredFields = [];
+  const schema = model.schema;
+
+  Object.keys(schema.paths).forEach((path) => {
+    if (schema.paths[path].isRequired) {
+      // Exclude profileId since it's auto-generated
+      if (path !== "profileId") {
+        requiredFields.push(path);
+      }
+    }
+  });
+
+  return requiredFields;
+}
+
 // User sign up route
 router.post("/signup", async (req, res) => {
   const { email, username, password, role = "member" } = req.body;
   const session = await mongoose.startSession();
   session.startTransaction();
 
+  // Basic validation
   if (!email || !username || !password) {
-    return res
-      .status(400)
-      .json({ message: "Email, username, and password are required" });
+    return res.status(400).json({
+      message: "Email, username, and password are required",
+    });
   }
 
   if (!validator.isEmail(email)) {
@@ -70,17 +94,17 @@ router.post("/signup", async (req, res) => {
   }
 
   if (password.length < 8) {
-    return res
-      .status(400)
-      .json({ message: "Password must be at least 8 characters long" });
+    return res.status(400).json({
+      message: "Password must be at least 8 characters long",
+    });
   }
 
   try {
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
-      return res
-        .status(400)
-        .json({ message: "Email or username already in use" });
+      return res.status(400).json({
+        message: "Email or username already in use",
+      });
     }
 
     const profileId = uuidv4();
@@ -89,27 +113,45 @@ router.post("/signup", async (req, res) => {
       username,
       password,
       profileId,
-      role: "member",
+      role: role,
     });
 
-    await newUser.save({ session });
-
-    let profileModel;
+    // Get the appropriate profile model based on role
+    let ProfileModel;
     switch (role) {
       case "admin":
-        profileModel = AdminProfiles;
-        break;
-      case "member":
-        profileModel = MemberProfiles;
+        ProfileModel = AdminProfiles;
         break;
       case "trainer":
-        profileModel = TrainerProfiles;
+        ProfileModel = TrainerProfiles;
+        break;
+      case "member":
+        ProfileModel = MemberProfiles;
         break;
       default:
-        return res.status(400).json({ message: "Invalid role specified." });
+        throw new Error("Invalid role specified");
     }
 
-    const newProfile = new profileModel({ profileId });
+    // Get required fields for the profile type
+    const requiredFields = getRequiredFields(ProfileModel);
+
+    // Validate all required fields are present
+    const missingFields = requiredFields.filter((field) => !req.body[field]);
+    if (missingFields.length > 0) {
+      throw new Error(
+        `Missing required fields for ${role} profile: ${missingFields.join(", ")}`,
+      );
+    }
+
+    // Create profile with all fields from request body
+    const profileData = {
+      profileId,
+      ...req.body,
+    };
+    const newProfile = new ProfileModel(profileData);
+
+    // Save user and profile
+    await newUser.save({ session });
     await newProfile.save({ session });
 
     if (role === "member") {
@@ -149,6 +191,11 @@ router.post("/signup", async (req, res) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
+
+    if (error.message.includes("Missing required fields")) {
+      return res.status(400).json({ message: error.message });
+    }
+
     console.error("Server Error:", error);
     res.status(500).json({ message: "Server error" });
   }
@@ -160,7 +207,9 @@ router.post("/reset-password/:token", async (req, res) => {
     const { newPassword } = req.body;
 
     if (!newPassword || newPassword.length < 8) {
-      return res.status(400).json({ message: "Password must be at least 8 characters long." });
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 8 characters long." });
     }
 
     let decoded;
@@ -181,8 +230,10 @@ router.post("/reset-password/:token", async (req, res) => {
 
     await user.save();
 
-    res.json({ message: "Password successfully reset. Please log in with your new password." });
-
+    res.json({
+      message:
+        "Password successfully reset. Please log in with your new password.",
+    });
   } catch (error) {
     logger.error("Reset Password Error:", error);
     res.status(500).json({ message: "Server error." });
@@ -198,13 +249,15 @@ router.post("/forgot-password", async (req, res) => {
       return res.status(400).json({ message: "Email not found." });
     }
 
-    const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "15m" });
+    const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "15m",
+    });
     const resetLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
     const emailSent = await notify(
       email,
       "Password Reset Request",
-      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`
+      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`,
     );
 
     if (emailSent) {
@@ -212,7 +265,6 @@ router.post("/forgot-password", async (req, res) => {
     } else {
       res.status(500).json({ message: "Error sending reset link." });
     }
-
   } catch (error) {
     logger.error("Error sending reset email:", error);
     res.status(500).json({ message: "Server error." });
@@ -220,7 +272,7 @@ router.post("/forgot-password", async (req, res) => {
 });
 
 // Siripa: GET profile by all_users's profileId
-router.get("/profile/:profileId", async (req, res) => {
+router.get("/profile/:profileId", checkUserOwnership, async (req, res) => {
   const { profileId } = req.params;
 
   if (!profileId) {
@@ -254,14 +306,14 @@ router.get("/profile/:profileId", async (req, res) => {
         break;
       default:
         logger.warn(
-          `Invalid role found in database for profileId: ${profileId}`
+          `Invalid role found in database for profileId: ${profileId}`,
         );
         return res.status(400).json({ message: "Invalid role in database." });
     }
 
     if (!profile) {
       logger.warn(
-        `Profile not found for profileId: ${profileId} (Role: ${role})`
+        `Profile not found for profileId: ${profileId} (Role: ${role})`,
       );
       return res.status(404).json({ message: "Profile not found." });
     }
@@ -272,7 +324,7 @@ router.get("/profile/:profileId", async (req, res) => {
     res.status(200).json({ user, profile });
   } catch (err) {
     logger.error(
-      `Error fetching profile for profileId: ${profileId} - ${err.message}`
+      `Error fetching profile for profileId: ${profileId} - ${err.message}`,
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }
@@ -280,7 +332,7 @@ router.get("/profile/:profileId", async (req, res) => {
 
 //Siripa
 //POST to save profile using all_users's profileId
-router.post("/profile/:profileId", async (req, res) => {
+router.post("/profile/:profileId", checkUserOwnership, async (req, res) => {
   const { profileId } = req.params;
   const updatedProfileData = req.body; //get the submitted profileData from req.body
 
@@ -321,7 +373,7 @@ router.post("/profile/:profileId", async (req, res) => {
     const updatedProfile = await profileModel.findOneAndUpdate(
       { profileId },
       { $set: updatedProfileData }, // modify only the provided fields
-      { new: true, runValidators: true } // Return updated document & apply validation
+      { new: true, runValidators: true }, // Return updated document & apply validation
     );
 
     if (!updatedProfile) {
@@ -339,7 +391,7 @@ router.post("/profile/:profileId", async (req, res) => {
     });
   } catch (err) {
     logger.error(
-      `Error updating profile for profileId: ${profileId} - ${err.message}`
+      `Error updating profile for profileId: ${profileId} - ${err.message}`,
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }
@@ -365,6 +417,5 @@ router.post("/verify-email", async (req, res) => {
     res.status(500).json({ message: "Server error." });
   }
 });
-
 
 module.exports = router;

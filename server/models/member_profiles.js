@@ -92,7 +92,7 @@ const memberProfilesSchema = new Schema(
   {
     collection: "member_profiles", // collection name
     timestamps: true,
-  }
+  },
 );
 
 const MemberProfiles = mongoose.model("Member_Profile", memberProfilesSchema);

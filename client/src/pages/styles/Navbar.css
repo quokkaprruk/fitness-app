@@ -30,14 +30,14 @@
 }
 
 .navbar-links .classes-btn {
-  color: #007bff;
+  color: #333;
   text-decoration: none;
   font-weight: bold;
   margin: 0 10px;
 }
 
 .navbar-links .classes-btn:hover {
-  color: #0056b3;
+  color: #48d1cc;
 }
 
 .navbar-links a {
