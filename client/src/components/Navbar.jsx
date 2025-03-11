@@ -67,9 +67,6 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
                 </div>
               )}
             </div>
-            <Link to="/admin/create-trainer" className="btn admin-btn">
-              Create Trainer
-            </Link>
           </>
         )}
       </div>

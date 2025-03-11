@@ -52,7 +52,6 @@ const TrainerHome = () => {
           <a href="/contact">Contact</a>
           <a href="/client-management">Client Management</a>
           <a href="/community">Community</a>
-          <FaCog className="icon" title="Settings" />
           <FaUser className="icon" title="Profile" />
         </div>
         <div className="navbar-logo">

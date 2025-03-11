@@ -1,5 +1,6 @@
 import "./styles/AdminHome.css";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCog, FaUser, FaPlus, FaMinus } from "react-icons/fa";
 import logo from "../logo.png";
 
@@ -168,8 +169,10 @@ const AdminHome = () => {
           <a href="/contact">Contact</a>
           <a href="/client-management">Client Management</a>
           <a href="/community">Community</a>
-          <FaCog className="icon" title="Settings" />
           <FaUser className="icon" title="Profile" />
+          <Link to="/admin/create-trainer" className="btn admin-btn">
+            Create Trainer
+          </Link>
         </div>
         <div className="navbar-logo">
           <img src={logo} alt="Logo" />
