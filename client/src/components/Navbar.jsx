@@ -47,7 +47,6 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <a href="/contact">Contact</a>
             <a href="/progress">Progress</a>
             <a href="/reservations">Reservations</a>
-            <FaCog className="icon" title="Settings" />
             <div className="profile-dropdown">
               <FaUser
                 className="icon"

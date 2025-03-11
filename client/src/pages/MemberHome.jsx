@@ -13,7 +13,7 @@ const MemberHome = () => {
   return (
     <div className="newUser-home">
       <Navbar isLoggedIn={true} />
-      <div className="navbar-spacer"></div>
+      <div className="home-navbar-spacer"></div>
 
       {/* Hero Section */}
       <header className="hero-section">
@@ -22,7 +22,7 @@ const MemberHome = () => {
           alt="Start your fitness journey at the ISGA Gym today!"
           className="home-img"
         />
-        <button onClick={() => navigate("/membership")} className="primary-button">
+        <button onClick={() => navigate("/membership")} className="become-member-button">
           Become a Member
         </button>
       </header>
