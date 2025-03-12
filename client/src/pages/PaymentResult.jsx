@@ -1,5 +1,4 @@
 // import React from "react";
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import "./styles/PaymentResult.css";
