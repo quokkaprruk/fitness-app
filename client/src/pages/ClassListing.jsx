@@ -141,7 +141,7 @@ const ClassList = () => {
       <ul>
         {filteredClasses.map((classItem) => (
           <li key={classItem.classId} className="class-item">
-            <h3>{classItem.className}</h3>
+            <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
             <p>Type: {classItem.classType}</p>
             <p>
               Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}

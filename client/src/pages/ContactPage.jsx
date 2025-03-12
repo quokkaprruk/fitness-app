@@ -51,7 +51,7 @@ const ContactPage = () => {
   return (
     <div className="contact-container">
       <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
+      <div className="contact-navbar-spacer"></div>
       <div className="contact-box">
         <h2>Get in Touch</h2>
         <form onSubmit={onSubmit}>
