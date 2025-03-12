@@ -8,18 +8,23 @@ const todoSchema = new Schema(
       ref: "Member_Profile",
       required: true,
     },
-    currentGoals: {
-      type: [String], // string array
-      default: [],
-    },
-    achievedGoals: {
-      type: [String],
-      default: [],
-    },
+    currentGoals: [
+      {
+        text: String,
+        createdAt: { type: Date, default: Date.now },
+      },
+    ],
+    achievedGoals: [
+      {
+        text: String,
+        createdAt: Date,
+        achievedAt: { type: Date, default: Date.now },
+      },
+    ],
   },
   {
     collection: "member_todos",
-  }
+  },
 );
 
 const MemberTodo = mongoose.model("Member_Todo", todoSchema);
