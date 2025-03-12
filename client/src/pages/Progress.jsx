@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles/Progress.css";
 import Navbar from "../components/Navbar.jsx";
+import confetti from "canvas-confetti"; // Import the confetti function
 
 const Progress = () => {
   const [currentGoals, setCurrentGoals] = useState([]);
@@ -13,6 +14,10 @@ const Progress = () => {
     index: null,
     isAchieved: false,
   });
+
+  // Workout states
+  const [workoutStreak, setWorkoutStreak] = useState(0);
+  const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Track the last workout date
 
   // Food search states
   const [foodQuery, setFoodQuery] = useState("");
@@ -27,9 +32,37 @@ const Progress = () => {
   // Total nutrition states
   const [totalNutrition, setTotalNutrition] = useState([]);
 
+  // State for current date
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  // Reference to the workout button to get its position
+  const workoutButtonRef = useRef(null);
+
   useEffect(() => {
     fetchGoals();
+
+    // Update current date every minute
+    const intervalId = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 60000); // Update every minute
+
+    return () => clearInterval(intervalId); // Clean up interval on unmount
   }, []);
+
+  useEffect(() => {
+    // Check if a day has been missed
+    if (lastWorkoutDate) {
+      const today = new Date();
+      const lastWorkout = new Date(lastWorkoutDate);
+      const timeDiff = today.getTime() - lastWorkout.getTime();
+      const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
+
+      if (dayDiff > 1) {
+        // If more than one day has passed since the last workout, reset the streak
+        setWorkoutStreak(0);
+      }
+    }
+  }, [lastWorkoutDate]);
 
   const fetchGoals = async () => {
     setLoading(true);
@@ -106,6 +139,32 @@ const Progress = () => {
     } catch (err) {
       setError("Error updating goals: " + err.message);
       setLoading(false);
+    }
+  };
+
+  // Function to handle logging a workout
+  const handleLogWorkout = () => {
+    const today = new Date();
+    setWorkoutStreak(workoutStreak + 1);
+    setLastWorkoutDate(today.toISOString()); // Store the date as an ISO string
+
+    // Trigger confetti
+    if (workoutButtonRef.current) {
+      const buttonRect = workoutButtonRef.current.getBoundingClientRect();
+      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+      confetti({
+        origin: { x: buttonCenterX / window.innerWidth, y: buttonCenterY / window.innerHeight },
+        spread: 150,
+        ticks: 60,
+        gravity: 0.7,
+        decay: 0.94,
+        startVelocity: 50,
+        colors: ['#26ccff', '#a29afd', '#ff5b5b', '#fd9644'],
+        shapes: ['star', 'circle'],
+        scalar: 1.2
+      });
     }
   };
 
@@ -238,66 +297,22 @@ const Progress = () => {
 
   const totals = calculateTotals();
 
+  // Date formatting options
+  const dateFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   if (loading) return <p>Loading goals...</p>;
   if (error) return <p>Error: {error}</p>;
-
   return (
     <div id="progress-container" className="progress-container">
       <Navbar isLoggedIn={true} />
       <div className="progress-navbar-spacer"></div>
+
       <div className="main-content-wrapper">
-        {/* Goals Section */}
-        <div className="goals-section">
-          <h3>Current Goals</h3>
-          <div className="add-goal">
-            <input
-              type="text"
-              placeholder="Add a goal"
-              value={newGoal}
-              onChange={(e) => setNewGoal(e.target.value)}
-            />
-            <button onClick={handleAddGoal}>Add Goal +</button>
-          </div>
-          <ul className="goals-list">
-            {currentGoals.map((goal, index) => (
-              <li key={index} className="goal-item">
-                <span className="goal-text">{goal}</span>
-                <div className="goal-actions">
-                  <button onClick={() => handleCompleteGoal(index)}>✔️</button>
-                  <button onClick={() => handleRemoveGoal(index)}>🗑️</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <h3>Achieved Goals</h3>
-          <ul className="goals-list">
-            {achievedGoals.map((goal, index) => (
-              <li key={index} className="goal-item achieved">
-                <span className="goal-text">{goal}</span>
-                <div className="goal-actions">
-                  <button onClick={() => handleRemoveGoal(index, true)}>
-                    🗑️
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          {/* Confirmation Modal */}
-          {showConfirmation.show && (
-            <div className="confirmation-modal">
-              <div className="modal-content">
-                <p>Are you sure you want to remove this goal?</p>
-                <div className="modal-buttons">
-                  <button onClick={confirmRemoveGoal}>Yes</button>
-                  <button onClick={cancelRemoveGoal}>No</button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
         {/* Food Section */}
         <div className="food-section">
           {/* Food Calorie Search */}
@@ -391,6 +406,76 @@ const Progress = () => {
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* Workout Section */}
+        <div className="workout-section">
+          <h3 className="date-display">
+            Today is: {currentDate.toLocaleDateString(undefined, dateFormatOptions)}
+          </h3>
+          <div className="add-workout">
+            <button onClick={handleLogWorkout} ref={workoutButtonRef}>Log Workout +</button>
+          </div>
+          <div className="workout-streak">
+            {workoutStreak === 0 ? (
+              <p className="message-workout">Time to get started!</p>
+            ) : (
+              <p className="message-workout">Number of days you have consistently worked out for:</p>
+            )}
+            <p className="workout-streak-number">{workoutStreak}</p>
+          </div>
+        </div>
+
+        {/* Goals Section */}
+        <div className="goals-section">
+          <h3>Current Goals</h3>
+          <div className="add-goal">
+            <input
+              type="text"
+              placeholder="Add a goal"
+              value={newGoal}
+              onChange={(e) => setNewGoal(e.target.value)}
+            />
+            <button onClick={handleAddGoal}>Add Goal +</button>
+          </div>
+          <ul className="goals-list">
+            {currentGoals.map((goal, index) => (
+              <li key={index} className="goal-item">
+                <span className="goal-text">{goal}</span>
+                <div className="goal-actions">
+                  <button onClick={() => handleCompleteGoal(index)}>✔️</button>
+                  <button onClick={() => handleRemoveGoal(index)}>🗑️</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <h3>Achieved Goals</h3>
+          <ul className="goals-list">
+            {achievedGoals.map((goal, index) => (
+              <li key={index} className="goal-item achieved">
+                <span className="goal-text">{goal}</span>
+                <div className="goal-actions">
+                  <button onClick={() => handleRemoveGoal(index, true)}>
+                    🗑️
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* Confirmation Modal */}
+          {showConfirmation.show && (
+            <div className="confirmation-modal">
+              <div className="modal-content">
+                <p>Are you sure you want to remove this goal?</p>
+                <div className="modal-buttons">
+                  <button onClick={confirmRemoveGoal}>Yes</button>
+                  <button onClick={cancelRemoveGoal}>No</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
