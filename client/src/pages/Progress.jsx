@@ -18,6 +18,8 @@ const Progress = () => {
   // Workout states
   const [workoutStreak, setWorkoutStreak] = useState(0);
   const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Track the last workout date
+  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false); // Track if workout is logged today
+  const [logError, setLogError] = useState(""); // State for error message
 
   // Food search states
   const [foodQuery, setFoodQuery] = useState("");
@@ -40,6 +42,7 @@ const Progress = () => {
 
   useEffect(() => {
     fetchGoals();
+    checkIfWorkoutLoggedToday();
 
     // Update current date every minute
     const intervalId = setInterval(() => {
@@ -50,7 +53,7 @@ const Progress = () => {
   }, []);
 
   useEffect(() => {
-    // Check if a day has been missed
+    // Check if a day has been missed and reset the streak
     if (lastWorkoutDate) {
       const today = new Date();
       const lastWorkout = new Date(lastWorkoutDate);
@@ -58,11 +61,28 @@ const Progress = () => {
       const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
 
       if (dayDiff > 1) {
-        // If more than one day has passed since the last workout, reset the streak
-        setWorkoutStreak(0);
+        setWorkoutStreak(0); // Reset streak if more than 1 day is missed
       }
     }
   }, [lastWorkoutDate]);
+
+  // Function to check if workout has been logged today
+  const checkIfWorkoutLoggedToday = () => {
+    const storedDate = localStorage.getItem("lastWorkoutDate");
+    if (storedDate) {
+      const storedDateObj = new Date(storedDate);
+      const today = new Date();
+      if (
+        storedDateObj.getDate() === today.getDate() &&
+        storedDateObj.getMonth() === today.getMonth() &&
+        storedDateObj.getFullYear() === today.getFullYear()
+      ) {
+        setWorkoutLoggedToday(true);
+      } else {
+        setWorkoutLoggedToday(false);
+      }
+    }
+  };
 
   const fetchGoals = async () => {
     setLoading(true);
@@ -144,27 +164,34 @@ const Progress = () => {
 
   // Function to handle logging a workout
   const handleLogWorkout = () => {
-    const today = new Date();
-    setWorkoutStreak(workoutStreak + 1);
-    setLastWorkoutDate(today.toISOString()); // Store the date as an ISO string
+    if (!workoutLoggedToday) {
+      const today = new Date();
+      setWorkoutStreak(workoutStreak + 1);
+      setLastWorkoutDate(today.toISOString()); // Store the date as an ISO string
+      localStorage.setItem("lastWorkoutDate", today.toISOString()); //Store the date in local storage
+      setWorkoutLoggedToday(true); // Disable the button after logging
+      setLogError("");
 
-    // Trigger confetti
-    if (workoutButtonRef.current) {
-      const buttonRect = workoutButtonRef.current.getBoundingClientRect();
-      const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+      // Trigger confetti
+      if (workoutButtonRef.current) {
+        const buttonRect = workoutButtonRef.current.getBoundingClientRect();
+        const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+        const buttonCenterY = buttonRect.top + buttonRect.height / 2;
 
-      confetti({
-        origin: { x: buttonCenterX / window.innerWidth, y: buttonCenterY / window.innerHeight },
-        spread: 150,
-        ticks: 60,
-        gravity: 0.7,
-        decay: 0.94,
-        startVelocity: 50,
-        colors: ['#26ccff', '#a29afd', '#ff5b5b', '#fd9644'],
-        shapes: ['star', 'circle'],
-        scalar: 1.2
-      });
+        confetti({
+          origin: { x: buttonCenterX / window.innerWidth, y: buttonCenterY / window.innerHeight },
+          spread: 150,
+          ticks: 60,
+          gravity: 0.7,
+          decay: 0.94,
+          startVelocity: 50,
+          colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
+          shapes: ["star", "circle"],
+          scalar: 1.2,
+        });
+      }
+    } else {
+      setLogError("You have already logged your workout for today!");
     }
   };
 
@@ -332,7 +359,9 @@ const Progress = () => {
               onChange={handleChange}
             />
             {quantityError && (
-              <p className="quantity-error" style={{ color: "red" }}>{quantityError}</p>
+              <p className="quantity-error" style={{ color: "red" }}>
+                {quantityError}
+              </p>
             )}
             <button onClick={fetchFoodData} disabled={!!quantityError}>
               Search
@@ -411,16 +440,29 @@ const Progress = () => {
         {/* Workout Section */}
         <div className="workout-section">
           <h3 className="date-display">
-            Today is: {currentDate.toLocaleDateString(undefined, dateFormatOptions)}
+            Today is: {currentDate.toLocaleDateString(
+              undefined,
+              dateFormatOptions
+            )}
           </h3>
           <div className="add-workout">
-            <button onClick={handleLogWorkout} ref={workoutButtonRef}>Log Workout +</button>
+            <button
+              onClick={handleLogWorkout}
+              ref={workoutButtonRef}
+              disabled={workoutLoggedToday}
+              className={workoutLoggedToday ? "disabled-button" : ""}
+            >
+              Log Workout +
+            </button>
+            {workoutLoggedToday && <p className="error">You have already logged your workout for today!</p>}
           </div>
           <div className="workout-streak">
             {workoutStreak === 0 ? (
               <p className="message-workout">Time to get started!</p>
             ) : (
-              <p className="message-workout">Number of days you have consistently worked out for:</p>
+              <p className="message-workout">
+                Number of days you have consistently worked out for:
+              </p>
             )}
             <p className="workout-streak-number">{workoutStreak}</p>
           </div>
