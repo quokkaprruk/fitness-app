@@ -17,6 +17,7 @@ import Progress from "./pages/Progress";
 import ManageMembership from "./pages/ManageMembership";
 import Payment from "./pages/Payment";
 import PaymentResult from "./pages/PaymentResult";
+import Upcoming from "./pages/Upcoming";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/success" element={<PaymentResult />} />
         <Route path="/cancel" element={<PaymentResult />} />
         <Route path="/manage-membership" element={<ManageMembership />} />
+        <Route path="/upcoming" element={<Upcoming />} />
       </Routes>
     </Router>
   );
