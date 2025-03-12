@@ -167,17 +167,17 @@ const Progress = () => {
     if (!workoutLoggedToday) {
       const today = new Date();
       setWorkoutStreak(workoutStreak + 1);
-      setLastWorkoutDate(today.toISOString()); // Store the date as an ISO string
-      localStorage.setItem("lastWorkoutDate", today.toISOString()); //Store the date in local storage
-      setWorkoutLoggedToday(true); // Disable the button after logging
+      setLastWorkoutDate(today.toISOString());
+      localStorage.setItem("lastWorkoutDate", today.toISOString());
+      setWorkoutLoggedToday(true);
       setLogError("");
-
+  
       // Trigger confetti
       if (workoutButtonRef.current) {
         const buttonRect = workoutButtonRef.current.getBoundingClientRect();
         const buttonCenterX = buttonRect.left + buttonRect.width / 2;
         const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-
+  
         confetti({
           origin: { x: buttonCenterX / window.innerWidth, y: buttonCenterY / window.innerHeight },
           spread: 150,
@@ -192,6 +192,11 @@ const Progress = () => {
       }
     } else {
       setLogError("You have already logged your workout for today!");
+  
+      // Set a timeout to clear the error message after 3 seconds
+      setTimeout(() => {
+        setLogError("");
+      }, 3000);
     }
   };
 

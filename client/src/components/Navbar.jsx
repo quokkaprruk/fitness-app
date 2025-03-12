@@ -28,7 +28,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <a href="/community">Community</a>
             <a href="/classes">Classes</a>
             <a href="/contact">Contact</a>
-            <a href="/reservations">Reservations</a>
+            <a href="/reservations">Upcoming</a>
             <div className="auth-buttons">
               <Link to="/login" className="btn login-btn">
                 Login
@@ -46,7 +46,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <a href="/community">Community</a>
             <a href="/contact">Contact</a>
             <a href="/progress">Progress</a>
-            <a href="/reservations">Reservations</a>
+            <a href="/reservations">Upcoming</a>
             <div className="profile-dropdown">
               <FaUser
                 className="icon"
