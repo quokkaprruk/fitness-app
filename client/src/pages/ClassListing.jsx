@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/ClassList.css";
 import fitnessClasses from "../data/fitnessClasses.json";
 
@@ -41,14 +41,14 @@ const ClassList = () => {
 
       // Find the reserved class
       const reservedClass = classes.find(
-        (classItem) => classItem.classId === classId
+        (classItem) => classItem.classId === classId,
       );
 
       // Update reserved classes and store them
       if (reservedClass) {
         localStorage.setItem(
           "reservedClasses",
-          JSON.stringify([...reservedClasses, reservedClass])
+          JSON.stringify([...reservedClasses, reservedClass]),
         );
       }
 
@@ -114,8 +114,6 @@ const ClassList = () => {
 
   return (
     <div className="class-list">
-      <Navbar isLoggedIn={false} />
-      <div className="classlist-navbar-spacer"></div>
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
