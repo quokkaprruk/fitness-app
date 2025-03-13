@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
           <div className="profile-dropdown">
-            <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+            <FaUser className="icon" title="Profile" onClick={toggleLoginDropdown} />
             {showDropdown && (
               <div className="dropdown-menu">
                 <Link to="/profile" className="dropdown-item">
