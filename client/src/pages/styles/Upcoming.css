@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.booked-class-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cancel-booking-button {
+  margin-top: 20px;
+}
+
+.cancel-booking-button:hover {
+  background-color: #32cd32;
+  transform: scale(1.05);
+}
+
+/* Style for the "No Classes Available" message */
+.no-classes-message {
+  text-align: center;
+  color: #ff6347;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+}
+
+.upcoming-navbar-spacer{
+    height:100px;
+}

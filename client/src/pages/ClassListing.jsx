@@ -35,6 +35,24 @@ const ClassList = () => {
 
     setTimeout(() => {
       alert(`Reservation successful for class ID: ${classId}`);
+
+      // Get reserved classes from localStorage
+      const reservedClasses =
+        JSON.parse(localStorage.getItem("reservedClasses")) || [];
+
+      // Find the reserved class
+      const reservedClass = classes.find(
+        (classItem) => classItem.classId === classId
+      );
+
+      // Update reserved classes and store them
+      if (reservedClass) {
+        localStorage.setItem(
+          "reservedClasses",
+          JSON.stringify([...reservedClasses, reservedClass])
+        );
+      }
+
       setReserving(false);
     }, 1000);
   };
@@ -98,7 +116,7 @@ const ClassList = () => {
   return (
     <div className="class-list">
       <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
+      <div className="classlist-navbar-spacer"></div>
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
@@ -141,7 +159,9 @@ const ClassList = () => {
       <ul>
         {filteredClasses.map((classItem) => (
           <li key={classItem.classId} className="class-item">
-            <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
+            <h3>
+              {classItem.classType} - {classItem.difficultyLevel}
+            </h3>
             <p>Type: {classItem.classType}</p>
             <p>
               Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
