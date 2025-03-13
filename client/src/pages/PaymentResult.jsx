@@ -1,7 +1,4 @@
-// import React from "react";
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar.jsx";
 import "./styles/PaymentResult.css";
 
 const PaymentResult = () => {
@@ -14,7 +11,6 @@ const PaymentResult = () => {
 
   return (
     <div>
-      <Navbar isLoggedIn={true} />
       {isSuccess ? (
         <div className="payment-container">
           <div className="wrapper">

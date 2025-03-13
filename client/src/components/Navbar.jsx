@@ -1,74 +1,147 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
-import { FaCog, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import { AuthContext } from "../context/authContextValue";
 
-const Navbar = ({ isLoggedIn, handleLogout }) => {
+const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useContext(AuthContext);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const logoutHandler = () => {
-    handleLogout();
+  const handleLogout = () => {
+    logout();
     navigate("/");
   };
 
+  // Non authenticated users
+  if (!isAuthenticated) {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome!</div>
+        <div className="navbar-links">
+          <Link to="/">Home</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/classes">Classes</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/reservations">Upcoming</Link>
+          <div className="auth-buttons">
+            <Link to="/login" className="btn login-btn">
+              Login
+            </Link>
+            <Link to="/signup" className="btn signup-btn">
+              Sign Up
+            </Link>
+          </div>
+        </div>
+
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // Admin users
+  if (user && user.role === "admin") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
+        <div className="navbar-links">
+          <Link to="/admin">Home</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/client-management">Client Management</Link>
+          <Link to="/community">Community</Link>
+          <div className="profile-dropdown">
+            <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <Link to="/manage-membership" className="dropdown-item">
+                  Manage Membership
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // Trainers
+  if (user && user.role === "trainer") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user?.username}</div>
+        <div className="navbar-links">
+          <Link to="/trainer">Home</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/client-management">Client Management</Link>
+          <Link to="/community">Community</Link>
+          <div className="profile-dropdown">
+            <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <Link to="/manage-membership" className="dropdown-item">
+                  Manage Membership
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // For authenticated users
   return (
     <nav className="navbar">
-      <div className="navbar-welcome">Welcome!</div>
+      <div className="navbar-welcome">Welcome, {user.username}!</div>
       <div className="navbar-links">
-        {/* For Non-Logged-in Users */}
-        {!isLoggedIn ? (
-          <>
-            <a href="/">Home</a>
-            <a href="/community">Community</a>
-            <a href="/classes">Classes</a>
-            <a href="/contact">Contact</a>
-            <a href="/reservations">Upcoming</a>
-            <div className="auth-buttons">
-              <Link to="/login" className="btn login-btn">
-                Login
+        <Link to="/member">Home</Link>
+        <Link to="/classes">Classes</Link>
+        <Link to="/community">Community</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/progress">Progress</Link>
+        <Link to="/reservations">Reservations</Link>
+        <div className="profile-dropdown">
+          <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <Link to="/profile" className="dropdown-item">
+                Profile
               </Link>
-              <Link to="/signup" className="btn signup-btn">
-                Sign Up
+              <Link to="/manage-membership" className="dropdown-item">
+                Manage Membership
               </Link>
+              <div className="dropdown-item" onClick={handleLogout}>
+                <FaSignOutAlt className="icon" /> Logout
+              </div>
             </div>
-          </>
-        ) : (
-          // For Logged-in Users
-          <>
-            <a href="/member">Home</a>
-            <a href="/classes">Classes</a>
-            <a href="/community">Community</a>
-            <a href="/contact">Contact</a>
-            <a href="/progress">Progress</a>
-            <a href="/reservations">Upcoming</a>
-            <div className="profile-dropdown">
-              <FaUser
-                className="icon"
-                title="Profile"
-                onClick={toggleDropdown}
-              />
-              {showDropdown && (
-                <div className="dropdown-menu">
-                  <Link to="/profile" className="dropdown-item">
-                    Profile
-                  </Link>
-                  <Link to="/manage-membership" className="dropdown-item">
-                    Manage Membership
-                  </Link>
-                  <div className="dropdown-item" onClick={logoutHandler}>
-                    <FaSignOutAlt className="icon" /> Logout
-                  </div>
-                </div>
-              )}
-            </div>
-          </>
-        )}
+          )}
+        </div>
       </div>
       <div className="navbar-logo">
         <img src={logo} alt="Logo" />

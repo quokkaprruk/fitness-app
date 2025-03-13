@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/ClassList.css";
 import fitnessClasses from "../data/fitnessClasses.json";
-import Navbar from "../components/Navbar.jsx";
 
 const ClassList = () => {
   const [classes, setClasses] = useState([]);
@@ -55,7 +54,7 @@ const ClassList = () => {
 
     if (filters.classType) {
       filtered = filtered.filter(
-        (classItem) => classItem.classType === filters.classType
+        (classItem) => classItem.classType === filters.classType,
       );
     }
 
@@ -63,24 +62,24 @@ const ClassList = () => {
       const hours = new Date().getHours();
       if (filters.timeOfDay === "Morning") {
         filtered = filtered.filter(
-          (classItem) => new Date(classItem.startDateTime).getHours() < 12
+          (classItem) => new Date(classItem.startDateTime).getHours() < 12,
         );
       } else if (filters.timeOfDay === "Afternoon") {
         filtered = filtered.filter(
           (classItem) =>
             new Date(classItem.startDateTime).getHours() >= 12 &&
-            new Date(classItem.startDateTime).getHours() < 18
+            new Date(classItem.startDateTime).getHours() < 18,
         );
       } else if (filters.timeOfDay === "Evening") {
         filtered = filtered.filter(
-          (classItem) => new Date(classItem.startDateTime).getHours() >= 18
+          (classItem) => new Date(classItem.startDateTime).getHours() >= 18,
         );
       }
     }
 
     if (filters.difficultyLevel) {
       filtered = filtered.filter(
-        (classItem) => classItem.difficultyLevel === filters.difficultyLevel
+        (classItem) => classItem.difficultyLevel === filters.difficultyLevel,
       );
     }
 
@@ -97,8 +96,6 @@ const ClassList = () => {
 
   return (
     <div className="class-list">
-      <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
@@ -141,7 +138,9 @@ const ClassList = () => {
       <ul>
         {filteredClasses.map((classItem) => (
           <li key={classItem.classId} className="class-item">
-            <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
+            <h3>
+              {classItem.classType} - {classItem.difficultyLevel}
+            </h3>
             <p>Type: {classItem.classType}</p>
             <p>
               Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}

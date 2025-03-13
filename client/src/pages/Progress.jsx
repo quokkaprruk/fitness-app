@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./styles/Progress.css";
-import Navbar from "../components/Navbar.jsx";
 import confetti from "canvas-confetti"; // Import the confetti function
 
 const Progress = () => {
@@ -171,15 +170,18 @@ const Progress = () => {
       localStorage.setItem("lastWorkoutDate", today.toISOString());
       setWorkoutLoggedToday(true);
       setLogError("");
-  
+
       // Trigger confetti
       if (workoutButtonRef.current) {
         const buttonRect = workoutButtonRef.current.getBoundingClientRect();
         const buttonCenterX = buttonRect.left + buttonRect.width / 2;
         const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-  
+
         confetti({
-          origin: { x: buttonCenterX / window.innerWidth, y: buttonCenterY / window.innerHeight },
+          origin: {
+            x: buttonCenterX / window.innerWidth,
+            y: buttonCenterY / window.innerHeight,
+          },
           spread: 150,
           ticks: 60,
           gravity: 0.7,
@@ -192,7 +194,7 @@ const Progress = () => {
       }
     } else {
       setLogError("You have already logged your workout for today!");
-  
+
       // Set a timeout to clear the error message after 3 seconds
       setTimeout(() => {
         setLogError("");
@@ -210,7 +212,7 @@ const Progress = () => {
 
     try {
       const response = await fetch(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`,
       );
       const data = await response.json();
       console.log(data);
@@ -218,7 +220,7 @@ const Progress = () => {
       if (data.foods && data.foods.length > 0) {
         // Remove duplicates based on food name
         const uniqueFoods = Array.from(
-          new Map(data.foods.map((food) => [food.description, food])).values()
+          new Map(data.foods.map((food) => [food.description, food])).values(),
         );
         setFoodResults(uniqueFoods.slice(0, 5)); // Store top 5 unique results
       } else {
@@ -259,7 +261,7 @@ const Progress = () => {
       selectedFood.foodNutrients.length > 0
     ) {
       const nutrient = selectedFood.foodNutrients.find(
-        (n) => n.nutrientName === nutrientName
+        (n) => n.nutrientName === nutrientName,
       );
       return nutrient ? (nutrient.value * (quantity / 100)).toFixed(2) : 0;
     }
@@ -274,7 +276,7 @@ const Progress = () => {
         calories: parseFloat(getNutrientValue("Energy")),
         protein: parseFloat(getNutrientValue("Protein")),
         carbohydrates: parseFloat(
-          getNutrientValue("Carbohydrate, by difference")
+          getNutrientValue("Carbohydrate, by difference"),
         ),
         cholesterol: parseFloat(getNutrientValue("Cholesterol")),
         sugars: parseFloat(getNutrientValue("Total Sugars")),
@@ -341,9 +343,6 @@ const Progress = () => {
   if (error) return <p>Error: {error}</p>;
   return (
     <div id="progress-container" className="progress-container">
-      <Navbar isLoggedIn={true} />
-      <div className="progress-navbar-spacer"></div>
-
       <div className="main-content-wrapper">
         {/* Food Section */}
         <div className="food-section">
@@ -445,10 +444,8 @@ const Progress = () => {
         {/* Workout Section */}
         <div className="workout-section">
           <h3 className="date-display">
-            Today is: {currentDate.toLocaleDateString(
-              undefined,
-              dateFormatOptions
-            )}
+            Today is:{" "}
+            {currentDate.toLocaleDateString(undefined, dateFormatOptions)}
           </h3>
           <div className="add-workout">
             <button
@@ -459,7 +456,11 @@ const Progress = () => {
             >
               Log Workout +
             </button>
-            {workoutLoggedToday && <p className="error">You have already logged your workout for today!</p>}
+            {workoutLoggedToday && (
+              <p className="error">
+                You have already logged your workout for today!
+              </p>
+            )}
           </div>
           <div className="workout-streak">
             {workoutStreak === 0 ? (

@@ -1,8 +1,6 @@
 import "./styles/AdminHome.css";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaCog, FaUser, FaPlus, FaMinus } from "react-icons/fa";
-import logo from "../logo.png";
+import { useState } from "react";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 const AdminHome = () => {
   const [fitnessClasses, setFitnessClasses] = useState([
@@ -121,8 +119,8 @@ const AdminHome = () => {
   const handleSaveEdit = () => {
     setFitnessClasses(
       fitnessClasses.map((c) =>
-        c.classId === editingClass.classId ? editingClass : c
-      )
+        c.classId === editingClass.classId ? editingClass : c,
+      ),
     );
     setEditingClass(null);
   };
@@ -163,22 +161,6 @@ const AdminHome = () => {
 
   return (
     <div className="app-container">
-      <nav className="navbar">
-        <div className="navbar-welcome">Welcome!</div>
-        <div className="navbar-links">
-          <a href="/contact">Contact</a>
-          <a href="/client-management">Client Management</a>
-          <a href="/community">Community</a>
-          <FaUser className="icon" title="Profile" />
-          <Link to="/admin/create-trainer" className="btn admin-btn">
-            Create Trainer
-          </Link>
-        </div>
-        <div className="navbar-logo">
-          <img src={logo} alt="Logo" />
-        </div>
-      </nav>
-
       <div className="manage-gen">
         <h1>Manage Schedules:</h1>
         <button className="generate-btn">Generate Schedule</button>

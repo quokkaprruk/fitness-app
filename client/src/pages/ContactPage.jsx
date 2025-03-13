@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles/ContactPage.css";
-import Navbar from "../components/Navbar.jsx";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const ContactPage = () => {
@@ -50,8 +49,6 @@ const ContactPage = () => {
 
   return (
     <div className="contact-container">
-      <Navbar isLoggedIn={false} />
-      <div className="contact-navbar-spacer"></div>
       <div className="contact-box">
         <h2>Get in Touch</h2>
         <form onSubmit={onSubmit}>
