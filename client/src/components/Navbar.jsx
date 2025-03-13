@@ -9,11 +9,10 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useContext(AuthContext);
-  
-  const toggleLoginDropdown = () => {
-    setShowLoginDropdown(!showLoginDropdown);
-  };
 
+  const toggleLoginDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   const handleLogout = () => {
     logout();
@@ -51,7 +50,7 @@ const Navbar = () => {
   // Admin users
   if (user && user.role === "admin") {
     return (
-     <nav className="navbar">
+      <nav className="navbar">
         <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
@@ -61,7 +60,11 @@ const Navbar = () => {
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
           <div className="profile-dropdown">
-            <FaUser className="icon" title="Profile" onClick={toggleLoginDropdown} />
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
             {showDropdown && (
               <div className="dropdown-menu">
                 <Link to="/profile" className="dropdown-item">
@@ -95,7 +98,11 @@ const Navbar = () => {
           <Link to="/client-management">Client Management</Link>
           <Link to="/community">Community</Link>
           <div className="profile-dropdown">
-            <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
             {showDropdown && (
               <div className="dropdown-menu">
                 <Link to="/profile" className="dropdown-item">
@@ -130,7 +137,11 @@ const Navbar = () => {
         <Link to="/progress">Progress</Link>
         <Link to="/reservations">Reservations</Link>
         <div className="profile-dropdown">
-          <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
+          <FaUser
+            className="icon"
+            title="Profile"
+            onClick={toggleLoginDropdown}
+          />
           {showDropdown && (
             <div className="dropdown-menu">
               <Link to="/profile" className="dropdown-item">
