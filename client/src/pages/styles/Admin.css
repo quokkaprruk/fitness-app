@@ -1,0 +1,53 @@
+/* Import Font */
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+/* General Body Styles */
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.admin-page {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.admin-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-page input,
+.admin-page textarea {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.admin-page button {
+  padding: 10px;
+  background: turquoise;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.admin-page button:hover {
+  background: green;
+}

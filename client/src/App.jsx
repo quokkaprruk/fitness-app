@@ -3,6 +3,8 @@ import NewUser from "./pages/NewUser";
 import MemberHome from "./pages/MemberHome";
 import TrainerHome from "./pages/TrainerHome";
 import AdminHome from "./pages/AdminHome";
+import CreateTrainer from "./pages/CreateTrainer";
+import PostAnnouncement from "./pages/PostAnnouncement";
 import Login from "./pages/Login";
 import ResetPasswordPage from "./pages/ResetPassword";
 import ClassList from "./pages/ClassListing";
@@ -51,6 +53,22 @@ const App = () => {
               element={
                 <ProtectedRoute requiredRole="admin">
                   <AdminHome />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/create-trainer"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <CreateTrainer />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/post-announcement"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <PostAnnouncement />
                 </ProtectedRoute>
               }
             />

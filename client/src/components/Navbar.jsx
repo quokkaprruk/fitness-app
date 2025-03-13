@@ -9,10 +9,11 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useContext(AuthContext);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+  
+  const toggleLoginDropdown = () => {
+    setShowLoginDropdown(!showLoginDropdown);
   };
+
 
   const handleLogout = () => {
     logout();
@@ -50,13 +51,15 @@ const Navbar = () => {
   // Admin users
   if (user && user.role === "admin") {
     return (
-      <nav className="navbar">
+     <nav className="navbar">
         <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
-          <Link to="/admin">Home</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/admin">Dashboard</Link>
           <Link to="/client-management">Client Management</Link>
+          <Link to="/create-trainer">Create Trainer Profile</Link>
+          <Link to="/post-announcement">Post an Announcement</Link>
           <Link to="/community">Community</Link>
+          <Link to="/contact">Contact</Link>
           <div className="profile-dropdown">
             <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
             {showDropdown && (
