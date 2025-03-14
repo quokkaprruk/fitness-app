@@ -29,7 +29,7 @@ const Navbar = () => {
           <Link to="/community">Community</Link>
           <Link to="/classes">Classes</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/reservations">Upcoming</Link>
+          <Link to="/upcoming">Upcoming</Link>
           <div className="auth-buttons">
             <Link to="/login" className="btn login-btn">
               Login
@@ -135,7 +135,7 @@ const Navbar = () => {
         <Link to="/community">Community</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/progress">Progress</Link>
-        <Link to="/reservations">Reservations</Link>
+        <Link to="/upcoming">Upcoming</Link>
         <div className="profile-dropdown">
           <FaUser
             className="icon"
