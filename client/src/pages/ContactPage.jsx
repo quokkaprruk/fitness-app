@@ -49,6 +49,7 @@ const ContactPage = () => {
 
   return (
     <div className="contact-container">
+      <div className="contact-navbar-spacer"></div>
       <div className="contact-box">
         <h2>Get in Touch</h2>
         <form onSubmit={onSubmit}>
