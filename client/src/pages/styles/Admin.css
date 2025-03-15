@@ -9,31 +9,33 @@ body {
   background-color: #f4f4f4;
   color: #333;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Centers vertically */
 }
 
 /* Centered Page Container */
 .admin-page {
-  width: 80%; /* Increased width */
-  max-width: 750px; /* Ensures it doesn't get too wide */
-  margin: 100px auto; /* Centers the form and pushes it below navbar */
-  padding: 30px;
+  width: 600px; /* Perfect balance - not too wide or narrow */
+  padding: 25px 30px;
   background: #fff;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 /* Hover Effect */
 .admin-page:hover {
-  transform: scale(1.01);
+  transform: scale(1.02);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Title Styling */
 .admin-page h2 {
   text-align: center;
-  margin-bottom: 25px;
-  font-size: 26px;
+  margin-bottom: 15px;
+  font-size: 24px;
   font-weight: 700;
   color: #007bff;
 }
@@ -42,18 +44,19 @@ body {
 .admin-page form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 /* Input & Textarea Fields */
 .admin-page input,
 .admin-page textarea {
-  padding: 14px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 16px;
   width: 100%;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #f9f9f9;
 }
 
 /* Input Hover & Focus */
@@ -66,13 +69,13 @@ body {
 
 /* Button Styling */
 .admin-page button {
-  padding: 14px;
+  padding: 12px;
   background: turquoise;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
-  font-size: 18px;
+  border-radius: 6px;
+  font-size: 17px;
   font-weight: bold;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   width: 100%;
@@ -83,3 +86,4 @@ body {
   background: green;
   transform: translateY(-2px);
 }
+
