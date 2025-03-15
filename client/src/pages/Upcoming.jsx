@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import "./styles/Upcoming.css";
 
-const ReservedClasses = () => {
+const Upcoming = () => {
   const [reservedClasses, setReservedClasses] = useState([]);
 
   useEffect(() => {
@@ -70,4 +70,4 @@ const ReservedClasses = () => {
   );
 };
 
-export default ReservedClasses;
+export default Upcoming;
