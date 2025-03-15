@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+﻿import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
@@ -9,18 +9,17 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useContext(AuthContext);
-  
-  const toggleLoginDropdown = () => {
-    setShowLoginDropdown(!showLoginDropdown);
-  };
 
+  const toggleDropdown = () => {
+    setShowDropdown((prev) => !prev);
+  };
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
 
-  // Non authenticated users
+  // 🟢 Non-authenticated users
   if (!isAuthenticated) {
     return (
       <nav className="navbar">
@@ -32,15 +31,10 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
           <Link to="/reservations">Upcoming</Link>
           <div className="auth-buttons">
-            <Link to="/login" className="btn login-btn">
-              Login
-            </Link>
-            <Link to="/signup" className="btn signup-btn">
-              Sign Up
-            </Link>
+            <Link to="/login" className="btn login-btn">Login</Link>
+            <Link to="/signup" className="btn signup-btn">Sign Up</Link>
           </div>
         </div>
-
         <div className="navbar-logo">
           <img src={logo} alt="Logo" />
         </div>
@@ -48,28 +42,24 @@ const Navbar = () => {
     );
   }
 
-  // Admin users
-  if (user && user.role === "admin") {
+  // 🟢 Admin Users
+  if (user?.role === "admin") {
     return (
-     <nav className="navbar">
+      <nav className="navbar">
         <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
           <Link to="/client-management">Client Management</Link>
-          <Link to="/create-trainer">Create Trainer Profile</Link>
-          <Link to="/post-announcement">Post an Announcement</Link>
+          <Link to="/create-trainer">Create Profile</Link>
+          <Link to="/post-announcement">Post Announcement</Link>
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
           <div className="profile-dropdown">
             <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
             {showDropdown && (
               <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
-                  Profile
-                </Link>
-                <Link to="/manage-membership" className="dropdown-item">
-                  Manage Membership
-                </Link>
+                <Link to="/profile" className="dropdown-item">Profile</Link>
+                <Link to="/manage-membership" className="dropdown-item">Manage Membership</Link>
                 <div className="dropdown-item" onClick={handleLogout}>
                   <FaSignOutAlt className="icon" /> Logout
                 </div>
@@ -84,11 +74,11 @@ const Navbar = () => {
     );
   }
 
-  // Trainers
-  if (user && user.role === "trainer") {
+  // 🟢 Trainer Users
+  if (user?.role === "trainer") {
     return (
       <nav className="navbar">
-        <div className="navbar-welcome">Welcome, {user?.username}</div>
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
           <Link to="/trainer">Home</Link>
           <Link to="/contact">Contact</Link>
@@ -98,12 +88,8 @@ const Navbar = () => {
             <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
             {showDropdown && (
               <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
-                  Profile
-                </Link>
-                <Link to="/manage-membership" className="dropdown-item">
-                  Manage Membership
-                </Link>
+                <Link to="/profile" className="dropdown-item">Profile</Link>
+                <Link to="/manage-membership" className="dropdown-item">Manage Membership</Link>
                 <div className="dropdown-item" onClick={handleLogout}>
                   <FaSignOutAlt className="icon" /> Logout
                 </div>
@@ -118,7 +104,7 @@ const Navbar = () => {
     );
   }
 
-  // For authenticated users
+  // 🟢 Authenticated General Users
   return (
     <nav className="navbar">
       <div className="navbar-welcome">Welcome, {user.username}!</div>
@@ -133,12 +119,8 @@ const Navbar = () => {
           <FaUser className="icon" title="Profile" onClick={toggleDropdown} />
           {showDropdown && (
             <div className="dropdown-menu">
-              <Link to="/profile" className="dropdown-item">
-                Profile
-              </Link>
-              <Link to="/manage-membership" className="dropdown-item">
-                Manage Membership
-              </Link>
+              <Link to="/profile" className="dropdown-item">Profile</Link>
+              <Link to="/manage-membership" className="dropdown-item">Manage Membership</Link>
               <div className="dropdown-item" onClick={handleLogout}>
                 <FaSignOutAlt className="icon" /> Logout
               </div>
