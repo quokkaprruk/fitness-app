@@ -11,43 +11,73 @@ body {
   box-sizing: border-box;
 }
 
+/* Admin Page Container */
 .admin-page {
   max-width: 600px;
-  margin: auto;
-  padding: 20px;
+  margin: 80px auto 20px; /* Increased margin-top for better spacing */
+  padding: 25px;
   background: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+/* Hover Effect */
+.admin-page:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
 .admin-page h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #007bff;
 }
 
+/* Form Styling */
 .admin-page form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
+/* Input Fields */
 .admin-page input,
 .admin-page textarea {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Input Hover & Focus */
+.admin-page input:focus,
+.admin-page textarea:focus {
+  border-color: #40e0d0;
+  box-shadow: 0 0 5px rgba(64, 224, 208, 0.5);
+  outline: none;
+}
+
+/* Button Styling */
 .admin-page button {
-  padding: 10px;
+  padding: 12px;
   background: turquoise;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
+/* Button Hover Effect */
 .admin-page button:hover {
   background: green;
+  transform: translateY(-2px);
 }
+

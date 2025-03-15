@@ -58,22 +58,6 @@ const App = () => {
               }
             />
             <Route
-              path="/admin/create-trainer"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <CreateTrainer />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/post-announcement"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <PostAnnouncement />
-                </ProtectedRoute>
-              }
-            />
-            <Route
               path="/reset-password/:token"
               element={<ResetPasswordPage />}
             />
@@ -84,6 +68,8 @@ const App = () => {
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin/create-trainer" element={<CreateTrainer />} />
+            <Route path="/admin/post-announcement" element={<PostAnnouncement />} />
             <Route
               path="/profile"
               element={
