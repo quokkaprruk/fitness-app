@@ -17,11 +17,11 @@ const CreateTrainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/trainers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(trainerData),
-      });
+      const response = await fetch("http://localhost:5000/api/trainers", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(trainerData),
+   });
 
       if (!response.ok) {
         throw new Error("Failed to create trainer");
