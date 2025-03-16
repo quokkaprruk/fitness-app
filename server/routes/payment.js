@@ -1,7 +1,6 @@
 const express = require("express");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const logger = require("../middleware/logger"); // use logger
-// const AllUsers = require("../models/all_users");
 const router = express.Router();
 
 router.post("/checkout", async (req, res) => {
@@ -24,14 +23,12 @@ router.post("/checkout", async (req, res) => {
       },
     ],
     mode: "subscription", // should be subscription mode
+    // success_url: `${process.env.FRONTEND_URL}/success`,
     success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.FRONTEND_URL}/cancel`,
-    // success_url: `${process.env.FRONTEND_URL}/success`,
-    // cancel_url: `${process.env.FRONTEND_URL}/cancel`,
   });
 
-  //   res.redirect(session.url);
-  return res.status(200).json({ session }); //Return JSON to let frontend decides how to redirect
+  return res.status(200).json({ session });
   // return res.status(200).json({ url: session.url }); //Return JSON to let frontend decides how to redirect
 });
 

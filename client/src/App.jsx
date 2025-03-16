@@ -15,7 +15,7 @@ import ContactPage from "./pages/ContactPage";
 import Profile from "./pages/Profile";
 import Progress from "./pages/Progress";
 import ManageMembership from "./pages/ManageMembership";
-import Payment from "./pages/Payment";
+// import Payment from "./pages/Payment";
 import PaymentResult from "./pages/PaymentResult";
 import Unauthorized from "./pages/Unauthorized";
 import NotFound from "./pages/NotFound";
@@ -64,7 +64,7 @@ const App = () => {
             <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/payment" element={<Payment />} />
+            {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin/create-trainer" element={<CreateTrainer />} />
             <Route path="/community" element={<CommunityPage />} />
@@ -89,30 +89,24 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/payment"
               element={
                 <ProtectedRoute>
                   <Payment />
                 </ProtectedRoute>
               }
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/success"
               element={
                 <ProtectedRoute>
                   <PaymentResult />
                 </ProtectedRoute>
               }
-            />
-            <Route
-              path="/cancel"
-              element={
-                <ProtectedRoute>
-                  <PaymentResult />
-                </ProtectedRoute>
-              }
-            />
+            /> */}
+            <Route path="/success" element={<PaymentResult />} />
+            <Route path="/cancel" element={<PaymentResult />} />
             <Route
               path="/manage-membership"
               element={
