@@ -10,9 +10,6 @@ import ResetPasswordPage from "./pages/ResetPassword";
 import ClassList from "./pages/ClassListing";
 import Upcoming from "./pages/Upcoming";
 import Signup from "./pages/SignUp";
-{
-  /*import MembershipPage from "./pages/MembershipPage";*/
-}
 import PricingPage from "./pages/PricingPage";
 import RegistrationForm from "./pages/RegistrationForm";
 import ContactPage from "./pages/ContactPage";
@@ -66,7 +63,6 @@ const App = () => {
             <Route path="/classes" element={<ClassList />} />
             <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/signup" element={<Signup />} />
-            {/*<Route path="/membership" element={<MembershipPage />} />*/}
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/contact" element={<ContactPage />} />

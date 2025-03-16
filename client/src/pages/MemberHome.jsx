@@ -19,7 +19,7 @@ const MemberHome = () => {
           className="home-img"
         />
         <button
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/pricing")}
           className="become-member-button"
         >
           Become a Member
