@@ -135,7 +135,7 @@ body {
   margin-top: -35px;
 }
 
-.achieved-bin-button{
+.achieved-bin-button {
   margin-top: -60px;
 }
 
@@ -469,4 +469,12 @@ body {
   font-size: 20px;
   color: #d9534f;
   margin-top: 5px;
+}
+
+.yes-btn {
+  background-color: green !important;
+}
+
+.no-btn {
+  background-color: red !important;
 }
