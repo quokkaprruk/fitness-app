@@ -8,10 +8,10 @@ const CommunityPage = () => {
       <p className="coming-soon-text">Coming Soon: Exciting features to connect and grow together! 🚀</p>
       <div className="feature-preview">
         <ul>
-          <li>📢 Announcements from Admin</li>
-          <li>💪 Daily Fitness Challenges</li>
-          <li>🗳️ Community Polls</li>
-          <li>🍏 Health Tips of the Day</li>
+          <li> Announcements from Admin</li>
+          <li> Daily Fitness Challenges</li>
+          <li> Community Polls</li>
+          <li> Health Tips of the Day</li>
         </ul>
       </div>
     </div>
