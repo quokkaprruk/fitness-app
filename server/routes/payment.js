@@ -23,8 +23,8 @@ router.post("/checkout", async (req, res) => {
       },
     ],
     mode: "subscription", // should be subscription mode
-    success_url: `${process.env.FRONTEND_URL}/success`,
-    // success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+    // success_url: `${process.env.FRONTEND_URL}/success`,
+    success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${process.env.FRONTEND_URL}/cancel`,
   });
 

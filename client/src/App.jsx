@@ -94,22 +94,16 @@ const App = () => {
                 </ProtectedRoute>
               }
             /> */}
-            <Route
+            {/* <Route
               path="/success"
               element={
                 <ProtectedRoute>
                   <PaymentResult />
                 </ProtectedRoute>
               }
-            />
-            <Route
-              path="/cancel"
-              element={
-                <ProtectedRoute>
-                  <PaymentResult />
-                </ProtectedRoute>
-              }
-            />
+            /> */}
+            <Route path="/success" element={<PaymentResult />} />
+            <Route path="/cancel" element={<PaymentResult />} />
             <Route
               path="/manage-membership"
               element={
