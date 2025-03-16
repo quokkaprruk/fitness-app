@@ -29,19 +29,22 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    console.log("Incoming Trainer Data >>>", req.body);
+
     const newTrainer = new Trainer({
       profileId: email, // Use email as a unique identifier
       firstName,
       lastName,
       email,
-      specialty: specialization.split(","), // Convert string to array
-      experience,
+      specialty: typeof specialization === 'string' ? specialization.split(",").map(item => item.trim()) : [],
+      experience: Number(experience),
     });
 
     await newTrainer.save();
     logger.info(`Trainer ${firstName} ${lastName} created successfully.`);
     res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
   } catch (error) {
+     console.error("FULL ERROR >>>", error);
     logger.error(`Error creating trainer: ${error.message}`);
     res.status(500).json({ message: "Error creating trainer", error: error.message });
   }
