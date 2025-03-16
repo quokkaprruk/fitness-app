@@ -4,10 +4,10 @@ import "./styles/PaymentResult.css";
 const PaymentResult = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Initialize the navigate function
-  const queryParams = new URLSearchParams(location.search);
-  const sessionId = queryParams.get("session_id");
-
-  const isSuccess = sessionId ? true : false;
+  // const queryParams = new URLSearchParams(location.search);
+  // const sessionId = queryParams.get("session_id");
+  // const isSuccess = sessionId ? true : false;
+  const isSuccess = location.pathname === "/success";
 
   return (
     <div>
