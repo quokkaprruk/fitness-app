@@ -504,7 +504,7 @@ const Progress = () => {
               <li key={index} className="goal-item achieved">
                 <span className="goal-text">{goal}</span>
                 <div className="goal-actions">
-                  <button onClick={() => handleRemoveGoal(index, true)}>
+                  <button className="achieved-bin-button" onClick={() => handleRemoveGoal(index, true)}>
                     🗑️
                   </button>
                 </div>

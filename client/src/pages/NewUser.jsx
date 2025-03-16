@@ -25,7 +25,7 @@ const NewUser = () => {
 
   return (
     <div className="newUser-home">
-      <div className="navbar-spacer"></div>
+      <div className="user-navbar-spacer"></div>
       {/* Hero Section */}
       <header className="hero-section">
         {/*Main top portion */}
@@ -36,7 +36,7 @@ const NewUser = () => {
         />
       </header>
 
-      <Link to="/membership">
+      <Link to="/register">
         <button className="become-member-btn">Become a Member</button>
       </Link>
 

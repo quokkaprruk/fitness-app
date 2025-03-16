@@ -5,8 +5,11 @@ body {
   font-family: "Rokkitt", serif;
 }
 
+.login-nav-spacer{
+  height:10px;
+}
+
 .login-container {
-  margin-top: 200px;
   width: 600px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -14,6 +17,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  height:600px;
 }
 
 form {
@@ -58,4 +62,8 @@ button:hover {
 .message {
   margin-top: 10px;
   color: red;
+}
+
+.password-input{
+  height: 50px;
 }

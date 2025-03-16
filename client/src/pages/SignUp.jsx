@@ -70,6 +70,7 @@ const SignUpPage = () => {
         <div className="inputGroup">
           <label htmlFor="password">Password:</label>
           <input
+          className="pwd-input"
             type="password"
             name="password"
             value={formData.password}

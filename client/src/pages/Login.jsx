@@ -72,6 +72,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
+      <div className="login-nav-spacer">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div className="inputGroup">
@@ -86,8 +87,8 @@ const LoginPage = () => {
         </div>
         <div className="inputGroup">
           <label htmlFor="password">Password:</label>
-          <input
-            type="password"
+          <input className="password-input"
+          type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -120,6 +121,7 @@ const LoginPage = () => {
         </form>
       )}
       {message && <p className="message">{message}</p>}
+    </div>
     </div>
   );
 };

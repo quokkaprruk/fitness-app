@@ -11,6 +11,7 @@ const MemberHome = () => {
   return (
     <div className="newUser-home">
       {/* Hero Section */}
+      <div className="user-navbar-spacer"></div>
       <header className="hero-section">
         <img
           src={MainImg}
@@ -18,7 +19,7 @@ const MemberHome = () => {
           className="home-img"
         />
         <button
-          onClick={() => navigate("/membership")}
+          onClick={() => navigate("/register")}
           className="become-member-button"
         >
           Become a Member

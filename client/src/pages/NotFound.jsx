@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px", padding: "20px" }}>
+    <div style={{ textAlign: "center", marginTop: "-200px", padding: "20px" }}>
       <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>
         404 - Page Not Found
       </h2>

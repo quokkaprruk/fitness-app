@@ -22,7 +22,7 @@ body {
 }
 
 .progress-navbar-spacer {
-  height: 130px;
+  height: 0px;
   box-sizing: border-box;
 }
 
@@ -132,6 +132,11 @@ body {
 .goal-item.achieved .goal-text {
   color: green;
   text-decoration: line-through;
+  margin-top: -35px;
+}
+
+.achieved-bin-button{
+  margin-top: -60px;
 }
 
 .goal-actions button {

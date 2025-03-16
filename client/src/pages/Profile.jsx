@@ -112,6 +112,7 @@ const Profile = () => {
 
   return (
     <div id="profile-container" className="profile-container">
+       <div className="profile-navbar-spacer"></div>
       <div className="profile-section">
         <div className="image-wrapper">
           <img
@@ -142,11 +143,21 @@ const Profile = () => {
               <tbody>
                 <tr>
                   <td>First Name:</td>
-                  <td>{profileData.firstName}</td>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={profileData.firstName}
+                    onChange={handleProfileInfoChange}
+                  />
                 </tr>
                 <tr>
-                  <td>Last Name:</td>
                   <td>{profileData.lastName}</td>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={profileData.lastName}
+                    onChange={handleProfileInfoChange}
+                  />
                 </tr>
                 <tr>
                   <td>Subscription Plan:</td>
