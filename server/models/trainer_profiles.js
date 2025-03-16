@@ -7,8 +7,8 @@ const trainerProfilesSchema = new Schema(
     profileId: {
       type: String,
       required: true,
-      unique: true, // Ensures each trainer has a unique profileId
-      ref: "All_User", // Reference to the All_user model, and mongo will know the collection related to that model
+      unique: true,
+      ref: "All_User", // Reference to the All_user model
     },
     firstName: {
       type: String,
@@ -18,15 +18,24 @@ const trainerProfilesSchema = new Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true, // Ensure email is unique
+    },
     specialty: {
       type: [String],
       required: true,
       default: [],
     },
     teachingMode: {
-      type: [String], // can be ["online"],["on-site"], or ["online","on-site"]
+      type: [String], // Example: ["online"], ["on-site"], or ["online", "on-site"]
       required: true,
       default: [],
+    },
+    experience: {
+      type: Number,
+      required: true, // Since the frontend asks for it
     },
     history: {
       type: [Schema.Types.Mixed], // Can store an array of objects for the history
@@ -34,11 +43,10 @@ const trainerProfilesSchema = new Schema(
     },
   },
   {
-    collection: "trainer_profiles", // collection name
+    collection: "trainer_profiles",
     timestamps: true,
   }
 );
-
 const TrainerProfiles = mongoose.model(
   "Trainer_Profile",
   trainerProfilesSchema

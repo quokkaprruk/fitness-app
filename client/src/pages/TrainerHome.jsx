@@ -1,34 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 //import data from "../data/fitnessClasses.json"; //test data
 import axios from "axios";
-import logo from "../logo.png"; //image of logo
-import "./styles/TrainerHome.css"; //css file
-import { FaCog, FaUser } from "react-icons/fa"; //for 'profile' and 'settings' icons on navbar
-import { jwtDecode } from "jwt-decode";
+import logo from "../logo.png";
+import "./styles/TrainerHome.css";
+import { FaCog, FaUser } from "react-icons/fa";
+import { AuthContext } from "../context/authContextValue";
 
 const TrainerHome = () => {
+  console.log("You are in trainer home page");
   //const instructorID = 1;
   //const instructorName = "John Doe";
   const [schedule, setSchedule] = useState([]);
-  const token = localStorage.getItem("token");
-  const decoded = jwtDecode(token);
+  const { token, user } = useContext(AuthContext);
+
   useEffect(() => {
-    if (token) {
+    if (token && user) {
       console.log(
         "Making API request for schedule with instructorId:",
-        decoded.id
+        user.id,
       );
 
       axios
         .get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedule/${
-            decoded.id
-          }`,
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedule/${user.id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         )
         .then((response) => {
           console.log("Schedule data received:", response.data);
@@ -38,27 +37,13 @@ const TrainerHome = () => {
           console.error("Error fetching schedule:", error);
         });
     }
-  }, [token, decoded.id]);
+  }, [token, user]);
 
   //email subject
-  const emailSubject = `Requesting schedule change for ${decoded.username} (ID: ${decoded.id})`;
+  const emailSubject = `Requesting schedule change for ${user?.username} (ID: ${user?.id})`;
 
   return (
     <div>
-      {/*nav bar*/}
-      <nav className="navbar">
-        <div className="navbar-welcome">Welcome, {decoded.username}</div>
-        <div className="navbar-links">
-          <a href="/contact">Contact</a>
-          <a href="/client-management">Client Management</a>
-          <a href="/community">Community</a>
-          <FaUser className="icon" title="Profile" />
-        </div>
-        <div className="navbar-logo">
-          <img src={logo} alt="Logo" />
-        </div>
-      </nav>
-
       <div className="trainer-home">
         <h2>Your Schedule:</h2>
         {/*if no classes scheduled*/}
@@ -90,9 +75,7 @@ const TrainerHome = () => {
         <button
           className="schedule-change-button"
           onClick={() => {
-            window.location.href = `mailto:?subject=${encodeURIComponent(
-              emailSubject
-            )}`;
+            window.location.href = `mailto:?subject=${encodeURIComponent(emailSubject)}`;
           }}
         >
           Request Schedule Change

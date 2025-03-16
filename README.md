@@ -40,10 +40,14 @@
 |               | /reserve                 | POST   | reserve a class and save to db              |
 |               | /member/:profileId       | GET    | get all schedules from member               |
 |               | /instructorId            | GET    | get all schedules for specific trainer      |
-| /api/         | /login                   | POST   | login with user information stored in db    |
+| /api/users    | /login                   | POST   | login with user information stored in db    |
 |               | /register                | POST   | signup with info that are stored in db      |
 |               | /profile/:profileId      | GET    | return the { user, profile }                |
 |               | /profile/:profileId      | POST   | updates and return an existing profile      |
+|               | /goals                   | GET    | get member's current and achieved goals     |
+|               | /goals                   | POST   | add a new goal                              |
+|               | /goals/achieve           | PUT    | mark a goal as achieved                     |
+|               | /goals/revert            | PUT    | revert an achieved goal back to current     |
 
 Updates an existing profile and returns the updated profile.
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./styles/Progress.css";
-import Navbar from "../components/Navbar.jsx";
+import confetti from "canvas-confetti"; // Import the confetti function
 
 const Progress = () => {
   const [currentGoals, setCurrentGoals] = useState([]);
@@ -13,6 +13,12 @@ const Progress = () => {
     index: null,
     isAchieved: false,
   });
+
+  // Workout states
+  const [workoutStreak, setWorkoutStreak] = useState(0);
+  const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Track the last workout date
+  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false); // Track if workout is logged today
+  const [logError, setLogError] = useState(""); // State for error message
 
   // Food search states
   const [foodQuery, setFoodQuery] = useState("");
@@ -27,9 +33,55 @@ const Progress = () => {
   // Total nutrition states
   const [totalNutrition, setTotalNutrition] = useState([]);
 
+  // State for current date
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  // Reference to the workout button to get its position
+  const workoutButtonRef = useRef(null);
+
   useEffect(() => {
     fetchGoals();
+    checkIfWorkoutLoggedToday();
+
+    // Update current date every minute
+    const intervalId = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 60000); // Update every minute
+
+    return () => clearInterval(intervalId); // Clean up interval on unmount
   }, []);
+
+  useEffect(() => {
+    // Check if a day has been missed and reset the streak
+    if (lastWorkoutDate) {
+      const today = new Date();
+      const lastWorkout = new Date(lastWorkoutDate);
+      const timeDiff = today.getTime() - lastWorkout.getTime();
+      const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
+
+      if (dayDiff > 1) {
+        setWorkoutStreak(0); // Reset streak if more than 1 day is missed
+      }
+    }
+  }, [lastWorkoutDate]);
+
+  // Function to check if workout has been logged today
+  const checkIfWorkoutLoggedToday = () => {
+    const storedDate = localStorage.getItem("lastWorkoutDate");
+    if (storedDate) {
+      const storedDateObj = new Date(storedDate);
+      const today = new Date();
+      if (
+        storedDateObj.getDate() === today.getDate() &&
+        storedDateObj.getMonth() === today.getMonth() &&
+        storedDateObj.getFullYear() === today.getFullYear()
+      ) {
+        setWorkoutLoggedToday(true);
+      } else {
+        setWorkoutLoggedToday(false);
+      }
+    }
+  };
 
   const fetchGoals = async () => {
     setLoading(true);
@@ -109,6 +161,47 @@ const Progress = () => {
     }
   };
 
+  // Function to handle logging a workout
+  const handleLogWorkout = () => {
+    if (!workoutLoggedToday) {
+      const today = new Date();
+      setWorkoutStreak(workoutStreak + 1);
+      setLastWorkoutDate(today.toISOString());
+      localStorage.setItem("lastWorkoutDate", today.toISOString());
+      setWorkoutLoggedToday(true);
+      setLogError("");
+
+      // Trigger confetti
+      if (workoutButtonRef.current) {
+        const buttonRect = workoutButtonRef.current.getBoundingClientRect();
+        const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+        const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+        confetti({
+          origin: {
+            x: buttonCenterX / window.innerWidth,
+            y: buttonCenterY / window.innerHeight,
+          },
+          spread: 150,
+          ticks: 60,
+          gravity: 0.7,
+          decay: 0.94,
+          startVelocity: 50,
+          colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
+          shapes: ["star", "circle"],
+          scalar: 1.2,
+        });
+      }
+    } else {
+      setLogError("You have already logged your workout for today!");
+
+      // Set a timeout to clear the error message after 3 seconds
+      setTimeout(() => {
+        setLogError("");
+      }, 3000);
+    }
+  };
+
   // Fetch food data from API
   const fetchFoodData = async () => {
     if (!foodQuery.trim()) return;
@@ -119,7 +212,7 @@ const Progress = () => {
 
     try {
       const response = await fetch(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`,
       );
       const data = await response.json();
       console.log(data);
@@ -127,7 +220,7 @@ const Progress = () => {
       if (data.foods && data.foods.length > 0) {
         // Remove duplicates based on food name
         const uniqueFoods = Array.from(
-          new Map(data.foods.map((food) => [food.description, food])).values()
+          new Map(data.foods.map((food) => [food.description, food])).values(),
         );
         setFoodResults(uniqueFoods.slice(0, 5)); // Store top 5 unique results
       } else {
@@ -168,7 +261,7 @@ const Progress = () => {
       selectedFood.foodNutrients.length > 0
     ) {
       const nutrient = selectedFood.foodNutrients.find(
-        (n) => n.nutrientName === nutrientName
+        (n) => n.nutrientName === nutrientName,
       );
       return nutrient ? (nutrient.value * (quantity / 100)).toFixed(2) : 0;
     }
@@ -183,7 +276,7 @@ const Progress = () => {
         calories: parseFloat(getNutrientValue("Energy")),
         protein: parseFloat(getNutrientValue("Protein")),
         carbohydrates: parseFloat(
-          getNutrientValue("Carbohydrate, by difference")
+          getNutrientValue("Carbohydrate, by difference"),
         ),
         cholesterol: parseFloat(getNutrientValue("Cholesterol")),
         sugars: parseFloat(getNutrientValue("Total Sugars")),
@@ -238,66 +331,19 @@ const Progress = () => {
 
   const totals = calculateTotals();
 
+  // Date formatting options
+  const dateFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   if (loading) return <p>Loading goals...</p>;
   if (error) return <p>Error: {error}</p>;
-
   return (
     <div id="progress-container" className="progress-container">
-      <Navbar isLoggedIn={true} />
-      <div className="progress-navbar-spacer"></div>
       <div className="main-content-wrapper">
-        {/* Goals Section */}
-        <div className="goals-section">
-          <h3>Current Goals</h3>
-          <div className="add-goal">
-            <input
-              type="text"
-              placeholder="Add a goal"
-              value={newGoal}
-              onChange={(e) => setNewGoal(e.target.value)}
-            />
-            <button onClick={handleAddGoal}>Add Goal +</button>
-          </div>
-          <ul className="goals-list">
-            {currentGoals.map((goal, index) => (
-              <li key={index} className="goal-item">
-                <span className="goal-text">{goal}</span>
-                <div className="goal-actions">
-                  <button onClick={() => handleCompleteGoal(index)}>✔️</button>
-                  <button onClick={() => handleRemoveGoal(index)}>🗑️</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <h3>Achieved Goals</h3>
-          <ul className="goals-list">
-            {achievedGoals.map((goal, index) => (
-              <li key={index} className="goal-item achieved">
-                <span className="goal-text">{goal}</span>
-                <div className="goal-actions">
-                  <button onClick={() => handleRemoveGoal(index, true)}>
-                    🗑️
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          {/* Confirmation Modal */}
-          {showConfirmation.show && (
-            <div className="confirmation-modal">
-              <div className="modal-content">
-                <p>Are you sure you want to remove this goal?</p>
-                <div className="modal-buttons">
-                  <button onClick={confirmRemoveGoal}>Yes</button>
-                  <button onClick={cancelRemoveGoal}>No</button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
         {/* Food Section */}
         <div className="food-section">
           {/* Food Calorie Search */}
@@ -317,7 +363,9 @@ const Progress = () => {
               onChange={handleChange}
             />
             {quantityError && (
-              <p className="quantity-error" style={{ color: "red" }}>{quantityError}</p>
+              <p className="quantity-error" style={{ color: "red" }}>
+                {quantityError}
+              </p>
             )}
             <button onClick={fetchFoodData} disabled={!!quantityError}>
               Search
@@ -391,6 +439,91 @@ const Progress = () => {
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* Workout Section */}
+        <div className="workout-section">
+          <h3 className="date-display">
+            Today is:{" "}
+            {currentDate.toLocaleDateString(undefined, dateFormatOptions)}
+          </h3>
+          <div className="add-workout">
+            <button
+              onClick={handleLogWorkout}
+              ref={workoutButtonRef}
+              disabled={workoutLoggedToday}
+              className={workoutLoggedToday ? "disabled-button" : ""}
+            >
+              Log Workout +
+            </button>
+            {workoutLoggedToday && (
+              <p className="error">
+                You have already logged your workout for today!
+              </p>
+            )}
+          </div>
+          <div className="workout-streak">
+            {workoutStreak === 0 ? (
+              <p className="message-workout">Time to get started!</p>
+            ) : (
+              <p className="message-workout">
+                Number of days you have consistently worked out for:
+              </p>
+            )}
+            <p className="workout-streak-number">{workoutStreak}</p>
+          </div>
+        </div>
+
+        {/* Goals Section */}
+        <div className="goals-section">
+          <h3>Current Goals</h3>
+          <div className="add-goal">
+            <input
+              type="text"
+              placeholder="Add a goal"
+              value={newGoal}
+              onChange={(e) => setNewGoal(e.target.value)}
+            />
+            <button onClick={handleAddGoal}>Add Goal +</button>
+          </div>
+          <ul className="goals-list">
+            {currentGoals.map((goal, index) => (
+              <li key={index} className="goal-item">
+                <span className="goal-text">{goal}</span>
+                <div className="goal-actions">
+                  <button onClick={() => handleCompleteGoal(index)}>✔️</button>
+                  <button onClick={() => handleRemoveGoal(index)}>🗑️</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <h3>Achieved Goals</h3>
+          <ul className="goals-list">
+            {achievedGoals.map((goal, index) => (
+              <li key={index} className="goal-item achieved">
+                <span className="goal-text">{goal}</span>
+                <div className="goal-actions">
+                  <button className="achieved-bin-button" onClick={() => handleRemoveGoal(index, true)}>
+                    🗑️
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* Confirmation Modal */}
+          {showConfirmation.show && (
+            <div className="confirmation-modal">
+              <div className="modal-content">
+                <p>Are you sure you want to remove this goal?</p>
+                <div className="modal-buttons">
+                  <button onClick={confirmRemoveGoal}>Yes</button>
+                  <button onClick={cancelRemoveGoal}>No</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

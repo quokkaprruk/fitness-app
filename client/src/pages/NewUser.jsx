@@ -1,17 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContextValue";
 import "./styles/Home.css"; //css file
-import Navbar from "../components/Navbar.jsx";
 import HomeImg from "../homePicture.png";
 import Benefits from "../benefits.png";
 import Free from "../free.png";
 import Calendar from "../noCommit.png";
 
 const NewUser = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      if (user.role === "member") {
+        navigate("/member");
+      } else if (user.role === "trainer") {
+        navigate("/trainer");
+      } else if (user.role === "admin") {
+        navigate("/admin");
+      }
+    }
+  }, [isAuthenticated, user, navigate]);
+
   return (
     <div className="newUser-home">
-      <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
+      <div className="user-navbar-spacer"></div>
       {/* Hero Section */}
       <header className="hero-section">
         {/*Main top portion */}
@@ -22,11 +36,11 @@ const NewUser = () => {
         />
       </header>
 
-      <Link to="/membership">
+      <Link to="/pricing">
         <button className="become-member-btn">Become a Member</button>
       </Link>
 
-      {/* Class Categories - Cards*/}
+      {/* Class Categories - Cards */}
       <section className="class-categories">
         <h2>Tailored Workout Classes – Book Your Perfect Session Anytime</h2>
         <div className="categories-grid">

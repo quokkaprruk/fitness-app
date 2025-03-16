@@ -3,7 +3,6 @@
 // import React from "react";
 import axios from "axios";
 import "./styles/PricingPage.css";
-import Navbar from "../components/Navbar.jsx";
 
 const Payment = () => {
   const handleCheckout = async (planName, price) => {
@@ -13,7 +12,7 @@ const Payment = () => {
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
         }/api/payment/checkout`,
-        { plan_name: planName, price }
+        { plan_name: planName, price },
       );
 
       // Log the response to see what data is returned
@@ -32,8 +31,6 @@ const Payment = () => {
   };
   return (
     <div>
-      <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
       <h2 className="plans-heading">Membership Plans</h2>
       <div className="pricing-container">
         <div className="pricing-grid">

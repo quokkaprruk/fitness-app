@@ -10,7 +10,7 @@ html {
 .profile-container {
   width: 100% !important;
   max-width: none !important;
-  margin: 0 auto !important;
+  margin: 0px auto !important;
   padding: 20px !important;
   box-sizing: border-box !important;
   display: flex !important;
@@ -21,7 +21,7 @@ html {
 .profile-section,
 .health-section {
   width: calc(50% - 40px) !important;
-  margin: 20px !important;
+  margin: 0px !important;
   padding: 30px !important;
   box-sizing: border-box !important;
   display: flex !important;
@@ -115,7 +115,7 @@ input[type="number"] {
   }
 }
 
-.navbar-spacer {
+.profile-navbar-spacer {
   width: 100% !important;
-  height: 70px !important;
+  height: 220px !important;
 }

@@ -1,0 +1,89 @@
+/* Import Font */
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+/* General Body Styles */
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Centers vertically */
+}
+
+/* Centered Page Container */
+.admin-page {
+  width: 600px; /* Perfect balance - not too wide or narrow */
+  padding: 25px 30px;
+  background: #fff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.admin-page:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
+.admin-page h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #007bff;
+}
+
+/* Form Styling */
+.admin-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Input & Textarea Fields */
+.admin-page input,
+.admin-page textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background-color: #f9f9f9;
+}
+
+/* Input Hover & Focus */
+.admin-page input:focus,
+.admin-page textarea:focus {
+  border-color: #40e0d0;
+  box-shadow: 0 0 6px rgba(64, 224, 208, 0.5);
+  outline: none;
+}
+
+/* Button Styling */
+.admin-page button {
+  padding: 12px;
+  background: turquoise;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  width: 100%;
+}
+
+/* Button Hover Effect */
+.admin-page button:hover {
+  background: green;
+  transform: translateY(-2px);
+}
+

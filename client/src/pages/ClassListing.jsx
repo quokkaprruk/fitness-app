@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./styles/ClassList.css";
-import fitnessClasses from "../data/fitnessClasses.json";
 import Navbar from "../components/Navbar.jsx";
 
 const ClassList = () => {
@@ -9,6 +9,7 @@ const ClassList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reserving, setReserving] = useState(false);
+  const [classTypes, setClassTypes] = useState([]); 
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -17,16 +18,28 @@ const ClassList = () => {
     difficultyLevel: "",
   });
 
-  // Simulate fetching classes from the JSON file
+  // Fetch classes from the backend
   useEffect(() => {
-    try {
-      setClasses(fitnessClasses.fitnessClasses); // Set classes data
-      setFilteredClasses(fitnessClasses.fitnessClasses); // Initially show all classes
-      setIsLoading(false);
-    } catch (err) {
-      setError("Error loading classes data");
-      setIsLoading(false);
-    }
+    const fetchClasses = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/classes`
+        );
+        const data = response.data;
+
+        setClasses(data);
+        setFilteredClasses(data);
+
+        const uniqueClassTypes = [...new Set(data.map((item) => item.classType))];
+        setClassTypes(uniqueClassTypes);
+      } catch (err) {
+        setError("Error loading classes data");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchClasses();
   }, []);
 
   // Handle class reservation
@@ -44,14 +57,14 @@ const ClassList = () => {
     const { name, value } = e.target;
     setFilters((prevFilters) => {
       const newFilters = { ...prevFilters, [name]: value };
-      filterClasses(newFilters); // Apply the filter immediately
+      filterClasses(newFilters);
       return newFilters;
     });
   };
 
   // Filter classes based on the selected filters
   const filterClasses = (filters) => {
-    let filtered = classes;
+    let filtered = [...classes];
 
     if (filters.classType) {
       filtered = filtered.filter(
@@ -60,7 +73,6 @@ const ClassList = () => {
     }
 
     if (filters.timeOfDay) {
-      const hours = new Date().getHours();
       if (filters.timeOfDay === "Morning") {
         filtered = filtered.filter(
           (classItem) => new Date(classItem.startDateTime).getHours() < 12
@@ -87,13 +99,8 @@ const ClassList = () => {
     setFilteredClasses(filtered);
   };
 
-  if (isLoading) {
-    return <div>Loading classes...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  if (isLoading) return <div>Loading classes...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="class-list">
@@ -103,33 +110,21 @@ const ClassList = () => {
 
       {/* Filters Section */}
       <div className="filters">
-        <select
-          name="classType"
-          onChange={handleFilterChange}
-          value={filters.classType}
-        >
+        <select name="classType" onChange={handleFilterChange} value={filters.classType}>
           <option value="">All Class Types</option>
-          <option value="Yoga">Yoga</option>
-          <option value="Pilates">Pilates</option>
-          <option value="Cardio">Cardio</option>
+          {classTypes.map((type) => (
+            <option key={type} value={type}>{type}</option>
+          ))}
         </select>
 
-        <select
-          name="timeOfDay"
-          onChange={handleFilterChange}
-          value={filters.timeOfDay}
-        >
+        <select name="timeOfDay" onChange={handleFilterChange} value={filters.timeOfDay}>
           <option value="">All Times of Day</option>
           <option value="Morning">Morning</option>
           <option value="Afternoon">Afternoon</option>
           <option value="Evening">Evening</option>
         </select>
 
-        <select
-          name="difficultyLevel"
-          onChange={handleFilterChange}
-          value={filters.difficultyLevel}
-        >
+        <select name="difficultyLevel" onChange={handleFilterChange} value={filters.difficultyLevel}>
           <option value="">All Difficulty Levels</option>
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
@@ -140,7 +135,7 @@ const ClassList = () => {
       {/* Display Filtered Classes */}
       <ul>
         {filteredClasses.map((classItem) => (
-          <li key={classItem.classId} className="class-item">
+          <li key={classItem._id} className="class-item">
             <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
             <p>Type: {classItem.classType}</p>
             <p>
@@ -148,10 +143,7 @@ const ClassList = () => {
               {new Date(classItem.endDateTime).toLocaleString()}
             </p>
             <p>Capacity: {classItem.studentCapacity}</p>
-            <button
-              onClick={() => handleReserve(classItem.classId)}
-              disabled={reserving}
-            >
+            <button onClick={() => handleReserve(classItem._id)} disabled={reserving}>
               {reserving ? "Reserving..." : "Reserve"}
             </button>
           </li>

@@ -3,22 +3,47 @@ const Trainer = require("../models/trainer_profiles");
 const logger = require("../middleware/logger"); // use logger
 const router = express.Router();
 
-// Siripa: GET: all trainer route
+// GET: Fetch all trainers
 router.get("/", async (req, res) => {
   try {
     const trainers = await Trainer.find();
-
-    // res.setHeader("Cache-Control", "no-store"); // Disable caching
     if (trainers.length > 0) {
       logger.info(`Successfully found ${trainers.length} trainer(s).`);
       res.status(200).json(trainers);
     } else {
-      logger.info("No records of schedules found");
+      logger.info("No trainers found");
       res.status(200).json([]);
     }
   } catch (error) {
-    logger.error(`Error fetching all trainers: ${error.message}`);
+    logger.error(`Error fetching trainers: ${error.message}`);
     res.status(500).json({ message: error.message });
+  }
+});
+
+// POST: Create a new trainer
+router.post("/", async (req, res) => {
+  try {
+    const { firstName, lastName, email, specialization, experience } = req.body;
+
+    if (!firstName || !lastName || !email || !specialization || !experience) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const newTrainer = new Trainer({
+      profileId: email, // Use email as a unique identifier
+      firstName,
+      lastName,
+      email,
+      specialty: specialization.split(","), // Convert string to array
+      experience,
+    });
+
+    await newTrainer.save();
+    logger.info(`Trainer ${firstName} ${lastName} created successfully.`);
+    res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
+  } catch (error) {
+    logger.error(`Error creating trainer: ${error.message}`);
+    res.status(500).json({ message: "Error creating trainer", error: error.message });
   }
 });
 
