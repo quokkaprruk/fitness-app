@@ -1,14 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-body,
-html {
-  font-family: "Rokkitt", serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
 .community-container {
+  font-family: "Rokkitt", serif;
   background-color: #f4f4f4;
   min-height: 100vh;
   padding: 50px 20px;
@@ -46,7 +39,6 @@ html {
   font-size: 1.1rem;
   color: #666;
   margin: 12px 0;
-  text-align: left;
 }
 
 @media screen and (max-width: 600px) {
@@ -61,9 +53,5 @@ html {
   .feature-preview {
     width: 90%;
     padding: 15px;
-  }
-
-  .feature-preview li {
-    font-size: 1rem;
   }
 }
