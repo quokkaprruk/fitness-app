@@ -2,52 +2,61 @@ const express = require("express");
 const Trainer = require("../models/trainer_profiles");
 const logger = require("../middleware/logger"); // use logger
 const router = express.Router();
+const fs = require("fs");
+const path = require("path");
+
+const jsonFilePath = path.join(__dirname, "../data/trainers.json");
 
 // GET: Fetch all trainers
-router.get("/", async (req, res) => {
-  try {
-    const trainers = await Trainer.find();
-    if (trainers.length > 0) {
-      logger.info(`Successfully found ${trainers.length} trainer(s).`);
-      res.status(200).json(trainers);
-    } else {
-      logger.info("No trainers found");
-      res.status(200).json([]);
+router.get("/", (req, res) => {
+  fs.readFile(jsonFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return res.status(500).json({ message: "Error reading trainers file" });
     }
-  } catch (error) {
-    logger.error(`Error fetching trainers: ${error.message}`);
-    res.status(500).json({ message: error.message });
-  }
+
+    const trainersData = JSON.parse(data);
+    res.status(200).json(trainersData.trainers || []);
+  });
 });
 
 // POST: Create a new trainer
-router.post("/", async (req, res) => {
-  try {
-    const { firstName, lastName, email, specialization, experience } = req.body;
+router.post("/", (req, res) => {
+  const { firstName, lastName, email, specialization, experience } = req.body;
 
-    if (!firstName || !lastName || !email || !specialization || !experience) {
-      return res.status(400).json({ message: "All fields are required" });
+  if (!firstName || !lastName || !email || !specialization || !experience) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  fs.readFile(jsonFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return res.status(500).json({ message: "Error reading trainers file" });
     }
 
-    console.log("Incoming Trainer Data >>>", req.body);
+    const trainersData = JSON.parse(data);
+    const trainers = trainersData.trainers || [];
 
-    const newTrainer = new Trainer({
-      profileId: email, // Use email as a unique identifier
-      firstName,
-      lastName,
-      email,
-      specialty: typeof specialization === 'string' ? specialization.split(",").map(item => item.trim()) : [],
-      experience: Number(experience),
+    const newTrainer = {
+      instructorID: trainers.length + 1,
+      name: `${firstName} ${lastName}`,
+      specialty: specialization.split(",").map(item => item.trim()),
+      teachingMode: ["online", "on-site"], // Hardcoded or dynamic if needed
+      contact: email,
+      experience: Number(experience)
+    };
+
+    trainers.push(newTrainer);
+
+    fs.writeFile(jsonFilePath, JSON.stringify({ trainers }, null, 2), (err) => {
+      if (err) {
+        console.error("Error writing file:", err);
+        return res.status(500).json({ message: "Error saving trainer" });
+      }
+
+      res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
     });
-
-    await newTrainer.save();
-    logger.info(`Trainer ${firstName} ${lastName} created successfully.`);
-    res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
-  } catch (error) {
-     console.error("FULL ERROR >>>", error);
-    logger.error(`Error creating trainer: ${error.message}`);
-    res.status(500).json({ message: "Error creating trainer", error: error.message });
-  }
+  });
 });
 
 module.exports = router;
