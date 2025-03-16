@@ -11,7 +11,6 @@ import ClassList from "./pages/ClassListing";
 import Upcoming from "./pages/Upcoming";
 import Signup from "./pages/SignUp";
 import PricingPage from "./pages/PricingPage";
-import RegistrationForm from "./pages/RegistrationForm";
 import ContactPage from "./pages/ContactPage";
 import Profile from "./pages/Profile";
 import Progress from "./pages/Progress";
@@ -64,7 +63,7 @@ const App = () => {
             <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/register" element={<RegistrationForm />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin/create-trainer" element={<CreateTrainer />} />
             <Route

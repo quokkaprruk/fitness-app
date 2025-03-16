@@ -21,7 +21,7 @@ const PricingPage = () => {
               <li>Real-time chat with trainers</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/payment")}
               className="pricing-button"
             >
               Select
@@ -40,7 +40,7 @@ const PricingPage = () => {
               <li>Equipment reservation</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/payment")}
               className="pricing-button"
             >
               Select
@@ -60,7 +60,7 @@ const PricingPage = () => {
               <li>Exclusive wellness events</li>
             </ul>
             <button
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/payment")}
               className="pricing-button"
             >
               Select
