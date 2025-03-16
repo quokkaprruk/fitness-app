@@ -1,6 +1,5 @@
 ﻿import React, { useState } from "react";
 import "./styles/RegistrationForm.css";
-import Confetti from "react-confetti";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -8,40 +7,26 @@ const RegistrationForm = () => {
     email: "",
     password: "",
   });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (formData.name && formData.email && formData.password) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000); // Confetti for 4 seconds
-      setFormData({ name: "", email: "", password: "" });
-    } else {
-      setError(true);
-    }
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
   };
 
   return (
     <div className="registration-container">
-      {submitted && <Confetti numberOfPieces={150} recycle={false} />}
       <h2>Register for Membership</h2>
-      <form
-        onSubmit={handleSubmit}
-        className={`registration-form ${error ? "shake" : ""}`}
-      >
+      <form onSubmit={handleSubmit} className="registration-form">
         <input
           type="text"
           name="name"
           placeholder="Name"
-          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -49,7 +34,6 @@ const RegistrationForm = () => {
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
           onChange={handleChange}
           required
         />
@@ -57,7 +41,6 @@ const RegistrationForm = () => {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
           onChange={handleChange}
           required
         />
@@ -66,9 +49,9 @@ const RegistrationForm = () => {
         </button>
       </form>
 
-      {submitted && (
-        <div className="success-message">
-          🎉 Welcome! Your registration was successful.
+      {showSuccess && (
+        <div className="success-popup">
+          🎉 Registration Successful!
         </div>
       )}
     </div>
@@ -76,4 +59,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
