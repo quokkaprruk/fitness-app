@@ -22,6 +22,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import { AuthProvider } from "./context/AuthContext";
+import CommunityPage from "./pages/CommunityPage";
 
 const App = () => {
   return (
@@ -66,6 +67,8 @@ const App = () => {
             <Route path="/payment" element={<Payment />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin/create-trainer" element={<CreateTrainer />} />
+            <Route path="/community" element={<CommunityPage />} />
+      </Routes>
             <Route
               path="/admin/post-announcement"
               element={<PostAnnouncement />}
