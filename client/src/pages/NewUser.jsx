@@ -36,7 +36,7 @@ const NewUser = () => {
         />
       </header>
 
-      <Link to="/membership">
+      <Link to="/pricing">
         <button className="become-member-btn">Become a Member</button>
       </Link>
 
