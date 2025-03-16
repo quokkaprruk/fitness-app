@@ -7,6 +7,11 @@ const path = require("path");
 
 const jsonFilePath = path.join(__dirname, "../data/trainers.json");
 
+// Ensure the JSON file exists with base structure
+if (!fs.existsSync(jsonFilePath)) {
+  fs.writeFileSync(jsonFilePath, JSON.stringify({ trainers: [] }, null, 2));
+}
+
 // GET: Fetch all trainers
 router.get("/", (req, res) => {
   fs.readFile(jsonFilePath, "utf8", (err, data) => {
@@ -46,16 +51,24 @@ router.post("/", (req, res) => {
       experience: Number(experience)
     };
 
-    trainers.push(newTrainer);
-
-    fs.writeFile(jsonFilePath, JSON.stringify({ trainers }, null, 2), (err) => {
-      if (err) {
-        console.error("Error writing file:", err);
-        return res.status(500).json({ message: "Error saving trainer" });
+    if (isNaN(newTrainer.experience)) {
+        return res.status(400).json({ message: "Experience must be a number" });
       }
 
-      res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
-    });
+   trainers.push(newTrainer);
+
+      fs.writeFile(jsonFilePath, JSON.stringify({ trainers }, null, 2), (err) => {
+        if (err) {
+          console.error("Error writing file:", err);
+          return res.status(500).json({ message: "Error saving trainer" });
+        }
+
+        res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
+      });
+    } catch (parseErr) {
+      console.error("Error parsing JSON:", parseErr);
+      res.status(500).json({ message: "Invalid JSON format in trainers file" });
+    }
   });
 });
 
