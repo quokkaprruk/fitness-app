@@ -8,12 +8,17 @@ body {
 }
 
 .class-list {
-  padding-top: 4750px; /* Spacing below navbar */
+  position: relative;
+  margin-top: 80px; /* Adjust this value to match your navbar height */
+}
+
+.classlist-navbar-spacer {
+  height: 80px; /* This should match the navbar height */
 }
 
 .class-list-container {
   max-width: 1200px;
-  margin: 50px auto;
+  margin: 0px auto;
   padding: 20px;
   background-color: white;
   border-radius: 10px;

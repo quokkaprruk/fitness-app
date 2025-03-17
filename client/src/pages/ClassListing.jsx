@@ -108,6 +108,7 @@ const ClassList = () => {
     <div className="class-list">
       <Navbar isLoggedIn={false} />
       <div className="classlist-navbar-spacer"></div>
+      <div className="class-list-container">
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
@@ -154,6 +155,7 @@ const ClassList = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
