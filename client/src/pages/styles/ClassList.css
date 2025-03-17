@@ -8,11 +8,11 @@ body {
 }
 
 .classlist-navbar-spacer {
-  height: 50px;
+  height: 50px !important;
 }
 
 .class-list {
-  height: 50px;
+  height: 50px !important;
 }
 
 .class-list-container {
