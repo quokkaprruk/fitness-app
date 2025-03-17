@@ -19,7 +19,7 @@ body {
 }
 
 .user-navbar-spacer {
-  height: 2900px;
+  height: 1000px;
 }
 
 .member-navbar-spacer {
@@ -34,7 +34,7 @@ body {
   min-height: 100vh;
   padding: 20px;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 1000px;
 }
 
 .member-home {
