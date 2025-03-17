@@ -9,7 +9,7 @@ const MemberHome = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="newUser-home">
+    <div className="member-home">
       {/* Hero Section */}
       <header className="hero-section">
         <img

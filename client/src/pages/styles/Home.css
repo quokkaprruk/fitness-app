@@ -33,6 +33,17 @@ body {
   margin-top: 100px;
 }
 
+.member-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  margin-top: 1000px;
+}
+
 .hero-section {
   text-align: center;
   width: 100%;
