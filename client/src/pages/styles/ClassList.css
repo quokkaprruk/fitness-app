@@ -29,7 +29,7 @@ body {
 
 /* Add this to make the class list container scrollable */
 .class-list ul {
-  max-height: 500px; /* Adjust this value as needed */
+  max-height: 800px; /* Adjust this value as needed */
   overflow-y: auto; /* Enables vertical scrolling */
   padding: 0; /* Reset default ul padding */
   list-style: none; /* Remove bullet points */
