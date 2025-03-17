@@ -10,6 +10,7 @@ const MemberHome = () => {
 
   return (
     <div className="member-home">
+      <div className="member-navbar-spacer"></div>
       {/* Hero Section */}
       <header className="hero-section">
         <img

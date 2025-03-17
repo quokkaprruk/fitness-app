@@ -22,6 +22,10 @@ body {
   height: 2900px;
 }
 
+.member-navbar-spacer {
+  height: 1000px;
+}
+
 .newUser-home {
   display: flex;
   flex-direction: column;
