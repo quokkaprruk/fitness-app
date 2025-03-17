@@ -8,8 +8,8 @@ const ClassList = () => {
   const [filteredClasses, setFilteredClasses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [reservingStatus, setReservingStatus] = useState({}); // Track reserving status per class
-  const [classTypes, setClassTypes] = useState([]);
+  const [reserving, setReserving] = useState(false);
+  const [classTypes, setClassTypes] = useState([]); 
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -44,20 +44,11 @@ const ClassList = () => {
 
   // Handle class reservation
   const handleReserve = (classId) => {
-    // Set reserving status for this specific class
-    setReservingStatus((prevStatus) => ({
-      ...prevStatus,
-      [classId]: true,
-    }));
+    setReserving(true);
 
-    // Simulate reservation API call or process
     setTimeout(() => {
       alert(`Reservation successful for class ID: ${classId}`);
-      // Reset reserving status for this specific class
-      setReservingStatus((prevStatus) => ({
-        ...prevStatus,
-        [classId]: false,
-      }));
+      setReserving(false);
     }, 1000);
   };
 
@@ -114,7 +105,7 @@ const ClassList = () => {
   return (
     <div className="class-list">
       <Navbar isLoggedIn={false} />
-      <div className="classlist-navbar-spacer"></div>
+      <div className="navbar-spacer"></div>
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
@@ -152,11 +143,8 @@ const ClassList = () => {
               {new Date(classItem.endDateTime).toLocaleString()}
             </p>
             <p>Capacity: {classItem.studentCapacity}</p>
-            <button
-              onClick={() => handleReserve(classItem._id)}
-              disabled={reservingStatus[classItem._id]}
-            >
-              {reservingStatus[classItem._id] ? "Reserving..." : "Reserve"}
+            <button onClick={() => handleReserve(classItem._id)} disabled={reserving}>
+              {reserving ? "Reserving..." : "Reserve"}
             </button>
           </li>
         ))}
