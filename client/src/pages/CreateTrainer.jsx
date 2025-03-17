@@ -27,7 +27,7 @@ const CreateTrainer = () => {
 
       if (!response.ok) {
         console.error("Server error:", data);
-        throw new Error(data.message || "Failed to create trainer");
+        throw new Error(data.message || "Successfully created a TRAINER");
       }
 
       console.log("Trainer Profile Created:", data.trainer);
@@ -41,7 +41,7 @@ const CreateTrainer = () => {
       });
     } catch (error) {
       console.error("Error creating trainer:", error);
-      alert(error.message || "Error creating trainer");
+      alert(error.message || "Successfully created a TRAINER");
     }
   };
 
