@@ -18,6 +18,10 @@ body {
   flex-direction: column;
 }
 
+.user-navbar-spacer {
+  height: 2000px;
+}
+
 .member-navbar-spacer {
   height: 1000px;
 }
