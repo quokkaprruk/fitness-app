@@ -18,7 +18,7 @@ const Upcoming = () => {
     );
     if (confirmCancel) {
       const updatedReservations = reservedClasses.filter(
-        (classItem) => classItem.classId !== classId
+        (classItem) => classItem._id !== classId
       );
       setReservedClasses(updatedReservations);
       localStorage.setItem(
@@ -44,7 +44,7 @@ const Upcoming = () => {
               (a, b) => new Date(a.startDateTime) - new Date(b.startDateTime)
             ) // Sort in ascending order
             .map((classItem) => (
-              <li key={classItem.classId} className="class-item">
+              <li key={classItem._id} className="class-item">
                 <h3 className="reserved-classes-name">
                   {classItem.classType} - {classItem.difficultyLevel}
                 </h3>
@@ -58,7 +58,7 @@ const Upcoming = () => {
                 </p>
                 <button
                   className="cancel-booking-button"
-                  onClick={() => handleCancel(classItem.classId)}
+                  onClick={() => handleCancel(classItem._id)}
                 >
                   Cancel Reservation
                 </button>

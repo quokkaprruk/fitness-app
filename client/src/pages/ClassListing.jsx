@@ -56,19 +56,34 @@ const ClassList = () => {
       ...prevStatus,
       [classId]: true,
     }));
-
+  
     setTimeout(() => {
       alert(`Reservation successful for class ID: ${classId}`);
       setReservingStatus((prevStatus) => ({
         ...prevStatus,
         [classId]: false,
       }));
-      setReservedClasses((prevReserved) => ({
-        ...prevReserved,
-        [classId]: true,
-      }));
+      setReservedClasses((prevReserved) => {
+        const updatedReservedClasses = {
+          ...prevReserved,
+          [classId]: true,
+        };
+  
+        // Save reserved class details to localStorage
+        const reservedClassDetails = classes.find(
+          (classItem) => classItem._id === classId
+        );
+        const storedReservations =
+          JSON.parse(localStorage.getItem("reservedClasses")) || [];
+        localStorage.setItem(
+          "reservedClasses",
+          JSON.stringify([...storedReservations, reservedClassDetails])
+        );
+  
+        return updatedReservedClasses;
+      });
     }, 1000);
-  };
+  };  
 
   // Handle filter change
   const handleFilterChange = (e) => {
