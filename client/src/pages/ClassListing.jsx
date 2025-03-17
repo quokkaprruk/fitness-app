@@ -105,7 +105,7 @@ const ClassList = () => {
   return (
     <div className="class-list">
       <Navbar isLoggedIn={false} />
-      <div className="navbar-spacer"></div>
+      <div className="classlist-navbar-spacer"></div>
       <h2>Available Classes</h2>
 
       {/* Filters Section */}
