@@ -28,6 +28,7 @@ const PricingPage = () => {
   };
   return (
     <div>
+      <div className="pricing-navbar-spacer"></div>
       <h2 className="plans-heading">Membership Plans</h2>
       <div className="pricing-container">
         <div className="pricing-grid">

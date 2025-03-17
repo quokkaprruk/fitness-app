@@ -56,9 +56,13 @@ const ManageMembership = () => {
         </div>
       )}
 
-      <div className="pricing-container">
-        <div className="pricing-grid">
-          <div className={`pricing-card ${membership === "Basic" ? "selected" : ""}`}>
+      <div className="manage-pricing-container">
+        <div className="manage-pricing-grid">
+          <div
+            className={`pricing-card ${
+              membership === "Basic" ? "selected" : ""
+            }`}
+          >
             <h3>Basic</h3>
             <p>$10/month</p>
             <ul>
@@ -71,7 +75,11 @@ const ManageMembership = () => {
             </ul>
           </div>
 
-          <div className={`pricing-card ${membership === "Standard" ? "selected" : ""}`}>
+          <div
+            className={`manage-pricing-card ${
+              membership === "Standard" ? "selected" : ""
+            }`}
+          >
             <h3>Standard</h3>
             <p>$20/month</p>
             <ul>
@@ -84,7 +92,11 @@ const ManageMembership = () => {
             </ul>
           </div>
 
-          <div className={`pricing-card ${membership === "Premium" ? "selected" : ""}`}>
+          <div
+            className={`manage-pricing-card ${
+              membership === "Premium" ? "selected" : ""
+            }`}
+          >
             <h3>Premium</h3>
             <p>$30/month</p>
             <ul>

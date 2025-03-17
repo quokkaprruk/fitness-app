@@ -115,19 +115,19 @@ body {
   margin-bottom: 20px;
 }
 
-.pricing-container {
+.manage-pricing-container {
   display: flex; /* Use flexbox to arrange cards in a row */
   justify-content: center; /* Center the cards horizontally */
   gap: 20px; /* Add some space between the cards */
   margin-top: 20px;
 }
 
-.pricing-grid {
+.manage-pricing-grid {
   display: flex;
   gap: 20px;
 }
 
-.pricing-card {
+.manage-pricing-card {
   flex: 1; /* Allow cards to grow and fill the available space */
   min-width: 250px; /* Set a minimum width for each card */
   padding: 20px;
@@ -138,37 +138,37 @@ body {
   transition: transform 0.3s ease;
 }
 
-.pricing-card:hover {
+.manage-pricing-card:hover {
   transform: translateY(-5px);
 }
 
-.pricing-card h3 {
+.manage-pricing-card h3 {
   color: #333;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 0px;
 }
 
-.pricing-card p {
+.manage-pricing-card p {
   color: #666;
   font-size: 20px;
   margin-bottom: 15px;
 }
 
-.pricing-card ul {
+.manage-pricing-card ul {
   list-style-type: circle ;
   padding: 0;
   margin: 0;
 }
 
-.pricing-card li {
+.manage-pricing-card li {
   color: #666;
   font-size: 16px;
   margin-bottom: 8px;
 }
 
 /* Style for the selected card */
-.pricing-card.selected {
+.manage-pricing-card.selected {
   border: 3px solid #48d1cc; /* Blue border for the selected card */
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Optional glow effect */
 }
