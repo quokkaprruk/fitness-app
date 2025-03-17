@@ -30,40 +30,45 @@ router.get("/", async (req, res) => {
 });
   
 router.post("/cancel/:classId", async (req, res) => {
-    try {
-      const { memberId } = req.body; // Get the user ID from request body
-      const { classId } = req.params; // Get the class ID from the URL
-  
-      if (!memberId) {
-        return res.status(400).json({ message: "Member ID is required" });
-      }
-  
-      console.log(`Canceling reservation for member ${memberId} from class ${classId}`);
-  
-      // Find the schedule
-      const schedule = await Schedule.findById(classId);
-      if (!schedule) {
-        return res.status(404).json({ message: "Class not found" });
-      }
-  
-      // Check if the user is actually registered
-      if (!schedule.studentList.includes(memberId)) {
-        return res.status(400).json({ message: "You are not registered for this class" });
-      }
-  
-      // Remove student from the class list
-      schedule.studentList = schedule.studentList.filter((id) => id !== memberId);
-      schedule.currentReserved -= 1; // Decrement reservation count
-      await schedule.save();
-  
-      console.log(`Reservation canceled for member ${memberId} in class ${classId}`);
-  
-      res.status(200).json({ message: "Successfully canceled reservation", schedule });
-    } catch (error) {
-      console.error("Error canceling reservation:", error.message);
-      res.status(500).json({ message: "Error canceling reservation" });
+  try {
+    const { memberId } = req.body; // Get the user ID from request body
+    const { classId } = req.params; // Get the class ID from the URL
+
+    if (!memberId) {
+      return res.status(400).json({ message: "Member ID is required" });
     }
-  });
+
+    console.log(`Canceling reservation for member ${memberId} from class ${classId}`);
+
+    // Find the schedule
+    const schedule = await Schedule.findById(classId);
+    if (!schedule) {
+      return res.status(404).json({ message: "Class not found" });
+    }
+
+    // Check if the user is actually registered
+    if (!schedule.studentList.includes(memberId)) {
+      return res.status(400).json({ message: "You are not registered for this class" });
+    }
+
+    // Remove student from the class list
+    schedule.studentList = schedule.studentList.filter((id) => id.toString() !== memberId);
+    schedule.currentReserved = Math.max(0, schedule.currentReserved - 1); // Ensure it doesn't go below 0
+    schedule.studentCapacity += 1; // Increase available capacity
+    await schedule.save();
+
+    console.log(`Reservation canceled for member ${memberId} in class ${classId}`);
+
+    res.status(200).json({
+      message: "Successfully canceled reservation",
+      updatedCapacity: schedule.studentCapacity, // Send updated capacity
+    });
+  } catch (error) {
+    console.error("Error canceling reservation:", error.message);
+    res.status(500).json({ message: "Error canceling reservation" });
+  }
+});
+
   
   
   
