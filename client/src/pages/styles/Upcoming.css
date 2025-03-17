@@ -44,6 +44,6 @@ ul {
   padding: 0; /* Removes default padding */
 }
 
-.upcoming-navbar-spacer{
-    height:100px;
+.upcoming-navbar-spacer {
+  height: -700px;
 }

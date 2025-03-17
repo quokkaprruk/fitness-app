@@ -19,7 +19,7 @@ body {
 }
 
 .user-navbar-spacer {
-  height: 2900px;
+  height: 200px;
 }
 
 .newUser-home {
@@ -30,6 +30,21 @@ body {
   min-height: 100vh;
   padding: 20px;
   width: 100%;
+}
+
+.member-navbar-spacer {
+  height: 1000px;
+}
+
+.member-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  margin-top: 1000px;
 }
 
 .hero-section {

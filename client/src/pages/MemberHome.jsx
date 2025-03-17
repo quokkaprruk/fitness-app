@@ -9,9 +9,9 @@ const MemberHome = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="newUser-home">
+    <div className="member-home">
+      <div className="member-navbar-spacer"></div>
       {/* Hero Section */}
-      <div className="user-navbar-spacer"></div>
       <header className="hero-section">
         <img
           src={MainImg}
