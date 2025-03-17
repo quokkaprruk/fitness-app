@@ -30,7 +30,9 @@ const ClassList = () => {
         setClasses(data);
         setFilteredClasses(data);
 
-        const uniqueClassTypes = [...new Set(data.map((item) => item.classType))];
+        const uniqueClassTypes = [
+          ...new Set(data.map((item) => item.classType)),
+        ];
         setClassTypes(uniqueClassTypes);
       } catch (err) {
         setError("Error loading classes data");
@@ -47,7 +49,8 @@ const ClassList = () => {
     filterClasses();
   }, [filters, classes]);
 
-  // Handle class reservation
+  const [reservedClasses, setReservedClasses] = useState({});
+
   const handleReserve = (classId) => {
     setReservingStatus((prevStatus) => ({
       ...prevStatus,
@@ -59,6 +62,10 @@ const ClassList = () => {
       setReservingStatus((prevStatus) => ({
         ...prevStatus,
         [classId]: false,
+      }));
+      setReservedClasses((prevReserved) => ({
+        ...prevReserved,
+        [classId]: true,
       }));
     }, 1000);
   };
@@ -109,53 +116,79 @@ const ClassList = () => {
       <Navbar isLoggedIn={false} />
       <div className="classlist-navbar-spacer"></div>
       <div className="class-list-container">
-      <h2>Available Classes</h2>
+        <h2>Available Classes</h2>
 
-      {/* Filters Section */}
-      <div className="filters">
-        <select name="classType" onChange={handleFilterChange} value={filters.classType}>
-          <option value="">All Class Types</option>
-          {classTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
+        {/* Filters Section */}
+        <div className="filters">
+          <select
+            name="classType"
+            onChange={handleFilterChange}
+            value={filters.classType}
+          >
+            <option value="">All Class Types</option>
+            {classTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+
+          <select
+            name="timeOfDay"
+            onChange={handleFilterChange}
+            value={filters.timeOfDay}
+          >
+            <option value="">All Times of Day</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+          </select>
+
+          <select
+            name="difficultyLevel"
+            onChange={handleFilterChange}
+            value={filters.difficultyLevel}
+          >
+            <option value="">All Difficulty Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+
+        {/* Display Filtered Classes */}
+        <ul>
+          {filteredClasses.map((classItem) => (
+            <li key={classItem._id} className="class-item">
+              <h3>
+                {classItem.classType} - {classItem.difficultyLevel}
+              </h3>
+              <p>Type: {classItem.classType}</p>
+              <p>
+                Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
+                {new Date(classItem.endDateTime).toLocaleString()}
+              </p>
+              <p>Capacity: {classItem.studentCapacity}</p>
+              <button
+                onClick={() => handleReserve(classItem._id)}
+                disabled={
+                  reservingStatus[classItem._id] ||
+                  reservedClasses[classItem._id]
+                }
+                className={`reserve-button ${
+                  reservedClasses[classItem._id] ? "reserved" : ""
+                }`}
+              >
+                {reservingStatus[classItem._id]
+                  ? "Reserving..."
+                  : reservedClasses[classItem._id]
+                  ? "Reserved"
+                  : "Reserve"}
+              </button>
+            </li>
           ))}
-        </select>
-
-        <select name="timeOfDay" onChange={handleFilterChange} value={filters.timeOfDay}>
-          <option value="">All Times of Day</option>
-          <option value="Morning">Morning</option>
-          <option value="Afternoon">Afternoon</option>
-          <option value="Evening">Evening</option>
-        </select>
-
-        <select name="difficultyLevel" onChange={handleFilterChange} value={filters.difficultyLevel}>
-          <option value="">All Difficulty Levels</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select>
+        </ul>
       </div>
-
-      {/* Display Filtered Classes */}
-      <ul>
-        {filteredClasses.map((classItem) => (
-          <li key={classItem._id} className="class-item">
-            <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
-            <p>Type: {classItem.classType}</p>
-            <p>
-              Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
-              {new Date(classItem.endDateTime).toLocaleString()}
-            </p>
-            <p>Capacity: {classItem.studentCapacity}</p>
-            <button
-              onClick={() => handleReserve(classItem._id)}
-              disabled={reservingStatus[classItem._id]}
-            >
-              {reservingStatus[classItem._id] ? "Reserving..." : "Reserve"}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
     </div>
   );
 };

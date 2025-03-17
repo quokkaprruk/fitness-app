@@ -126,3 +126,13 @@ h2 {
   font-weight: bold;
   margin-top: 20px;
 }
+
+.reserve-button.reserved {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.reserve-button.reserved:hover {
+  background-color: #cccccc;
+  transform: none;
+}
