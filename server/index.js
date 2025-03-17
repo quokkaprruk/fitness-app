@@ -8,6 +8,7 @@ const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const paymentRoutes = require("./routes/payment");
+const announcementsRoute = require("./routes/announcements");
 
 const logger = require("./middleware/logger");
 const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
@@ -67,6 +68,7 @@ mongoose
     app.use("/api/schedules", scheduleRoutes);
     app.use("/api/classes", scheduleRoutes);
     app.use("/api/payment", paymentRoutes);
+    app.use("/api/announcements", announcementsRoute);
     app.use((err, _req, res, _next) => {
       if (err.name === "UnauthorizedError") {
         res.status(401).json({ message: "Invalid token" });
