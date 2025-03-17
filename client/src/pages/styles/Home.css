@@ -30,11 +30,7 @@ body {
   min-height: 100vh;
   padding: 20px;
   width: 100%;
-  margin-top: 100px;
-}
-
-.member-navbar-spacer {
-  height: 1000px;
+  margin-top: 750px;
 }
 
 .member-home {
@@ -52,6 +48,7 @@ body {
   text-align: center;
   width: 100%;
   margin-bottom: 30px;
+  margin-top: 2000px;
 }
 
 .hero-section h1 {
@@ -61,7 +58,6 @@ body {
 
 .hero-section {
   position: relative;
-  text-align: center;
 }
 
 .home-img {
