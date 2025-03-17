@@ -18,6 +18,10 @@ body {
   flex-direction: column;
 }
 
+.user-navbar-spacer {
+  height: 100px;
+}
+
 .newUser-home {
   display: flex;
   flex-direction: column;
