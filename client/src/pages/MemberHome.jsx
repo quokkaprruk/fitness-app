@@ -11,7 +11,6 @@ const MemberHome = () => {
   return (
     <div className="newUser-home">
       {/* Hero Section */}
-      <div className="user-navbar-spacer"></div>
       <header className="hero-section">
         <img
           src={MainImg}
