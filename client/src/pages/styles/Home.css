@@ -80,6 +80,16 @@ body {
   margin-top: 20px;
 }
 
+.become-subscriber-button {
+  background-color: #48d1cc;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 35px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
 .primary-button:hover {
   background-color: #32cd32;
 }
