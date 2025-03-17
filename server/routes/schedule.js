@@ -125,7 +125,6 @@ router.get("/onsite", async (req, res) => {
 router.post("/reserve/:classId", async (req, res) => {
   try {
     const { scheduleId, memberId } = req.body;
-    logger.info('Student: ', memberId);
 
     const schedule = await Schedule.findById(scheduleId);
     if (!schedule) {
@@ -144,23 +143,24 @@ router.post("/reserve/:classId", async (req, res) => {
       return res.status(400).json({ message: "Already registered" });
     }
 
+    // Update class capacity
     schedule.currentReserved += 1;
+    schedule.studentCapacity = Math.max(0, schedule.studentCapacity - 1); // Prevent negative values
     schedule.studentList.push(memberId);
     await schedule.save();
 
-    logger.info(
-      `Reserved class for member ${memberId} to schedule ${schedule.id}`
-    );
-
-    return res.status(200).json({ message: "Successfully reserved class" });
+    return res.status(200).json({
+      message: "Successfully reserved class",
+      updatedCapacity: schedule.studentCapacity, // Return new capacity
+    });
   } catch (error) {
-    logger.error(`Error reserving class ${error.message}`);
     res.status(500).json({
       message: "Error reserving class",
       error: error.message,
     });
   }
 });
+
 
 // Luis Mario: GET route to view all classes for a given member
 router.get("/member/:profileId", async (req, res) => {
