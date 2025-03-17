@@ -8,11 +8,12 @@ body {
 }
 
 .classlist-navbar-spacer {
-  height: 50px !important;
+  height: 60px !important; /* Reduced height */
 }
 
 .class-list {
-  height: 50px !important;
+  margin-top: 60px; /* Spacing below navbar */
+  padding: 20px; /* Added padding for spacing */
 }
 
 .class-list-container {
