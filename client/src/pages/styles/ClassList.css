@@ -7,6 +7,10 @@ body {
   background-color: #f4f4f4;
 }
 
+.classlist-navbar-spacer {
+  height: 1000px;
+}
+
 .class-list-container {
   max-width: 1200px;
   margin: 50px auto;
@@ -109,8 +113,3 @@ h2 {
   font-weight: bold;
   margin-top: 20px;
 }
-
-.classlist-navbar-spacer{
-  height: 125px;
-}
-
