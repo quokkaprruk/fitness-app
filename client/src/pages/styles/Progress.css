@@ -67,7 +67,7 @@ body {
   margin-bottom: 20px;
   max-width: 400px;
   box-sizing: border-box;
-  height: 520px; /* Make the goals section same height as food-section */
+  height: 600px; /* Make the goals section same height as food-section */
 }
 
 .goals-section h3 {
@@ -372,7 +372,7 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   max-width: 400px; /* same as goals section */
-  height: 520px;
+  height: 600px;
   box-sizing: border-box;
 }
 
