@@ -8,8 +8,8 @@ const ClassList = () => {
   const [filteredClasses, setFilteredClasses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [reserving, setReserving] = useState(false);
-  const [classTypes, setClassTypes] = useState([]); 
+  const [reservingStatus, setReservingStatus] = useState({}); // Track reserving status per class
+  const [classTypes, setClassTypes] = useState([]);
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -44,11 +44,20 @@ const ClassList = () => {
 
   // Handle class reservation
   const handleReserve = (classId) => {
-    setReserving(true);
+    // Set reserving status for this specific class
+    setReservingStatus((prevStatus) => ({
+      ...prevStatus,
+      [classId]: true,
+    }));
 
+    // Simulate reservation API call or process
     setTimeout(() => {
       alert(`Reservation successful for class ID: ${classId}`);
-      setReserving(false);
+      // Reset reserving status for this specific class
+      setReservingStatus((prevStatus) => ({
+        ...prevStatus,
+        [classId]: false,
+      }));
     }, 1000);
   };
 
@@ -143,8 +152,11 @@ const ClassList = () => {
               {new Date(classItem.endDateTime).toLocaleString()}
             </p>
             <p>Capacity: {classItem.studentCapacity}</p>
-            <button onClick={() => handleReserve(classItem._id)} disabled={reserving}>
-              {reserving ? "Reserving..." : "Reserve"}
+            <button
+              onClick={() => handleReserve(classItem._id)}
+              disabled={reservingStatus[classItem._id]}
+            >
+              {reservingStatus[classItem._id] ? "Reserving..." : "Reserve"}
             </button>
           </li>
         ))}
