@@ -22,7 +22,7 @@ const MemberHome = () => {
           onClick={() => navigate("/pricing")}
           className="become-member-button"
         >
-          Become a Member
+          Become a Subscriber
         </button>
       </header>
 
