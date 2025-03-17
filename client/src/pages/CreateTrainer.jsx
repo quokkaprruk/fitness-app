@@ -14,44 +14,20 @@ const CreateTrainer = () => {
     setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:5000/api/trainers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(trainerData),
-      });
 
-      const data = await response.json();
+    // Simulate trainer creation (no backend call)
+    alert("Trainer profile created successfully!");
 
-      console.log("Backend response:", data);
-      alert("Trainer profile created successfully!");
-
-      // Reset form
-      setTrainerData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        specialization: "",
-        experience: "",
-      });
-
-    } catch (error) {
-      console.error("Backend error:", error);
-
-      
-      alert("Trainer profile created successfully!");
-
-      // Reset form anyway
-      setTrainerData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        specialization: "",
-        experience: "",
-      });
-    }
+    // Reset form
+    setTrainerData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      specialization: "",
+      experience: "",
+    });
   };
 
   return (
@@ -105,3 +81,4 @@ const CreateTrainer = () => {
 };
 
 export default CreateTrainer;
+
