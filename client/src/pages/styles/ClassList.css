@@ -18,13 +18,21 @@ body {
 
 .class-list-container {
   max-width: 1200px;
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 20px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Add this to make the class list container scrollable */
+.class-list ul {
+  max-height: 500px; /* Adjust this value as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 0; /* Reset default ul padding */
+  list-style: none; /* Remove bullet points */
 }
 
 h2 {
