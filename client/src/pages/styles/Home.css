@@ -19,11 +19,7 @@ body {
 }
 
 .user-navbar-spacer {
-  height: 2000px;
-}
-
-.member-navbar-spacer {
-  height: 1000px;
+  height: 100px;
 }
 
 .newUser-home {
@@ -34,7 +30,11 @@ body {
   min-height: 100vh;
   padding: 20px;
   width: 100%;
-  margin-top: 1000px;
+  margin-top: 100px;
+}
+
+.member-navbar-spacer {
+  height: 1000px;
 }
 
 .member-home {
