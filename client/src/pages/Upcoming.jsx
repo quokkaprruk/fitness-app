@@ -6,25 +6,29 @@ const Upcoming = () => {
   const [reservedClasses, setReservedClasses] = useState([]);
 
   useEffect(() => {
+    // Retrieve reserved classes from localStorage
     const storedReservations =
       JSON.parse(localStorage.getItem("reservedClasses")) || [];
     setReservedClasses(storedReservations);
   }, []);
 
-  // Function to cancel a reservation with confirmation
   const handleCancel = (classId) => {
     const confirmCancel = window.confirm(
       "Are you sure you want to cancel this booking?"
     );
     if (confirmCancel) {
+      // Remove the canceled reservation
       const updatedReservations = reservedClasses.filter(
-        (classItem) => classItem.classId !== classId
+        (classItem) => classItem._id !== classId
       );
       setReservedClasses(updatedReservations);
+
+      // Update localStorage
       localStorage.setItem(
         "reservedClasses",
         JSON.stringify(updatedReservations)
       );
+
       alert("Reservation canceled.");
     }
   };
@@ -44,7 +48,7 @@ const Upcoming = () => {
               (a, b) => new Date(a.startDateTime) - new Date(b.startDateTime)
             ) // Sort in ascending order
             .map((classItem) => (
-              <li key={classItem.classId} className="class-item">
+              <li key={classItem._id} className="class-item">
                 <h3 className="reserved-classes-name">
                   {classItem.classType} - {classItem.difficultyLevel}
                 </h3>
@@ -58,7 +62,7 @@ const Upcoming = () => {
                 </p>
                 <button
                   className="cancel-booking-button"
-                  onClick={() => handleCancel(classItem.classId)}
+                  onClick={() => handleCancel(classItem._id)}
                 >
                   Cancel Reservation
                 </button>
