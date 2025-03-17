@@ -20,9 +20,9 @@ const MemberHome = () => {
         />
         <button
           onClick={() => navigate("/pricing")}
-          className="become-subscriber-button"
+          className="become-member-button"
         >
-          Become a Subscriber
+          Become a Paying Member
         </button>
       </header>
 

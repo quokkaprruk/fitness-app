@@ -37,7 +37,7 @@ const NewUser = () => {
       </header>
 
       <Link to="/pricing">
-        <button className="become-member-button">Become a Member</button>
+        <button className="become-member-btn">Become a Member</button>
       </Link>
 
       {/* Class Categories - Cards */}
