@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./styles/ClassList.css";
 import Navbar from "../components/Navbar.jsx";
+import { AuthContext } from "../context/authContextValue";
 
 const ClassList = () => {
   const [classes, setClasses] = useState([]);
@@ -9,7 +10,8 @@ const ClassList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reserving, setReserving] = useState(false);
-  const [classTypes, setClassTypes] = useState([]); 
+  const [classTypes, setClassTypes] = useState({}); 
+  const { token, user } = useContext(AuthContext);
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -43,13 +45,34 @@ const ClassList = () => {
   }, []);
 
   // Handle class reservation
-  const handleReserve = (classId) => {
-    setReserving(true);
+  const handleReserve = async (classId) => {
+    if (!user || !user.id) {
+      alert("You must be logged in to reserve a class.");
+      return;
+    }
 
-    setTimeout(() => {
-      alert(`Reservation successful for class ID: ${classId}`);
-      setReserving(false);
-    }, 1000);
+    setReserving((prevState) => ({ ...prevState, [classId]: true }));
+    
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/classes/reserve/${classId}`,
+        {
+          scheduleId: classId,
+          memberId: user.id,
+        }, 
+        {
+          headers: { Authorization: `Bearer ${token}` }, // Pass the token in headers
+        }
+      );
+
+      setTimeout(() => {
+        alert(`Reservation successful for class ID: ${classId}`);
+        setReserving((prevState) => ({ ...prevState, [classId]: false }));
+      }, 1000);
+    } catch (error) {
+      alert(error.response?.data?.message || "Failed to reserve class");
+      setReserving((prevState) => ({ ...prevState, [classId]: false }));
+    }
   };
 
   // Handle filter change
@@ -143,8 +166,8 @@ const ClassList = () => {
               {new Date(classItem.endDateTime).toLocaleString()}
             </p>
             <p>Capacity: {classItem.studentCapacity}</p>
-            <button onClick={() => handleReserve(classItem._id)} disabled={reserving}>
-              {reserving ? "Reserving..." : "Reserve"}
+            <button onClick={() => handleReserve(classItem._id)} disabled={reserving[classItem._id]}>
+              {reserving[classItem._id] ? "Reserving..." : "Reserve"}
             </button>
           </li>
         ))}

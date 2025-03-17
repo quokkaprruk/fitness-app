@@ -122,9 +122,10 @@ router.get("/onsite", async (req, res) => {
 });
 
 // Luis Mario: Reservation POST route
-router.post("/reserve", async (req, res) => {
+router.post("/reserve/:classId", async (req, res) => {
   try {
     const { scheduleId, memberId } = req.body;
+    logger.info('Student: ', memberId);
 
     const schedule = await Schedule.findById(scheduleId);
     if (!schedule) {

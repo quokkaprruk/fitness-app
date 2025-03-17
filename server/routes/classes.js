@@ -19,4 +19,4 @@ router.get("/", async (req, res) => {
         .status(500)
         .json({ message: "Error fetching schedules", error: error.message });
     }
-  });
+});
