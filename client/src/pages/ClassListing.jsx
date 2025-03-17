@@ -51,6 +51,14 @@ const ClassList = () => {
 
   const [reservedClasses, setReservedClasses] = useState({});
 
+  useEffect(() => {
+    // Load reserved classes from localStorage on client-side only
+    if (typeof window !== 'undefined') {
+      const storedReservations = JSON.parse(localStorage.getItem("reservedClasses")) || {};
+      setReservedClasses(storedReservations);
+    }
+  }, []);
+
   const handleReserve = (classId) => {
     setReservingStatus((prevStatus) => ({
       ...prevStatus,
@@ -70,20 +78,19 @@ const ClassList = () => {
         };
   
         // Save reserved class details to localStorage
-        const reservedClassDetails = classes.find(
-          (classItem) => classItem._id === classId
-        );
-        const storedReservations =
-          JSON.parse(localStorage.getItem("reservedClasses")) || [];
-        localStorage.setItem(
-          "reservedClasses",
-          JSON.stringify([...storedReservations, reservedClassDetails])
-        );
-  
+        if (typeof window !== 'undefined') {
+          const reservedClassDetails = classes.find(
+            (classItem) => classItem._id === classId
+          );
+          const storedReservations = JSON.parse(localStorage.getItem("reservedClasses")) || {};
+          storedReservations[classId] = reservedClassDetails;
+          localStorage.setItem("reservedClasses", JSON.stringify(storedReservations));
+        }
+
         return updatedReservedClasses;
       });
     }, 1000);
-  };  
+  };
 
   // Handle filter change
   const handleFilterChange = (e) => {

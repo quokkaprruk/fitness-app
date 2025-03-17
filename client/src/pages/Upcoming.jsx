@@ -6,9 +6,11 @@ const Upcoming = () => {
   const [reservedClasses, setReservedClasses] = useState([]);
 
   useEffect(() => {
-    const storedReservations =
-      JSON.parse(localStorage.getItem("reservedClasses")) || [];
-    setReservedClasses(storedReservations);
+    // Load reserved classes from localStorage on client-side only
+    if (typeof window !== 'undefined') {
+      const storedReservations = JSON.parse(localStorage.getItem("reservedClasses")) || {};
+      setReservedClasses(Object.values(storedReservations));
+    }
   }, []);
 
   // Function to cancel a reservation with confirmation
@@ -17,14 +19,20 @@ const Upcoming = () => {
       "Are you sure you want to cancel this booking?"
     );
     if (confirmCancel) {
-      const updatedReservations = reservedClasses.filter(
-        (classItem) => classItem.classId !== classId
-      );
-      setReservedClasses(updatedReservations);
-      localStorage.setItem(
-        "reservedClasses",
-        JSON.stringify(updatedReservations)
-      );
+      setReservedClasses((prevReserved) => {
+        const updatedReservations = prevReserved.filter(
+          (classItem) => classItem._id !== classId
+        );
+
+        // Update localStorage on client-side only
+        if (typeof window !== 'undefined') {
+          const storedReservations = JSON.parse(localStorage.getItem("reservedClasses")) || {};
+          delete storedReservations[classId];
+          localStorage.setItem("reservedClasses", JSON.stringify(storedReservations));
+        }
+
+        return updatedReservations;
+      });
       alert("Reservation canceled.");
     }
   };
