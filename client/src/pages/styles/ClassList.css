@@ -8,7 +8,7 @@ body {
 }
 
 .class-list {
-  margin-top: 100px; /* Spacing below navbar */
+  padding-top: 300px; /* Spacing below navbar */
 }
 
 .class-list-container {
