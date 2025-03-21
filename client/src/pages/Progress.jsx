@@ -87,16 +87,21 @@ const Progress = () => {
     setLoading(true);
     setError(null);
     try {
-      // Mock API call to fetch goals
-      setTimeout(() => {
-        const mockGoals = {
-          currentGoals: ["Exercise for 30 minutes", "Eat a healthy meal"],
-          achievedGoals: ["Drink 8 glasses of water"],
-        };
-        setCurrentGoals(mockGoals.currentGoals);
-        setAchievedGoals(mockGoals.achievedGoals);
-        setLoading(false);
-      }, 500);
+      // Retrieve goals from localStorage
+      const storedCurrentGoals = localStorage.getItem("currentGoals");
+      const storedAchievedGoals = localStorage.getItem("achievedGoals");
+
+      // If goals are stored, parse them, otherwise use initial values
+      const initialCurrentGoals = storedCurrentGoals
+        ? JSON.parse(storedCurrentGoals)
+        : [];
+      const initialAchievedGoals = storedAchievedGoals
+        ? JSON.parse(storedAchievedGoals)
+        : [];
+
+      setCurrentGoals(initialCurrentGoals);
+      setAchievedGoals(initialAchievedGoals);
+      setLoading(false);
     } catch (err) {
       setError("Error fetching goals: " + err.message);
       setLoading(false);
@@ -151,15 +156,24 @@ const Progress = () => {
     setLoading(true);
     setError(null);
     try {
-      setTimeout(() => {
-        console.log("Goals updated:", updatedGoals);
-        setLoading(false);
-      }, 500);
+      // Convert goals to JSON strings and store in localStorage
+      localStorage.setItem(
+        "currentGoals",
+        JSON.stringify(updatedGoals.currentGoals)
+      );
+      localStorage.setItem(
+        "achievedGoals",
+        JSON.stringify(updatedGoals.achievedGoals)
+      );
+
+      console.log("Goals updated:", updatedGoals);
+      setLoading(false);
     } catch (err) {
       setError("Error updating goals: " + err.message);
       setLoading(false);
     }
   };
+
 
   // Function to handle logging a workout
   const handleLogWorkout = () => {
@@ -212,7 +226,7 @@ const Progress = () => {
 
     try {
       const response = await fetch(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`,
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${foodQuery}&api_key=zq2VTgX3oWnH5mWd0FZwmjPAIvbPwWTW95fb0qNU`
       );
       const data = await response.json();
       console.log(data);
@@ -220,7 +234,7 @@ const Progress = () => {
       if (data.foods && data.foods.length > 0) {
         // Remove duplicates based on food name
         const uniqueFoods = Array.from(
-          new Map(data.foods.map((food) => [food.description, food])).values(),
+          new Map(data.foods.map((food) => [food.description, food])).values()
         );
         setFoodResults(uniqueFoods.slice(0, 5)); // Store top 5 unique results
       } else {
@@ -261,7 +275,7 @@ const Progress = () => {
       selectedFood.foodNutrients.length > 0
     ) {
       const nutrient = selectedFood.foodNutrients.find(
-        (n) => n.nutrientName === nutrientName,
+        (n) => n.nutrientName === nutrientName
       );
       return nutrient ? (nutrient.value * (quantity / 100)).toFixed(2) : 0;
     }
@@ -276,7 +290,7 @@ const Progress = () => {
         calories: parseFloat(getNutrientValue("Energy")),
         protein: parseFloat(getNutrientValue("Protein")),
         carbohydrates: parseFloat(
-          getNutrientValue("Carbohydrate, by difference"),
+          getNutrientValue("Carbohydrate, by difference")
         ),
         cholesterol: parseFloat(getNutrientValue("Cholesterol")),
         sugars: parseFloat(getNutrientValue("Total Sugars")),
@@ -504,7 +518,10 @@ const Progress = () => {
               <li key={index} className="goal-item achieved">
                 <span className="goal-text">{goal}</span>
                 <div className="goal-actions">
-                  <button className="achieved-bin-button" onClick={() => handleRemoveGoal(index, true)}>
+                  <button
+                    className="achieved-bin-button"
+                    onClick={() => handleRemoveGoal(index, true)}
+                  >
                     🗑️
                   </button>
                 </div>
@@ -518,8 +535,8 @@ const Progress = () => {
               <div className="modal-content">
                 <p>Are you sure you want to remove this goal?</p>
                 <div className="modal-buttons">
-                  <button onClick={confirmRemoveGoal}>Yes</button>
-                  <button onClick={cancelRemoveGoal}>No</button>
+                  <button className="yes-btn" onClick={confirmRemoveGoal}>Yes</button>
+                  <button className="no-btn" onClick={cancelRemoveGoal}>No</button>
                 </div>
               </div>
             </div>

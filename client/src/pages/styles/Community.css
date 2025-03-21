@@ -1,0 +1,65 @@
+.community-page {
+  font-family: "Rokkitt", serif;
+  background-color: #f4f4f4;
+  padding: 2rem;
+  text-align: center;
+}
+
+.coming-soon-title {
+  font-size: 2.5rem;
+  color: #40e0d0;
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon-subtext {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.community-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.placeholder-section, .announcements-section {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+.placeholder-section img {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.announcement-list {
+  list-style: none;
+  padding: 0;
+}
+
+.announcement-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.announcement-item h4 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-item p {
+  color: #666;
+}
+
+.announcement-date {
+  font-size: 0.8rem;
+  color: #999;
+}

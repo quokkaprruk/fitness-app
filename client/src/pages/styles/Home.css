@@ -22,6 +22,10 @@ body {
   height: 2900px;
 }
 
+.member-navbar-spacer {
+  height: 1000px;
+}
+
 .newUser-home {
   display: flex;
   flex-direction: column;
@@ -30,6 +34,18 @@ body {
   min-height: 100vh;
   padding: 20px;
   width: 100%;
+  margin-top: 100px;
+}
+
+.member-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  margin-top: 1000px;
 }
 
 .hero-section {

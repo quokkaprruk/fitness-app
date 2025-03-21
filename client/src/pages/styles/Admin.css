@@ -17,7 +17,7 @@ body {
 
 /* Centered Page Container */
 .admin-page {
-  width: 600px; /* Perfect balance - not too wide or narrow */
+  width: 600px; 
   padding: 25px 30px;
   background: #fff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
@@ -57,6 +57,7 @@ body {
   width: 100%;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
+  color: #000;
 }
 
 /* Input Hover & Focus */
@@ -86,4 +87,3 @@ body {
   background: green;
   transform: translateY(-2px);
 }
-

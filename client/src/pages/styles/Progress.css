@@ -67,7 +67,7 @@ body {
   margin-bottom: 20px;
   max-width: 400px;
   box-sizing: border-box;
-  height: 520px; /* Make the goals section same height as food-section */
+  height: 600px; /* Make the goals section same height as food-section */
 }
 
 .goals-section h3 {
@@ -135,7 +135,7 @@ body {
   margin-top: -35px;
 }
 
-.achieved-bin-button{
+.achieved-bin-button {
   margin-top: -60px;
 }
 
@@ -372,7 +372,7 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   max-width: 400px; /* same as goals section */
-  height: 520px;
+  height: 600px;
   box-sizing: border-box;
 }
 
@@ -469,4 +469,12 @@ body {
   font-size: 20px;
   color: #d9534f;
   margin-top: 5px;
+}
+
+.yes-btn {
+  background-color: green !important;
+}
+
+.no-btn {
+  background-color: red !important;
 }

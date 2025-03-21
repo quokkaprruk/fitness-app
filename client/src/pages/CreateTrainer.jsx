@@ -14,32 +14,20 @@ const CreateTrainer = () => {
     setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/trainers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(trainerData),
-      });
 
-      if (!response.ok) {
-        throw new Error("Failed to create trainer");
-      }
+    // Simulate trainer creation (no backend call)
+    alert("Trainer profile created successfully!");
 
-      console.log("Trainer Profile Created:", trainerData);
-      alert("Trainer profile created successfully!");
-      setTrainerData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        specialization: "",
-        experience: "",
-      });
-    } catch (error) {
-      console.error("Error creating trainer:", error);
-      alert("Error creating trainer");
-    }
+    // Reset form
+    setTrainerData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      specialization: "",
+      experience: "",
+    });
   };
 
   return (
@@ -73,7 +61,7 @@ const CreateTrainer = () => {
         <input
           type="text"
           name="specialization"
-          placeholder="Specialization"
+          placeholder="Specialization (comma-separated)"
           value={trainerData.specialization}
           onChange={handleChange}
           required

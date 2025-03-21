@@ -54,10 +54,11 @@ const Navbar = () => {
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
           <Link to="/client-management">Client Management</Link>
-          <Link to="/admin/create-trainer">Create Profile</Link>
+           <Link to="/admin/create-trainer">Create Trainer</Link>
           <Link to="/admin/post-announcement">Post Announcement</Link>
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
+
           <div className="profile-dropdown">
             <FaUser
               className="icon"
