@@ -88,11 +88,12 @@ const memberProfilesSchema = new Schema(
         ref: "Member_Todo",
       },
     ],
+    
   },
   {
     collection: "member_profiles", // collection name
     timestamps: true,
-  },
+  }
 );
 
 const MemberProfiles = mongoose.model("Member_Profile", memberProfilesSchema);

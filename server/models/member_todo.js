@@ -21,10 +21,14 @@ const todoSchema = new Schema(
         achievedAt: { type: Date, default: Date.now },
       },
     ],
+    workout: {
+      type: Number,
+      min: 0,
+    },
   },
   {
     collection: "member_todos",
-  },
+  }
 );
 
 const MemberTodo = mongoose.model("Member_Todo", todoSchema);

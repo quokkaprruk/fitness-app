@@ -18,6 +18,63 @@ const adminProfilesSchema = new Schema(
       type: String,
       required: true,
     },
+    profileImage: {
+      type: String,
+      default: "", //store img url
+    },
+    phone: {
+      type: String,
+      default: "",
+      match: /^\d+$/,
+    },
+    address1: {
+      type: String,
+      default: "",
+    },
+    address2: {
+      type: String,
+      default: "",
+    },
+    city: {
+      type: String,
+      default: "",
+    },
+    province: {
+      type: String,
+      default: "",
+    },
+    postal: {
+      type: String,
+      default: "",
+    },
+    country: {
+      type: String,
+      default: "",
+    },
+    gender: {
+      type: String,
+      default: "",
+    },
+    dateOfBirth: {
+      type: Date,
+      default: null,
+    },
+    height: {
+      type: Number,
+      default: null,
+    },
+    weight: {
+      type: Number,
+      default: null,
+    },
+    condition: {
+      type: String,
+      default: "",
+    },
+    allergy: {
+      type: String,
+      default: "",
+    },
   },
   {
     collection: "admin_profiles", // collection name
