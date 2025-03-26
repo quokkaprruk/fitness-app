@@ -53,7 +53,6 @@ const Navbar = () => {
         <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
-          <Link to="/client-management">Client Management</Link>
            <Link to="/admin/create-trainer">Create Trainer</Link>
           <Link to="/admin/post-announcement">Post Announcement</Link>
           <Link to="/community">Community</Link>
@@ -95,7 +94,6 @@ const Navbar = () => {
         <div className="navbar-links">
           <Link to="/trainer">Home</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/client-management">Client Management</Link>
           <Link to="/community">Community</Link>
           <div className="profile-dropdown">
             <FaUser
