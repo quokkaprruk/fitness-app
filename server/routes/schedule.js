@@ -3,6 +3,7 @@ const logger = require("../middleware/logger"); // use logger
 const {
   generateMonthlySchedule,
 } = require("../utils/monthlyScheduleGenerator");
+const moment = require("moment");
 const Trainer = require("../models/trainer_profiles");
 const Schedule = require("../models/schedule");
 const MemberProfile = require("../models/member_profiles");
@@ -12,7 +13,12 @@ const router = express.Router();
 // : use when admin clicks on 'generate-schedule' button
 router.post("/generate-schedule", async (req, res) => {
   try {
-    const trainers = await Trainer.find(); // fetch trainer from the database
+    // fetch trainer necessary data from the database
+    const trainers = await Trainer.find(
+      {},
+      "firstName lastName teachingMode specialty"
+    );
+
     if (trainers.length === 0) {
       return res.status(404).json({ message: "No trainers found" });
     }
@@ -21,7 +27,7 @@ router.post("/generate-schedule", async (req, res) => {
     if (schedule.length === 0) {
       return res.status(404).json({ message: "No schedule found" });
     } else {
-      res.status(200).json(schedule);
+      res.status(200).json({ trainers: trainers, schedule: schedule }); // send trainers and schedule
     }
   } catch (error) {
     logger.error(`Error generating schedule: ${error.message}`);
@@ -33,10 +39,18 @@ router.post("/generate-schedule", async (req, res) => {
 
 // Siripa: POST route to save the confirmed schedule + insert to database
 // : use when want to save the generated schedule to the database
+
 router.post("/save-generated-schedule", async (req, res) => {
   try {
     const { schedule } = req.body; //front-end must send generated schedule data in the req.body
-    // const schedule = require("../utils/monthlySchedule.json"); // for testing
+    console.log(req.body);
+    const schedulesToSave = schedule.map((item) => {
+      return {
+        ...item,
+        startDateTime: moment(item.startDateTime).toDate(), // Convert to Date
+        endDateTime: moment(item.endDateTime).toDate(), // Convert to Date
+      };
+    });
 
     // check if there's existing schedule in db
     const existingSchedules = await Schedule.find({});
@@ -44,14 +58,15 @@ router.post("/save-generated-schedule", async (req, res) => {
       await Schedule.deleteMany({});
     }
     // insert to the database
-    const savedSchedules = await Schedule.insertMany(schedule);
+    console.log(schedulesToSave);
+    const savedSchedules = await Schedule.insertMany(schedulesToSave);
 
     res.status(200).json({
       message: "Schedule saved successfully",
       schedules: savedSchedules,
     });
   } catch (error) {
-    logger.error(`Error saving schedule: ${error.message}`);
+    logger.error(`Error saving schedule: ${error}`);
     res
       .status(500)
       .json({ message: "Error saving schedule", error: error.message });
@@ -161,7 +176,6 @@ router.post("/reserve/:classId", async (req, res) => {
   }
 });
 
-
 // Luis Mario: GET route to view all classes for a given member
 router.get("/member/:profileId", async (req, res) => {
   try {
@@ -199,6 +213,65 @@ router.get("/:instructorId", async (req, res) => {
   } catch (error) {
     console.error("Error fetching schedules:", error);
     res.status(500).json({ message: "Error fetching schedules" });
+  }
+});
+
+//Siripa: put to save 'an' updated class
+router.put("/:scheduleId", async (req, res) => {
+  try {
+    const { scheduleId } = req.params;
+    const updateData = req.body;
+
+    //avoid duplicate schedule that has the same instructor and startDateTime
+    const existingSchedule = await Schedule.findOne({
+      instructorId: updateData.instructorId,
+      startDateTime: updateData.startDateTime,
+      _id: { $ne: scheduleId },
+    });
+
+    if (existingSchedule) {
+      return res.status(400).json({
+        message:
+          "Duplicate schedule found. Instructor already has a schedule at this time.",
+      });
+    }
+
+    // update
+    const updatedSchedule = await Schedule.findByIdAndUpdate(
+      scheduleId,
+      updateData,
+      { new: true, runValidators: true }
+    );
+
+    res.status(200).json({
+      message: "Schedule updated successfully",
+      schedule: updatedSchedule,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error updating class",
+      error: error.message,
+    });
+  }
+});
+
+//Siripa: delete a class
+router.delete("/:scheduleId", async (req, res) => {
+  try {
+    const { scheduleId } = req.params;
+
+    const deletedSchedule = await Schedule.findByIdAndDelete(scheduleId);
+
+    if (!deletedSchedule) {
+      return res.status(404).json({ message: "Schedule not found" });
+    }
+
+    return res.status(200).json({ message: "Schedule deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error deleting class",
+      error: error.message,
+    });
   }
 });
 

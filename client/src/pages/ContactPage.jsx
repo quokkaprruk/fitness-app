@@ -91,12 +91,14 @@ const ContactPage = () => {
             required
           ></textarea>
 
-          <button type="submit">Send Message</button>
+          <button className="submit-btn" type="submit">
+            Send Message
+          </button>
         </form>
       </div>
 
       <div className="contact-info">
-        <div className="info-section">
+        <div className="info-section1">
           <h2>Our Location</h2>
           <p>ISGA Gym, 123 Fitness St, Toronto, ON</p>
           <p>
@@ -110,7 +112,7 @@ const ContactPage = () => {
           </p>
         </div>
 
-        <div className="info-section">
+        <div className="info-section2">
           <h2>Follow Us</h2>
           <div>
             <a

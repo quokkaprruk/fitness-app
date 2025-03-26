@@ -6,57 +6,78 @@ const Trainer = require("../models/trainer_profiles");
 const router = express.Router();
 const { notify } = require("../utils/notify");
 
-const weekDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 // Siripa: POST route
 // when admin clicks 'add classes'
 router.post("/add-schedule", async (req, res) => {
   try {
     const {
       className,
-      classType,
+      difficultyLevel,
+      location,
+      studentCapacity,
       startDateTime,
       endDateTime,
       instructorId,
-      studentCapacity,
     } = req.body;
 
     if (
       !className ||
-      !classType ||
+      !difficultyLevel ||
+      !location ||
+      !studentCapacity ||
       !startDateTime ||
       !endDateTime ||
-      !instructorId ||
-      !studentCapacity
+      !instructorId
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const day = weekDays[new Date(startDateTime).getDay()];
-
-    const newSchedule = new Schedule({
-      className,
-      classType,
-      day,
-      startDateTime,
-      endDateTime,
-      instructorId,
-      studentCapacity,
+    // avoid duplicate
+    const existingSchedule = await Schedule.findOne({
+      instructorId: instructorId,
+      startDateTime: startDateTime,
     });
 
-    const savedSchedule = await newSchedule.save();
+    let savedSchedule;
 
-    res.status(200).json({
-      message: "Class schedule saved successfully",
-      schedule: savedSchedule,
-    });
+    if (existingSchedule) {
+      // If a duplicate, delete the old one and replace with the new one
+      await Schedule.findByIdAndDelete(existingSchedule._id);
+
+      const newSchedule = new Schedule({
+        className,
+        difficultyLevel,
+        location,
+        startDateTime,
+        endDateTime,
+        instructorId,
+        studentCapacity,
+      });
+
+      savedSchedule = await newSchedule.save();
+      res.status(200).json({
+        message: "Old schedule replaced with new schedule.",
+        schedule: savedSchedule,
+      });
+    } else {
+      // If no duplicate, create and save the new schedule
+      const newSchedule = new Schedule({
+        className,
+        difficultyLevel,
+        location,
+        startDateTime,
+        endDateTime,
+        instructorId,
+        studentCapacity,
+      });
+
+      savedSchedule = await newSchedule.save();
+
+      res.status(200).json({
+        message: "Class schedule saved successfully",
+        schedule: savedSchedule,
+      });
+    }
 
     // Notify trainer of new schedule
     logger.info(`Finding trainer with ID ${instructorId}`);

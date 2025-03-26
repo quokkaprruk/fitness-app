@@ -3,16 +3,22 @@ const { Schema } = mongoose;
 
 const scheduleSchema = new Schema(
   {
-    className: String,
-    classType: String,
+    className: String, //[Cardio, HIIT, Yoga, Weight Training, Pilates, Meditation]
+    difficultyLevel: String, // [Beginner,Intermediate,Advanced]
     instructorId: { type: mongoose.Schema.Types.ObjectId, ref: "Trainer" },
-    day: String,
+    instructorFirstName: String,
+    instructorLastName: String,
     startDateTime: Date,
     endDateTime: Date,
-    studentCapacity: Number,
+    studentCapacity: {
+      type: Number,
+      min: 1,
+      max: 15,
+      default: 5,
+    },
     currentReserved: { type: Number, default: 0 },
     studentList: { type: [String], default: [] },
-    location: { type: String, default: "" },
+    location: { type: String, default: "" }, // online OR onsite
     classDetails: {
       description: { type: String, default: "" },
       equipmentRequired: { type: [String], default: [] },

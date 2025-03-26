@@ -21,8 +21,9 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cancel-booking-button {
-  margin-top: 20px;
+.cancel-booking-button,
+.booking-button {
+  margin-top: 10px;
 }
 
 .cancel-booking-button:hover {
@@ -59,7 +60,10 @@ ul {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-

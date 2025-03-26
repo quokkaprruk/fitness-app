@@ -23,7 +23,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import { AuthProvider } from "./context/AuthContext";
 import Community from "./pages/Community";
-
+import AdminGenSchedule from "./pages/AdminGenSchedule";
 const App = () => {
   return (
     <AuthProvider>
@@ -56,6 +56,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="/genSchedule" element={<AdminGenSchedule />} />
             <Route
               path="/reset-password/:token"
               element={<ResetPasswordPage />}

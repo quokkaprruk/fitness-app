@@ -15,7 +15,9 @@ const Upcoming = () => {
     const fetchReservedClasses = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/upcoming?memberId=${user.id}`,
+          `${
+            import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+          }/api/upcoming?memberId=${user.id}`,
           {
             headers: { Authorization: `Bearer ${token}` }, // Send token for authentication
           }
@@ -34,20 +36,26 @@ const Upcoming = () => {
 
   // Function to cancel a reservation
   const handleCancel = async (classId) => {
-    const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
+    const confirmCancel = window.confirm(
+      "Are you sure you want to cancel this booking?"
+    );
     if (!confirmCancel) return;
-  
+
     setCancelling((prevState) => ({ ...prevState, [classId]: true })); // Set loading state
-  
+
     try {
       await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/upcoming/cancel/${classId}`,
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/upcoming/cancel/${classId}`,
         { memberId: user.id }, // Send member ID in the request body
         { headers: { Authorization: `Bearer ${token}` } }
       );
-  
-      setReservedClasses((prevClasses) => prevClasses.filter((c) => c._id !== classId));
-  
+
+      setReservedClasses((prevClasses) =>
+        prevClasses.filter((c) => c._id !== classId)
+      );
+
       alert("Reservation canceled.");
     } catch (error) {
       alert("Failed to cancel reservation. Please try again.");
@@ -56,7 +64,6 @@ const Upcoming = () => {
       setCancelling((prevState) => ({ ...prevState, [classId]: false })); // Remove loading state
     }
   };
-  
 
   return (
     <div className="reserved-classes">
@@ -69,19 +76,38 @@ const Upcoming = () => {
       ) : (
         <ul>
           {reservedClasses
-            .sort((a, b) => new Date(a.startDateTime) - new Date(b.startDateTime))
+            .sort(
+              (a, b) => new Date(a.startDateTime) - new Date(b.startDateTime)
+            )
             .map((classItem) => (
               <li key={classItem._id} className="class-item">
                 <h3 className="reserved-classes-name">
-                  {classItem.classType} - {classItem.difficultyLevel}
+                  {classItem.className} - {classItem.difficultyLevel}
                 </h3>
-                <p className="reserved-classes-p">
-                  <strong>Time:</strong>{" "}
-                  {new Date(classItem.startDateTime).toLocaleString()} -{" "}
-                  {new Date(classItem.endDateTime).toLocaleString()}
+                <p>
+                  ✏️: {classItem.instructorFirstName}{" "}
+                  {classItem.instructorLastName}
                 </p>
                 <p className="reserved-classes-p">
-                  <strong>Capacity:</strong> {classItem.studentCapacity}
+                  <strong>⏱️:</strong>{" "}
+                  {new Date(classItem.startDateTime).toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}{" "}
+                  -{" "}
+                  {new Date(classItem.endDateTime).toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}{" "}
+                  ({classItem.location})
+                </p>
+                <p className="reserved-classes-p">
+                  ⭐: {classItem.studentCapacity} seats left
                 </p>
                 <button
                   className="cancel-booking-button"
@@ -89,16 +115,17 @@ const Upcoming = () => {
                   disabled={cancelling[classItem._id]} // Disable button while canceling
                   style={{
                     backgroundColor: cancelling[classItem._id] ? "gray" : "red",
-                    cursor: cancelling[classItem._id] ? "not-allowed" : "pointer",
+                    cursor: cancelling[classItem._id]
+                      ? "not-allowed"
+                      : "pointer",
                   }}
                 >
                   {cancelling[classItem._id] ? (
-                    <span className="spinner"></span> // Show spinner while canceling
+                    <span className="spinner"></span>
                   ) : (
-                    "Cancel Reservation"
+                    "Cancel"
                   )}
                 </button>
-
               </li>
             ))}
         </ul>

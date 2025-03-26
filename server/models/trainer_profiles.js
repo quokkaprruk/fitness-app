@@ -104,6 +104,29 @@ const trainerProfilesSchema = new Schema(
     timestamps: true,
   }
 );
+
+trainerProfilesSchema.pre("save", async function (next) {
+  if (this.isModified("firstName") || this.isModified("lastName")) {
+    try {
+      const Schedule = mongoose.model("Schedule"); // Get the Schedule model
+
+      await Schedule.updateMany(
+        { instructorId: this._id },
+        {
+          instructorFirstName: this.firstName,
+          instructorLastName: this.lastName,
+        }
+      );
+      next();
+    } catch (error) {
+      console.error("Error updating schedules:", error);
+      next(error); // Pass the error to the next middleware
+    }
+  } else {
+    next();
+  }
+});
+
 const TrainerProfiles = mongoose.model(
   "Trainer_Profile",
   trainerProfilesSchema

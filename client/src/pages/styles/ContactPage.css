@@ -16,8 +16,8 @@ body {
   margin: 0 auto;
 }
 
-.contact-navbar-spacer{
-  height:400px;
+.contact-navbar-spacer {
+  height: 400px;
 }
 
 h1 {
@@ -87,13 +87,24 @@ button {
   cursor: pointer;
 }
 
+button:hover:not(:disabled) {
+  /* transform: scale(1); */
+  /* border-color: rgba(255, 255, 255, 0.9); */
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+
 button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-  background-color: #218838;
+.submit-btn:hover:not(:disabled) {
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 20%, #00ddeb);
+}
+
+.delete-btn:hover:not(:disabled) {
+  background-image: linear-gradient(144deg, #ff4040, #f3a042 70%, #ebd400);
 }
 
 .success-msg {

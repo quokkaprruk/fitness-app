@@ -10,13 +10,13 @@ const ClassList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reserving, setReserving] = useState({});
-  const [classTypes, setClassTypes] = useState({}); 
+  const [classTypes, setClassTypes] = useState({});
   const { token, user } = useContext(AuthContext);
   const [reservedClasses, setReservedClasses] = useState(new Set());
 
   // Filter states
   const [filters, setFilters] = useState({
-    classType: "",
+    className: "",
     timeOfDay: "",
     difficultyLevel: "",
   });
@@ -26,39 +26,44 @@ const ClassList = () => {
     const fetchClasses = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/classes`
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/classes/`
         );
         const data = response.data;
-  
+        console.log(data);
         let reservedSet = new Set();
-  
+
         if (user) {
           const reservationResponse = await axios.get(
-            `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/upcoming?memberId=${user.id}`
+            `${
+              import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+            }/api/upcoming?memberId=${user.id}`
           );
           const reservedData = reservationResponse.data.classes;
-  
+
           // Store reserved class IDs in a Set
-          reservedSet = new Set(reservedData.map(item => item._id));
+          reservedSet = new Set(reservedData.map((item) => item._id));
           setReservedClasses(reservedSet);
         }
-  
+
         // Remove reserved classes from display
-        const availableClasses = user ? data.filter(item => !reservedSet.has(item._id)) : data;
-  
+        const availableClasses = user
+          ? data.filter((item) => !reservedSet.has(item._id))
+          : data;
+
         setClasses(availableClasses);
         setFilteredClasses(availableClasses);
-  
-        const uniqueClassTypes = [...new Set(availableClasses.map(item => item.classType))];
+
+        const uniqueClassTypes = [
+          ...new Set(availableClasses.map((item) => item.className)),
+        ];
         setClassTypes(uniqueClassTypes);
-  
       } catch (err) {
         setError("Error loading classes data");
       } finally {
         setIsLoading(false);
       }
     };
-  
+
     fetchClasses();
   }, [user]);
 
@@ -68,20 +73,22 @@ const ClassList = () => {
       alert("You must be logged in to reserve a class.");
       return;
     }
-  
+
     setReserving((prevState) => ({ ...prevState, [classId]: true }));
-  
+
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/classes/reserve/${classId}`,
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/classes/reserve/${classId}`,
         { scheduleId: classId, memberId: user.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-  
+
       const updatedCapacity = response.data.updatedCapacity;
-  
+
       alert(`Reservation successful for class ID: ${classId}`);
-  
+
       // Update class capacity in the UI
       setClasses((prevClasses) =>
         prevClasses.map((item) =>
@@ -90,7 +97,7 @@ const ClassList = () => {
             : item
         )
       );
-  
+
       setFilteredClasses((prevFiltered) =>
         prevFiltered.map((item) =>
           item._id === classId
@@ -98,13 +105,17 @@ const ClassList = () => {
             : item
         )
       );
-  
+
       // Remove from available list if capacity is 0
       if (updatedCapacity === 0) {
-        setClasses((prevClasses) => prevClasses.filter((item) => item._id !== classId));
-        setFilteredClasses((prevFiltered) => prevFiltered.filter((item) => item._id !== classId));
+        setClasses((prevClasses) =>
+          prevClasses.filter((item) => item._id !== classId)
+        );
+        setFilteredClasses((prevFiltered) =>
+          prevFiltered.filter((item) => item._id !== classId)
+        );
       }
-  
+
       setReservedClasses((prev) => new Set([...prev, classId]));
     } catch (error) {
       alert(error.response?.data?.message || "Failed to reserve class");
@@ -112,8 +123,6 @@ const ClassList = () => {
       setReserving((prevState) => ({ ...prevState, [classId]: false }));
     }
   };
-  
-  
 
   // Handle filter change
   const handleFilterChange = (e) => {
@@ -129,9 +138,9 @@ const ClassList = () => {
   const filterClasses = (filters) => {
     let filtered = [...classes];
 
-    if (filters.classType) {
+    if (filters.className) {
       filtered = filtered.filter(
-        (classItem) => classItem.classType === filters.classType
+        (classItem) => classItem.className === filters.className
       );
     }
 
@@ -144,11 +153,11 @@ const ClassList = () => {
         filtered = filtered.filter(
           (classItem) =>
             new Date(classItem.startDateTime).getHours() >= 12 &&
-            new Date(classItem.startDateTime).getHours() < 18
+            new Date(classItem.startDateTime).getHours() < 15
         );
       } else if (filters.timeOfDay === "Evening") {
         filtered = filtered.filter(
-          (classItem) => new Date(classItem.startDateTime).getHours() >= 18
+          (classItem) => new Date(classItem.startDateTime).getHours() >= 16
         );
       }
     }
@@ -173,21 +182,35 @@ const ClassList = () => {
 
       {/* Filters Section */}
       <div className="filters">
-        <select name="classType" onChange={handleFilterChange} value={filters.classType}>
-          <option value="">All Class Types</option>
-          {classTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
+        <select
+          name="className"
+          onChange={handleFilterChange}
+          value={filters.className}
+        >
+          <option value="">All Classes</option>
+          {classTypes.map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
           ))}
         </select>
 
-        <select name="timeOfDay" onChange={handleFilterChange} value={filters.timeOfDay}>
+        <select
+          name="timeOfDay"
+          onChange={handleFilterChange}
+          value={filters.timeOfDay}
+        >
           <option value="">All Times of Day</option>
           <option value="Morning">Morning</option>
           <option value="Afternoon">Afternoon</option>
           <option value="Evening">Evening</option>
         </select>
 
-        <select name="difficultyLevel" onChange={handleFilterChange} value={filters.difficultyLevel}>
+        <select
+          name="difficultyLevel"
+          onChange={handleFilterChange}
+          value={filters.difficultyLevel}
+        >
           <option value="">All Difficulty Levels</option>
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
@@ -199,25 +222,53 @@ const ClassList = () => {
       <ul>
         {filteredClasses.map((classItem) => (
           <li key={classItem._id} className="class-item">
-            <h3>{classItem.classType} - {classItem.difficultyLevel}</h3>
-            <p>Type: {classItem.classType}</p>
+            <h3>
+              {/* {classItem._id}  */}
+              {classItem.className} - {classItem.difficultyLevel}
+            </h3>
             <p>
-              Time: {new Date(classItem.startDateTime).toLocaleString()} -{" "}
-              {new Date(classItem.endDateTime).toLocaleString()}
+              ✏️: {classItem.instructorFirstName} {classItem.instructorLastName}
             </p>
-            <p>Capacity: {classItem.studentCapacity}</p>
-            <button 
-              onClick={() => handleReserve(classItem._id)} 
-              disabled={reservedClasses.has(classItem._id) || reserving[classItem._id]}
-              style={{ 
-                backgroundColor: reservedClasses.has(classItem._id) ? "gray" : "", 
-                cursor: reservedClasses.has(classItem._id) ? "not-allowed" : "pointer"
+            <p>
+              ⏱️:{" "}
+              {new Date(classItem.startDateTime).toLocaleString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              })}{" "}
+              -{" "}
+              {new Date(classItem.endDateTime).toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              })}{" "}
+              ({classItem.location})
+            </p>
+            <p>⭐: {classItem.studentCapacity} seats left</p>
+            <button
+              className="booking-button"
+              onClick={() => handleReserve(classItem._id)}
+              disabled={
+                reservedClasses.has(classItem._id) || reserving[classItem._id]
+              }
+              style={{
+                backgroundColor: reservedClasses.has(classItem._id)
+                  ? "gray"
+                  : "",
+                cursor: reservedClasses.has(classItem._id)
+                  ? "not-allowed"
+                  : "pointer",
               }}
             >
-              {reservedClasses.has(classItem._id) ? "Reserved" : reserving[classItem._id] ? "Reserving..." : "Reserve"}
+              {reservedClasses.has(classItem._id)
+                ? "Reserved"
+                : reserving[classItem._id]
+                ? "Reserving..."
+                : "Reserve"}
             </button>
-
-
           </li>
         ))}
       </ul>

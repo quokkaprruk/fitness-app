@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       res.status(200).json([]);
     }
   } catch (error) {
-    logger.error(`Error fetching trainers: ${error.message}`);
+    logger.error(`Error fetching trainers: ${error}`);
     res.status(500).json({ message: error.message });
   }
 });
@@ -36,18 +36,25 @@ router.post("/", async (req, res) => {
       firstName,
       lastName,
       email,
-      specialty: typeof specialization === 'string' ? specialization.split(",").map(item => item.trim()) : [],
+      specialty:
+        typeof specialization === "string"
+          ? specialization.split(",").map((item) => item.trim())
+          : [],
       experience: Number(experience),
     });
 
     await newTrainer.save();
     logger.info(`Trainer ${firstName} ${lastName} created successfully.`);
-    res.status(201).json({ message: "Trainer created successfully", trainer: newTrainer });
+    res
+      .status(201)
+      .json({ message: "Trainer created successfully", trainer: newTrainer });
   } catch (error) {
-     console.error("FULL ERROR >>>", error);
+    console.error("FULL ERROR >>>", error);
     logger.error(`Error creating trainer: ${error.message}`);
-    res.status(500).json({ message: "Error creating trainer", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error creating trainer", error: error.message });
   }
 });
 
-module.exports = router; 
+module.exports = router;
