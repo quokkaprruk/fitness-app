@@ -1,78 +1,53 @@
- Community Page */
 .community-page {
   font-family: "Rokkitt", serif;
-  max-width: 1200px;
-  margin: 0 auto;
+  background-color: #f4f4f4;
   padding: 2rem;
+  text-align: center;
 }
 
-.community-page h1 {
+.coming-soon-title {
   font-size: 2.5rem;
   color: #40e0d0;
-  text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon-subtext {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
 }
 
 .community-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 2rem;
 }
 
-/* Calendar Section */
-.calendar-section {
-  background: white;
+.placeholder-section, .announcements-section {
+  background-color: #fff;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
-}
-
-.calendar-section:hover {
-  transform: translateY(-5px);
-}
-
-.calendar-container .react-calendar {
-  width: 100% !important;
-  border: none !important;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  font-family: "Rokkitt", serif;
-  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex: 1 1 400px;
+  max-width: 500px;
 }
 
-/* Announcements Section */
-.announcements-section {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
-}
-
-.announcements-section:hover {
-  transform: translateY(-5px);
+.placeholder-section img {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 4px;
 }
 
 .announcement-list {
   list-style: none;
   padding: 0;
-  margin-top: 1rem;
 }
 
 .announcement-item {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border-left: 4px solid #40e0d0;
-  transition: all 0.3s ease;
-}
-
-.announcement-item:hover {
-  background: #f0f0f0;
-  transform: translateX(5px);
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  text-align: left;
 }
 
 .announcement-item h4 {
@@ -80,21 +55,11 @@
   margin-bottom: 0.5rem;
 }
 
-.announcement-date {
+.announcement-item p {
   color: #666;
-  font-size: 0.9rem;
-  display: block;
-  text-align: right;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .community-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .admin-page {
-    width: 95%;
-    padding: 20px;
-  }
+.announcement-date {
+  font-size: 0.8rem;
+  color: #999;
 }
