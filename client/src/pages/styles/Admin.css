@@ -1,31 +1,18 @@
 /* Import Font */
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-/* General Body Styles */
-body {
-  font-family: "Rokkitt", serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Centers vertically */
-}
-
-/* Centered Page Container */
+/* Admin Page Container */
 .admin-page {
-  width: 600px; 
-  padding: 25px 30px;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
   background: #fff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
+  margin: 2rem auto;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* Hover Effect */
 .admin-page:hover {
   transform: scale(1.02);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
@@ -34,33 +21,30 @@ body {
 /* Title Styling */
 .admin-page h2 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;
   color: #007bff;
 }
 
-/* Form Styling */
+/* Form Elements */
 .admin-page form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
-/* Input & Textarea Fields */
 .admin-page input,
 .admin-page textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
-  width: 100%;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
-  color: #000;
+  transition: all 0.3s ease;
+  font-family: "Rokkitt", serif;
 }
 
-/* Input Hover & Focus */
 .admin-page input:focus,
 .admin-page textarea:focus {
   border-color: #40e0d0;
@@ -68,22 +52,69 @@ body {
   outline: none;
 }
 
-/* Button Styling */
+/* Calendar Section */
+.calendar-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.calendar-container .react-calendar {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-family: "Rokkitt", serif;
+  padding: 10px;
+}
+
+.react-calendar__tile--active {
+  background: #40e0d0 !important;
+  color: white !important;
+}
+
+.react-calendar__tile--now {
+  background: #ffefd5 !important;
+}
+
+.event-marker {
+  color: #ff6b6b;
+  font-weight: bold;
+  position: absolute;
+}
+
+/* Buttons */
 .admin-page button {
   padding: 12px;
   background: turquoise;
   color: white;
   border: none;
-  cursor: pointer;
   border-radius: 6px;
   font-size: 17px;
   font-weight: bold;
-  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Button Hover Effect */
 .admin-page button:hover {
   background: green;
   transform: translateY(-2px);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+.form-buttons button:last-child {
+  background: #f4f4f4;
+  color: #333;
+}
+
+.form-buttons button:last-child:hover {
+  background: #e0e0e0;
 }
