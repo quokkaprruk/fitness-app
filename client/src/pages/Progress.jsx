@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styles/Progress.css";
-import confetti from "canvas-confetti"; // Import the confetti function
+import confetti from "canvas-confetti";
 
 const Progress = () => {
   const [currentGoals, setCurrentGoals] = useState([]);
@@ -16,27 +16,26 @@ const Progress = () => {
 
   // Workout states
   const [workoutStreak, setWorkoutStreak] = useState(0);
-  const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Track the last workout date
-  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false); // Track if workout is logged today
-  const [logError, setLogError] = useState(""); // State for error message
+  const [lastWorkoutDate, setLastWorkoutDate] = useState(null);
+  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false);
+  const [logError, setLogError] = useState("");
 
   // Food search states
   const [foodQuery, setFoodQuery] = useState("");
   const [quantity, setQuantity] = useState("");
   const [foodResults, setFoodResults] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
-  // New state to keep track of the index of the selected food item
   const [selectedFoodIndex, setSelectedFoodIndex] = useState(null);
   const [apiError, setApiError] = useState(null);
   const [quantityError, setQuantityError] = useState("");
 
-  // Total nutrition states
+  const [meals, setMeals] = useState([]);
+  const [currentMealIndex, setCurrentMealIndex] = useState(null);
+
   const [totalNutrition, setTotalNutrition] = useState([]);
 
-  // State for current date
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  // Reference to the workout button to get its position
   const workoutButtonRef = useRef(null);
 
   useEffect(() => {
@@ -46,9 +45,9 @@ const Progress = () => {
     // Update current date every minute
     const intervalId = setInterval(() => {
       setCurrentDate(new Date());
-    }, 60000); // Update every minute
+    }, 60000);
 
-    return () => clearInterval(intervalId); // Clean up interval on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -57,10 +56,10 @@ const Progress = () => {
       const today = new Date();
       const lastWorkout = new Date(lastWorkoutDate);
       const timeDiff = today.getTime() - lastWorkout.getTime();
-      const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
+      const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
 
       if (dayDiff > 1) {
-        setWorkoutStreak(0); // Reset streak if more than 1 day is missed
+        setWorkoutStreak(0);
       }
     }
   }, [lastWorkoutDate]);
@@ -174,7 +173,6 @@ const Progress = () => {
     }
   };
 
-
   // Function to handle logging a workout
   const handleLogWorkout = () => {
     if (!workoutLoggedToday) {
@@ -222,7 +220,7 @@ const Progress = () => {
     setApiError(null);
     setFoodResults([]);
     setSelectedFood(null);
-    setSelectedFoodIndex(null); // Reset selected index when fetching new data
+    setSelectedFoodIndex(null);
 
     try {
       const response = await fetch(
@@ -298,16 +296,16 @@ const Progress = () => {
       };
 
       setTotalNutrition([...totalNutrition, newEntry]);
-      setSelectedFood(null); // Clear selected food after adding to total
-      setSelectedFoodIndex(null); // Also clear the selected index
-      setQuantity(""); // Clear quantity field after adding to total
-      setFoodQuery(""); // Clear search field after adding to total
+      setSelectedFood(null);
+      setSelectedFoodIndex(null);
+      setQuantity("");
+      setFoodQuery("");
     }
   };
 
   const handleFoodSelect = (food, index) => {
     setSelectedFood(food);
-    setSelectedFoodIndex(index); // Store the index of the selected food
+    setSelectedFoodIndex(index);
   };
 
   const handleRemoveFromTotal = (index) => {
@@ -353,16 +351,150 @@ const Progress = () => {
     day: "numeric",
   };
 
+  // Add a new meal
+  const handleAddMeal = () => {
+    const newMealName = `Meal ${meals.length + 1}`;
+    setMeals([...meals, { name: newMealName, items: [] }]);
+    setCurrentMealIndex(meals.length);
+  };
+
+  // Add food to the current meal
+  const handleAddToMeal = () => {
+    if (selectedFood && currentMealIndex !== null) {
+      const newEntry = {
+        name: selectedFood.description,
+        quantity: quantity,
+        calories: parseFloat(getNutrientValue("Energy")),
+        protein: parseFloat(getNutrientValue("Protein")),
+        carbohydrates: parseFloat(
+          getNutrientValue("Carbohydrate, by difference")
+        ),
+        cholesterol: parseFloat(getNutrientValue("Cholesterol")),
+        sugars: parseFloat(getNutrientValue("Total Sugars")),
+        fiber: parseFloat(getNutrientValue("Fiber, total dietary")),
+      };
+
+      // Add food to the active meal
+      const updatedMeals = [...meals];
+      updatedMeals[currentMealIndex].items.push(newEntry);
+      setMeals(updatedMeals);
+
+      // Reset inputs after adding
+      setSelectedFood(null);
+      setSelectedFoodIndex(null);
+      setQuantity("");
+      setFoodQuery("");
+    }
+  };
+
+  // Remove an item from a specific meal
+  const handleRemoveFromMeal = (mealIndex, itemIndex) => {
+    const updatedMeals = [...meals];
+    updatedMeals[mealIndex].items.splice(itemIndex, 1);
+    setMeals(updatedMeals);
+  };
+
+  // Calculate totals for a specific meal or all meals combined
+  const calculateTotalsForMeal = (meal) => {
+    let totalCalories = 0;
+    let totalProtein = 0;
+    let totalCarbohydrates = 0;
+    let totalCholesterol = 0;
+    let totalSugars = 0;
+    let totalFiber = 0;
+
+    meal.items.forEach((item) => {
+      totalCalories += item.calories;
+      totalProtein += item.protein;
+      totalCarbohydrates += item.carbohydrates;
+      totalCholesterol += item.cholesterol;
+      totalSugars += item.sugars;
+      totalFiber += item.fiber;
+    });
+
+    return {
+      calories: totalCalories.toFixed(2),
+      protein: totalProtein.toFixed(2),
+      carbohydrates: totalCarbohydrates.toFixed(2),
+      cholesterol: totalCholesterol.toFixed(2),
+      sugars: totalSugars.toFixed(2),
+      fiber: totalFiber.toFixed(2),
+    };
+  };
+
+  // Calculate overall totals for all meals combined
+  const calculateOverallTotals = () => {
+    let overallTotals = {
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      cholesterol: 0,
+      sugars: 0,
+      fiber: 0,
+    };
+
+    meals.forEach((meal) => {
+      const mealTotals = calculateTotalsForMeal(meal);
+      overallTotals.calories += parseFloat(mealTotals.calories);
+      overallTotals.protein += parseFloat(mealTotals.protein);
+      overallTotals.carbohydrates += parseFloat(mealTotals.carbohydrates);
+      overallTotals.cholesterol += parseFloat(mealTotals.cholesterol);
+      overallTotals.sugars += parseFloat(mealTotals.sugars);
+      overallTotals.fiber += parseFloat(mealTotals.fiber);
+    });
+
+    totalNutrition.forEach((item) => {
+      overallTotals.calories += parseFloat(item.calories);
+      overallTotals.protein += parseFloat(item.protein);
+      overallTotals.carbohydrates += parseFloat(item.carbohydrates);
+      overallTotals.cholesterol += parseFloat(item.cholesterol);
+      overallTotals.sugars += parseFloat(item.sugars);
+      overallTotals.fiber += parseFloat(item.fiber);
+    });
+
+    return {
+      calories: overallTotals.calories.toFixed(2),
+      protein: overallTotals.protein.toFixed(2),
+      carbohydrates: overallTotals.carbohydrates.toFixed(2),
+      cholesterol: overallTotals.cholesterol.toFixed(2),
+      sugars: overallTotals.sugars.toFixed(2),
+      fiber: overallTotals.fiber.toFixed(2),
+    };
+  };
+
+  const overallTotals = calculateOverallTotals();
+
+  // Function to handle deleting a meal
+  const handleDeleteMeal = (mealIndex) => {
+    const updatedMeals = [...meals];
+    updatedMeals.splice(mealIndex, 1); // Remove the meal at mealIndex
+
+    // Update meal names to maintain sequential order
+    const renumberedMeals = updatedMeals.map((meal, index) => ({
+      ...meal,
+      name: `Meal ${index + 1}`,
+    }));
+
+    setMeals(renumberedMeals); // Set the updated meals
+    setCurrentMealIndex(null); // Reset current meal index
+  };
+
   if (loading) return <p>Loading goals...</p>;
-  if (error) return <p>Error: {error}</p>;
+
   return (
     <div id="progress-container" className="progress-container">
+      <div className="progress-navbar-spacer"></div>
       <div className="main-content-wrapper">
         {/* Food Section */}
         <div className="food-section">
           {/* Food Calorie Search */}
           <div className="food-search">
+            {/* Existing search inputs and buttons remain unchanged */}
             <h3>Check Nutritional Value</h3>
+            <button className="meal-btn" onClick={handleAddMeal}>
+              Add Meal
+            </button>
+
             <input
               type="text"
               placeholder="Search food (e.g., banana)"
@@ -385,6 +517,7 @@ const Progress = () => {
               Search
             </button>
             {apiError && <p className="error">{apiError}</p>}
+
             {/* Food Results List */}
             {foodResults.length > 0 && (
               <ul className="food-results">
@@ -399,31 +532,125 @@ const Progress = () => {
                 ))}
               </ul>
             )}
-            <button onClick={handleAddToTotal} disabled={!selectedFood}>
-              Add to Total
+
+            {/* Add as Individual Button */}
+            <button
+              onClick={() => {
+                if (!selectedFood) {
+                  alert(
+                    "Error: Please search for a food before adding as an individual item."
+                  );
+                } else {
+                  handleAddToTotal();
+                }
+              }}
+            >
+              Add as Individual
+            </button>
+
+            {/* Add to Meal Button */}
+            <button
+              onClick={() => {
+                if (!selectedFood) {
+                  alert(
+                    "Error: Please search for a food before adding to a meal."
+                  );
+                } else if (currentMealIndex === null) {
+                  alert("Error: Please select or create a meal first.");
+                } else {
+                  handleAddToMeal();
+                }
+              }}
+            >
+              Add to Meal{" "}
+              {currentMealIndex !== null ? `(${currentMealIndex + 1})` : ""}
             </button>
           </div>
 
-          {/* Total Nutrition Composition */}
+          {/* Updated Nutrition Table with Meal Support */}
           <div className="total-nutrition">
-            <h3>Total Nutrition Composition</h3>
+            <h3>Nutrition Composition</h3>
             <table>
               <thead>
                 <tr>
-                  <th>Ingredient</th>
+                  <th>Meal/Ingredient</th>
                   <th>Quantity (g)</th>
-                  <th>Calories (kcal)</th>
-                  <th>Protein (g)</th>
-                  <th>Carbs (g)</th>
-                  <th>Cholesterol (mg)</th>
-                  <th>Sugars (g)</th>
-                  <th>Fiber (g)</th>
+                  <th>Calories</th>
+                  <th>Protein</th>
+                  <th>Carbs</th>
+                  <th>Cholesterol</th>
+                  <th>Sugars</th>
+                  <th>Fiber</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
+                {meals.map((meal, mealIndex) => (
+                  <React.Fragment key={`meal-fragment-${mealIndex}`}>
+                    {/* Meal Header */}
+                    <tr key={`meal-${mealIndex}`} className="meal-header">
+                      <td colSpan="9">
+                        🍴 {meal.name} ({meal.items.length} items)
+                        <button
+                          onClick={() => setCurrentMealIndex(mealIndex)}
+                          disabled={currentMealIndex === mealIndex}
+                        >
+                          Edit
+                        </button>
+                        {/* Delete Meal Button */}
+                        <button onClick={() => handleDeleteMeal(mealIndex)}>
+                          Delete Meal
+                        </button>
+                      </td>
+                    </tr>
+
+                    {/* Meal Items */}
+                    {meal.items.map((item, itemIndex) => (
+                      <tr key={`${mealIndex}-${itemIndex}`}>
+                        <td>{item.name}</td>
+                        <td>{item.quantity}</td>
+                        <td>{item.calories}</td>
+                        <td>{item.protein}</td>
+                        <td>{item.carbohydrates}</td>
+                        <td>{item.cholesterol}</td>
+                        <td>{item.sugars}</td>
+                        <td>{item.fiber}</td>
+                        <td>
+                          <button
+                            onClick={() =>
+                              handleRemoveFromMeal(mealIndex, itemIndex)
+                            }
+                            className="remove-btn"
+                          >
+                            🗑️
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+
+                    {/* Meal Subtotal */}
+                    <tr className="meal-subtotal">
+                      <td>Meal Total</td>
+                      <td></td>
+                      {Object.values(calculateTotalsForMeal(meal)).map(
+                        (value, idx) => (
+                          <td key={idx}>
+                            <strong>{value}</strong>
+                          </td>
+                        )
+                      )}
+                      <td></td>
+                    </tr>
+                  </React.Fragment>
+                ))}
+
+                {/*Individual Item Display*/}
+                <td colSpan="9">
+                  <strong>🍴 Individual Food Items</strong>
+                </td>
+
                 {totalNutrition.map((item, index) => (
-                  <tr key={index}>
+                  <tr key={`total-${index}`}>
                     <td>{item.name}</td>
                     <td>{item.quantity}</td>
                     <td>{item.calories}</td>
@@ -433,23 +660,31 @@ const Progress = () => {
                     <td>{item.sugars}</td>
                     <td>{item.fiber}</td>
                     <td>
-                      <button onClick={() => handleRemoveFromTotal(index)}>
-                        X
+                      <button
+                        onClick={() => handleRemoveFromTotal(index)}
+                        className="remove-btn"
+                      >
+                        🗑️
                       </button>
                     </td>
                   </tr>
                 ))}
-                <tr>
-                  <th>Total</th>
-                  <th></th>
-                  <th>{totals.calories}</th>
-                  <th>{totals.protein}</th>
-                  <th>{totals.carbohydrates}</th>
-                  <th>{totals.cholesterol}</th>
-                  <th>{totals.sugars}</th>
-                  <th>{totals.fiber}</th>
-                  <th></th>
-                </tr>
+
+                {/* Overall Total */}
+                {meals.length > 0 || totalNutrition.length > 0 ? (
+                  <tr className="overall-total">
+                    <td>📊 Daily Total</td>
+                    <td></td>
+                    {Object.values(calculateOverallTotals()).map(
+                      (value, idx) => (
+                        <td key={idx}>
+                          <strong>{value}</strong>
+                        </td>
+                      )
+                    )}
+                    <td></td>
+                  </tr>
+                ) : null}
               </tbody>
             </table>
           </div>
@@ -459,7 +694,7 @@ const Progress = () => {
         <div className="workout-section">
           <h3 className="date-display">
             Today is:{" "}
-            {currentDate.toLocaleDateString(undefined, dateFormatOptions)}
+            {currentDate.toLocaleDateString("en-US", dateFormatOptions)}
           </h3>
           <div className="add-workout">
             <button
@@ -535,8 +770,12 @@ const Progress = () => {
               <div className="modal-content">
                 <p>Are you sure you want to remove this goal?</p>
                 <div className="modal-buttons">
-                  <button className="yes-btn" onClick={confirmRemoveGoal}>Yes</button>
-                  <button className="no-btn" onClick={cancelRemoveGoal}>No</button>
+                  <button className="yes-btn" onClick={confirmRemoveGoal}>
+                    Yes
+                  </button>
+                  <button className="no-btn" onClick={cancelRemoveGoal}>
+                    No
+                  </button>
                 </div>
               </div>
             </div>

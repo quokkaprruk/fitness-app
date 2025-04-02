@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="navbar-welcome">Welcome, {user.username}!</div>
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
-           <Link to="/admin/create-trainer">Create Trainer</Link>
+          <Link to="/admin/create-trainer">Create Trainer</Link>
           <Link to="/admin/post-announcement">Post Announcement</Link>
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
@@ -85,7 +85,8 @@ const Navbar = () => {
         </div>
       </nav>
     );
-  }if (user && user.role === "admin") {
+  }
+  if (user && user.role === "admin") {
     return (
       <nav className="navbar">
         <div className="navbar-welcome">Welcome, {user.username}!</div>
@@ -122,7 +123,9 @@ const Navbar = () => {
             />
             {showProfileDropdown && (
               <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">Profile</Link>
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
                 <Link to="/manage-membership" className="dropdown-item">
                   Manage Membership
                 </Link>
