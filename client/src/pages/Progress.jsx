@@ -422,6 +422,35 @@ const Progress = () => {
     };
   };
 
+  const calculateTotalsForIndividualItems = () => {
+    let totals = {
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      cholesterol: 0,
+      sugars: 0,
+      fiber: 0,
+    };
+  
+    totalNutrition.forEach((item) => {
+      totals.calories += parseFloat(item.calories);
+      totals.protein += parseFloat(item.protein);
+      totals.carbohydrates += parseFloat(item.carbohydrates);
+      totals.cholesterol += parseFloat(item.cholesterol);
+      totals.sugars += parseFloat(item.sugars);
+      totals.fiber += parseFloat(item.fiber);
+    });
+  
+    return {
+      calories: totals.calories.toFixed(2),
+      protein: totals.protein.toFixed(2),
+      carbohydrates: totals.carbohydrates.toFixed(2),
+      cholesterol: totals.cholesterol.toFixed(2),
+      sugars: totals.sugars.toFixed(2),
+      fiber: totals.fiber.toFixed(2),
+    };
+  };
+
   // Calculate overall totals for all meals combined
   const calculateOverallTotals = () => {
     let overallTotals = {
@@ -669,6 +698,24 @@ const Progress = () => {
                     </td>
                   </tr>
                 ))}
+
+                {/* Individual Food Items Totals */}
+                {totalNutrition.length > 0 && (
+                  <tr className="individual-totals">
+                    
+                    <td>
+                      <strong>Individual Totals</strong>
+                    </td>
+                    <td></td>
+                    {Object.values(calculateTotalsForIndividualItems()).map(
+                      (value, idx) => (
+                        <td key={idx}>
+                          <strong>{value}</strong>
+                        </td>
+                      )
+                    )}
+                  </tr>
+                )}
 
                 {/* Overall Total */}
                 {meals.length > 0 || totalNutrition.length > 0 ? (
