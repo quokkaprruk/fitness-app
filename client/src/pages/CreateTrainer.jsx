@@ -1,90 +1,50 @@
-import { useState } from "react";
-import "../styles/AdminForm.css";
+import React, { useState } from "react";
+import "./CreateTrainer.css";
 
 const CreateTrainer = () => {
-  const [formData, setFormData] = useState({
+  const [trainerData, setTrainerData] = useState({
     firstName: "",
     lastName: "",
-    gender: "male",
-    dob: "",
-    phone: "",
-    specialties: [],
-    teachingMode: "both",
-    experience: "",
-    username: "",
+    profileImage: "",
     email: "",
-    password: ""
+    phone: "",
+    address1: "",
+    address2: "",
+    city: "",
+    province: "",
+    postal: "",
+    country: "",
+    gender: "",
+    dateOfBirth: "",
+    height: "",
+    weight: "",
+    condition: "",
+    allergy: "",
+    specialty: [],
+    teachingMode: [],
+    experience: "",
   });
 
-  const specialtiesOptions = ["Yoga", "Pilates", "Zumba", "CrossFit", "Boxing"];
-  const teachingModes = ["online", "onsite", "both"];
-
-  const handleSpecialtyChange = (specialty) => {
-    setFormData(prev => ({
-      ...prev,
-      specialties: prev.specialties.includes(specialty)
-        ? prev.specialties.filter(s => s !== specialty)
-        : [...prev.specialties, specialty]
-    }));
+  const handleChange = (e) => {
+    setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Trainer profile created (mock)");
-    console.log("Trainer Data:", formData);
+    console.log("Trainer Profile Data:", trainerData);
   };
 
   return (
-    <div className="admin-form-container">
-      <h2>Create New Trainer</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Basic Info Fields (similar to Admin) */}
-
-        <div className="form-group">
-          <label>Gender</label>
-          <select 
-            value={formData.gender}
-            onChange={(e) => setFormData({...formData, gender: e.target.value})}
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label>Specialties</label>
-          <div className="checkbox-group">
-            {specialtiesOptions.map(specialty => (
-              <label key={specialty}>
-                <input
-                  type="checkbox"
-                  checked={formData.specialties.includes(specialty)}
-                  onChange={() => handleSpecialtyChange(specialty)}
-                />
-                {specialty}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label>Teaching Mode</label>
-          <select
-            value={formData.teachingMode}
-            onChange={(e) => setFormData({...formData, teachingMode: e.target.value})}
-          >
-            {teachingModes.map(mode => (
-              <option key={mode} value={mode}>
-                {mode.charAt(0).toUpperCase() + mode.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <button type="submit" className="submit-btn">Create Trainer</button>
-      </form>
-    </div>
+    <form className="create-trainer" onSubmit={handleSubmit}>
+      <h2>Create Trainer Profile</h2>
+      <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
+      <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
+      <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+      <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} />
+      <input type="text" name="specialty" placeholder="Specialty (comma-separated)" onChange={handleChange} required />
+      <input type="number" name="experience" placeholder="Years of Experience" onChange={handleChange} required />
+      <button type="submit">Create Trainer</button>
+    </form>
   );
 };
 

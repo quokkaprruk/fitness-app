@@ -1,52 +1,44 @@
-import { useState } from "react";
-import "../styles/AdminForm.css";
+import React, { useState } from "react";
+import "./CreateAdmin.css";
 
 const CreateAdmin = () => {
-  const [formData, setFormData] = useState({
+  const [adminData, setAdminData] = useState({
     firstName: "",
     lastName: "",
-    dob: "",
+    profileImage: "",
     phone: "",
-    username: "",
-    email: "",
-    password: ""
+    address1: "",
+    address2: "",
+    city: "",
+    province: "",
+    postal: "",
+    country: "",
+    gender: "",
+    dateOfBirth: "",
+    height: "",
+    weight: "",
+    condition: "",
+    allergy: "",
   });
+
+  const handleChange = (e) => {
+    setAdminData({ ...adminData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Admin profile created (mock)");
-    console.log("Admin Data:", formData);
-    // In real app: Send to backend
+    console.log("Admin Profile Data:", adminData);
   };
 
   return (
-    <div className="admin-form-container">
-      <h2>Create New Admin</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>First Name</label>
-          <input 
-            type="text" 
-            value={formData.firstName}
-            onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Last Name</label>
-          <input 
-            type="text" 
-            value={formData.lastName}
-            onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-            required
-          />
-        </div>
-
-        {/* Add all other fields similarly */}
-        <button type="submit" className="submit-btn">Create Admin</button>
-      </form>
-    </div>
+    <form className="create-admin" onSubmit={handleSubmit}>
+      <h2>Create Admin Profile</h2>
+      <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
+      <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
+      <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} />
+      <input type="text" name="city" placeholder="City" onChange={handleChange} />
+      <button type="submit">Create Admin</button>
+    </form>
   );
 };
 
