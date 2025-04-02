@@ -36,6 +36,22 @@ const AdminHome = () => {
     endDate: "",
   });
 
+  //0. get trainers from Db
+  const fetchTrainer = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/trainers/`
+      );
+      const trainers = response.data;
+      setTrainers(trainers);
+      console.log("Trainers fetched:", trainers);
+      return trainers;
+    } catch (err) {
+      console.error("Error fetching trainers:", err);
+      setError("Failed to fetch trainers.");
+      return [];
+    }
+  };
   //1. get schedules  from backend
   const fetchSchedule = async () => {
     setLoading(true);
@@ -284,9 +300,8 @@ const AdminHome = () => {
         <button className="generate-btn" onClick={fetchGenerateSchedule}>
           {loading ? "Generating..." : "Generate Schedule"}
         </button>
-        {error && <div className="admin-gen-error-message">{error}</div>}
       </div>
-
+      {error && <div className="admin-gen-error-message">{error}</div>}
       <form onSubmit={handleFormSubmit} className="form-container">
         <h3>Create New Class Schedule</h3>
         {classEntries.map((entry, index) => (
@@ -356,12 +371,15 @@ const AdminHome = () => {
                 onChange={(e) => handleInputChange(e, index)}
                 required
                 className="form-input"
+                onClick={fetchTrainer}
               >
                 <option value="">Select Instructor</option>{" "}
                 {/* Placeholder option */}
-                <option value="instructor1">Instructor 1</option>
-                <option value="instructor2">Instructor 2</option>
-                <option value="instructor3">Instructor 3</option>
+                {trainers.map((trainer) => (
+                  <option key={trainer._id} value={trainer._id}>
+                    {trainer.firstName}
+                  </option>
+                ))}
               </select>
 
               <div className="date-input">
