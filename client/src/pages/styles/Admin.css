@@ -1,40 +1,39 @@
 /* Import Font */
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-/* General Body Styles */
-body {
-  font-family: "Rokkitt", serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Centers vertically */
-}
-
-/* Centered Page Container */
+/* Admin Page Container */
 .admin-page {
-  width: 600px; 
-  padding: 25px 30px;
+  width: 90%;
+  max-width: 1200px;
+  padding: 30px;
   background: #fff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-/* Hover Effect */
-.admin-page:hover {
-  transform: scale(1.02);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+/* Sections */
+.announcement-section, 
+.calendar-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.announcement-section:hover,
+.calendar-section:hover {
+  transform: translateY(-5px);
 }
 
 /* Title Styling */
 .admin-page h2 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;
   color: #007bff;
@@ -44,7 +43,7 @@ body {
 .admin-page form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
 /* Input & Textarea Fields */
@@ -58,6 +57,7 @@ body {
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
   color: #000;
+  font-family: "Rokkitt", serif;
 }
 
 /* Input Hover & Focus */
@@ -80,10 +80,76 @@ body {
   font-weight: bold;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   width: 100%;
+  font-family: "Rokkitt", serif;
 }
 
 /* Button Hover Effect */
 .admin-page button:hover {
   background: green;
   transform: translateY(-2px);
+}
+
+/* Calendar Styling */
+.calendar-container {
+  margin: 1rem 0;
+}
+
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-family: "Rokkitt", serif;
+}
+
+.react-calendar__tile--active {
+  background: #40e0d0 !important;
+  color: white !important;
+}
+
+.react-calendar__tile--now {
+  background: #ffefd5 !important;
+}
+
+/* Event Form */
+.event-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.event-form h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+/* Event Marker */
+.event-marker {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .admin-page {
+    grid-template-columns: 1fr;
+  }
 }
