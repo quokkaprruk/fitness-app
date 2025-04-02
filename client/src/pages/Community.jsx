@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./styles/Community.css";
 
 const Community = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([]);
   const [date, setDate] = useState(new Date());
 
+  // Load mock data from localStorage
   useEffect(() => {
-    const fetchAnnouncements = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/announcements`);
-        if (!response.ok) throw new Error("Failed to fetch announcements");
-        const data = await response.json();
-        setAnnouncements(data);
-      } catch (err) {
-        console.error("Error fetching announcements:", err);
-      }
-    };
-
-    fetchAnnouncements();
+    setAnnouncements(JSON.parse(localStorage.getItem('announcements')) || []);
+    setEvents(JSON.parse(localStorage.getItem('events')) || []);
   }, []);
+
+  // Get events for selected date
+  const getDailyEvents = () => {
+    return events.filter(event => 
+      new Date(event.date).toDateString() === date.toDateString()
+    );
+  };
 
   return (
     <div className="community-page">
@@ -32,26 +31,37 @@ const Community = () => {
           <Calendar
             onChange={setDate}
             value={date}
+            tileContent={({ date }) => (
+              events.some(e => new Date(e.date).toDateString() === date.toDateString()) && 
+              <div className="event-marker">•</div>
+            )}
           />
+          
+          <div className="daily-events">
+            <h3>Events on {date.toLocaleDateString()}</h3>
+            {getDailyEvents().length > 0 ? (
+              <ul>
+                {getDailyEvents().map(event => (
+                  <li key={event.id}>{event.title}</li>
+                ))}
+              </ul>
+            ) : <p>No events scheduled</p>}
+          </div>
         </div>
 
         <div className="announcements-section">
           <h2>Latest Announcements</h2>
-          {announcements.length === 0 ? (
-            <p>No announcements yet. Check back later!</p>
-          ) : (
-            <ul className="announcement-list">
-              {announcements.map((a) => (
-                <li key={a._id} className="announcement-item">
-                  <h4>{a.title}</h4>
-                  <p>{a.message}</p>
-                  <span className="announcement-date">
-                    {new Date(a.date).toLocaleDateString()}
-                  </span>
+          {announcements.length > 0 ? (
+            <ul>
+              {announcements.map(item => (
+                <li key={item.id}>
+                  <h4>{item.title}</h4>
+                  <p>{item.message}</p>
+                  <small>{new Date(item.date).toLocaleString()}</small>
                 </li>
               ))}
             </ul>
-          )}
+          ) : <p>No announcements yet</p>}
         </div>
       </div>
     </div>

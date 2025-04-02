@@ -1,42 +1,45 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
 import "../pages/styles/Admin.css";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 const PostAnnouncement = () => {
-  const [announcement, setAnnouncement] = useState({
-    title: "",
-    message: ""
-  });
-  const { authToken } = useAuth();
+  const [announcement, setAnnouncement] = useState({ title: "", message: "" });
+  const [date, setDate] = useState(new Date());
+  const [isEvent, setIsEvent] = useState(false);
+  const [eventTitle, setEventTitle] = useState("");
+  
+  // Store data in localStorage
+  const saveAnnouncement = () => {
+    const announcements = JSON.parse(localStorage.getItem('announcements') || [];
+    const newAnnouncement = {
+      ...announcement,
+      date: new Date().toISOString(),
+      id: Date.now()
+    };
+    localStorage.setItem('announcements', JSON.stringify([...announcements, newAnnouncement]));
+    alert("Announcement saved locally!");
+    setAnnouncement({ title: "", message: "" });
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/announcements`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`
-        },
-        body: JSON.stringify(announcement)
-      });
-
-      if (!response.ok) throw new Error("Failed to post announcement");
-      
-      alert("Announcement posted successfully!");
-      setAnnouncement({ title: "", message: "" });
-    } catch (err) {
-      console.error("Error posting announcement:", err);
-      alert("Failed to post announcement");
-    }
+  const saveEvent = () => {
+    const events = JSON.parse(localStorage.getItem('events') || '[]');
+    const newEvent = {
+      title: eventTitle,
+      date: date.toISOString(),
+      id: Date.now()
+    };
+    localStorage.setItem('events', JSON.stringify([...events, newEvent]));
+    alert(`Event saved for ${date.toLocaleDateString()}`);
+    setIsEvent(false);
+    setEventTitle("");
   };
 
   return (
     <div className="admin-page">
       <h2>Post an Announcement</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => { e.preventDefault(); saveAnnouncement(); }}>
         <input
-          type="text"
           placeholder="Title"
           value={announcement.title}
           onChange={(e) => setAnnouncement({...announcement, title: e.target.value})}
@@ -50,6 +53,30 @@ const PostAnnouncement = () => {
         />
         <button type="submit">Post Announcement</button>
       </form>
+
+      <div className="calendar-section">
+        <h2>Add Calendar Event</h2>
+        <Calendar 
+          onChange={setDate}
+          value={date}
+          onClickDay={() => setIsEvent(true)}
+        />
+        
+        {isEvent && (
+          <div className="event-form">
+            <h3>Add Event for {date.toLocaleDateString()}</h3>
+            <input
+              type="text"
+              placeholder="Event title"
+              value={eventTitle}
+              onChange={(e) => setEventTitle(e.target.value)}
+              required
+            />
+            <button onClick={saveEvent}>Save Event</button>
+            <button onClick={() => setIsEvent(false)}>Cancel</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
