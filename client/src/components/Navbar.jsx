@@ -126,9 +126,6 @@ const Navbar = () => {
                 <Link to="/profile" className="dropdown-item">
                   Profile
                 </Link>
-                <Link to="/manage-membership" className="dropdown-item">
-                  Manage Membership
-                </Link>
                 <div className="dropdown-item" onClick={handleLogout}>
                   <FaSignOutAlt className="icon" /> Logout
                 </div>
@@ -162,9 +159,6 @@ const Navbar = () => {
               <div className="dropdown-menu">
                 <Link to="/profile" className="dropdown-item">
                   Profile
-                </Link>
-                <Link to="/manage-membership" className="dropdown-item">
-                  Manage Membership
                 </Link>
                 <div className="dropdown-item" onClick={handleLogout}>
                   <FaSignOutAlt className="icon" /> Logout
