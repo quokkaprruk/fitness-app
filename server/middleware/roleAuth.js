@@ -12,12 +12,12 @@ const checkTrainerRole = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     logger.debug(
-      `Token verification attempt for trainer check. User role: ${decoded.role}`
+      `Token verification attempt for trainer check. User role: ${decoded.role}`,
     );
 
-    if (decoded.role !== "trainer") {
+    if (decoded.role !== "trainer" && decoded.role !== "admin") {
       logger.debug(
-        `Access denied: User with role ${decoded.role} attempted to access trainer route`
+        `Access denied: User with role ${decoded.role} attempted to access trainer route`,
       );
       return res
         .status(403)
@@ -28,7 +28,7 @@ const checkTrainerRole = (req, res, next) => {
     next();
   } catch (error) {
     logger.debug(
-      `Token verification failed in trainer check: ${error.message}`
+      `Token verification failed in trainer check: ${error.message}`,
     );
     res.status(401).json({ message: "Invalid token" });
   }
@@ -45,12 +45,12 @@ const checkAdminRole = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     logger.debug(
-      `Token verification attempt for admin check. User role: ${decoded.role}`
+      `Token verification attempt for admin check. User role: ${decoded.role}`,
     );
 
     if (decoded.role !== "admin") {
       logger.debug(
-        `Access denied: User with role ${decoded.role} attempted to access admin route`
+        `Access denied: User with role ${decoded.role} attempted to access admin route`,
       );
       return res
         .status(403)
@@ -76,12 +76,12 @@ const checkUserOwnership = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     logger.debug(
-      `Ownership verification attempt - User profileId: ${decoded.profileId}`
+      `Ownership verification attempt - User profileId: ${decoded.profileId}`,
     );
 
     if (req.params.profileId) {
       logger.debug(
-        `Comparing request profileId: ${req.params.profileId} with token profileId: ${decoded.profileId}`
+        `Comparing request profileId: ${req.params.profileId} with token profileId: ${decoded.profileId}`,
       );
 
       if (req.params.profileId !== decoded.profileId) {
@@ -97,7 +97,7 @@ const checkUserOwnership = (req, res, next) => {
     next();
   } catch (error) {
     logger.debug(
-      `Token verification failed in ownership check: ${error.message}`
+      `Token verification failed in ownership check: ${error.message}`,
     );
     res.status(401).json({ message: "Invalid token" });
   }
