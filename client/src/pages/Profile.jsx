@@ -49,6 +49,11 @@ const Profile = () => {
         }
       );
       if (!response.ok) {
+        if (response.status === 404) {
+          console.error("Profile not found");
+        } else if (response.status === 400) {
+          console.error("Invalid request");
+        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
@@ -116,6 +121,11 @@ const Profile = () => {
       });
 
       if (!response.ok) {
+        if (response.status === 404) {
+          console.error("Profile not found");
+        } else if (response.status === 400) {
+          console.error("Invalid request");
+        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
