@@ -1,3 +1,4 @@
+/* General Page Styling */
 .admin-page {
   display: flex;
   justify-content: center;
@@ -5,10 +6,12 @@
   padding: 2rem;
   background-color: #f4f4f4;
   min-height: 100vh;
+  font-family: 'Arial', sans-serif;
 }
 
 .admin-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 80%;
   max-width: 1200px;
@@ -17,31 +20,42 @@
 
 .announcement-form-container,
 .calendar-container {
-  width: 48%;
+  width: 100%;
+  max-width: 550px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.3s ease;
 }
 
+.announcement-form-container:hover,
+.calendar-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Heading Styling */
 .announcement-form-container h2,
 .calendar-container h2 {
   text-align: center;
   color: #333;
   margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
+/* Announcement Form Styling */
 .announcement-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .input-field,
 .textarea-field {
   padding: 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 1rem;
   width: 100%;
 }
@@ -51,40 +65,64 @@
 }
 
 .textarea-field {
-  height: 150px;
+  height: 180px;
   resize: vertical;
 }
 
 .submit-btn {
   background-color: #40e0d0;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .submit-btn:hover {
   background-color: #32cd32;
+  transform: scale(1.05);
 }
 
+/* Calendar Styling */
 .calendar {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
 }
 
 .calendar-footer {
   text-align: center;
   font-size: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #555;
 }
 
+/* Section Title Styling */
 .section-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #007bff;
+  margin-bottom: 1rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .announcement-form-container,
+  .calendar-container {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .submit-btn {
+    font-size: 1.1rem;
+  }
 }
