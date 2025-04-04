@@ -1,4 +1,6 @@
-/* General Page Styling */
+/* admin.css */
+
+/* General Layout */
 .admin-page {
   display: flex;
   justify-content: center;
@@ -6,10 +8,8 @@
   padding: 2rem;
   background-color: #f4f4f4;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Admin Container - Adjusting to make space between the items */
 .admin-container {
   display: flex;
   flex-wrap: wrap;
@@ -17,42 +17,28 @@
   width: 80%;
   max-width: 1200px;
   gap: 2rem;
-  margin: 0 auto; /* Centering the container */
 }
 
-/* Announcement Form and Calendar Containers */
 .announcement-form-container,
 .calendar-container {
-  width: 100%;
-  max-width: 550px;
+  width: 48%;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  transition: transform 0.3s ease;
-  margin-bottom: 2rem; /* Add space between the two sections */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
 }
 
-.announcement-form-container:hover,
-.calendar-container:hover {
-  transform: translateY(-5px);
-}
-
-/* Section Headings */
 .announcement-form-container h2,
 .calendar-container h2 {
   text-align: center;
-  color: #007bff; /* Blue headers as per theme */
+  color: #333;
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: 600;
 }
 
-/* Announcement Form Styling */
 .announcement-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .input-field,
@@ -69,72 +55,87 @@
 }
 
 .textarea-field {
-  height: 180px;
+  height: 150px;
   resize: vertical;
 }
 
 .submit-btn {
-  background-color: #40e0d0; /* Turquoise button color */
+  background-color: #40e0d0;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #32cd32; /* Green hover effect */
-  transform: scale(1.05);
+  background-color: #32cd32;
 }
 
-/* Calendar Styling */
-.calendar {
+/* Calendar Section */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-calendar {
   width: 100%;
+  max-width: 350px; /* Adjust width as needed */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.react-calendar__tile {
+  transition: background-color 0.3s ease;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  padding: 10px;
+}
+
+.react-calendar__tile:hover {
+  background-color: #40e0d0; /* Turquoise hover color */
+}
+
+.react-calendar__tile--active {
+  background-color: #32cd32; /* Green active date */
+  color: white;
+}
+
+.react-calendar__navigation {
+  background-color: #40e0d0; /* Turquoise header */
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+}
+
+.react-calendar__month-view__weekdays {
+  background-color: #007bff; /* Blue header for weekdays */
+  color: white;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f4f4f4;
+  color: #aaa;
 }
 
 .calendar-footer {
   text-align: center;
   font-size: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   color: #555;
 }
 
-/* Section Title Styling */
+/* Section Title */
 .section-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #007bff; /* Blue headers as per theme */
-  margin-bottom: 1rem;
-}
-
-/* Responsive Design for smaller devices */
-@media (max-width: 768px) {
-  .admin-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .announcement-form-container,
-  .calendar-container {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .submit-btn {
-    font-size: 1.1rem;
-  }
-}
-
-/* Ensuring adequate spacing when multiple items are displayed on the same row */
-@media (min-width: 768px) {
-  .announcement-form-container,
-  .calendar-container {
-    width: 48%; /* Ensure both fit well within the container */
-  }
+  color: #007bff;
+  margin-bottom: 1.5rem;
 }
