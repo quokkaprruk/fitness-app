@@ -178,14 +178,16 @@ const Progress = () => {
   // Function to handle logging a workout
   const fetchWorkoutData = async () => {
     try {
-      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+      const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:8000/api/users/log-workout/status",
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/users/log-workout/status`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (response.status === 200) {
@@ -206,13 +208,15 @@ const Progress = () => {
 
       if (!workoutLoggedToday) {
         const response = await axios.post(
-          "http://localhost:8000/api/users/log-workout",
-          { workout: workoutDuration }, // Send workout duration to backend
+          `${
+            import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+          }/api/users/log-workout`,
+          {}, // No workout data
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         if (response.status === 200) {
