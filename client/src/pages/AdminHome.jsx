@@ -1,13 +1,13 @@
-// import { AuthContext } from "../context/authContextValue";
+import { AuthContext } from "../context/authContextValue";
 import "./styles/AdminHome.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import moment from "moment";
 
 const AdminHome = () => {
-  // const { token, user } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const classes = [
     "Cardio",
     "HIIT",
@@ -40,11 +40,15 @@ const AdminHome = () => {
   const fetchTrainer = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/trainers/`
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/trainers/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       const trainers = response.data;
       setTrainers(trainers);
-      console.log("Trainers fetched:", trainers);
       return trainers;
     } catch (err) {
       console.error("Error fetching trainers:", err);
@@ -58,7 +62,7 @@ const AdminHome = () => {
     setError("");
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/`
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/`,
       );
 
       const schedule = response.data;
@@ -90,7 +94,7 @@ const AdminHome = () => {
       const response = await axios.post(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-        }/api/schedules/generate-schedule`
+        }/api/schedules/generate-schedule`,
       );
 
       const trainers = response.data.trainers;
@@ -163,14 +167,14 @@ const AdminHome = () => {
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/${
           formattedEditingClass._id
         }`,
-        formattedEditingClass
+        formattedEditingClass,
       );
 
       //update table's row
       setFitnessClasses(
         fitnessClasses.map((c) =>
-          c._id === formattedEditingClass._id ? formattedEditingClass : c
-        )
+          c._id === formattedEditingClass._id ? formattedEditingClass : c,
+        ),
       );
 
       setEditingClass(null);
@@ -188,7 +192,7 @@ const AdminHome = () => {
         await axios.delete(
           `${
             import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-          }/api/schedules/${classId}`
+          }/api/schedules/${classId}`,
         );
 
         setFitnessClasses(fitnessClasses.filter((c) => c._id !== classId));
@@ -235,7 +239,7 @@ const AdminHome = () => {
   const indexOfFirstClass = indexOfLastClass - classesPerPage;
   const currentClasses = filteredClasses.slice(
     indexOfFirstClass,
-    indexOfLastClass
+    indexOfLastClass,
   );
 
   const totalPages = Math.ceil(filteredClasses.length / classesPerPage);
@@ -607,7 +611,7 @@ const AdminHome = () => {
                         {number}
                       </button>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
             </nav>
