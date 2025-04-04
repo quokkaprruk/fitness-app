@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import "./Admin.css";
+import "./styles/CreateTrainer.css";
 
 const CreateTrainer = () => {
   const [trainerData, setTrainerData] = useState({
