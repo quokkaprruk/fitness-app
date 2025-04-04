@@ -10,7 +10,6 @@ const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const upcomingRoutes = require("./routes/upcoming");
 const paymentRoutes = require("./routes/payment");
-const announcementRoutes = require("./routes/announcements");
 
 const logger = require("./middleware/logger");
 const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
