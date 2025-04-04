@@ -48,6 +48,7 @@ const Navbar = () => {
   }
 
   // Admin users
+  // Admin users
   if (user && user.role === "admin") {
     return (
       <nav className="navbar">
@@ -55,6 +56,7 @@ const Navbar = () => {
         <div className="navbar-links">
           <Link to="/admin">Dashboard</Link>
           <Link to="/admin/create-trainer">Create Trainer</Link>
+          <Link to="/admin/create-admin">Create Admin</Link>
           <Link to="/admin/post-announcement">Post Announcement</Link>
           <Link to="/community">Community</Link>
           <Link to="/contact">Contact</Link>
@@ -139,6 +141,7 @@ const Navbar = () => {
       </nav>
     );
   }
+
 
   // Trainers
   if (user && user.role === "trainer") {

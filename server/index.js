@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // Import API routes
 const userRoutes = require("./routes/user");
+const announcementRoutes = require("./routes/announcements");
 const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const upcomingRoutes = require("./routes/upcoming");
 const paymentRoutes = require("./routes/payment");
+const eventRoutes = require("./routes/events");
 
 const logger = require("./middleware/logger");
 const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
@@ -69,6 +71,9 @@ mongoose
     app.use("/api/classes", scheduleRoutes);
     app.use("/api/upcoming", upcomingRoutes);
     app.use("/api/payment", paymentRoutes);
+    app.use("/api/announcements", announcementRoutes);
+    app.use("/api/events", eventRoutes);
+
     app.use((err, _req, res, _next) => {
       if (err.name === "UnauthorizedError") {
         res.status(401).json({ message: "Invalid token" });
