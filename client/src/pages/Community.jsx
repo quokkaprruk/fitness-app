@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import "./styles/Community.css";
 
 const Community = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [date, setDate] = useState(new Date());
 
+  // Fetch announcements and events from the backend
   useEffect(() => {
-    // Fetch announcements from your backend
     const fetchAnnouncements = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/announcements");
-        if (!response.ok) throw new Error("Failed to fetch announcements");
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`);
         const data = await response.json();
         setAnnouncements(data);
       } catch (err) {
@@ -17,8 +20,29 @@ const Community = () => {
       }
     };
 
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events`);
+        const data = await response.json();
+        setEvents(data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+      }
+    };
+
     fetchAnnouncements();
+    fetchEvents();
   }, []);
+
+  // Filter events for the selected date
+  const filteredEvents = events.filter((event) => {
+    const eventDate = new Date(event.eventDate);
+    return eventDate.toLocaleDateString() === date.toLocaleDateString();
+  });
+
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+  };
 
   return (
     <div className="community-page">
@@ -28,16 +52,18 @@ const Community = () => {
       </p>
 
       <div className="community-container">
-        <div className="placeholder-section">
-          <h2> Events & Activities</h2>
-          <p>We're getting things ready... Events will be listed here soon!</p>
-          <img
-            src="https://i.imgur.com/8zF8QZz.png"
-            alt="Coming Soon"
-            className="coming-soon-img"
+        {/* Calendar Section */}
+        <div className="calendar-section">
+          <h2>Events Calendar</h2>
+          <Calendar
+            onChange={handleDateChange}
+            value={date}
+            className="calendar"
           />
+          <p>Selected Date: {date.toLocaleDateString()}</p>
         </div>
 
+        {/* Announcements Section */}
         <div className="announcements-section">
           <h2> Latest Announcements</h2>
           {announcements.length === 0 ? (
@@ -56,9 +82,7 @@ const Community = () => {
             </ul>
           )}
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Community;
+        {/* Events Section */}
+        <div
+
