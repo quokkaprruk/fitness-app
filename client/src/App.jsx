@@ -3,7 +3,8 @@ import NewUser from "./pages/NewUser";
 import MemberHome from "./pages/MemberHome";
 import TrainerHome from "./pages/TrainerHome";
 import AdminHome from "./pages/AdminHome";
-import CreateProfile from "./pages/CreateProfile"; 
+//import CreateAdmin from "./pages/CreateAdmin"; 
+//import CreateProfile from "./pages/CreateProfile"; 
 import CreateTrainer from "./pages/CreateTrainer";
 import PostAnnouncement from "./pages/PostAnnouncement";
 import Login from "./pages/Login";
@@ -68,7 +69,9 @@ const App = () => {
             <Route path="/pricing" element={<PricingPage />} />
             {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/admin/create-trainer" element={<CreateTrainer />} />         
+            <Route path="/admin/create-trainer" element={<CreateTrainer />} />
+            {/*<Route path="/admin/create-admin" element={<CreateAdmin />} /> 
+            <Route path="/create-profile" element={<CreateProfile />} /> */}
             <Route path="/community" element={<Community />} />
 
             <Route

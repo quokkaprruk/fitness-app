@@ -1,114 +1,213 @@
-﻿import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+﻿import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../pages/styles/Navbar.css";
+import logo from "../logo.png";
+import { FaSignOutAlt, FaUser, FaUserPlus } from "react-icons/fa";
+import { AuthContext } from "../context/authContextValue";
 
 const Navbar = () => {
-  const { isAuthenticated, user, logout } = useContext(AuthContext);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { isAuthenticated, user, logout } = useContext(AuthContext);
+
+  const toggleLoginDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
 
+  // Non authenticated users
+  if (!isAuthenticated) {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome!</div>
+        <div className="navbar-links">
+          <Link to="/">Home</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/classes">Classes</Link>
+          <Link to="/contact">Contact</Link>
+          <div className="auth-buttons">
+            <Link to="/login" className="btn login-btn">
+              Login
+            </Link>
+            <Link to="/signup" className="btn signup-btn">
+              Sign Up
+            </Link>
+          </div>
+        </div>
+
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // Admin users
+  if (user && user.role === "admin") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
+        <div className="navbar-links">
+          <Link to="/admin">Dashboard</Link>
+          <Link to="/admin/create-trainer">Create Trainer</Link>
+          <Link to="/admin/post-announcement">Post Announcement</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/contact">Contact</Link>
+
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <Link to="/manage-membership" className="dropdown-item">
+                  Manage Membership
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+  if (user && user.role === "admin") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
+        <div className="navbar-links">
+          <Link to="/admin">Dashboard</Link>
+
+          <div
+            className="dropdown"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            <span className="dropdown-title">Create Profile</span>
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/admin/create-trainer" className="dropdown-item">
+                  Create Trainer
+                </Link>
+                <Link to="/admin/create-admin" className="dropdown-item">
+                  Create Admin
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <Link to="/admin/post-announcement">Post Announcement</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/contact">Contact</Link>
+
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showProfileDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // Trainers
+  if (user && user.role === "trainer") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user?.username}</div>
+        <div className="navbar-links">
+          <Link to="/trainer">Home</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/community">Community</Link>
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+
+  // For authenticated users
   return (
     <nav className="navbar">
-      <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          FitFam
-        </Link>
-
-        <ul className="nav-links">
-          <li>
-            <Link to="/classes">Classes</Link>
-          </li>
-          <li>
-            <Link to="/upcoming">Upcoming</Link>
-          </li>
-          <li>
-            <Link to="/community">Community</Link>
-          </li>
-          <li>
-            <Link to="/pricing">Pricing</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-
-          {isAuthenticated ? (
-            <>
-              {user?.role === "member" && (
-                <>
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/progress">Progress</Link>
-                  </li>
-                  <li>
-                    <Link to="/manage-membership">Membership</Link>
-                  </li>
-                </>
-              )}
-
-              {user?.role === "trainer" && (
-                <>
-                  <li>
-                    <Link to="/trainer">Trainer Dashboard</Link>
-                  </li>
-                </>
-              )}
-
-              {user?.role === "admin" && (
-                <li className="nav-item dropdown">
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="dropdown-toggle"
-                  >
-                    Admin Options
-                  </button>
-                  {dropdownOpen && (
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link to="/admin">Admin Dashboard</Link>
-                      </li>
-                      <li>
-                        <Link to="/admin/create-trainer">Create Trainer</Link>
-                      </li>
-                      <li>
-                        <Link to="/admin/create-admin">Create Admin</Link>
-                      </li>
-                      <li>
-                        <Link to="/admin/post-announcement">
-                          Post Announcement
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/genSchedule">Generate Schedule</Link>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-              )}
-
-              <li>
-                <button onClick={handleLogout} className="nav-logout">
-                  Logout
-                </button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </>
+      <div className="navbar-welcome">Welcome, {user.username}!</div>
+      <div className="navbar-links">
+        <Link to="/member">Home</Link>
+        <Link to="/classes">Classes</Link>
+        <Link to="/community">Community</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/progress">Progress</Link>
+        <Link to="/upcoming">Upcoming</Link>
+        <div className="profile-dropdown">
+          <FaUser
+            className="icon"
+            title="Profile"
+            onClick={toggleLoginDropdown}
+          />
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <Link to="/profile" className="dropdown-item">
+                Profile
+              </Link>
+              <Link to="/manage-membership" className="dropdown-item">
+                Manage Membership
+              </Link>
+              <div className="dropdown-item" onClick={handleLogout}>
+                <FaSignOutAlt className="icon" /> Logout
+              </div>
+            </div>
           )}
-        </ul>
+        </div>
+      </div>
+      <div className="navbar-logo">
+        <img src={logo} alt="Logo" />
       </div>
     </nav>
   );
