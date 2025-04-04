@@ -23,26 +23,34 @@
 .navbar-welcome {
   font-weight: bold;
   font-size: 30px;
-  color: #333;
 }
 
-/* Navbar links container */
+/* Navbar links */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 80px;
 }
 
-/* Regular navbar links */
-.navbar-links > a {
+.navbar-links a {
   text-decoration: none;
   color: #333;
   font-size: 30px;
-  transition: color 0.3s ease;
-  white-space: nowrap;
 }
 
-.navbar-links > a:hover {
+.navbar-links a:hover {
+  color: #48d1cc;
+}
+
+/* Class button */
+.navbar-links .classes-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.navbar-links .classes-btn:hover {
   color: #48d1cc;
 }
 
@@ -51,7 +59,6 @@
   font-size: 30px;
   color: #333;
   cursor: pointer;
-  transition: color 0.3s ease;
   vertical-align: middle;
 }
 
@@ -61,7 +68,7 @@
 
 /* Navbar logo */
 .navbar-logo img {
-  height: 60px;
+  height: 20px;
   width: auto;
 }
 
@@ -77,110 +84,283 @@
   border-radius: 5px;
   font-weight: bold;
   transition: all 0.3s ease;
-  font-size: 25px;
 }
 
-.login-btn {
+.navbar .auth-buttons .login-btn {
   background-color: #48d1cc;
   color: white;
   border: 2px solid #48d1cc;
 }
 
-.signup-btn {
+.navbar .auth-buttons .signup-btn {
   background-color: white;
   color: #48d1cc;
   border: 2px solid #48d1cc;
 }
 
-.login-btn:hover {
+.navbar .auth-buttons .login-btn:hover {
   background-color: #3ab8b3;
   border-color: #3ab8b3;
 }
 
-.signup-btn:hover {
+.navbar .auth-buttons .signup-btn:hover {
   background-color: #f0f0f0;
 }
 
-/* Unified Dropdown Styling */
-.dropdown-container {
+/* Dropdown Styling */
+.navbar-links .profile-dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-trigger {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.dropdown-menu {
+.navbar-links .profile-dropdown .dropdown-menu {
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: 40px;
+  left: 0;
   background-color: white;
   border: 1px solid #ddd;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  min-width: 220px;
-  z-index: 1001;
-  display: none;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
+  border-radius: 5px;
+  display: none;
+  width: 180px;
+  z-index: 1000;
 }
 
-.dropdown-container:hover .dropdown-menu,
-.dropdown-container:focus-within .dropdown-menu {
+.navbar-links .profile-dropdown:hover .dropdown-menu {
   display: block;
 }
 
-.dropdown-item {
+/* Dropdown item */
+.navbar-links .profile-dropdown .dropdown-item {
   padding: 12px 20px;
   font-size: 25px;
   color: #333;
   text-decoration: none;
   display: block;
-  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.dropdown-item:hover {
+.navbar-links .profile-dropdown .dropdown-item:hover {
   background-color: #f0f0f0;
   color: #48d1cc;
 }
 
-/* Create Profile specific styles */
-.create-profile-dropdown .dropdown-menu {
-  right: auto;
+/* Nested Dropdown for Create Profile */
+.create-profile-dropdown {
+  position: relative;
+}
+
+.create-profile-dropdown .nested-dropdown {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 5px;
+  display: none;
+  width: 180px;
+  z-index: 1000;
+}
+
+.create-profile-dropdown:hover .nested-dropdown {
+  display: block;
+}
+
+.create-profile-dropdown .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-profile-dropdown .dropdown-item::after {
+  content: "›"; /* Right arrow indicator */
+  font-size: 20px;
+  color: #333;
+}
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  position: fixed;
+  top: 0;
   left: 0;
+  right: 0;
+  z-index: 1000;
+  font-size: 30px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .navbar-links {
-    gap: 20px;
-  }
-  
-  .navbar-links > a,
-  .dropdown-item,
-  .btn {
-    font-size: 24px;
-  }
+/* Spacer to prevent content overlap */
+.navbar-spacer {
+  height: 90px;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
-  }
-  
-  .navbar-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-  }
-  
-  .navbar-welcome {
-    font-size: 24px;
-  }
+.navbar-welcome {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/* Navbar links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 30px;
+}
+
+.navbar-links a:hover {
+  color: #48d1cc;
+}
+
+/* Class button */
+.navbar-links .classes-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.navbar-links .classes-btn:hover {
+  color: #48d1cc;
+}
+
+/* Icons */
+.icon {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.icon:hover {
+  color: #48d1cc;
+}
+
+/* Navbar logo */
+.navbar-logo img {
+  height: 20px;
+  width: auto;
+}
+
+/* Authentication buttons */
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar .auth-buttons .login-btn {
+  background-color: #48d1cc;
+  color: white;
+  border: 2px solid #48d1cc;
+}
+
+.navbar .auth-buttons .signup-btn {
+  background-color: white;
+  color: #48d1cc;
+  border: 2px solid #48d1cc;
+}
+
+.navbar .auth-buttons .login-btn:hover {
+  background-color: #3ab8b3;
+  border-color: #3ab8b3;
+}
+
+.navbar .auth-buttons .signup-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dropdown Styling */
+.navbar-links .profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar-links .profile-dropdown .dropdown-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 5px;
+  display: none;
+  width: 180px;
+  z-index: 1000;
+}
+
+.navbar-links .profile-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown item */
+.navbar-links .profile-dropdown .dropdown-item {
+  padding: 12px 20px;
+  font-size: 25px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-links .profile-dropdown .dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: #48d1cc;
+}
+
+/* Nested Dropdown for Create Profile */
+.create-profile-dropdown {
+  position: relative;
+}
+
+.create-profile-dropdown .nested-dropdown {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 5px;
+  display: none;
+  width: 180px;
+  z-index: 1000;
+}
+
+.create-profile-dropdown:hover .nested-dropdown {
+  display: block;
+}
+
+.create-profile-dropdown .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-profile-dropdown .dropdown-item::after {
+  content: "›"; /* Right arrow indicator */
+  font-size: 20px;
+  color: #333;
 }
