@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles/Progress.css";
 import confetti from "canvas-confetti";
+import axios from "axios";
 
 const Progress = () => {
   const [currentGoals, setCurrentGoals] = useState([]);
