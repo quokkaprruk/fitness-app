@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/CreateTrainer.css"; 
+import "./styles/CreateProfile.css"; 
 
 const CreateAdmin = () => {
   const [adminData, setAdminData] = useState({

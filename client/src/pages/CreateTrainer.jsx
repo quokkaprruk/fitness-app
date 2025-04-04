@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../pages/styles/CreateTrainer.css";
+import "../pages/styles/CreateProfile.css";
 
 const specialties = [
   "Yoga", "Pilates", "Zumba", "HIIT", "Cardio", "Strength Training", "CrossFit"
