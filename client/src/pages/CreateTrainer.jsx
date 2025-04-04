@@ -1,83 +1,67 @@
-import React, { useState } from "react";
-import "./styles/CreateTrainer.css";
+import { useState } from "react";
+import "../pages/styles/CreateProfile.css";
+
+const specialties = [
+  "Yoga", "Pilates", "Zumba", "HIIT", "Cardio", "Strength Training", "CrossFit"
+];
+
+const teachingModes = ["Online", "Onsite", "Both"];
 
 const CreateTrainer = () => {
   const [trainerData, setTrainerData] = useState({
     firstName: "",
     lastName: "",
-    profileImage: "",
-    email: "",
-    phone: "",
-    address1: "",
-    address2: "",
-    city: "",
-    province: "",
-    postal: "",
-    country: "",
     gender: "",
-    dateOfBirth: "",
-    height: "",
-    weight: "",
-    condition: "",
-    allergy: "",
+    dob: "",
+    phone: "",
     specialty: [],
-    teachingMode: [],
+    teachingMode: "",
     experience: "",
+    username: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
-    setTrainerData({ ...trainerData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setTrainerData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSpecialtyChange = (e) => {
+    const options = Array.from(e.target.selectedOptions, (option) => option.value);
+    setTrainerData({ ...trainerData, specialty: options });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Trainer Profile Data:", trainerData);
+    alert("Trainer profile created successfully!");
+    setTrainerData({
+      firstName: "",
+      lastName: "",
+      gender: "",
+      dob: "",
+      phone: "",
+      specialty: [],
+      teachingMode: "",
+      experience: "",
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
-    <form className="create-trainer" onSubmit={handleSubmit}>
+    <div className="admin-page">
       <h2>Create Trainer Profile</h2>
-      <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="specialty"
-        placeholder="Specialty (comma-separated)"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="experience"
-        placeholder="Years of Experience"
-        onChange={handleChange}
-        required
-      />
+      <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
+      <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
+      <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+      <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} />
+      <input type="text" name="specialty" placeholder="Specialty (comma-separated)" onChange={handleChange} required />
+      <input type="number" name="experience" placeholder="Years of Experience" onChange={handleChange} required />
       <button type="submit">Create Trainer</button>
     </form>
   );

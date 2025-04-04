@@ -4,13 +4,14 @@
     "\\client",
     "\\client\\src",
     "\\client\\src\\components",
-    "\\client\\src\\data",
     "\\client\\src\\pages",
     "\\client\\src\\pages\\styles",
+    "\\client\\src\\public",
     "\\server",
     "\\server\\middleware",
+    "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\src\\pages\\styles\\Admin.css",
+  "SelectedNode": "\\client\\src\\App.jsx",
   "PreviewInSolutionExplorer": false
 }

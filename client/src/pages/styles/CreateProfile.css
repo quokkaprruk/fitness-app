@@ -1,0 +1,61 @@
+.admin-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Rokkitt', serif;
+}
+
+.admin-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.trainer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trainer-form input,
+.trainer-form select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+.trainer-form input:focus,
+.trainer-form select:focus {
+  border-color: #40e0d0;
+  outline: none;
+}
+
+.trainer-form label {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #007bff;
+}
+
+.trainer-form select[multiple] {
+  height: 100px;
+}
+
+.trainer-form button {
+  padding: 12px;
+  background-color: #40e0d0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trainer-form button:hover {
+  background-color: #32cd32;
+}
