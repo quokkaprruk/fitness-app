@@ -15,9 +15,10 @@ const Progress = () => {
   });
 
   // Workout states
-  const [workoutStreak, setWorkoutStreak] = useState(0);
-  const [lastWorkoutDate, setLastWorkoutDate] = useState(null);
-  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false);
+  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false); // Tracks if workout is logged today
+  const [workoutStreak, setWorkoutStreak] = useState(0); // Tracks workout streak
+  const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Tracks last workout date
+  const [workoutDuration, setWorkoutDuration] = useState(0); // Workout duration input by user
   const [logError, setLogError] = useState("");
 
   // Food search states
@@ -174,45 +175,93 @@ const Progress = () => {
   };
 
   // Function to handle logging a workout
-  const handleLogWorkout = () => {
-    if (!workoutLoggedToday) {
-      const today = new Date();
-      setWorkoutStreak(workoutStreak + 1);
-      setLastWorkoutDate(today.toISOString());
-      localStorage.setItem("lastWorkoutDate", today.toISOString());
-      setWorkoutLoggedToday(true);
-      setLogError("");
-
-      // Trigger confetti
-      if (workoutButtonRef.current) {
-        const buttonRect = workoutButtonRef.current.getBoundingClientRect();
-        const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-        const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-
-        confetti({
-          origin: {
-            x: buttonCenterX / window.innerWidth,
-            y: buttonCenterY / window.innerHeight,
+  const fetchWorkoutData = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+      const response = await axios.get(
+        "http://localhost:8000/api/users/log-workout/status",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          spread: 150,
-          ticks: 60,
-          gravity: 0.7,
-          decay: 0.94,
-          startVelocity: 50,
-          colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
-          shapes: ["star", "circle"],
-          scalar: 1.2,
-        });
-      }
-    } else {
-      setLogError("You have already logged your workout for today!");
+        }
+      );
 
-      // Set a timeout to clear the error message after 3 seconds
-      setTimeout(() => {
-        setLogError("");
-      }, 3000);
+      if (response.status === 200) {
+        const data = response.data;
+        setWorkoutLoggedToday(data.workoutLoggedToday);
+        setLastWorkoutDate(data.lastWorkoutDate);
+        setWorkoutStreak(data.workoutStreak);
+      }
+    } catch (error) {
+      console.error("Error fetching workout data:", error);
     }
   };
+
+  // Function to handle logging a workout
+  const handleLogWorkout = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+
+      if (!workoutLoggedToday) {
+        const response = await axios.post(
+          "http://localhost:8000/api/users/log-workout",
+          { workout: workoutDuration }, // Send workout duration to backend
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          const today = new Date();
+          setWorkoutStreak(workoutStreak + 1);
+          setLastWorkoutDate(today.toISOString());
+          setWorkoutLoggedToday(true);
+          setLogError("");
+
+          // Trigger confetti animation
+          if (workoutButtonRef.current) {
+            const buttonRect = workoutButtonRef.current.getBoundingClientRect();
+            const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+            const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+            confetti({
+              origin: {
+                x: buttonCenterX / window.innerWidth,
+                y: buttonCenterY / window.innerHeight,
+              },
+              spread: 150,
+              ticks: 60,
+              gravity: 0.7,
+              decay: 0.94,
+              startVelocity: 50,
+              colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
+              shapes: ["star", "circle"],
+              scalar: 1.2,
+            });
+          }
+        } else {
+          setLogError("Failed to log workout!");
+        }
+      } else {
+        setLogError("You have already logged your workout for today!");
+
+        // Set a timeout to clear the error message after 3 seconds
+        setTimeout(() => {
+          setLogError("");
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Error logging workout:", error);
+      setLogError(error.response?.data?.message || "Server error");
+    }
+  };
+
+  useEffect(() => {
+    fetchWorkoutData(); // Fetch initial data on component mount
+  }, []);
 
   // Fetch food data from API
   const fetchFoodData = async () => {
@@ -431,7 +480,7 @@ const Progress = () => {
       sugars: 0,
       fiber: 0,
     };
-  
+
     totalNutrition.forEach((item) => {
       totals.calories += parseFloat(item.calories);
       totals.protein += parseFloat(item.protein);
@@ -440,7 +489,7 @@ const Progress = () => {
       totals.sugars += parseFloat(item.sugars);
       totals.fiber += parseFloat(item.fiber);
     });
-  
+
     return {
       calories: totals.calories.toFixed(2),
       protein: totals.protein.toFixed(2),
@@ -702,7 +751,6 @@ const Progress = () => {
                 {/* Individual Food Items Totals */}
                 {totalNutrition.length > 0 && (
                   <tr className="individual-totals">
-                    
                     <td>
                       <strong>Individual Totals</strong>
                     </td>
@@ -736,12 +784,16 @@ const Progress = () => {
             </table>
           </div>
         </div>
-
         {/* Workout Section */}
         <div className="workout-section">
           <h3 className="date-display">
             Today is:{" "}
-            {currentDate.toLocaleDateString("en-US", dateFormatOptions)}
+            {currentDate.toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </h3>
           <div className="add-workout">
             <button
@@ -768,6 +820,7 @@ const Progress = () => {
             )}
             <p className="workout-streak-number">{workoutStreak}</p>
           </div>
+          {logError && <p className="error-message">{logError}</p>}
         </div>
 
         {/* Goals Section */}
