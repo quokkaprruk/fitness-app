@@ -35,16 +35,16 @@ const Profile = () => {
   }, [user]);
 
   const fetchProfileData = async () => {
-    if (!user || !user.profileId) return; // Exit if no user or profileId
+    if (!user || !user.profileId) return; 
 
     try {
       const response = await fetch(
-        `/api/all_users/profile/${user.profileId}`, // Use the profileId from the user object
+        `/api/users/profile/${user.profileId}`, 
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Include token for authentication
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
@@ -52,7 +52,7 @@ const Profile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setProfileData(data.profile); // Assuming the API returns the profile data directly
+      setProfileData(data.profile); 
     } catch (error) {
       console.error("Failed to fetch profile data:", error);
     }
