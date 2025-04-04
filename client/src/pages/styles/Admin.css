@@ -95,7 +95,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
-  background-color: #fff; /* Added background color to ensure the calendar is visible */
+  background-color: #fff;
 }
 
 .calendar .calendar-day {
@@ -122,19 +122,6 @@
   font-weight: bold;
   color: #007bff; /* Blue headers as per theme */
   margin-bottom: 1rem;
-}
-
-/* Calendar days (added for day numbers visibility) */
-.calendar-day {
-  color: #333; /* Dark color for day numbers */
-  font-weight: normal;
-  padding: 8px;
-  text-align: center;
-}
-
-.calendar-day:hover {
-  background-color: #f1f1f1; /* Light hover effect */
-  cursor: pointer;
 }
 
 /* Responsive Design for smaller devices */
