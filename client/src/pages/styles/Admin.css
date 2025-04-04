@@ -9,6 +9,7 @@
   font-family: 'Arial', sans-serif;
 }
 
+/* Admin Container - Adjusting to make space between the items */
 .admin-container {
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +17,7 @@
   width: 80%;
   max-width: 1200px;
   gap: 2rem;
+  margin: 0 auto; /* Centering the container */
 }
 
 /* Announcement Form and Calendar Containers */
@@ -28,6 +30,7 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   transition: transform 0.3s ease;
+  margin-bottom: 2rem; /* Add space between the two sections */
 }
 
 .announcement-form-container:hover,
@@ -109,7 +112,7 @@
   margin-bottom: 1rem;
 }
 
-/* Responsive Design */
+/* Responsive Design for smaller devices */
 @media (max-width: 768px) {
   .admin-container {
     flex-direction: column;
@@ -125,5 +128,13 @@
 
   .submit-btn {
     font-size: 1.1rem;
+  }
+}
+
+/* Ensuring adequate spacing when multiple items are displayed on the same row */
+@media (min-width: 768px) {
+  .announcement-form-container,
+  .calendar-container {
+    width: 48%; /* Ensure both fit well within the container */
   }
 }
