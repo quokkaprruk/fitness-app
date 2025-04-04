@@ -45,11 +45,22 @@ router.post("/save-generated-schedule", async (req, res) => {
     const { schedule } = req.body; //front-end must send generated schedule data in the req.body
     console.log(req.body);
     const schedulesToSave = schedule.map((item) => {
-      return {
-        ...item,
-        startDateTime: moment(item.startDateTime).toDate(), // Convert to Date
-        endDateTime: moment(item.endDateTime).toDate(), // Convert to Date
-      };
+      try {
+        // if (!mongoose.Types.ObjectId.isValid(item.instructorId)) {
+        //   throw new Error(`Invalid instructorId: ${item.instructorId}`);
+        // }
+        return {
+          ...item,
+          startDateTime: moment(item.startDateTime).toDate(),
+          endDateTime: moment(item.endDateTime).toDate(),
+
+          instructorFirstName: item.instructorFirstName,
+          instructorLastName: item.instructorLastName,
+        };
+      } catch (momentError) {
+        console.error("Error converting date:", momentError);
+        throw new Error("Invalid date format in schedule data.");
+      }
     });
 
     // check if there's existing schedule in db
@@ -66,10 +77,14 @@ router.post("/save-generated-schedule", async (req, res) => {
       schedules: savedSchedules,
     });
   } catch (error) {
-    logger.error(`Error saving schedule: ${error}`);
-    res
-      .status(500)
-      .json({ message: "Error saving schedule", error: error.message });
+    logger.error(`Error saving schedule: ${error.message}`);
+    res.status(500).json({
+      message: "Error saving schedule",
+      error: error.message,
+      name: error.name, // Include error name
+      stack: error.stack, // Include stack trace
+      errorObject: error, //Include the entire error object.
+    });
   }
 });
 
