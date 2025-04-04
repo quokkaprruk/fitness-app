@@ -1,86 +1,216 @@
-const express = require("express");
-require("dotenv").config();
-const mongoose = require("mongoose");
-const cors = require("cors");
-// Import API routes
-const userRoutes = require("./routes/user");
-// const announcementRoutes = require("./routes/announcements");
-const trainerRoutes = require("./routes/trainer");
-const adminRoutes = require("./routes/admin");
-const scheduleRoutes = require("./routes/schedule");
-const upcomingRoutes = require("./routes/upcoming");
-const paymentRoutes = require("./routes/payment");
+?import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../pages/styles/Navbar.css";
+import logo from "../logo.png";
+import { FaSignOutAlt, FaUser, FaUserPlus } from "react-icons/fa";
+import { AuthContext } from "../context/authContextValue";
 
-const logger = require("./middleware/logger");
-const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
-const pino = require("pino-http")({ logger });
+const Navbar = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useContext(AuthContext);
 
-const app = express();
+  const toggleLoginDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
-const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://fitness-app-frontend-prj666.vercel.app",
-  ], // Local development frontend & Vercel production frontend
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true, // if using cookies or sessions
-  allowedHeaders: "Content-Type, Authorization",
-};
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
-app.use(cors(corsOptions));
-app.use(express.json());
+  // Non authenticated users
+  if (!isAuthenticated) {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome!</div>
+        <div className="navbar-links">
+          <Link to="/">Home</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/classes">Classes</Link>
+          <Link to="/contact">Contact</Link>
+          <div className="auth-buttons">
+            <Link to="/login" className="btn login-btn">
+              Login
+            </Link>
+            <Link to="/signup" className="btn signup-btn">
+              Sign Up
+            </Link>
+          </div>
+        </div>
 
-app.use(pino);
-app.use((req, res, next) => {
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "https://fitness-app-frontend-prj666.vercel.app",
-  ];
-
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
   }
 
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  // Admin users
+  if (user && user.role === "admin") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
+        <div className="navbar-links">
+          <Link to="/admin">Dashboard</Link>
+          <Link to="/admin/create-trainer">Create Trainer</Link>
+          <Link to="/admin/post-announcement">Post Announcement</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/contact">Contact</Link>
 
-  next();
-});
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <Link to="/manage-membership" className="dropdown-item">
+                  Manage Membership
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
+  if (user && user.role === "admin") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user.username}!</div>
+        <div className="navbar-links">
+          <Link to="/admin">Dashboard</Link>
 
-const mongoURL = `${process.env.MONGO_URL}/${process.env.DB_NAME}`;
+          <div
+            className="dropdown"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            <span className="dropdown-title">Create Profile</span>
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/admin/create-trainer" className="dropdown-item">
+                  Create Trainer
+                </Link>
+                <Link to="/admin/create-admin" className="dropdown-item">
+                  Create Admin
+                </Link>
+              </div>
+            )}
+          </div>
 
-mongoose
-  .connect(mongoURL)
-  .then(() => {
-    logger.info("MongoDB connection success!");
+          <Link to="/admin/post-announcement">Post Announcement</Link>
+          <Link to="/community">Community</Link>
+          <Link to="/contact">Contact</Link>
 
-    // Start the server only after a successful MongoDB connection
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      logger.info(`Server running on http://localhost:${PORT}`);
-    });
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showProfileDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
 
-    // API routes
-    app.use("/api/users", userRoutes);
-    app.use("/api/trainers", checkTrainerRole, trainerRoutes);
-    app.use("/api/admin", checkAdminRole, adminRoutes);
-    app.use("/api/schedules", scheduleRoutes);
-    app.use("/api/classes", scheduleRoutes);
-    app.use("/api/upcoming", upcomingRoutes);
-    app.use("/api/payment", paymentRoutes);
-    // app.use("/api/announcements", announcementRoutes);
+  // Trainers
+  if (user && user.role === "trainer") {
+    return (
+      <nav className="navbar">
+        <div className="navbar-welcome">Welcome, {user?.username}</div>
+        <div className="navbar-links">
+          <Link to="/trainer">Home</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/community">Community</Link>
+          <div className="profile-dropdown">
+            <FaUser
+              className="icon"
+              title="Profile"
+              onClick={toggleLoginDropdown}
+            />
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <div className="dropdown-item" onClick={handleLogout}>
+                  <FaSignOutAlt className="icon" /> Logout
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </nav>
+    );
+  }
 
-    app.use((err, _req, res, _next) => {
-      if (err.name === "UnauthorizedError") {
-        res.status(401).json({ message: "Invalid token" });
-      } else {
-        res.status(500).json({ message: "Internal server error" });
-      }
-    });
-  })
-  .catch((error) => {
-    logger.error("MongoDB connection failed:", error);
-    process.exit(1); //exit the process if connection fails
-  });
+  // For authenticated users
+  return (
+    <nav className="navbar">
+      <div className="navbar-welcome">Welcome, {user.username}!</div>
+      <div className="navbar-links">
+        <Link to="/member">Home</Link>
+        <Link to="/classes">Classes</Link>
+        <Link to="/community">Community</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/progress">Progress</Link>
+        <Link to="/upcoming">Upcoming</Link>
+        <div className="profile-dropdown">
+          <FaUser
+            className="icon"
+            title="Profile"
+            onClick={toggleLoginDropdown}
+          />
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <Link to="/profile" className="dropdown-item">
+                Profile
+              </Link>
+              <Link to="/manage-membership" className="dropdown-item">
+                Manage Membership
+              </Link>
+              <div className="dropdown-item" onClick={handleLogout}>
+                <FaSignOutAlt className="icon" /> Logout
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="navbar-logo">
+        <img src={logo} alt="Logo" />
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
