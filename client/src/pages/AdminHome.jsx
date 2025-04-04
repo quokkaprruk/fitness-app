@@ -250,27 +250,52 @@ const AdminHome = () => {
     setClassEntries(newClassEntries);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const newClasses = classEntries.map((entry, index) => ({
-      classId: fitnessClasses.length + index + 1,
-      ...entry,
-      instructorID: parseInt(entry.instructorID),
+
+    // set attribute to match backend
+    const newClasses = classEntries.map((entry) => ({
+      className: entry.className,
+      difficultyLevel: entry.classLevel,
+      location: entry.classLocation,
+      startDateTime: entry.startDateTime,
+      endDateTime: entry.endDateTime,
+      instructorId: entry.trainerId,
       studentCapacity: parseInt(entry.studentCapacity),
     }));
 
-    setFitnessClasses((prev) => [...prev, ...newClasses]);
+    console.log("Submitted Form Data:", newClasses);
 
-    setClassEntries([
-      {
-        className: "",
-        classLocation: "online",
-        startDateTime: "",
-        endDateTime: "",
-        instructorID: "",
-        studentCapacity: "",
-      },
-    ]);
+    try {
+      const response = await fetch("/api/admin/add-schedule", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newClasses),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Classes saved:", data);
+        // for fitness classes show in frontend
+        setFitnessClasses((prev) => [...prev, ...newClasses]);
+        setClassEntries([
+          {
+            className: "",
+            classLocation: "online",
+            startDateTime: "",
+            endDateTime: "",
+            trainerId: "",
+            studentCapacity: "",
+          },
+        ]);
+      } else {
+        console.error("Failed to save classes:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error saving classes:", error);
+    }
   };
 
   const addClassEntry = () => {
@@ -281,7 +306,7 @@ const AdminHome = () => {
         classLocation: "online",
         startDateTime: "",
         endDateTime: "",
-        instructorID: "",
+        trainerId: "",
         studentCapacity: "",
       },
     ]);
@@ -366,8 +391,8 @@ const AdminHome = () => {
             </div>
             <div className="input-row2">
               <select
-                name="instructorID"
-                value={entry.instructorID}
+                name="trainerId"
+                value={entry.trainerId}
                 onChange={(e) => handleInputChange(e, index)}
                 required
                 className="form-input"

@@ -42,6 +42,7 @@ const AdminGenSchedule = () => {
   //For SaveToDB
   const saveToDb = async (schedule) => {
     try {
+      console.log("Schedule data:", schedule);
       const response = await axios.post(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
@@ -325,7 +326,7 @@ const AdminGenSchedule = () => {
 
                 {trainers.map((trainer) => (
                   <option key={trainer._id} value={`${trainer._id}`}>
-                    {trainer.firstName} {trainer.lastName}
+                    {trainer.firstName} {trainer.lastName} - {trainer._id}
                   </option>
                 ))}
               </select>
