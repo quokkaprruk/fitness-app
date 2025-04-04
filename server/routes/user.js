@@ -423,27 +423,58 @@ router.post("/verify-email", async (req, res) => {
 
 router.use("/goals", checkUserOwnership, goalsRoutes);
 
-router.post("/log-workout", async (req, res) => {
-  const { workout } = req.body;
-  const { profileId } = req.user;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // set hours to 00:00:00
+router.get("/log-workout/status", async (req, res) => {
   try {
-    // Find the user's MemberProfile
-    const memberProfile = await MemberProfiles.findOne({
-      profileId: profileId,
-    });
+    const { profileId } = req.user; //
+
+    // Find the user's Member Profile
+    const memberProfile = await MemberProfiles.findOne({ profileId });
     if (!memberProfile) {
       return res.status(404).json({ message: "Member profile not found" });
     }
-    const memberProfileObjectId = memberProfile._id;
-    // Find the MemberTodo for the user
-    let memberTodo = await MemberTodo.findOne({
-      memberProfileObjectId: memberProfileObjectId,
+
+    // Find the user's Member Todo
+    const memberTodo = await MemberTodo.findOne({
+      memberProfileObjectId: memberProfile._id,
     });
+
     if (!memberTodo) {
       return res.status(404).json({ message: "Member Todo not found" });
     }
+
+    // Respond with workout status
+    res.status(200).json({
+      workoutLoggedToday: memberTodo.workoutLogged,
+      lastWorkoutDate: memberTodo.workoutDate,
+      workoutStreak: memberTodo.workoutStreak || 0,
+    });
+  } catch (error) {
+    console.error("Error fetching workout status:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.post("/log-workout", async (req, res) => {
+  const { profileId } = req.user;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set hours to midnight for comparison
+
+  try {
+    // Find the user's Member Profile
+    const memberProfile = await MemberProfiles.findOne({ profileId });
+    if (!memberProfile) {
+      return res.status(404).json({ message: "Member profile not found" });
+    }
+
+    // Find or create the user's Member Todo
+    let memberTodo = await MemberTodo.findOne({
+      memberProfileObjectId: memberProfile._id,
+    });
+
+    if (!memberTodo) {
+      return res.status(404).json({ message: "Member Todo not found" });
+    }
+
     // Check if a workout has already been logged today
     if (memberTodo.workoutLogged && memberTodo.workoutDate) {
       const workoutDate = new Date(memberTodo.workoutDate);
@@ -454,15 +485,17 @@ router.post("/log-workout", async (req, res) => {
           .json({ message: "Workout already logged today" });
       }
     }
-    // Update the workout data
-    memberTodo.workout = workout;
+
+    // Update only the necessary fields
     memberTodo.workoutLogged = true;
     memberTodo.workoutDate = today;
     await memberTodo.save();
+
     res.status(200).json({ message: "Workout logged successfully" });
   } catch (error) {
     console.error("Error logging workout:", error);
     res.status(500).json({ message: "Server error" });
   }
 });
+
 module.exports = router;
