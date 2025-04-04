@@ -1,5 +1,4 @@
-/* admin.css */
-
+/* Admin Styles */
 @import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap');
 
 body {
@@ -211,6 +210,37 @@ body {
 
 .modal-footer button:hover {
   background-color: #00b0b0;
+}
+
+/* Calendar Number Styles */
+.react-calendar__tile {
+  font-size: 1.2rem; /* Increased font size for better visibility */
+  color: #333; /* Dark color for better contrast */
+  font-weight: bold; /* Makes the numbers stand out */
+}
+
+.react-calendar__tile--active {
+  background-color: #00d2d2; /* Turquoise for active day */
+  color: white; /* White text for active day */
+  border-radius: 50%; /* Round the active day */
+}
+
+.react-calendar__tile--now {
+  background-color: #32cd32; /* Green for current day */
+  color: white; /* White text for current day */
+  border-radius: 50%; /* Round the current day */
+}
+
+/* Hover Effect for Calendar Numbers */
+.react-calendar__tile:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: white; /* White text on hover */
+  border-radius: 50%; /* Round the hovered day */
+}
+
+/* Neighboring Month Days */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc; /* Light color for neighboring month days */
 }
 
 @media (max-width: 768px) {
