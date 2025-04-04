@@ -39,7 +39,7 @@ const Profile = () => {
 
     try {
       const response = await fetch(
-        `/api/users/profile/${user.profileId}`, // Use the profileId from the user object
+        `/api/all_users/profile/${user.profileId}`, // Use the profileId from the user object
         {
           method: "GET",
           headers: {
@@ -111,7 +111,7 @@ const Profile = () => {
   const saveProfileInfo = async () => {
     setIsEditingProfile(false);
     try {
-      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+      const response = await fetch(`/api/all_users/profile/${user.profileId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -139,7 +139,7 @@ const Profile = () => {
   const saveHealthInfo = async () => {
     setIsEditingHealth(false);
     try {
-      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+      const response = await fetch(`/api/all_users/profile/${user.profileId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -222,7 +222,7 @@ const Profile = () => {
                   <td>
                     <input
                       type="date"
-                      name="birthday"
+                      name="dateOfBirth"
                       value={profileData.dateOfBirth}
                       onChange={handleProfileInfoChange}
                     />
