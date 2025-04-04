@@ -1,4 +1,10 @@
 /* Navbar container */
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body{
+  font-family: "Rokkitt", serif;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -177,7 +183,7 @@
 }
 
 .create-profile-dropdown .dropdown-item::after {
-  content: "›"; /* Right arrow indicator */
+  content: "ï¿½"; /* Right arrow indicator */
   font-size: 20px;
   color: #333;
 }
@@ -360,7 +366,7 @@
 }
 
 .create-profile-dropdown .dropdown-item::after {
-  content: "›"; /* Right arrow indicator */
+  content: "ï¿½"; /* Right arrow indicator */
   font-size: 20px;
   color: #333;
 }

@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body{
+  font-family: "Rokkitt", serif;
+}
+
+
 /* Center heading and place it above the pricing container */
 .plans-heading {
   text-align: center;
