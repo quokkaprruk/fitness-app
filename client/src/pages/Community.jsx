@@ -84,5 +84,24 @@ const Community = () => {
         </div>
 
         {/* Events Section */}
-        <div
+        <div className="events-section">
+          <h2> Upcoming Events</h2>
+          {filteredEvents.length === 0 ? (
+            <p>No events on this date. Check back later!</p>
+          ) : (
+            <ul className="event-list">
+              {filteredEvents.map((event, index) => (
+                <li key={index} className="event-item">
+                  <h4>{event.eventTitle}</h4>
+                  <p>Event Date: {new Date(event.eventDate).toLocaleDateString()}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
+export default Community;
