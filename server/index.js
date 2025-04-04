@@ -10,6 +10,7 @@ const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
 const upcomingRoutes = require("./routes/upcoming");
 const paymentRoutes = require("./routes/payment");
+const eventRoutes = require("./routes/events");
 
 const logger = require("./middleware/logger");
 const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
@@ -71,6 +72,7 @@ mongoose
     app.use("/api/upcoming", upcomingRoutes);
     app.use("/api/payment", paymentRoutes);
     app.use("/api/announcements", announcementRoutes);
+    app.use("/api/events", eventRoutes);
 
     app.use((err, _req, res, _next) => {
       if (err.name === "UnauthorizedError") {
