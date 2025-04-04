@@ -8,30 +8,22 @@ const Community = () => {
   const [events, setEvents] = useState([]);
   const [date, setDate] = useState(new Date());
 
-  // Fetch announcements and events from the backend
+  // Sample data for announcements and events
+  const sampleAnnouncements = [
+    { title: "New Yoga Classes Available!", message: "Our new yoga sessions start this week. Join us for relaxation and strength.", date: "2025-04-10" },
+    { title: "Spring Offer: 20% Off Membership", message: "Get 20% off your membership for a limited time. Offer ends April 30.", date: "2025-04-05" },
+    { title: "Personal Training Sessions", message: "Book a personal trainer for customized workout plans!", date: "2025-04-12" },
+  ];
+
+  const sampleEvents = [
+    { eventTitle: "Yoga Class", eventDate: "2025-04-10" },
+    { eventTitle: "HIIT Bootcamp", eventDate: "2025-04-15" },
+    { eventTitle: "Pilates Session", eventDate: "2025-04-18" },
+  ];
+
   useEffect(() => {
-    const fetchAnnouncements = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`);
-        const data = await response.json();
-        setAnnouncements(data);
-      } catch (err) {
-        console.error("Error fetching announcements:", err);
-      }
-    };
-
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events`);
-        const data = await response.json();
-        setEvents(data);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-      }
-    };
-
-    fetchAnnouncements();
-    fetchEvents();
+    setAnnouncements(sampleAnnouncements);
+    setEvents(sampleEvents);
   }, []);
 
   // Filter events for the selected date
@@ -46,9 +38,9 @@ const Community = () => {
 
   return (
     <div className="community-page">
-      <h1 className="coming-soon-title"> Community Page Coming Soon! </h1>
+      <h1 className="coming-soon-title">Fitness Community</h1>
       <p className="coming-soon-subtext">
-        Exciting events, workshops, and classes from all across Canada – Stay tuned!
+        Join our vibrant fitness community for classes, events, and exclusive offers!
       </p>
 
       <div className="community-container">
@@ -98,6 +90,14 @@ const Community = () => {
               ))}
             </ul>
           )}
+        </div>
+
+        {/* Challenge and Tips Section */}
+        <div className="challenges-tips-section">
+          <h2>Weekly Fitness Challenge</h2>
+          <p>Take part in this week's challenge: "100 Squats a Day"! Share your progress and win a free class.</p>
+          <h2>Pro Tip</h2>
+          <p>Consistency is key! Set a routine and stick to it, even when motivation is low.</p>
         </div>
       </div>
     </div>

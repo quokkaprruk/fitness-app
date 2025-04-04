@@ -64,7 +64,6 @@ const PostAnnouncement = () => {
           </form>
         </div>
 
-        {/* Right Side - Event Calendar */}
         <div className="calendar-container">
           <h2 className="section-title">Schedule Events</h2>
           <ReactCalendar

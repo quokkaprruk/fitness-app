@@ -1,58 +1,173 @@
-.community-page {
-  padding: 2rem;
-  background-color: #f4f4f4;
-}
-
-.community-container {
-  display: flex;
-  gap: 2rem;
-}
-
-.calendar-section,
-.announcements-section,
-.events-section {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  width: 30%;
-}
-
-h2 {
-  color: #007bff;
-}
-
-.announcement-list,
-.event-list {
-  list-style-type: none;
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
   padding: 0;
+  background-color: #f4f4f4; /* Background color */
+  color: #333;
 }
 
-.announcement-item,
-.event-item {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
+h1, h2 {
+  font-family: 'Rokkitt', serif;
+  color: #333;
 }
 
-.announcement-date,
-.event-date {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.calendar {
-  border-radius: 8px;
+.community-page {
+  padding: 20px;
 }
 
 .coming-soon-title {
   text-align: center;
-  color: #333;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  margin-top: 20px;
+  color: #40e0d0; /* Turquoise */
 }
 
 .coming-soon-subtext {
   text-align: center;
   font-size: 1.1rem;
   color: #777;
+  margin-bottom: 30px;
 }
+
+/* Community Container */
+.community-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Calendar Section */
+.calendar-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.calendar-section h2 {
+  color: #007bff; /* Blue */
+}
+
+.calendar {
+  border: 2px solid #40e0d0; /* Turquoise */
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.calendar p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Announcements Section */
+.announcements-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.announcement-item {
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.announcement-item:hover {
+  transform: scale(1.05);
+}
+
+.announcement-item h4 {
+  color: #007bff; /* Blue */
+  font-size: 1.2rem;
+}
+
+.announcement-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Events Section */
+.events-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h4 {
+  color: #40e0d0; /* Turquoise */
+  font-size: 1.2rem;
+}
+
+/* Challenges & Tips Section */
+.challenges-tips-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.challenges-tips-section h2 {
+  color: #32cd32; /* Green */
+}
+
+.challenges-tips-section p {
+  color: #555;
+}
+
+/* Overall layout styles */
+.calendar-section,
+.announcements-section,
+.events-section,
+.challenges-tips-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+/* Button Styles */
+button {
+  background-color: #40e0d0; /* Turquoise */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #32cd32; /* Green */
+}
+
