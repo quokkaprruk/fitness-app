@@ -49,11 +49,6 @@ const Profile = () => {
         }
       );
       if (!response.ok) {
-        if (response.status === 404) {
-          console.error("Profile not found");
-        } else if (response.status === 400) {
-          console.error("Invalid request");
-        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
@@ -111,7 +106,7 @@ const Profile = () => {
   const saveProfileInfo = async () => {
     setIsEditingProfile(false);
     try {
-      const response = await fetch(`/api/all_users/profile/${user.profileId}`, {
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,11 +116,6 @@ const Profile = () => {
       });
 
       if (!response.ok) {
-        if (response.status === 404) {
-          console.error("Profile not found");
-        } else if (response.status === 400) {
-          console.error("Invalid request");
-        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
@@ -139,7 +129,7 @@ const Profile = () => {
   const saveHealthInfo = async () => {
     setIsEditingHealth(false);
     try {
-      const response = await fetch(`/api/all_users/profile/${user.profileId}`, {
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -222,7 +212,7 @@ const Profile = () => {
                   <td>
                     <input
                       type="date"
-                      name="dateOfBirth"
+                      name="birthday"
                       value={profileData.dateOfBirth}
                       onChange={handleProfileInfoChange}
                     />
