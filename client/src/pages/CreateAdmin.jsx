@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CreateAdmin.css";
+import "./Admin.css";
 
 const CreateAdmin = () => {
   const [adminData, setAdminData] = useState({

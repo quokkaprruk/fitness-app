@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CreateTrainer.css";
+import "./Admin.css";
 
 const CreateTrainer = () => {
   const [trainerData, setTrainerData] = useState({
