@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
+body{
+  font-family: "Rokkitt", serif;
+}
+
 .admin-page {
   max-width: 600px;
   margin: 40px auto;

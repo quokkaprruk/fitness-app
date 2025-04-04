@@ -1,10 +1,13 @@
 /* Reset global styles to ensure full width */
+@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+
 body,
 html {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
   font-size: 25px;
+  font-family: "Rokkitt", serif;
 }
 
 .profile-container {

@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./styles/Profile.css";
 import Health from "../health.jpeg";
 import ProfilePic from "../profilePic.png";
+import { AuthContext } from "../context/authContextValue";
 
 const Profile = () => {
+  const { user } = useContext(AuthContext);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -112,7 +114,7 @@ const Profile = () => {
 
   return (
     <div id="profile-container" className="profile-container">
-       <div className="profile-navbar-spacer"></div>
+      <div className="profile-navbar-spacer"></div>
       <div className="profile-section">
         <div className="image-wrapper">
           <img
@@ -143,26 +145,32 @@ const Profile = () => {
               <tbody>
                 <tr>
                   <td>First Name:</td>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={profileData.firstName}
-                    onChange={handleProfileInfoChange}
-                  />
+                  <td>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={profileData.firstName}
+                      onChange={handleProfileInfoChange}
+                    />
+                  </td>
                 </tr>
                 <tr>
-                  <td>{profileData.lastName}</td>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={profileData.lastName}
-                    onChange={handleProfileInfoChange}
-                  />
+                  <td>Last Name:</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={profileData.lastName}
+                      onChange={handleProfileInfoChange}
+                    />
+                  </td>
                 </tr>
-                <tr>
-                  <td>Subscription Plan:</td>
-                  <td>{profileData.subscriptionPlan}</td>
-                </tr>
+                {user?.role === "member" && (
+                  <tr>
+                    <td>Subscription Plan:</td>
+                    <td>{profileData.subscriptionPlan}</td>
+                  </tr>
+                )}
                 <tr>
                   <td>Birthday:</td>
                   <td>{profileData.dateOfBirth}</td>
@@ -262,10 +270,12 @@ const Profile = () => {
                   <td>Last Name:</td>
                   <td>{profileData.lastName}</td>
                 </tr>
-                <tr>
-                  <td>Subscription Plan:</td>
-                  <td>{profileData.subscriptionPlan}</td>
-                </tr>
+                {user?.role === "member" && (
+                  <tr>
+                    <td>Subscription Plan:</td>
+                    <td>{profileData.subscriptionPlan}</td>
+                  </tr>
+                )}
                 <tr>
                   <td>Birthday:</td>
                   <td>{profileData.dateOfBirth}</td>
@@ -309,110 +319,110 @@ const Profile = () => {
           </>
         )}
       </div>
-
-      <div className="health-section">
-        <div className="image-wrapper">
-          <img src={Health} alt="Health" className="health-pic" />
+      {user?.role === "member" && (
+        <div className="health-section">
+          <div className="image-wrapper">
+            <img src={Health} alt="Health" className="health-pic" />
+          </div>
+          <h2>Health Information</h2>
+          {isEditingHealth ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                saveHealthInfo();
+              }}
+            >
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Height (cm):</td>
+                    <td>
+                      <input
+                        type="number"
+                        name="height"
+                        value={profileData.height}
+                        onChange={handleHealthInfoChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Weight (kg):</td>
+                    <td>
+                      <input
+                        type="number"
+                        name="weight"
+                        value={profileData.weight}
+                        onChange={handleHealthInfoChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Medical Conditions:</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="condition"
+                        value={profileData.condition}
+                        onChange={handleHealthInfoChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Allergies:</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="allergy"
+                        value={profileData.allergy}
+                        onChange={handleHealthInfoChange}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button className="edit-button" type="submit">
+                Save
+              </button>
+              <button
+                className="edit-button"
+                type="button"
+                onClick={() => setIsEditingHealth(false)}
+              >
+                Cancel
+              </button>
+            </form>
+          ) : (
+            <>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Height:</td>
+                    <td>{profileData.height} cm</td>
+                  </tr>
+                  <tr>
+                    <td>Weight:</td>
+                    <td>{profileData.weight} kg</td>
+                  </tr>
+                  <tr>
+                    <td>Medical Conditions:</td>
+                    <td>{profileData.condition}</td>
+                  </tr>
+                  <tr>
+                    <td>Allergies:</td>
+                    <td>{profileData.allergy}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button
+                className="edit-button"
+                onClick={() => setIsEditingHealth(true)}
+              >
+                Edit Health Info
+              </button>
+            </>
+          )}
         </div>
-        <h2>Health Information</h2>
-        {isEditingHealth ? (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              saveHealthInfo();
-            }}
-          >
-            <table>
-              <tbody>
-                <tr>
-                  <td>Height (cm):</td>
-                  <td>
-                    <input
-                      type="number"
-                      name="height"
-                      value={profileData.height}
-                      onChange={handleHealthInfoChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Weight (kg):</td>
-                  <td>
-                    <input
-                      type="number"
-                      name="weight"
-                      value={profileData.weight}
-                      onChange={handleHealthInfoChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Medical Conditions:</td>
-                  <td>
-                    <input
-                      type="text"
-                      name="condition"
-                      value={profileData.condition}
-                      onChange={handleHealthInfoChange}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Allergies:</td>
-                  <td>
-                    <input
-                      type="text"
-                      name="allergy"
-                      value={profileData.allergy}
-                      onChange={handleHealthInfoChange}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <button className="edit-button" type="submit">
-              Save
-            </button>
-            <button
-              className="edit-button"
-              type="button"
-              onClick={() => setIsEditingHealth(false)}
-            >
-              Cancel
-            </button>
-          </form>
-        ) : (
-          <>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Height:</td>
-                  <td>{profileData.height} cm</td>
-                </tr>
-                <tr>
-                  <td>Weight:</td>
-                  <td>{profileData.weight} kg</td>
-                </tr>
-                <tr>
-                  <td>Medical Conditions:</td>
-                  <td>{profileData.condition}</td>
-                </tr>
-                <tr>
-                  <td>Allergies:</td>
-                  <td>{profileData.allergy}</td>
-                </tr>
-              </tbody>
-            </table>
-            <button
-              className="edit-button"
-              onClick={() => setIsEditingHealth(true)}
-            >
-              Edit Health Info
-            </button>
-          </>
-        )}
-      </div>
-
+      )}
       {showConfirmation && (
         <div className="confirmation-modal">
           <div className="modal-content">
