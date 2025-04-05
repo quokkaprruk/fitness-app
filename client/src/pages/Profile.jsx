@@ -31,25 +31,20 @@ const Profile = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   useEffect(() => {
-    if (user?.profileId) {
-      fetchProfileData();
-    }
+    fetchProfileData();
   }, [user]);
-  
 
   const fetchProfileData = async () => {
-    if (!user || !user.profileId) return;
+    if (!user || !user.profileId) return; // Exit if no user or profileId
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/profile/${
-          user.profileId
-        }`,
+        `/api/users/profile/${user.profileId}`, // Use the profileId from the user object
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, // Include token for authentication
           },
         }
       );
@@ -57,7 +52,7 @@ const Profile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setProfileData(data.profile);
+      setProfileData(data.profile); // Assuming the API returns the profile data directly
     } catch (error) {
       console.error("Failed to fetch profile data:", error);
     }
@@ -111,19 +106,14 @@ const Profile = () => {
   const saveProfileInfo = async () => {
     setIsEditingProfile(false);
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/profile/${
-          user.profileId
-        }`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(profileData),
-        }
-      );
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(profileData),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -139,19 +129,14 @@ const Profile = () => {
   const saveHealthInfo = async () => {
     setIsEditingHealth(false);
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/profile/${
-          user.profileId
-        }`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(profileData),
-        }
-      );
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(profileData),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
