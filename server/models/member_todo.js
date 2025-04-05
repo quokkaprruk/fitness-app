@@ -21,17 +21,14 @@ const todoSchema = new Schema(
         achievedAt: { type: Date, default: Date.now },
       },
     ],
-    workoutLogged: {
-      type: Boolean,
-      default: false,
-    },
-    workoutDate: {
-      type: Date,
-    },
     workout: {
       type: Number,
       min: 0,
       default: 0,
+    },
+    workoutLogged: {
+      type: Boolean,
+      default: false,
     },
   },
   {

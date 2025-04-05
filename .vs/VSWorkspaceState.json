@@ -3,7 +3,6 @@
     "",
     "\\client",
     "\\client\\src",
-    "\\client\\src\\components",
     "\\client\\src\\pages",
     "\\client\\src\\pages\\styles",
     "\\client\\src\\public",
@@ -12,6 +11,6 @@
     "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\src\\App.jsx",
+  "SelectedNode": "\\client\\src\\pages\\styles\\Admin.css",
   "PreviewInSolutionExplorer": false
 }
