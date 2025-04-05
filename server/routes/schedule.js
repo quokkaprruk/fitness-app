@@ -164,7 +164,7 @@ router.get("/onsite", async (req, res) => {
       res.status(200).json(onSiteSchedule);
     } else {
       logger.info("No on-site schedules found");
-      res.status(200).json([]); // Return empty array if no schedules found
+      res.status(200).json([]); // Ret    urn empty array if no schedules found
     }
   } catch (error) {
     logger.error(`Error fetching on-site schedules: ${error.message}`);

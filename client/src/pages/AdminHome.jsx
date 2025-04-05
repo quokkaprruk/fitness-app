@@ -91,33 +91,6 @@ const AdminHome = () => {
     fetchData();
   }, []);
 
-  //2. generate schedule fetch from backend
-  const fetchGenerateSchedule = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const response = await axios.post(
-        `${
-          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-        }/api/schedules/generate-schedule`
-      );
-
-      const trainers = response.data.trainers;
-      const schedule = response.data.schedule;
-
-      setSchedule(schedule);
-
-      // Pass both trainers and schedule to the navigation state:
-      navigate("/genSchedule", {
-        state: { trainers: trainers, schedule: schedule },
-      });
-    } catch (err) {
-      setError(err.response ? err.response.data.message : err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   //4.0 Admin select row to edit
   const handleEdit = (classItem) => {
     setEditingClassId(classItem ? classItem._id : null);
@@ -345,8 +318,11 @@ const AdminHome = () => {
     <div className="app-container">
       <div id="manage-schedule-heading" className="manage-gen">
         <h1>Manage Schedules</h1>
-        <button className="generate-btn" onClick={fetchGenerateSchedule}>
-          {loading ? "Generating..." : "Generate Schedule"}
+        <button
+          className="generate-btn"
+          onClick={() => navigate("/genSchedule")}
+        >
+          Generate Schedule
         </button>
       </div>
       {error && <div className="admin-gen-error-message">{error}</div>}

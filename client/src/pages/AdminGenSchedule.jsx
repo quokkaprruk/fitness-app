@@ -1,22 +1,20 @@
 import "./styles/AdminGenSchedule.css";
 import { AuthContext } from "../context/authContextValue";
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useMemo } from "react";
 import { FaEdit, FaSave, FaTrash, FaTimes } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import moment from "moment"; // Import moment
 
 const AdminGenSchedule = () => {
   const { token, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation(); // Access passed location data
-  const initialSchedule = location.state?.schedule || []; // the schedules we received from AdminHome
-  const initialTrainers = location.state?.trainers || []; // the trainers we received from AdminHome
-  const [schedule, setSchedule] = useState(initialSchedule);
-  const [trainers, setTrainers] = useState(initialTrainers);
+  const [schedule, setSchedule] = useState([]);
+  const [trainers, setTrainers] = useState([]);
   const [editMode, setEditMode] = useState(null);
   const [editedClass, setEditedClass] = useState(null);
-
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const classes = [
     "Cardio",
     "HIIT",
@@ -40,6 +38,65 @@ const AdminGenSchedule = () => {
     ? schedule.slice(startIndex, startIndex + itemsPerPage)
     : [];
 
+  //0. get trainers from Db
+  const fetchTrainer = useMemo(() => {
+    return async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/trainers/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setTrainers(response.data);
+      } catch (err) {
+        console.error("Error fetching trainers:", err);
+        setError("Failed to fetch trainers.");
+      }
+    };
+  }, [token]); // Dependency: re-fetch if token changes
+
+  //1. get generate schedules from backend
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchGenerateSchedule = async () => {
+        setLoading(true);
+        setError("");
+        try {
+          const response = await axios.post(
+            `${
+              import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+            }/api/schedules/generate-schedule`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          const schedule = response.data.schedule;
+
+          setSchedule(schedule);
+        } catch (err) {
+          setError(err.response ? err.response.data.message : err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      try {
+        await fetchGenerateSchedule();
+        await fetchTrainer();
+      } catch (error) {
+        console.error("Error fetching schedule:", error);
+      }
+    };
+    console.log("Token changed:", token);
+    fetchData();
+  }, [fetchTrainer, token]);
+
   //For SaveToDB
   const saveToDb = async (schedule) => {
     try {
@@ -52,7 +109,6 @@ const AdminGenSchedule = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ schedule: schedule }),
         }
@@ -195,6 +251,8 @@ const AdminGenSchedule = () => {
     // admin-class-list-container
     <div className="gen-schedule-container">
       <h1>Sample Generated Schedule</h1>
+      {/* Show error */}
+      {error && <div className="error-message">{error}</div>}
       <div className="gen-admin-use-ctn">
         {schedule.length > 0 && (
           <>

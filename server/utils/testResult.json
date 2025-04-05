@@ -1,69 +1,205 @@
 [
   {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T08:00:00-04:00",
-    "endDateTime": "2025-04-04T09:00:00-04:00",
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-05T08:00:00-04:00",
+    "endDateTime": "2025-04-05T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-05T08:00:00-04:00",
+    "endDateTime": "2025-04-05T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "description": "A HIIT-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-05T08:00:00-04:00",
+    "endDateTime": "2025-04-05T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-05T08:00:00-04:00",
+    "endDateTime": "2025-04-05T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T08:00:00-04:00",
+    "endDateTime": "2025-04-05T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-05T09:00:00-04:00",
+    "endDateTime": "2025-04-05T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Beginner class taught by John Doe.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Weight Training",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T08:00:00-04:00",
-    "endDateTime": "2025-04-04T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T09:00:00-04:00",
-    "endDateTime": "2025-04-04T10:00:00-04:00",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-05T09:00:00-04:00",
+    "endDateTime": "2025-04-05T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by John Doe.",
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T09:00:00-04:00",
-    "endDateTime": "2025-04-04T10:00:00-04:00",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-05T09:00:00-04:00",
+    "endDateTime": "2025-04-05T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "description": "A Cardio-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-05T09:00:00-04:00",
+    "endDateTime": "2025-04-05T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T09:00:00-04:00",
+    "endDateTime": "2025-04-05T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-05T10:00:00-04:00",
+    "endDateTime": "2025-04-05T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-05T10:00:00-04:00",
+    "endDateTime": "2025-04-05T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -73,8 +209,8 @@
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T09:00:00-04:00",
-    "endDateTime": "2025-04-04T10:00:00-04:00",
+    "startDateTime": "2025-04-05T10:00:00-04:00",
+    "endDateTime": "2025-04-05T11:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -85,121 +221,155 @@
     }
   },
   {
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T10:00:00-04:00",
+    "endDateTime": "2025-04-05T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-05T11:00:00-04:00",
+    "endDateTime": "2025-04-05T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-05T13:00:00-04:00",
+    "endDateTime": "2025-04-05T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-05T13:00:00-04:00",
+    "endDateTime": "2025-04-05T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Pilates-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-05T13:00:00-04:00",
+    "endDateTime": "2025-04-05T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T13:00:00-04:00",
+    "endDateTime": "2025-04-05T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T10:00:00-04:00",
-    "endDateTime": "2025-04-04T11:00:00-04:00",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Yoga-Intermediate class taught by John Doe.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T10:00:00-04:00",
-    "endDateTime": "2025-04-04T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T10:00:00-04:00",
-    "endDateTime": "2025-04-04T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T11:00:00-04:00",
-    "endDateTime": "2025-04-04T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Advanced",
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T11:00:00-04:00",
-    "endDateTime": "2025-04-04T12:00:00-04:00",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Pilates-Advanced class taught by Jane Smith.",
+      "description": "A Cardio-Beginner class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T11:00:00-04:00",
-    "endDateTime": "2025-04-04T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T11:00:00-04:00",
-    "endDateTime": "2025-04-04T12:00:00-04:00",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -209,8 +379,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T13:00:00-04:00",
-    "endDateTime": "2025-04-04T14:00:00-04:00",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -222,120 +392,52 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Intermediate",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T13:00:00-04:00",
-    "endDateTime": "2025-04-04T14:00:00-04:00",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Meditation",
+    "className": "Strength Training",
     "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T14:00:00-04:00",
-    "endDateTime": "2025-04-04T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Intermediate class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T14:00:00-04:00",
-    "endDateTime": "2025-04-04T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T14:00:00-04:00",
-    "endDateTime": "2025-04-04T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorId": "67f195fbfd33a7080030bc7f",
     "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T14:00:00-04:00",
-    "endDateTime": "2025-04-04T15:00:00-04:00",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T14:00:00-04:00",
+    "endDateTime": "2025-04-05T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T15:00:00-04:00",
-    "endDateTime": "2025-04-04T16:00:00-04:00",
+    "startDateTime": "2025-04-05T15:00:00-04:00",
+    "endDateTime": "2025-04-05T16:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T15:00:00-04:00",
-    "endDateTime": "2025-04-04T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "description": "A Yoga-Advanced class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -345,12 +447,12 @@
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T15:00:00-04:00",
-    "endDateTime": "2025-04-04T16:00:00-04:00",
+    "startDateTime": "2025-04-05T15:00:00-04:00",
+    "endDateTime": "2025-04-05T16:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Weight Training-Beginner class taught by Paul Pong.",
       "equipmentRequired": []
@@ -358,80 +460,12 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T15:00:00-04:00",
-    "endDateTime": "2025-04-04T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-04T16:00:00-04:00",
-    "endDateTime": "2025-04-04T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T16:00:00-04:00",
-    "endDateTime": "2025-04-04T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T16:00:00-04:00",
-    "endDateTime": "2025-04-04T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
     "difficultyLevel": "Advanced",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T16:00:00-04:00",
-    "endDateTime": "2025-04-04T17:00:00-04:00",
+    "startDateTime": "2025-04-05T15:00:00-04:00",
+    "endDateTime": "2025-04-05T16:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -442,302 +476,13 @@
     }
   },
   {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-04T17:00:00-04:00",
-    "endDateTime": "2025-04-04T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-04T17:00:00-04:00",
-    "endDateTime": "2025-04-04T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-04T17:00:00-04:00",
-    "endDateTime": "2025-04-04T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-04T17:00:00-04:00",
-    "endDateTime": "2025-04-04T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-05T08:00:00-04:00",
-    "endDateTime": "2025-04-05T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T08:00:00-04:00",
-    "endDateTime": "2025-04-05T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T08:00:00-04:00",
-    "endDateTime": "2025-04-05T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T08:00:00-04:00",
-    "endDateTime": "2025-04-05T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T09:00:00-04:00",
-    "endDateTime": "2025-04-05T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T09:00:00-04:00",
-    "endDateTime": "2025-04-05T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T09:00:00-04:00",
-    "endDateTime": "2025-04-05T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T10:00:00-04:00",
-    "endDateTime": "2025-04-05T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T10:00:00-04:00",
-    "endDateTime": "2025-04-05T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-05T11:00:00-04:00",
-    "endDateTime": "2025-04-05T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T11:00:00-04:00",
-    "endDateTime": "2025-04-05T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T11:00:00-04:00",
-    "endDateTime": "2025-04-05T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T11:00:00-04:00",
-    "endDateTime": "2025-04-05T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Yoga",
     "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-05T13:00:00-04:00",
-    "endDateTime": "2025-04-05T14:00:00-04:00",
+    "startDateTime": "2025-04-05T16:00:00-04:00",
+    "endDateTime": "2025-04-05T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -748,98 +493,13 @@
     }
   },
   {
-    "className": "Pilates",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T13:00:00-04:00",
-    "endDateTime": "2025-04-05T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Pilates-Advanced class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T13:00:00-04:00",
-    "endDateTime": "2025-04-05T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T13:00:00-04:00",
-    "endDateTime": "2025-04-05T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T13:00:00-04:00",
-    "endDateTime": "2025-04-05T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Cardio",
     "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
+    "startDateTime": "2025-04-05T16:00:00-04:00",
+    "endDateTime": "2025-04-05T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -850,87 +510,53 @@
     }
   },
   {
-    "className": "Weight Training",
+    "className": "HIIT",
     "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
+    "startDateTime": "2025-04-05T16:00:00-04:00",
+    "endDateTime": "2025-04-05T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Beginner",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
+    "startDateTime": "2025-04-05T16:00:00-04:00",
+    "endDateTime": "2025-04-05T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Meditation",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-05T15:00:00-04:00",
-    "endDateTime": "2025-04-05T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Meditation-Intermediate class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
     "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T15:00:00-04:00",
-    "endDateTime": "2025-04-05T16:00:00-04:00",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-05T16:00:00-04:00",
+    "endDateTime": "2025-04-05T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -940,74 +566,6 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
     "startDateTime": "2025-04-05T17:00:00-04:00",
     "endDateTime": "2025-04-05T18:00:00-04:00",
     "studentCapacity": 5,
@@ -1015,7 +573,41 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "description": "A Pilates-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-05T17:00:00-04:00",
+    "endDateTime": "2025-04-05T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A HIIT-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-05T17:00:00-04:00",
+    "endDateTime": "2025-04-05T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -1037,25 +629,8 @@
     }
   },
   {
-    "className": "Pilates",
+    "className": "HIIT",
     "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-06T08:00:00-04:00",
-    "endDateTime": "2025-04-06T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -1066,12 +641,12 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
+    "className": "Weight Training",
     "difficultyLevel": "Beginner",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
@@ -1081,15 +656,15 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Advanced",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
@@ -1100,7 +675,7 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
@@ -1122,41 +697,7 @@
     }
   },
   {
-    "className": "Pilates",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-06T09:00:00-04:00",
-    "endDateTime": "2025-04-06T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Pilates-Advanced class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-06T09:00:00-04:00",
-    "endDateTime": "2025-04-06T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
+    "className": "Cardio",
     "difficultyLevel": "Advanced",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
@@ -1166,9 +707,9 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "description": "A Cardio-Advanced class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -1208,7 +749,7 @@
   },
   {
     "className": "Cardio",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Intermediate",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
@@ -1217,18 +758,18 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "description": "A Cardio-Intermediate class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
+    "className": "Strength Training",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
     "startDateTime": "2025-04-06T10:00:00-04:00",
     "endDateTime": "2025-04-06T11:00:00-04:00",
     "studentCapacity": 5,
@@ -1236,12 +777,46 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Weight Training",
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-06T11:00:00-04:00",
+    "endDateTime": "2025-04-06T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-06T11:00:00-04:00",
+    "endDateTime": "2025-04-06T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
     "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
@@ -1251,31 +826,31 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "description": "A HIIT-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
+    "className": "CrossFit",
     "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-06T13:00:00-04:00",
-    "endDateTime": "2025-04-06T14:00:00-04:00",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-06T11:00:00-04:00",
+    "endDateTime": "2025-04-06T12:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
+    "className": "Pilates",
     "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
@@ -1285,15 +860,32 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Weight Training",
     "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-06T13:00:00-04:00",
+    "endDateTime": "2025-04-06T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
@@ -1304,13 +896,13 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "description": "A Weight Training-Advanced class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Beginner",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
@@ -1321,7 +913,24 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-06T13:00:00-04:00",
+    "endDateTime": "2025-04-06T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -1336,15 +945,32 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Yoga-Intermediate class taught by John Doe.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
+    "className": "Cardio",
     "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-06T14:00:00-04:00",
+    "endDateTime": "2025-04-06T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -1353,9 +979,26 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
-      "description": "A HIIT-Advanced class taught by Paul Pong.",
+      "description": "A HIIT-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-06T14:00:00-04:00",
+    "endDateTime": "2025-04-06T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -1377,8 +1020,25 @@
     }
   },
   {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-06T14:00:00-04:00",
+    "endDateTime": "2025-04-06T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
@@ -1389,50 +1049,16 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
+      "description": "A Yoga-Advanced class taught by John Doe.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-06T15:00:00-04:00",
-    "endDateTime": "2025-04-06T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-06T15:00:00-04:00",
-    "endDateTime": "2025-04-06T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
+    "className": "Strength Training",
     "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorId": "67f195fbfd33a7080030bc7f",
     "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
+    "instructorLastName": "Agreda",
     "startDateTime": "2025-04-06T15:00:00-04:00",
     "endDateTime": "2025-04-06T16:00:00-04:00",
     "studentCapacity": 5,
@@ -1440,13 +1066,13 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Meditation",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
@@ -1455,9 +1081,94 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Meditation-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-06T16:00:00-04:00",
+    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-06T16:00:00-04:00",
+    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-06T16:00:00-04:00",
+    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
+      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-06T16:00:00-04:00",
+    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-06T16:00:00-04:00",
+    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -1467,12 +1178,12 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-06T16:00:00-04:00",
-    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "startDateTime": "2025-04-06T17:00:00-04:00",
+    "endDateTime": "2025-04-06T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Pilates-Intermediate class taught by Jane Smith.",
       "equipmentRequired": []
@@ -1480,41 +1191,24 @@
   },
   {
     "className": "Weight Training",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-06T16:00:00-04:00",
-    "endDateTime": "2025-04-06T17:00:00-04:00",
+    "startDateTime": "2025-04-06T17:00:00-04:00",
+    "endDateTime": "2025-04-06T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-06T16:00:00-04:00",
-    "endDateTime": "2025-04-06T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Mario.",
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Intermediate",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
@@ -1525,222 +1219,18 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T08:00:00-04:00",
-    "endDateTime": "2025-04-07T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-07T08:00:00-04:00",
-    "endDateTime": "2025-04-07T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T08:00:00-04:00",
-    "endDateTime": "2025-04-07T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-07T09:00:00-04:00",
-    "endDateTime": "2025-04-07T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-07T09:00:00-04:00",
-    "endDateTime": "2025-04-07T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T09:00:00-04:00",
-    "endDateTime": "2025-04-07T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
       "description": "A Yoga-Intermediate class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Pilates-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T11:00:00-04:00",
-    "endDateTime": "2025-04-07T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Cardio",
     "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-07T11:00:00-04:00",
-    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "startDateTime": "2025-04-07T08:00:00-04:00",
+    "endDateTime": "2025-04-07T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -1756,8 +1246,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-07T11:00:00-04:00",
-    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "startDateTime": "2025-04-07T08:00:00-04:00",
+    "endDateTime": "2025-04-07T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -1768,11 +1258,215 @@
     }
   },
   {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-07T08:00:00-04:00",
+    "endDateTime": "2025-04-07T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T08:00:00-04:00",
+    "endDateTime": "2025-04-07T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-07T09:00:00-04:00",
+    "endDateTime": "2025-04-07T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-07T09:00:00-04:00",
+    "endDateTime": "2025-04-07T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Pilates-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
     "className": "Weight Training",
     "difficultyLevel": "Beginner",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
+    "startDateTime": "2025-04-07T09:00:00-04:00",
+    "endDateTime": "2025-04-07T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-07T10:00:00-04:00",
+    "endDateTime": "2025-04-07T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-07T10:00:00-04:00",
+    "endDateTime": "2025-04-07T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T10:00:00-04:00",
+    "endDateTime": "2025-04-07T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-07T11:00:00-04:00",
+    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-07T11:00:00-04:00",
+    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-07T11:00:00-04:00",
+    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T11:00:00-04:00",
+    "endDateTime": "2025-04-07T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
     "startDateTime": "2025-04-07T13:00:00-04:00",
     "endDateTime": "2025-04-07T14:00:00-04:00",
     "studentCapacity": 5,
@@ -1780,7 +1474,41 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-07T13:00:00-04:00",
+    "endDateTime": "2025-04-07T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-07T13:00:00-04:00",
+    "endDateTime": "2025-04-07T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A HIIT-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -1802,70 +1530,19 @@
     }
   },
   {
-    "className": "Yoga",
+    "className": "Strength Training",
     "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorId": "67f195fbfd33a7080030bc7f",
     "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T13:00:00-04:00",
+    "endDateTime": "2025-04-07T14:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -1875,8 +1552,8 @@
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T15:00:00-04:00",
-    "endDateTime": "2025-04-07T16:00:00-04:00",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -1892,8 +1569,8 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-07T15:00:00-04:00",
-    "endDateTime": "2025-04-07T16:00:00-04:00",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -1905,52 +1582,18 @@
   },
   {
     "className": "HIIT",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-07T15:00:00-04:00",
-    "endDateTime": "2025-04-07T16:00:00-04:00",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T15:00:00-04:00",
-    "endDateTime": "2025-04-07T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-07T16:00:00-04:00",
-    "endDateTime": "2025-04-07T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
+      "description": "A HIIT-Intermediate class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -1960,8 +1603,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-07T16:00:00-04:00",
-    "endDateTime": "2025-04-07T17:00:00-04:00",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -1973,18 +1616,137 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
+    "difficultyLevel": "Beginner",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T16:00:00-04:00",
-    "endDateTime": "2025-04-07T17:00:00-04:00",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-07T15:00:00-04:00",
+    "endDateTime": "2025-04-07T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-07T15:00:00-04:00",
+    "endDateTime": "2025-04-07T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-07T16:00:00-04:00",
+    "endDateTime": "2025-04-07T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-07T16:00:00-04:00",
+    "endDateTime": "2025-04-07T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-07T16:00:00-04:00",
+    "endDateTime": "2025-04-07T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-07T17:00:00-04:00",
+    "endDateTime": "2025-04-07T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Beginner class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -1999,15 +1761,15 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Pilates-Beginner class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -2018,7 +1780,7 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Paul Pong.",
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -2033,7 +1795,7 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Cardio-Intermediate class taught by Luis Mario.",
       "equipmentRequired": []
@@ -2042,6 +1804,40 @@
   {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-07T17:00:00-04:00",
+    "endDateTime": "2025-04-07T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-07T17:00:00-04:00",
+    "endDateTime": "2025-04-07T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
@@ -2052,7 +1848,7 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "description": "A Meditation-Beginner class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -2067,7 +1863,7 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Pilates-Advanced class taught by Jane Smith.",
       "equipmentRequired": []
@@ -2075,7 +1871,7 @@
   },
   {
     "className": "Weight Training",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -2086,7 +1882,177 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-08T08:00:00-04:00",
+    "endDateTime": "2025-04-08T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-08T08:00:00-04:00",
+    "endDateTime": "2025-04-08T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-08T08:00:00-04:00",
+    "endDateTime": "2025-04-08T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-08T09:00:00-04:00",
+    "endDateTime": "2025-04-08T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-08T09:00:00-04:00",
+    "endDateTime": "2025-04-08T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A HIIT-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-08T09:00:00-04:00",
+    "endDateTime": "2025-04-08T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-08T10:00:00-04:00",
+    "endDateTime": "2025-04-08T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-08T10:00:00-04:00",
+    "endDateTime": "2025-04-08T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-08T10:00:00-04:00",
+    "endDateTime": "2025-04-08T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-08T11:00:00-04:00",
+    "endDateTime": "2025-04-08T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
@@ -2096,8 +2062,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-08T08:00:00-04:00",
-    "endDateTime": "2025-04-08T09:00:00-04:00",
+    "startDateTime": "2025-04-08T11:00:00-04:00",
+    "endDateTime": "2025-04-08T12:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2109,35 +2075,18 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-08T09:00:00-04:00",
-    "endDateTime": "2025-04-08T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
     "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-08T09:00:00-04:00",
-    "endDateTime": "2025-04-08T10:00:00-04:00",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-08T11:00:00-04:00",
+    "endDateTime": "2025-04-08T12:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
@@ -2147,12 +2096,12 @@
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-08T10:00:00-04:00",
-    "endDateTime": "2025-04-08T11:00:00-04:00",
+    "startDateTime": "2025-04-08T13:00:00-04:00",
+    "endDateTime": "2025-04-08T14:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Meditation-Intermediate class taught by John Doe.",
       "equipmentRequired": []
@@ -2164,105 +2113,20 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-08T10:00:00-04:00",
-    "endDateTime": "2025-04-08T11:00:00-04:00",
+    "startDateTime": "2025-04-08T13:00:00-04:00",
+    "endDateTime": "2025-04-08T14:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Cardio-Beginner class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-08T10:00:00-04:00",
-    "endDateTime": "2025-04-08T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T10:00:00-04:00",
-    "endDateTime": "2025-04-08T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-08T11:00:00-04:00",
-    "endDateTime": "2025-04-08T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-08T11:00:00-04:00",
-    "endDateTime": "2025-04-08T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T11:00:00-04:00",
-    "endDateTime": "2025-04-08T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "HIIT",
-    "difficultyLevel": "Intermediate",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -2271,9 +2135,145 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-08T13:00:00-04:00",
+    "endDateTime": "2025-04-08T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
     "location": "online",
     "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-08T13:00:00-04:00",
+    "endDateTime": "2025-04-08T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
       "description": "A HIIT-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-08T14:00:00-04:00",
+    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -2283,8 +2283,8 @@
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "startDateTime": "2025-04-08T15:00:00-04:00",
+    "endDateTime": "2025-04-08T16:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2295,13 +2295,64 @@
     }
   },
   {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-08T15:00:00-04:00",
+    "endDateTime": "2025-04-08T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-08T15:00:00-04:00",
+    "endDateTime": "2025-04-08T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-08T16:00:00-04:00",
+    "endDateTime": "2025-04-08T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
     "className": "Pilates",
     "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
+    "startDateTime": "2025-04-08T16:00:00-04:00",
+    "endDateTime": "2025-04-08T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2312,164 +2363,28 @@
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-08T15:00:00-04:00",
-    "endDateTime": "2025-04-08T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-08T15:00:00-04:00",
-    "endDateTime": "2025-04-08T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-08T15:00:00-04:00",
-    "endDateTime": "2025-04-08T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T15:00:00-04:00",
-    "endDateTime": "2025-04-08T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-08T16:00:00-04:00",
-    "endDateTime": "2025-04-08T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-08T16:00:00-04:00",
+    "endDateTime": "2025-04-08T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
     "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorId": "67f195fbfd33a7080030bc7f",
     "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-08T16:00:00-04:00",
-    "endDateTime": "2025-04-08T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorLastName": "Agreda",
     "startDateTime": "2025-04-08T16:00:00-04:00",
     "endDateTime": "2025-04-08T17:00:00-04:00",
     "studentCapacity": 5,
@@ -2477,41 +2392,7 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-08T17:00:00-04:00",
-    "endDateTime": "2025-04-08T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-08T17:00:00-04:00",
-    "endDateTime": "2025-04-08T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -2534,7 +2415,7 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Advanced",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
@@ -2545,13 +2426,30 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-08T17:00:00-04:00",
+    "endDateTime": "2025-04-08T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
@@ -2560,15 +2458,15 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by John Doe.",
+      "description": "A Meditation-Intermediate class taught by John Doe.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Pilates",
-    "difficultyLevel": "Beginner",
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
@@ -2577,15 +2475,15 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
+      "description": "A Cardio-Intermediate class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
@@ -2596,7 +2494,7 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Mario.",
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -2618,7 +2516,7 @@
     }
   },
   {
-    "className": "Cardio",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
@@ -2628,15 +2526,15 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "description": "A Pilates-Advanced class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
   {
     "className": "HIIT",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
@@ -2647,7 +2545,7 @@
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "description": "A HIIT-Intermediate class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -2662,9 +2560,43 @@
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "on-site",
+    "location": "online",
     "classDetails": {
       "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T09:00:00-04:00",
+    "endDateTime": "2025-04-09T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-09T10:00:00-04:00",
+    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -2674,8 +2606,450 @@
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T09:00:00-04:00",
-    "endDateTime": "2025-04-09T10:00:00-04:00",
+    "startDateTime": "2025-04-09T10:00:00-04:00",
+    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T10:00:00-04:00",
+    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-09T11:00:00-04:00",
+    "endDateTime": "2025-04-09T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-09T11:00:00-04:00",
+    "endDateTime": "2025-04-09T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-09T11:00:00-04:00",
+    "endDateTime": "2025-04-09T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-09T11:00:00-04:00",
+    "endDateTime": "2025-04-09T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-09T11:00:00-04:00",
+    "endDateTime": "2025-04-09T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-09T13:00:00-04:00",
+    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-09T13:00:00-04:00",
+    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-09T13:00:00-04:00",
+    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T13:00:00-04:00",
+    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-09T14:00:00-04:00",
+    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-09T14:00:00-04:00",
+    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-09T14:00:00-04:00",
+    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-09T14:00:00-04:00",
+    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T14:00:00-04:00",
+    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-09T15:00:00-04:00",
+    "endDateTime": "2025-04-09T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-09T15:00:00-04:00",
+    "endDateTime": "2025-04-09T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-09T15:00:00-04:00",
+    "endDateTime": "2025-04-09T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T15:00:00-04:00",
+    "endDateTime": "2025-04-09T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-09T16:00:00-04:00",
+    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-09T16:00:00-04:00",
+    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A HIIT-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-09T16:00:00-04:00",
+    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-09T16:00:00-04:00",
+    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-09T17:00:00-04:00",
+    "endDateTime": "2025-04-09T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-09T17:00:00-04:00",
+    "endDateTime": "2025-04-09T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-09T17:00:00-04:00",
+    "endDateTime": "2025-04-09T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2691,8 +3065,8 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-09T10:00:00-04:00",
-    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "startDateTime": "2025-04-10T08:00:00-04:00",
+    "endDateTime": "2025-04-10T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2704,86 +3078,86 @@
   },
   {
     "className": "Weight Training",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-09T10:00:00-04:00",
-    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "startDateTime": "2025-04-10T08:00:00-04:00",
+    "endDateTime": "2025-04-10T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-10T08:00:00-04:00",
+    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Advanced",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T10:00:00-04:00",
-    "endDateTime": "2025-04-09T11:00:00-04:00",
+    "startDateTime": "2025-04-10T08:00:00-04:00",
+    "endDateTime": "2025-04-10T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T08:00:00-04:00",
+    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Meditation",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-09T11:00:00-04:00",
-    "endDateTime": "2025-04-09T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Intermediate class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
     "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-09T11:00:00-04:00",
-    "endDateTime": "2025-04-09T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-09T13:00:00-04:00",
-    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "startDateTime": "2025-04-10T09:00:00-04:00",
+    "endDateTime": "2025-04-10T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "description": "A Meditation-Beginner class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -2793,8 +3167,8 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-09T13:00:00-04:00",
-    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "startDateTime": "2025-04-10T09:00:00-04:00",
+    "endDateTime": "2025-04-10T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2810,8 +3184,8 @@
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-09T13:00:00-04:00",
-    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "startDateTime": "2025-04-10T09:00:00-04:00",
+    "endDateTime": "2025-04-10T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2822,53 +3196,53 @@
     }
   },
   {
-    "className": "Weight Training",
+    "className": "Yoga",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-09T13:00:00-04:00",
-    "endDateTime": "2025-04-09T14:00:00-04:00",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-10T09:00:00-04:00",
+    "endDateTime": "2025-04-10T10:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T09:00:00-04:00",
+    "endDateTime": "2025-04-10T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
+    "difficultyLevel": "Beginner",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "startDateTime": "2025-04-10T10:00:00-04:00",
+    "endDateTime": "2025-04-10T11:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "description": "A Yoga-Beginner class taught by John Doe.",
       "equipmentRequired": []
     }
   },
@@ -2878,12 +3252,12 @@
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "startDateTime": "2025-04-10T10:00:00-04:00",
+    "endDateTime": "2025-04-10T11:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A HIIT-Intermediate class taught by Paul Pong.",
       "equipmentRequired": []
@@ -2895,8 +3269,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "startDateTime": "2025-04-10T10:00:00-04:00",
+    "endDateTime": "2025-04-10T11:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2907,13 +3281,98 @@
     }
   },
   {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-10T11:00:00-04:00",
+    "endDateTime": "2025-04-10T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-10T11:00:00-04:00",
+    "endDateTime": "2025-04-10T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-10T13:00:00-04:00",
+    "endDateTime": "2025-04-10T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-10T13:00:00-04:00",
+    "endDateTime": "2025-04-10T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-10T13:00:00-04:00",
+    "endDateTime": "2025-04-10T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
+    "startDateTime": "2025-04-10T13:00:00-04:00",
+    "endDateTime": "2025-04-10T14:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -2925,69 +3384,52 @@
   },
   {
     "className": "Meditation",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-09T15:00:00-04:00",
-    "endDateTime": "2025-04-09T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T15:00:00-04:00",
-    "endDateTime": "2025-04-09T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-09T16:00:00-04:00",
-    "endDateTime": "2025-04-09T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
     "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-09T16:00:00-04:00",
-    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-10T14:00:00-04:00",
+    "endDateTime": "2025-04-10T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "description": "A Meditation-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-10T14:00:00-04:00",
+    "endDateTime": "2025-04-10T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-10T14:00:00-04:00",
+    "endDateTime": "2025-04-10T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
@@ -2997,8 +3439,8 @@
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T16:00:00-04:00",
-    "endDateTime": "2025-04-09T17:00:00-04:00",
+    "startDateTime": "2025-04-10T14:00:00-04:00",
+    "endDateTime": "2025-04-10T15:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3009,36 +3451,36 @@
     }
   },
   {
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T14:00:00-04:00",
+    "endDateTime": "2025-04-10T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
     "className": "Pilates",
     "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-09T17:00:00-04:00",
-    "endDateTime": "2025-04-09T18:00:00-04:00",
+    "startDateTime": "2025-04-10T15:00:00-04:00",
+    "endDateTime": "2025-04-10T16:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Pilates-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-09T17:00:00-04:00",
-    "endDateTime": "2025-04-09T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
@@ -3048,14 +3490,116 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-09T17:00:00-04:00",
-    "endDateTime": "2025-04-09T18:00:00-04:00",
+    "startDateTime": "2025-04-10T15:00:00-04:00",
+    "endDateTime": "2025-04-10T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-10T15:00:00-04:00",
+    "endDateTime": "2025-04-10T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T15:00:00-04:00",
+    "endDateTime": "2025-04-10T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-10T16:00:00-04:00",
+    "endDateTime": "2025-04-10T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "description": "A Yoga-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-10T16:00:00-04:00",
+    "endDateTime": "2025-04-10T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-10T16:00:00-04:00",
+    "endDateTime": "2025-04-10T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T16:00:00-04:00",
+    "endDateTime": "2025-04-10T17:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -3065,8 +3609,8 @@
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T08:00:00-04:00",
-    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "startDateTime": "2025-04-10T17:00:00-04:00",
+    "endDateTime": "2025-04-10T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3077,36 +3621,87 @@
     }
   },
   {
-    "className": "Cardio",
+    "className": "Weight Training",
     "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T08:00:00-04:00",
-    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-10T17:00:00-04:00",
+    "endDateTime": "2025-04-10T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T08:00:00-04:00",
-    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-10T17:00:00-04:00",
+    "endDateTime": "2025-04-10T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-10T17:00:00-04:00",
+    "endDateTime": "2025-04-10T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-11T08:00:00-04:00",
+    "endDateTime": "2025-04-11T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-11T08:00:00-04:00",
+    "endDateTime": "2025-04-11T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Jane Smith.",
       "equipmentRequired": []
     }
   },
@@ -3116,8 +3711,8 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T08:00:00-04:00",
-    "endDateTime": "2025-04-10T09:00:00-04:00",
+    "startDateTime": "2025-04-11T08:00:00-04:00",
+    "endDateTime": "2025-04-11T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3130,17 +3725,425 @@
   {
     "className": "Yoga",
     "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T09:00:00-04:00",
-    "endDateTime": "2025-04-10T10:00:00-04:00",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-11T08:00:00-04:00",
+    "endDateTime": "2025-04-11T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by John Doe.",
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T08:00:00-04:00",
+    "endDateTime": "2025-04-11T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Beginner class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-11T09:00:00-04:00",
+    "endDateTime": "2025-04-11T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-11T09:00:00-04:00",
+    "endDateTime": "2025-04-11T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Pilates-Intermediate class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-11T09:00:00-04:00",
+    "endDateTime": "2025-04-11T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T09:00:00-04:00",
+    "endDateTime": "2025-04-11T10:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-11T10:00:00-04:00",
+    "endDateTime": "2025-04-11T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A HIIT-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-11T10:00:00-04:00",
+    "endDateTime": "2025-04-11T11:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-11T11:00:00-04:00",
+    "endDateTime": "2025-04-11T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-11T11:00:00-04:00",
+    "endDateTime": "2025-04-11T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T11:00:00-04:00",
+    "endDateTime": "2025-04-11T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Advanced class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Advanced class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Beginner class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Intermediate class taught by Luis Agreda.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-11T14:00:00-04:00",
+    "endDateTime": "2025-04-11T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Meditation-Intermediate class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae74",
+    "instructorFirstName": "Jane",
+    "instructorLastName": "Smith",
+    "startDateTime": "2025-04-11T14:00:00-04:00",
+    "endDateTime": "2025-04-11T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Pilates-Advanced class taught by Jane Smith.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "HIIT",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-11T14:00:00-04:00",
+    "endDateTime": "2025-04-11T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A HIIT-Intermediate class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Cardio",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-11T14:00:00-04:00",
+    "endDateTime": "2025-04-11T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Cardio-Beginner class taught by Luis Mario.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Yoga",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f00bf5b1f884aede5e8edd",
+    "instructorFirstName": "Anthony",
+    "instructorLastName": "Sin",
+    "startDateTime": "2025-04-11T14:00:00-04:00",
+    "endDateTime": "2025-04-11T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Meditation",
+    "difficultyLevel": "Beginner",
+    "instructorId": "678be106e18a4df65aacae73",
+    "instructorFirstName": "John",
+    "instructorLastName": "Doe",
+    "startDateTime": "2025-04-11T15:00:00-04:00",
+    "endDateTime": "2025-04-11T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Meditation-Beginner class taught by John Doe.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Weight Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "678be106e18a4df65aacae75",
+    "instructorFirstName": "Paul",
+    "instructorLastName": "Pong",
+    "startDateTime": "2025-04-11T15:00:00-04:00",
+    "endDateTime": "2025-04-11T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "on-site",
+    "classDetails": {
+      "description": "A Weight Training-Advanced class taught by Paul Pong.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Strength Training",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T15:00:00-04:00",
+    "endDateTime": "2025-04-11T16:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Strength Training-Advanced class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   },
@@ -3150,8 +4153,8 @@
     "instructorId": "678be106e18a4df65aacae74",
     "instructorFirstName": "Jane",
     "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T09:00:00-04:00",
-    "endDateTime": "2025-04-10T10:00:00-04:00",
+    "startDateTime": "2025-04-11T16:00:00-04:00",
+    "endDateTime": "2025-04-11T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3167,8 +4170,8 @@
     "instructorId": "678be106e18a4df65aacae75",
     "instructorFirstName": "Paul",
     "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T09:00:00-04:00",
-    "endDateTime": "2025-04-10T10:00:00-04:00",
+    "startDateTime": "2025-04-11T16:00:00-04:00",
+    "endDateTime": "2025-04-11T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3184,127 +4187,25 @@
     "instructorId": "67b3a335f2b00023e51c2c1f",
     "instructorFirstName": "Luis",
     "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T09:00:00-04:00",
-    "endDateTime": "2025-04-10T10:00:00-04:00",
+    "startDateTime": "2025-04-11T16:00:00-04:00",
+    "endDateTime": "2025-04-11T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
-    "location": "online",
+    "location": "on-site",
     "classDetails": {
       "description": "A Weight Training-Beginner class taught by Luis Mario.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T10:00:00-04:00",
-    "endDateTime": "2025-04-10T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T10:00:00-04:00",
-    "endDateTime": "2025-04-10T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T11:00:00-04:00",
-    "endDateTime": "2025-04-10T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Intermediate class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T11:00:00-04:00",
-    "endDateTime": "2025-04-10T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T13:00:00-04:00",
-    "endDateTime": "2025-04-10T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Intermediate class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T13:00:00-04:00",
-    "endDateTime": "2025-04-10T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T13:00:00-04:00",
-    "endDateTime": "2025-04-10T14:00:00-04:00",
+    "startDateTime": "2025-04-11T16:00:00-04:00",
+    "endDateTime": "2025-04-11T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3315,200 +4216,13 @@
     }
   },
   {
-    "className": "Meditation",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Beginner class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Intermediate class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Weight Training-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Meditation",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae73",
-    "instructorFirstName": "John",
-    "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T15:00:00-04:00",
-    "endDateTime": "2025-04-10T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Meditation-Advanced class taught by John Doe.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T15:00:00-04:00",
-    "endDateTime": "2025-04-10T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Pilates-Beginner class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Weight Training",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T15:00:00-04:00",
-    "endDateTime": "2025-04-10T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Weight Training-Advanced class taught by Luis Mario.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T15:00:00-04:00",
-    "endDateTime": "2025-04-10T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Pilates",
-    "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T16:00:00-04:00",
-    "endDateTime": "2025-04-10T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A Pilates-Advanced class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "678be106e18a4df65aacae75",
-    "instructorFirstName": "Paul",
-    "instructorLastName": "Pong",
-    "startDateTime": "2025-04-10T16:00:00-04:00",
-    "endDateTime": "2025-04-10T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "on-site",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Paul Pong.",
-      "equipmentRequired": []
-    }
-  },
-  {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
     "instructorId": "678be106e18a4df65aacae73",
     "instructorFirstName": "John",
     "instructorLastName": "Doe",
-    "startDateTime": "2025-04-10T17:00:00-04:00",
-    "endDateTime": "2025-04-10T18:00:00-04:00",
+    "startDateTime": "2025-04-11T17:00:00-04:00",
+    "endDateTime": "2025-04-11T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
@@ -3521,32 +4235,15 @@
   {
     "className": "Cardio",
     "difficultyLevel": "Advanced",
-    "instructorId": "678be106e18a4df65aacae74",
-    "instructorFirstName": "Jane",
-    "instructorLastName": "Smith",
-    "startDateTime": "2025-04-10T17:00:00-04:00",
-    "endDateTime": "2025-04-10T18:00:00-04:00",
+    "instructorId": "67b3a335f2b00023e51c2c1f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Mario",
+    "startDateTime": "2025-04-11T17:00:00-04:00",
+    "endDateTime": "2025-04-11T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "on-site",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Jane Smith.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67b3a335f2b00023e51c2c1f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Mario",
-    "startDateTime": "2025-04-10T17:00:00-04:00",
-    "endDateTime": "2025-04-10T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
     "classDetails": {
       "description": "A Cardio-Advanced class taught by Luis Mario.",
       "equipmentRequired": []
@@ -3554,18 +4251,35 @@
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
+    "difficultyLevel": "Advanced",
     "instructorId": "67f00bf5b1f884aede5e8edd",
     "instructorFirstName": "Anthony",
     "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T17:00:00-04:00",
-    "endDateTime": "2025-04-10T18:00:00-04:00",
+    "startDateTime": "2025-04-11T17:00:00-04:00",
+    "endDateTime": "2025-04-11T18:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "CrossFit",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f195fbfd33a7080030bc7f",
+    "instructorFirstName": "Luis",
+    "instructorLastName": "Agreda",
+    "startDateTime": "2025-04-11T17:00:00-04:00",
+    "endDateTime": "2025-04-11T18:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A CrossFit-Beginner class taught by Luis Agreda.",
       "equipmentRequired": []
     }
   }
