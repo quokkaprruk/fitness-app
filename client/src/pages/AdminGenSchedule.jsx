@@ -1,16 +1,17 @@
 import "./styles/AdminGenSchedule.css";
+import { AuthContext } from "../context/authContextValue";
 import axios from "axios";
-import React, { useState } from "react";
-import { FaEdit, FaTrash, FaSave, FaTimes } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
+import React, { useState, useContext } from "react";
+import { FaEdit, FaSave, FaTrash, FaTimes } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment"; // Import moment
 
 const AdminGenSchedule = () => {
+  const { token, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation(); // Access passed location data
-  const initialSchedule = location.state?.schedule || [];
-  const initialTrainers = location.state?.trainers || [];
+  const initialSchedule = location.state?.schedule || []; // the schedules we received from AdminHome
+  const initialTrainers = location.state?.trainers || []; // the trainers we received from AdminHome
   const [schedule, setSchedule] = useState(initialSchedule);
   const [trainers, setTrainers] = useState(initialTrainers);
   const [editMode, setEditMode] = useState(null);
@@ -42,15 +43,33 @@ const AdminGenSchedule = () => {
   //For SaveToDB
   const saveToDb = async (schedule) => {
     try {
-      console.log("Schedule data:", schedule);
-      const response = await axios.post(
+      console.log("Schedule data sent from frontEnd:", schedule);
+      const response = await fetch(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
         }/api/schedules/save-generated-schedule`,
-        { schedule: schedule }
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ schedule: schedule }),
+        }
       );
 
-      console.log("Schedule saved successfully:", response.data);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${
+            errorData.message || "Unknown error"
+          }`
+        );
+      }
+
+      const responseData = await response.json(); // Parse the JSON response body
+      console.log("Schedule saved successfully:", responseData); // Use responseData
+
       setSchedule([]); // Clear the schedule
       alert("Schedule saved successfully!");
       navigate("/admin");
@@ -66,6 +85,7 @@ const AdminGenSchedule = () => {
       alert(`Error saving schedule: ${errorMessage}`);
     }
   };
+
   //For Edit
   const handleInputChange = (e, field) => {
     let value = e.target.value;
@@ -107,14 +127,14 @@ const AdminGenSchedule = () => {
       ) {
         const updatedItem = { ...item, ...editedClass };
         //Convert datetime using moment() : backend use moment()
-        const newStartTime = formatDateWithOffset(editedClass.startDateTime);
-        const newEndTime = formatDateWithOffset(editedClass.endDateTime);
+        // const newStartTime = formatDateWithOffset(editedClass.startDateTime);
+        // const newEndTime = formatDateWithOffset(editedClass.endDateTime);
 
         //Check for conflicts
         const conflictExists = schedule.some(
           (otherItem) =>
             otherItem.instructorId === updatedItem.instructorId &&
-            otherItem.startDateTime === newStartTime &&
+            otherItem.startDateTime === editedClass.startDateTime &&
             otherItem !== item // Exclude the current item being edited from the check
         );
         if (conflictExists) {
@@ -131,8 +151,8 @@ const AdminGenSchedule = () => {
           alert("Student capacity must be between 1 and 15.");
           return item; //Return the original item without changes
         }
-        updatedItem.startDateTime = newStartTime;
-        updatedItem.endDateTime = newEndTime;
+        updatedItem.startDateTime = editedClass.startDateTime;
+        updatedItem.endDateTime = editedClass.endDateTime;
         return updatedItem;
       } else {
         return item;
@@ -158,10 +178,10 @@ const AdminGenSchedule = () => {
     }
   };
 
-  //Format date for schedule[]
-  const formatDateWithOffset = (dateString) => {
-    return moment(dateString).format("YYYY-MM-DDTHH:mm:ssZ");
-  };
+  // //Format date for schedule[]
+  // const formatDateWithOffset = (dateString) => {
+  //   return moment(dateString).format("YYYY-MM-DDTHH:mm:ssZ");
+  // };
 
   // Pagination
   const handlePrevPage = () => {
@@ -273,8 +293,10 @@ const AdminGenSchedule = () => {
                   editMode &&
                   editMode.className === classItem.className &&
                   editMode.startDateTime === classItem.startDateTime
-                    ? editedClass.startDateTime.slice(0, 16)
-                    : classItem.startDateTime.slice(0, 16)
+                    ? moment(editedClass.startDateTime).format(
+                        "YYYY-MM-DDTHH:mm"
+                      )
+                    : moment(classItem.startDateTime).format("YYYY-MM-DDTHH:mm")
                 }
                 onChange={(e) => handleInputChange(e, "startDateTime")}
                 disabled={
@@ -292,8 +314,8 @@ const AdminGenSchedule = () => {
                   editMode &&
                   editMode.className === classItem.className &&
                   editMode.startDateTime === classItem.startDateTime
-                    ? editedClass.endDateTime.slice(0, 16)
-                    : classItem.endDateTime.slice(0, 16)
+                    ? moment(editedClass.endDateTime).format("YYYY-MM-DDTHH:mm")
+                    : moment(classItem.endDateTime).format("YYYY-MM-DDTHH:mm")
                 }
                 onChange={(e) => handleInputChange(e, "endDateTime")}
                 disabled={
