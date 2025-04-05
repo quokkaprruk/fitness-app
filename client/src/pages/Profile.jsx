@@ -5,7 +5,7 @@ import ProfilePic from "../profilePic.png";
 import { AuthContext } from "../context/authContextValue";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -32,29 +32,30 @@ const Profile = () => {
 
   useEffect(() => {
     fetchProfileData();
-  }, []);
+  }, [user]);
 
   const fetchProfileData = async () => {
-    // Simulating API call
-    setProfileData({
-      firstName: "Hello12346",
-      lastName: "Test",
-      profileImage: "",
-      subscriptionPlan: "Basic Plan",
-      dateOfBirth: "1990-01-01",
-      gender: "Male",
-      phone: "1234567890",
-      address1: "123 Main St",
-      address2: "Apt 4B",
-      city: "Anytown",
-      province: "State",
-      postal: "12345",
-      country: "USA",
-      height: "180",
-      weight: "75",
-      condition: "None",
-      allergy: "None",
-    });
+    if (!user || !user.profileId) return; // Exit if no user or profileId
+
+    try {
+      const response = await fetch(
+        `/api/users/profile/${user.profileId}`, // Use the profileId from the user object
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include token for authentication
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setProfileData(data.profile); // Assuming the API returns the profile data directly
+    } catch (error) {
+      console.error("Failed to fetch profile data:", error);
+    }
   };
 
   const handleEditProfilePic = () => {
@@ -102,16 +103,51 @@ const Profile = () => {
     }));
   };
 
-  const saveProfileInfo = () => {
+  const saveProfileInfo = async () => {
     setIsEditingProfile(false);
-    // Here you would typically send the updated data to your server
+    try {
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(profileData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log("Profile updated successfully:", result);
+      setProfileData(result.profile);
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+    }
   };
 
-  const saveHealthInfo = () => {
+  const saveHealthInfo = async () => {
     setIsEditingHealth(false);
-    // Here you would typically send the updated data to your server
-  };
+    try {
+      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(profileData),
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log("Health information updated successfully:", result);
+      setProfileData(result.profile);
+    } catch (error) {
+      console.error("Failed to update health information:", error);
+    }
+  };
   return (
     <div id="profile-container" className="profile-container">
       <div className="profile-navbar-spacer"></div>
@@ -173,7 +209,14 @@ const Profile = () => {
                 )}
                 <tr>
                   <td>Birthday:</td>
-                  <td>{profileData.dateOfBirth}</td>
+                  <td>
+                    <input
+                      type="date"
+                      name="birthday"
+                      value={profileData.dateOfBirth}
+                      onChange={handleProfileInfoChange}
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td>Gender:</td>
@@ -243,7 +286,12 @@ const Profile = () => {
                 </tr>
                 <tr>
                   <td>Country:</td>
-                  <td>{profileData.country}</td>
+                  <input
+                    type="text"
+                    name="country"
+                    value={profileData.country}
+                    onChange={handleProfileInfoChange}
+                  />
                 </tr>
               </tbody>
             </table>

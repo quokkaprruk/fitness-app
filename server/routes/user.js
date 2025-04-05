@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
         profileId: user.profileId,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "5m" }, // Token Expiry = 5 minutes
+      { expiresIn: "5m" } // Token Expiry = 5 minutes
     );
 
     res.json({
@@ -140,7 +140,9 @@ router.post("/signup", async (req, res) => {
     const missingFields = requiredFields.filter((field) => !req.body[field]);
     if (missingFields.length > 0) {
       throw new Error(
-        `Missing required fields for ${role} profile: ${missingFields.join(", ")}`,
+        `Missing required fields for ${role} profile: ${missingFields.join(
+          ", "
+        )}`
       );
     }
 
@@ -258,7 +260,7 @@ router.post("/forgot-password", async (req, res) => {
     const emailSent = await notify(
       email,
       "Password Reset Request",
-      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`,
+      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`
     );
 
     if (emailSent) {
@@ -307,14 +309,14 @@ router.get("/profile/:profileId", checkUserOwnership, async (req, res) => {
         break;
       default:
         logger.warn(
-          `Invalid role found in database for profileId: ${profileId}`,
+          `Invalid role found in database for profileId: ${profileId}`
         );
         return res.status(400).json({ message: "Invalid role in database." });
     }
 
     if (!profile) {
       logger.warn(
-        `Profile not found for profileId: ${profileId} (Role: ${role})`,
+        `Profile not found for profileId: ${profileId} (Role: ${role})`
       );
       return res.status(404).json({ message: "Profile not found." });
     }
@@ -325,7 +327,7 @@ router.get("/profile/:profileId", checkUserOwnership, async (req, res) => {
     res.status(200).json({ user, profile });
   } catch (err) {
     logger.error(
-      `Error fetching profile for profileId: ${profileId} - ${err.message}`,
+      `Error fetching profile for profileId: ${profileId} - ${err.message}`
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }
@@ -374,7 +376,7 @@ router.post("/profile/:profileId", checkUserOwnership, async (req, res) => {
     const updatedProfile = await profileModel.findOneAndUpdate(
       { profileId },
       { $set: updatedProfileData }, // modify only the provided fields
-      { new: true, runValidators: true }, // Return updated document & apply validation
+      { new: true, runValidators: true } // Return updated document & apply validation
     );
 
     if (!updatedProfile) {
@@ -392,7 +394,7 @@ router.post("/profile/:profileId", checkUserOwnership, async (req, res) => {
     });
   } catch (err) {
     logger.error(
-      `Error updating profile for profileId: ${profileId} - ${err.message}`,
+      `Error updating profile for profileId: ${profileId} - ${err.message}`
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }
