@@ -1,25 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactCalendar from "react-calendar";
 import "../pages/styles/Admin.css";
 import "react-calendar/dist/Calendar.css";
+import { AuthContext } from "../context/authContextValue";
 
 const PostAnnouncement = () => {
+  const { token } = useContext(AuthContext);
   const [announcement, setAnnouncement] = useState("");
   const [title, setTitle] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newAnnouncement = { title, announcement, date: selectedDate };
+    const newAnnouncement = {
+      title,
+      message: announcement,
+      eventDate: selectedDate,
+    };
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newAnnouncement),
         },
-        body: JSON.stringify(newAnnouncement),
-      });
+      );
 
       if (response.ok) {
         alert("Announcement posted successfully!");
@@ -60,7 +70,9 @@ const PostAnnouncement = () => {
               required
               className="textarea-field"
             ></textarea>
-            <button type="submit" className="submit-btn">Post Announcement</button>
+            <button type="submit" className="submit-btn">
+              Post Announcement
+            </button>
           </form>
         </div>
 
@@ -72,7 +84,10 @@ const PostAnnouncement = () => {
             className="calendar"
           />
           <div className="calendar-footer">
-            <span><strong>Selected Date: </strong>{selectedDate.toLocaleDateString()}</span>
+            <span>
+              <strong>Selected Date: </strong>
+              {selectedDate.toLocaleDateString()}
+            </span>
           </div>
         </div>
       </div>
