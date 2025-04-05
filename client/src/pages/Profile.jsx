@@ -34,7 +34,8 @@ const Profile = () => {
     if (user?.profileId) {
       fetchProfileData();
     }
-  },);
+  }, [user]);
+  
 
   const fetchProfileData = async () => {
     if (!user || !user.profileId) return;
