@@ -39,37 +39,76 @@ router.post("/generate-schedule", async (req, res) => {
 
 // Siripa: POST route to save the confirmed schedule + insert to database
 // : use when want to save the generated schedule to the database
-
 router.post("/save-generated-schedule", async (req, res) => {
   try {
-    const { schedule } = req.body; //front-end must send generated schedule data in the req.body
-    console.log(req.body);
-    const schedulesToSave = schedule.map((item) => {
-      return {
-        ...item,
-        startDateTime: moment(item.startDateTime).toDate(), // Convert to Date
-        endDateTime: moment(item.endDateTime).toDate(), // Convert to Date
-      };
-    });
+    console.log("Parsing schedule data...");
+    const scheduleData = req.body.schedule;
 
-    // check if there's existing schedule in db
-    const existingSchedules = await Schedule.find({});
-    if (existingSchedules.length > 0) {
-      await Schedule.deleteMany({});
+    if (!Array.isArray(scheduleData)) {
+      return res
+        .status(400)
+        .json({ message: "Schedule data must be an array" });
     }
-    // insert to the database
-    console.log(schedulesToSave);
-    const savedSchedules = await Schedule.insertMany(schedulesToSave);
 
-    res.status(200).json({
-      message: "Schedule saved successfully",
-      schedules: savedSchedules,
+    console.log("Deleting existing schedules...");
+    await Schedule.deleteMany({});
+
+    const savedSchedules = [];
+
+    console.log("Starting schedule item loop...");
+    for (const classItem of scheduleData) {
+      // Validate each classItem before saving
+      if (
+        !classItem.className ||
+        !classItem.difficultyLevel ||
+        !classItem.instructorId ||
+        !classItem.instructorFirstName ||
+        !classItem.instructorLastName ||
+        !classItem.startDateTime ||
+        !classItem.endDateTime ||
+        !classItem.studentCapacity ||
+        !classItem.location
+      ) {
+        return res.status(400).json({ message: "Invalid schedule item data." });
+      }
+
+      console.log("Parsing date strings...");
+      // Ensure date strings are correctly parsed
+      const startDateTime = moment(classItem.startDateTime).toDate();
+      const endDateTime = moment(classItem.endDateTime).toDate();
+
+      if (!moment(startDateTime).isValid() || !moment(endDateTime).isValid()) {
+        return res.status(400).json({ message: "Invalid date format." });
+      }
+
+      console.log("Creating schedule document...");
+      const schedule = new Schedule({
+        className: classItem.className,
+        difficultyLevel: classItem.difficultyLevel,
+        instructorId: classItem.instructorId,
+        instructorFirstName: classItem.instructorFirstName,
+        instructorLastName: classItem.instructorLastName,
+        startDateTime: startDateTime,
+        endDateTime: endDateTime,
+        studentCapacity: classItem.studentCapacity,
+        location: classItem.location,
+      });
+
+      console.log("Saving schedule document...");
+      const savedSchedule = await schedule.save();
+      savedSchedules.push(savedSchedule);
+      console.log("Schedule document saved:", savedSchedule);
+    }
+
+    res.status(201).json({
+      message: "Schedules saved successfully",
+      savedSchedules: savedSchedules,
     });
-  } catch (error) {
-    logger.error(`Error saving schedule: ${error}`);
+  } catch (err) {
+    console.error("Error saving schedules:", err);
     res
       .status(500)
-      .json({ message: "Error saving schedule", error: error.message });
+      .json({ message: "Internal server error", error: err.message });
   }
 });
 
@@ -274,5 +313,4 @@ router.delete("/:scheduleId", async (req, res) => {
     });
   }
 });
-
 module.exports = router;

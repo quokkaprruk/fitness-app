@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/CreateProfile.css"; 
+import "./styles/CreateProfile.css";
 
 const CreateAdmin = () => {
   const [adminData, setAdminData] = useState({
@@ -35,67 +35,36 @@ const CreateAdmin = () => {
   };
 
   return (
-    <div className="admin-page">
-      <h2>Create Admin</h2>
-      <form onSubmit={handleSubmit} className="trainer-form">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={adminData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={adminData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="dob"
-          value={adminData.dob}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone"
-          value={adminData.phone}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={adminData.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={adminData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={adminData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Create Admin</button>
-      </form>
-    </div>
+    <form className="create-admin" onSubmit={handleSubmit}>
+      <h2>Create Admin Profile</h2>
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="city"
+        placeholder="City"
+        onChange={handleChange}
+      />
+      <button type="submit">Create Admin</button>
+    </form>
   );
 };
 

@@ -76,12 +76,18 @@ function generateMonthlySchedule(trainers) {
             "YYYY-MM-DD HH:mm"
           );
 
+          // const location =
+          //   trainer.teachingMode.length > 1
+          //     ? trainer.teachingMode[
+          //         Math.floor(Math.random() * trainer.teachingMode.length)
+          //       ]
+          //     : trainer.teachingMode[0];
           const location =
             trainer.teachingMode.length > 1
               ? trainer.teachingMode[
                   Math.floor(Math.random() * trainer.teachingMode.length)
-                ]
-              : trainer.teachingMode[0];
+                ].toLowerCase()
+              : trainer.teachingMode[0].toLowerCase();
 
           const specialtyIndex = i % trainer.specialty.length;
           const levelIndex = i % levels.length;

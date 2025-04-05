@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
+body{
+  font-family: "Rokkitt", serif;
+}
+
 .gen-schedule-container {
   margin-top: 15rem;
   padding: 20px;

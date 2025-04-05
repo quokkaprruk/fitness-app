@@ -2,10 +2,15 @@ import { useState } from "react";
 import "../pages/styles/CreateProfile.css";
 
 const specialties = [
-  "Yoga", "Pilates", "Zumba", "HIIT", "Cardio", "Strength Training", "CrossFit"
+  "Cardio",
+  "HIIT",
+  "Yoga",
+  "Weight Training",
+  "Pilates",
+  "Meditation",
 ];
 
-const teachingModes = ["Online", "Onsite", "Both"];
+const teachingModes = ["online", "onsite"];
 
 const CreateTrainer = () => {
   const [trainerData, setTrainerData] = useState({
@@ -31,7 +36,10 @@ const CreateTrainer = () => {
   };
 
   const handleSpecialtyChange = (e) => {
-    const options = Array.from(e.target.selectedOptions, (option) => option.value);
+    const options = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
     setTrainerData({ ...trainerData, specialty: options });
   };
 
@@ -54,110 +62,52 @@ const CreateTrainer = () => {
   };
 
   return (
-    <div className="admin-page">
+    <form className="create-admin" onSubmit={handleSubmit}>
+      {/* <div className="admin-page"> */}
       <h2>Create Trainer Profile</h2>
-      <form onSubmit={handleSubmit} className="trainer-form">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={trainerData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={trainerData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <select name="gender" value={trainerData.gender} onChange={handleChange} required>
-          <option value="">Select Gender</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Other">Other</option>
-        </select>
-        <input
-          type="date"
-          name="dob"
-          value={trainerData.dob}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone"
-          value={trainerData.phone}
-          onChange={handleChange}
-          required
-        />
-        <label>Specialties (Select multiple):</label>
-        <select
-          name="specialty"
-          multiple
-          value={trainerData.specialty}
-          onChange={handleSpecialtyChange}
-          required
-        >
-          {specialties.map((spec, index) => (
-            <option key={index} value={spec}>
-              {spec}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="teachingMode"
-          value={trainerData.teachingMode}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Teaching Mode</option>
-          {teachingModes.map((mode, index) => (
-            <option key={index} value={mode}>
-              {mode}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="number"
-          name="experience"
-          placeholder="Years of Experience"
-          value={trainerData.experience}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={trainerData.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={trainerData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={trainerData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Create Trainer</button>
-      </form>
-    </div>
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone"
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="specialty"
+        placeholder="Specialty (comma-separated)"
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="number"
+        name="experience"
+        placeholder="Years of Experience"
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Create Trainer</button>
+    </form>
   );
 };
 

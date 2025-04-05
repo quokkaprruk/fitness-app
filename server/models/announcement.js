@@ -10,12 +10,12 @@ const announcementSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    date: {
+    eventDate: {
       type: Date,
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Announcement = mongoose.model("Announcement", announcementSchema);
