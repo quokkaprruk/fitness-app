@@ -5,7 +5,11 @@ const scheduleSchema = new Schema(
   {
     className: String, //[Cardio, HIIT, Yoga, Weight Training, Pilates, Meditation]
     difficultyLevel: String, // [Beginner,Intermediate,Advanced]
-    instructorId: { type: mongoose.Schema.Types.ObjectId, ref: "Trainer" },
+    instructorId: {
+      type: String,
+      required: true,
+      ref: "Trainer",
+    },
     instructorFirstName: String,
     instructorLastName: String,
     startDateTime: Date,
