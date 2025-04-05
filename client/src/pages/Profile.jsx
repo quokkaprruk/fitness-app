@@ -31,28 +31,26 @@ const Profile = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   useEffect(() => {
-    fetchProfileData();
+    if (user) fetchProfileData();
   }, [user]);
 
   const fetchProfileData = async () => {
-    if (!user || !user.profileId) return; // Exit if no user or profileId
-
     try {
       const response = await fetch(
-        `/api/users/profile/${user.profileId}`, // Use the profileId from the user object
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/profile`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Include token for authentication
+            Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setProfileData(data.profile); // Assuming the API returns the profile data directly
+      setProfileData(data.profile);
     } catch (error) {
       console.error("Failed to fetch profile data:", error);
     }
@@ -106,15 +104,17 @@ const Profile = () => {
   const saveProfileInfo = async () => {
     setIsEditingProfile(false);
     try {
-      const response = await fetch(`/api/users/profile/${user.profileId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/profile`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(profileData),
         },
-        body: JSON.stringify(profileData),
-      });
-
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -129,7 +129,7 @@ const Profile = () => {
   const saveHealthInfo = async () => {
     setIsEditingHealth(false);
     try {
-      const response = await fetch(`/api/users/profile/${user.profileId}`, {
+      const response = await fetch("/api/users/profile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -137,7 +137,6 @@ const Profile = () => {
         },
         body: JSON.stringify(profileData),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -148,6 +147,7 @@ const Profile = () => {
       console.error("Failed to update health information:", error);
     }
   };
+
   return (
     <div id="profile-container" className="profile-container">
       <div className="profile-navbar-spacer"></div>
@@ -212,7 +212,7 @@ const Profile = () => {
                   <td>
                     <input
                       type="date"
-                      name="birthday"
+                      name="dateOfBirth"
                       value={profileData.dateOfBirth}
                       onChange={handleProfileInfoChange}
                     />
@@ -286,12 +286,14 @@ const Profile = () => {
                 </tr>
                 <tr>
                   <td>Country:</td>
-                  <input
-                    type="text"
-                    name="country"
-                    value={profileData.country}
-                    onChange={handleProfileInfoChange}
-                  />
+                  <td>
+                    <input
+                      type="text"
+                      name="country"
+                      value={profileData.country}
+                      onChange={handleProfileInfoChange}
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -492,3 +494,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
