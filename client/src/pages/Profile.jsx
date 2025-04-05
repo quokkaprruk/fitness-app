@@ -31,8 +31,10 @@ const Profile = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   useEffect(() => {
-    fetchProfileData();
-  }, [user]);
+    if (user?.profileId) {
+      fetchProfileData();
+    }
+  },);
 
   const fetchProfileData = async () => {
     if (!user || !user.profileId) return;
