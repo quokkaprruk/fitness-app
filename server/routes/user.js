@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
         profileId: user.profileId,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "5m" }, // Token Expiry = 5 minutes
+      { expiresIn: "15m" }, // Token Expiry = 5 minutes
     );
 
     res.json({
