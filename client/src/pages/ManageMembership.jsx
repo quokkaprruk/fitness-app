@@ -76,7 +76,7 @@ const ManageMembership = () => {
           </div>
 
           <div
-            className={`manage-pricing-card ${
+            className={`pricing-card ${
               membership === "Standard" ? "selected" : ""
             }`}
           >
@@ -89,11 +89,12 @@ const ManageMembership = () => {
               <li>Monthly progress reports</li>
               <li>Two fitness plans</li>
               <li>Equipment reservation</li>
+              <li>1 Free guest pass per month</li>
             </ul>
           </div>
 
           <div
-            className={`manage-pricing-card ${
+            className={`pricing-card ${
               membership === "Premium" ? "selected" : ""
             }`}
           >
@@ -103,7 +104,6 @@ const ManageMembership = () => {
               <li>All Standard benefits</li>
               <li>Virtual trainer consultations</li>
               <li>Unlimited fitness plans</li>
-              <li>Premium fitness classes</li>
               <li>Monthly goal tracking reviews</li>
               <li>Free guest passes</li>
               <li>Exclusive wellness events</li>

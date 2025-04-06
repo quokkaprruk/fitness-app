@@ -25,7 +25,6 @@ const NewUser = () => {
 
   return (
     <div className="newUser-home">
-      <div className="user-navbar-spacer"></div>
       {/* Hero Section */}
       <header className="hero-section">
         {/*Main top portion */}
