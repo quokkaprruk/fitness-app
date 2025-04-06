@@ -13,21 +13,18 @@ const router = express.Router();
 // : use when admin clicks on 'generate-schedule' button
 router.post("/generate-schedule", async (req, res) => {
   try {
-    // fetch trainer necessary data from the database
-    const trainers = await Trainer.find(
-      {},
-      "firstName lastName teachingMode specialty"
-    );
-
-    if (trainers.length === 0) {
+    const trainers = req.body.trainers;
+    console.log("/generate-schedule Received trainers:", trainers);
+    if (!trainers || trainers.length === 0) {
       return res.status(404).json({ message: "No trainers found" });
     }
+
     const schedule = generateMonthlySchedule(trainers); // use the function in utils folder
 
     if (schedule.length === 0) {
       return res.status(404).json({ message: "No schedule found" });
     } else {
-      res.status(200).json({ trainers: trainers, schedule: schedule }); // send trainers and schedule
+      res.status(200).json(schedule);
     }
   } catch (error) {
     logger.error(`Error generating schedule: ${error.message}`);

@@ -26,9 +26,6 @@ const AdminGenSchedule = () => {
   const levels = ["Beginner", "Intermediate", "Advanced"];
   const locations = ["online", "on-site"];
 
-  console.log("Schedule data:", schedule);
-  console.log("Trainers data:", trainers);
-
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -50,6 +47,8 @@ const AdminGenSchedule = () => {
             },
           }
         );
+
+        // console.log("Trainers data:", response.data);
         setTrainers(response.data);
       } catch (err) {
         console.error("Error fetching trainers:", err);
@@ -58,44 +57,48 @@ const AdminGenSchedule = () => {
     };
   }, [token]); // Dependency: re-fetch if token changes
 
-  //1. get generate schedules from backend
   useEffect(() => {
     const fetchData = async () => {
-      const fetchGenerateSchedule = async () => {
-        setLoading(true);
-        setError("");
-        try {
-          const response = await axios.post(
-            `${
-              import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-            }/api/schedules/generate-schedule`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          const schedule = response.data.schedule;
-
-          setSchedule(schedule);
-        } catch (err) {
-          setError(err.response ? err.response.data.message : err.message);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      try {
-        await fetchGenerateSchedule();
-        await fetchTrainer();
-      } catch (error) {
-        console.error("Error fetching schedule:", error);
-      }
+      await fetchTrainer();
     };
+
     console.log("Token changed:", token);
     fetchData();
   }, [fetchTrainer, token]);
+
+  //1. get generate schedules from backend
+  useEffect(() => {
+    const fetchGenerateSchedule = async (trainers) => {
+      setLoading(true);
+      setError("");
+      try {
+        const response = await axios.post(
+          `${
+            import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+          }/api/schedules/generate-schedule`,
+          { trainers: trainers }, // second arg: body
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          } // third arg is config
+        );
+        console.log("Schedule data:", response.data);
+        const schedule = response.data;
+        setSchedule(schedule);
+      } catch (err) {
+        setError(err.response ? err.response.data.message : err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (trainers.length > 0) {
+      console.log(`trainer length: ${trainers.length}`);
+      console.log("Trainers:", trainers);
+      fetchGenerateSchedule(trainers);
+    }
+  }, [trainers, token]);
 
   //For SaveToDB
   const saveToDb = async (schedule) => {

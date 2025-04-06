@@ -29,6 +29,8 @@ const year = moment().format("YYYY"); // current month
 const month = moment().format("MM"); // current year
 
 function generateMonthlySchedule(trainers) {
+  console.log("generateMonthlySchedule called with trainers:", trainers); // Debugging
+
   const schedule = [];
 
   // For 30days
@@ -76,12 +78,6 @@ function generateMonthlySchedule(trainers) {
             "YYYY-MM-DD HH:mm"
           );
 
-          // const location =
-          //   trainer.teachingMode.length > 1
-          //     ? trainer.teachingMode[
-          //         Math.floor(Math.random() * trainer.teachingMode.length)
-          //       ]
-          //     : trainer.teachingMode[0];
           const location =
             trainer.teachingMode.length > 1
               ? trainer.teachingMode[
