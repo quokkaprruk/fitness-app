@@ -8,7 +8,7 @@ body {
 }
 
 .membership-container {
-  max-width: 900px; /* Increase width to accommodate the cards in a row */
+  max-width: 2000px; /* Increase width to accommodate the cards in a row */
   margin: 50px auto;
   padding: 20px;
   background-color: white;
@@ -127,7 +127,7 @@ body {
   gap: 20px;
 }
 
-.manage-pricing-card {
+.pricing-card {
   flex: 1; /* Allow cards to grow and fill the available space */
   min-width: 250px; /* Set a minimum width for each card */
   padding: 20px;
@@ -138,37 +138,38 @@ body {
   transition: transform 0.3s ease;
 }
 
-.manage-pricing-card:hover {
+.pricing-card:hover {
   transform: translateY(-5px);
 }
 
-.manage-pricing-card h3 {
+.pricing-card h3 {
   color: #333;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 0px;
 }
 
-.manage-pricing-card p {
+.pricing-card p {
   color: #666;
-  font-size: 20px;
+  font-size: 40px;
   margin-bottom: 15px;
 }
 
-.manage-pricing-card ul {
+.pricing-card ul {
   list-style-type: circle ;
   padding: 0;
   margin: 0;
 }
 
-.manage-pricing-card li {
+.pricing-card li {
   color: #666;
-  font-size: 16px;
+  font-size: 30px;
   margin-bottom: 8px;
+  margin-left: 20px;
 }
 
 /* Style for the selected card */
-.manage-pricing-card.selected {
+.pricing-card.selected {
   border: 3px solid #48d1cc; /* Blue border for the selected card */
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Optional glow effect */
 }

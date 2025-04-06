@@ -5,9 +5,12 @@ html {
   font-family: "Rokkitt", serif;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
 }
 
 .sign-up-container {
+  margin-top:200px;
+  margin-bottom:500px;
   width: 600px;
   padding: 0 20px 20px 20px;
   border: 1px solid #ccc;

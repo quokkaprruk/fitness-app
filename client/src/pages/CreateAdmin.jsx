@@ -36,6 +36,7 @@ const CreateAdmin = () => {
 
   return (
     <div className="admin-page">
+      <div className="CA-nav-spacer"></div>
       <h2>Create Admin</h2>
       <form onSubmit={handleSubmit} className="trainer-form">
         <input

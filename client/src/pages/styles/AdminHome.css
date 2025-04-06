@@ -29,6 +29,10 @@ body {
   font-size: 30px;
 }
 
+.app-container{
+  margin-top:-1200px;
+}
+
 .navbar-welcome {
   font-weight: bold;
   font-size: 30px;

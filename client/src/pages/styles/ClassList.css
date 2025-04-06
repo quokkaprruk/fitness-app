@@ -9,11 +9,11 @@ body {
 
 .class-list {
   position: relative;
-  margin-top: 80px; /* Adjust this value to match your navbar height */
+  margin-top: 40px; /* Adjust this value to match your navbar height */
 }
 
 .classlist-navbar-spacer {
-  height: 80px; /* This should match the navbar height */
+  height: 40px; /* This should match the navbar height */
 }
 
 .class-list-container {
