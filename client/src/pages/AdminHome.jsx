@@ -19,8 +19,7 @@ const AdminHome = () => {
   const levels = ["Beginner", "Intermediate", "Advanced"];
   const locations = ["online", "on-site"];
   const navigate = useNavigate();
-  const [fitnessClasses, setFitnessClasses] = useState([]); //for all classes from db
-  const [schedule, setSchedule] = useState([]); //for generated schedule
+  const [fitnessClasses, setFitnessClasses] = useState([]); //for showing all classes from db
   const [trainers, setTrainers] = useState([]); // for getting trainer
   const [editingClassId, setEditingClassId] = useState(null); // track class being edited
   const [loading, setLoading] = useState(false);
@@ -221,7 +220,7 @@ const AdminHome = () => {
     // set attribute to match backend
     const newClasses = classEntries.map((entry) => {
       const selectedTrainer = trainers.find(
-        (trainer) => trainer._id === entry.trainerId
+        (trainer) => trainer._id === entry.instructorId
       );
 
       return {
@@ -230,7 +229,7 @@ const AdminHome = () => {
         location: entry.classLocation,
         startDateTime: entry.startDateTime,
         endDateTime: entry.endDateTime,
-        instructorId: String(entry.trainerId),
+        instructorId: String(entry.instructorId),
         instructorFirstName: selectedTrainer ? selectedTrainer.firstName : "",
         instructorLastName: selectedTrainer ? selectedTrainer.lastName : "",
         studentCapacity: parseInt(entry.studentCapacity),
@@ -317,7 +316,7 @@ const AdminHome = () => {
   return (
     <div className="app-container">
       <div id="manage-schedule-heading" className="manage-gen">
-        <h1>Manage Schedules</h1>
+        <h1>Admin Dashboard</h1>
         <button
           className="generate-btn"
           onClick={() => navigate("/genSchedule")}
@@ -380,7 +379,6 @@ const AdminHome = () => {
                 className="form-input"
               >
                 <option value="">Select Capacity</option>{" "}
-                {/* Placeholder option */}
                 {[...Array(15)].map((_, i) => (
                   <option key={i + 1} value={i + 1}>
                     {i + 1}
@@ -390,14 +388,13 @@ const AdminHome = () => {
             </div>
             <div className="input-row2">
               <select
-                name="trainerId"
-                value={entry.trainerId}
+                name="instructorId"
+                value={entry.instructorId}
                 onChange={(e) => handleInputChange(e, index)}
                 required
                 className="form-input"
               >
                 <option value="">Select Instructor</option>{" "}
-                {/* Placeholder option */}
                 {trainers.map((trainer) => (
                   <option key={trainer._id} value={trainer._id}>
                     {trainer.firstName} {trainer.lastName}
@@ -448,7 +445,7 @@ const AdminHome = () => {
             <span>Create Another Class</span>
           </button>
           <button type="submit" className="add-class-button">
-            Save
+            Save To Database
           </button>
         </div>
       </form>
@@ -539,7 +536,7 @@ const AdminHome = () => {
                   <th>Actions</th>
                 </tr> */}
                 <tr>
-                  <th>All Classes</th>
+                  <th>Scheduled Classes</th>
                 </tr>
               </thead>
 
@@ -609,7 +606,7 @@ const AdminHome = () => {
                     </td>
                     <td>
                       <select
-                        name="trainerId"
+                        name="instructorId"
                         value={classItem.instructorId}
                         onChange={(e) => handleClassChange(e, index)}
                         required
@@ -623,8 +620,6 @@ const AdminHome = () => {
                           </option>
                         ))}
                       </select>
-
-                      {/* {classItem.instructorFirstName} */}
                     </td>
                     <td>
                       <select
@@ -636,14 +631,12 @@ const AdminHome = () => {
                         disabled={editingClassId !== classItem._id}
                       >
                         <option value="">Select Capacity</option>{" "}
-                        {/* Placeholder option */}
                         {[...Array(15)].map((_, i) => (
                           <option key={i + 1} value={i + 1}>
                             {i + 1}
                           </option>
                         ))}
                       </select>
-                      {/* {classItem.studentCapacity} */}
                     </td>
                     <td>
                       {" "}
@@ -656,7 +649,6 @@ const AdminHome = () => {
                         disabled={editingClassId !== classItem._id}
                       >
                         <option value="">Select Location</option>{" "}
-                        {/* Placeholder option */}
                         {locations.map((location) => (
                           <option key={location} value={location}>
                             {location}
@@ -666,7 +658,7 @@ const AdminHome = () => {
                     </td>
                     <td>
                       {editingClassId === classItem._id ? (
-                        <div>
+                        <div style={{ display: "flex" }}>
                           {/* is Editing */}
                           <button
                             onClick={() => handleSave(classItem)}
@@ -682,7 +674,7 @@ const AdminHome = () => {
                           </button>
                         </div>
                       ) : (
-                        <div>
+                        <div style={{ display: "flex" }}>
                           {/* is not editing */}
                           <button
                             onClick={() => handleEdit(classItem)}

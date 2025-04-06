@@ -2,9 +2,16 @@ import "./styles/AdminGenSchedule.css";
 import { AuthContext } from "../context/authContextValue";
 import axios from "axios";
 import React, { useState, useContext, useEffect, useMemo } from "react";
-import { FaEdit, FaSave, FaTrash, FaTimes } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaEdit,
+  FaSave,
+  FaTrash,
+  FaTimes,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import moment from "moment"; // Import moment
+import moment from "moment";
 
 const AdminGenSchedule = () => {
   const { token, user } = useContext(AuthContext);
@@ -129,7 +136,7 @@ const AdminGenSchedule = () => {
       const responseData = await response.json(); // Parse the JSON response body
       console.log("Schedule saved successfully:", responseData); // Use responseData
 
-      setSchedule([]); // Clear the schedule
+      setSchedule([]); // clear the schedule
       alert("Schedule saved successfully!");
       navigate("/admin");
     } catch (err) {
@@ -185,9 +192,6 @@ const AdminGenSchedule = () => {
         item.startDateTime === classItem.startDateTime
       ) {
         const updatedItem = { ...item, ...editedClass };
-        //Convert datetime using moment() : backend use moment()
-        // const newStartTime = formatDateWithOffset(editedClass.startDateTime);
-        // const newEndTime = formatDateWithOffset(editedClass.endDateTime);
 
         //Check for conflicts
         const conflictExists = schedule.some(
@@ -237,11 +241,6 @@ const AdminGenSchedule = () => {
     }
   };
 
-  // //Format date for schedule[]
-  // const formatDateWithOffset = (dateString) => {
-  //   return moment(dateString).format("YYYY-MM-DDTHH:mm:ssZ");
-  // };
-
   // Pagination
   const handlePrevPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -251,11 +250,14 @@ const AdminGenSchedule = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
   return (
-    // admin-class-list-container
     <div className="gen-schedule-container">
-      <h1>Sample Generated Schedule</h1>
+      <h1>Generate Schedule</h1>
+      <p>
+        This schedule will be saved to the database when the Save button is
+        clicked.
+      </p>
       {/* Show error */}
-      {error && <div className="error-message">{error}</div>}
+      {error && <p className="error-message">{error}</p>}
       <div className="gen-admin-use-ctn">
         {schedule.length > 0 && (
           <>
@@ -273,7 +275,7 @@ const AdminGenSchedule = () => {
                 saveToDb(schedule);
               }}
             >
-              Use This Schedule
+              Save To Database
             </button>
           </>
         )}
@@ -501,17 +503,22 @@ const AdminGenSchedule = () => {
 
           {/* Pagination */}
           <div className="gen-pagination-controls">
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            <button
+              className="gen-admin-prev-btn"
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+            >
               Previous
             </button>
             <span>
               Page {currentPage} of {totalPages}
             </span>
             <button
+              className="gen-admin-prev-btn"
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
             >
-              Next
+              Next Page
             </button>
           </div>
         </div>
