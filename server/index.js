@@ -12,6 +12,7 @@ const upcomingRoutes = require("./routes/upcoming");
 const paymentRoutes = require("./routes/payment");
 const eventRoutes = require("./routes/events");
 const communityRoutes = require("./routes/community");
+const goalsRoutes = require("./routes/goals");
 
 const logger = require("./middleware/logger");
 const { checkAdminRole, checkTrainerRole } = require("./middleware/roleAuth");
@@ -75,6 +76,7 @@ mongoose
     app.use("/api/announcements", announcementRoutes);
     app.use("/api/events", eventRoutes);
     app.use("/api/community", communityRoutes);
+    app.use("/api/goals", goalsRoutes);
 
     app.use((err, _req, res, _next) => {
       if (err.name === "UnauthorizedError") {
@@ -88,4 +90,3 @@ mongoose
     logger.error("MongoDB connection failed:", error);
     process.exit(1); //exit the process if connection fails
   });
-

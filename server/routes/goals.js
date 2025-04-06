@@ -3,6 +3,7 @@ const router = express.Router();
 const logger = require("../middleware/logger");
 const MemberTodo = require("../models/member_todo");
 const MemberProfiles = require("../models/member_profiles");
+const { checkUserOwnership } = require("../middleware/roleAuth");
 
 // GET /api/users/goals
 // Get all goals
@@ -35,12 +36,12 @@ router.get("/", async (req, res) => {
     let response = {};
     if (!type || type === "current") {
       response.currentGoals = goals.currentGoals.sort(
-        (a, b) => b.createdAt - a.createdAt,
+        (a, b) => b.createdAt - a.createdAt
       );
     }
     if (!type || type === "achieved") {
       response.achievedGoals = goals.achievedGoals.sort(
-        (a, b) => b.achievedAt - a.achievedAt,
+        (a, b) => b.achievedAt - a.achievedAt
       );
     }
 
@@ -88,7 +89,7 @@ router.post("/", async (req, res) => {
     const updatedTodo = await MemberTodo.findByIdAndUpdate(
       todoId,
       { $push: { currentGoals: newGoal } },
-      { new: true },
+      { new: true }
     );
 
     logger.info(`New goal added for member ${profileId}`);
@@ -131,7 +132,7 @@ router.put("/achieve", async (req, res) => {
 
     // Find the goal in currentGoals
     const goalIndex = todo.currentGoals.findIndex(
-      (goal) => goal._id.toString() === goalId,
+      (goal) => goal._id.toString() === goalId
     );
 
     if (goalIndex === -1) {
@@ -191,7 +192,7 @@ router.put("/revert", async (req, res) => {
 
     // Find the goal in achievedGoals
     const goalIndex = todo.achievedGoals.findIndex(
-      (goal) => goal._id.toString() === goalId,
+      (goal) => goal._id.toString() === goalId
     );
 
     if (goalIndex === -1) {
@@ -221,6 +222,127 @@ router.put("/revert", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error reverting goal", error: error.message });
+  }
+});
+
+//log workout
+router.get("/log-workout/status", checkUserOwnership, async (req, res) => {
+  const { profileId } = req.user;
+
+  if (!profileId) {
+    logger.warn('Missing profileId in token');
+    return res.status(400).json({ message: "profileId is required." });
+  }
+
+  try {
+    logger.debug(`Fetching workout status for profileId: ${profileId}`);
+
+    const memberProfile = await MemberProfiles.findOne({ profileId });
+    if (!memberProfile) {
+      logger.warn(`Member profile not found for profileId: ${profileId}`);
+      return res.status(404).json({ message: "Member profile not found" });
+    }
+
+    const memberTodo = await MemberTodo.findOne({
+      memberProfileObjectId: memberProfile._id,
+    });
+    if (!memberTodo) {
+      logger.warn(`Member todo not found for profileId: ${profileId}`);
+      return res.status(404).json({ message: "Member Todo not found" });
+    }
+
+    // Calculate streak
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let workoutStreak = 0;
+    if (memberTodo.workoutLogged) {
+      const lastWorkoutDate = new Date(memberTodo.updatedAt);
+      lastWorkoutDate.setHours(0, 0, 0, 0);
+
+      if (lastWorkoutDate.getTime() === today.getTime()) {
+        workoutStreak = 1;
+      } else if (
+        lastWorkoutDate.getTime() ===
+        new Date(today.setDate(today.getDate() - 1)).getTime()
+      ) {
+        workoutStreak = 1;
+      }
+    }
+
+    logger.info(`Successfully fetched workout status for profileId: ${profileId}`);
+    res.status(200).json({
+      workoutLoggedToday: memberTodo.workoutLogged,
+      lastWorkoutDate: memberTodo.updatedAt || null,
+      workoutStreak,
+    });
+
+  } catch (error) {
+    logger.error(`Error fetching workout status for profileId: ${profileId} - ${error.message}`);
+    res.status(500).json({ 
+      message: "Server error",
+      error: error.message 
+    });
+  }
+});
+
+// Log a workout
+router.post("/log-workout", checkUserOwnership, async (req, res) => {
+  const { profileId } = req.user;
+
+  if (!profileId) {
+    logger.warn('Missing profileId in token');
+    return res.status(400).json({ message: "profileId is required." });
+  }
+
+  try {
+    logger.debug(`Logging workout for profileId: ${profileId}`);
+
+    const memberProfile = await MemberProfiles.findOne({ profileId });
+    if (!memberProfile) {
+      logger.warn(`Member profile not found for profileId: ${profileId}`);
+      return res.status(404).json({ message: "Member profile not found" });
+    }
+
+    const memberTodo = await MemberTodo.findOne({
+      memberProfileObjectId: memberProfile._id,
+    });
+    if (!memberTodo) {
+      logger.warn(`Member todo not found for profileId: ${profileId}`);
+      return res.status(404).json({ message: "Member Todo not found" });
+    }
+
+    // Check for duplicate logging
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (memberTodo.workoutLogged) {
+      const lastWorkoutDate = new Date(memberTodo.updatedAt);
+      lastWorkoutDate.setHours(0, 0, 0, 0);
+
+      if (lastWorkoutDate.getTime() === today.getTime()) {
+        logger.warn(`Duplicate workout attempt for profileId: ${profileId}`);
+        return res.status(400).json({ message: "Workout already logged today" });
+      }
+    }
+
+    // Update workout data
+    memberTodo.workoutLogged = true;
+    memberTodo.workout += 1;
+    const updatedTodo = await memberTodo.save();
+
+    logger.info(`Workout logged successfully for profileId: ${profileId}`);
+    res.status(200).json({ 
+      message: "Workout logged successfully",
+      workoutCount: updatedTodo.workout 
+    });
+
+  } catch (error) {
+    logger.error(`Error logging workout for profileId: ${profileId} - ${error.message}`);
+    res.status(500).json({ 
+      message: "Server error",
+      error: error.message 
+    });
   }
 });
 
