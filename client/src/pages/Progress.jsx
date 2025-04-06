@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "./styles/Progress.css";
 import confetti from "canvas-confetti";
 import axios from "axios";
+import { AuthContext } from "../context/authContextValue";
 
 const Progress = () => {
+  const { user, token } = useContext(AuthContext);
   const [currentGoals, setCurrentGoals] = useState([]);
   const [achievedGoals, setAchievedGoals] = useState([]);
   const [newGoal, setNewGoal] = useState("");
@@ -16,10 +18,9 @@ const Progress = () => {
   });
 
   // Workout states
-  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false); // Tracks if workout is logged today
-  const [workoutStreak, setWorkoutStreak] = useState(0); // Tracks workout streak
-  const [lastWorkoutDate, setLastWorkoutDate] = useState(null); // Tracks last workout date
-  const [workoutDuration, setWorkoutDuration] = useState(0); // Workout duration input by user
+  const [workoutLoggedToday, setWorkoutLoggedToday] = useState(false);
+  const [workoutStreak, setWorkoutStreak] = useState(0);
+  const [lastWorkoutDate, setLastWorkoutDate] = useState(null);
   const [logError, setLogError] = useState("");
 
   // Food search states
@@ -42,7 +43,7 @@ const Progress = () => {
 
   useEffect(() => {
     fetchGoals();
-    checkIfWorkoutLoggedToday();
+    fetchWorkoutData(); // Use backend data
 
     // Update current date every minute
     const intervalId = setInterval(() => {
@@ -65,24 +66,6 @@ const Progress = () => {
       }
     }
   }, [lastWorkoutDate]);
-
-  // Function to check if workout has been logged today
-  const checkIfWorkoutLoggedToday = () => {
-    const storedDate = localStorage.getItem("lastWorkoutDate");
-    if (storedDate) {
-      const storedDateObj = new Date(storedDate);
-      const today = new Date();
-      if (
-        storedDateObj.getDate() === today.getDate() &&
-        storedDateObj.getMonth() === today.getMonth() &&
-        storedDateObj.getFullYear() === today.getFullYear()
-      ) {
-        setWorkoutLoggedToday(true);
-      } else {
-        setWorkoutLoggedToday(false);
-      }
-    }
-  };
 
   const fetchGoals = async () => {
     setLoading(true);
@@ -178,23 +161,24 @@ const Progress = () => {
   // Function to handle logging a workout
   const fetchWorkoutData = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const profileId = user?.profileId;
+      console.log(profileId);
+
       const response = await axios.get(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-        }/api/users/log-workout/status`,
+        }/api/goals/log-workout/status`, // route path added
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       if (response.status === 200) {
         const data = response.data;
+        console.log(data);
         setWorkoutLoggedToday(data.workoutLoggedToday);
         setLastWorkoutDate(data.lastWorkoutDate);
-        setWorkoutStreak(data.workoutStreak);
+        setWorkoutStreak(data.workoutStreak || 0);
       }
     } catch (error) {
       console.error("Error fetching workout data:", error);
@@ -204,63 +188,68 @@ const Progress = () => {
   // Function to handle logging a workout
   const handleLogWorkout = async () => {
     try {
-      const token = localStorage.getItem("token"); // Retrieve token from localStorage
-
-      if (!workoutLoggedToday) {
-        const response = await axios.post(
-          `${
-            import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-          }/api/users/log-workout`,
-          {}, // No workout data
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+      const profileId = user?.profileId;
+      const response = await axios.post(
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/goals/log-workout`, // route path added
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        }
+      );
 
-        if (response.status === 200) {
-          const today = new Date();
-          setWorkoutStreak(workoutStreak + 1);
-          setLastWorkoutDate(today.toISOString());
-          setWorkoutLoggedToday(true);
-          setLogError("");
-
-          // Trigger confetti animation
-          if (workoutButtonRef.current) {
-            const buttonRect = workoutButtonRef.current.getBoundingClientRect();
-            const buttonCenterX = buttonRect.left + buttonRect.width / 2;
-            const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-
-            confetti({
-              origin: {
-                x: buttonCenterX / window.innerWidth,
-                y: buttonCenterY / window.innerHeight,
-              },
-              spread: 150,
-              ticks: 60,
-              gravity: 0.7,
-              decay: 0.94,
-              startVelocity: 50,
-              colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
-              shapes: ["star", "circle"],
-              scalar: 1.2,
-            });
+      if (response.status === 200) {
+        const today = new Date();
+        setWorkoutStreak((prev) => {
+          if (lastWorkoutDate) {
+            const lastDate = new Date(lastWorkoutDate);
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            if (lastDate.toDateString() === yesterday.toDateString()) {
+              return prev + 1;
+            }
           }
-        } else {
-          setLogError("Failed to log workout!");
+          return 1;
+        });
+        setLastWorkoutDate(today.toISOString());
+        setWorkoutLoggedToday(true);
+        setLogError("");
+
+        // Trigger confetti animation
+        if (workoutButtonRef.current) {
+          const buttonRect = workoutButtonRef.current.getBoundingClientRect();
+          const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+          const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+
+          confetti({
+            origin: {
+              x: buttonCenterX / window.innerWidth,
+              y: buttonCenterY / window.innerHeight,
+            },
+            spread: 150,
+            ticks: 60,
+            gravity: 0.7,
+            decay: 0.94,
+            startVelocity: 50,
+            colors: ["#26ccff", "#a29afd", "#ff5b5b", "#fd9644"],
+            shapes: ["star", "circle"],
+            scalar: 1.2,
+          });
         }
       } else {
-        setLogError("You have already logged your workout for today!");
-
-        // Set a timeout to clear the error message after 3 seconds
-        setTimeout(() => {
-          setLogError("");
-        }, 3000);
+        setLogError("Failed to log workout!");
       }
     } catch (error) {
       console.error("Error logging workout:", error);
-      setLogError(error.response?.data?.message || "Server error");
+      if (error.response?.status === 400) {
+        setLogError("Workout already logged today");
+      } else {
+        setLogError(error.response?.data?.message || "Server error");
+      }
+      setTimeout(() => setLogError(""), 3000);
     }
   };
 
@@ -712,12 +701,15 @@ const Progress = () => {
                     ))}
 
                     {/* Meal Subtotal */}
-                    <tr className="meal-subtotal">
+                    <tr
+                      key={`meal-subtotal-${mealIndex}`}
+                      className="meal-subtotal"
+                    >
                       <td>Meal Total</td>
                       <td></td>
                       {Object.values(calculateTotalsForMeal(meal)).map(
                         (value, idx) => (
-                          <td key={idx}>
+                          <td key={`value-${idx}`}>
                             <strong>{value}</strong>
                           </td>
                         )
@@ -728,9 +720,11 @@ const Progress = () => {
                 ))}
 
                 {/*Individual Item Display*/}
-                <td colSpan="9">
-                  <strong>🍴 Individual Food Items</strong>
-                </td>
+                <tr>
+                  <td colSpan="9">
+                    <strong>🍴 Individual Food Items</strong>
+                  </td>
+                </tr>
 
                 {totalNutrition.map((item, index) => (
                   <tr key={`total-${index}`}>
@@ -762,7 +756,7 @@ const Progress = () => {
                     <td></td>
                     {Object.values(calculateTotalsForIndividualItems()).map(
                       (value, idx) => (
-                        <td key={idx}>
+                        <td key={`value-individual-${idx}`}>
                           <strong>{value}</strong>
                         </td>
                       )
@@ -777,7 +771,7 @@ const Progress = () => {
                     <td></td>
                     {Object.values(calculateOverallTotals()).map(
                       (value, idx) => (
-                        <td key={idx}>
+                        <td key={`value-overall-${idx}`}>
                           <strong>{value}</strong>
                         </td>
                       )
