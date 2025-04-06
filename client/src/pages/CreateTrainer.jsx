@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../pages/styles/CreateProfile.css";
+import axios from "axios";
 
 const specialties = [
   "Cardio",
@@ -43,22 +44,45 @@ const CreateTrainer = () => {
     setTrainerData({ ...trainerData, specialty: options });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Trainer profile created successfully!");
-    setTrainerData({
-      firstName: "",
-      lastName: "",
-      gender: "",
-      dateOfBirth: "",
-      phone: "",
-      specialty: [],
-      teachingMode: "",
-      experience: "",
-      username: "",
-      email: "",
-      password: "",
-    });
+  
+    const payload = {
+      ...trainerData,
+      role: "trainer", 
+    };
+  
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
+        payload
+      );
+  
+      if (response.status === 201) {
+        alert("Trainer profile created successfully!");
+
+        setTrainerData({
+          firstName: "",
+          lastName: "",
+          gender: "",
+          dateOfBirth: "",
+          phone: "",
+          specialty: [],
+          teachingMode: "",
+          experience: "",
+          username: "",
+          email: "",
+          password: "",
+        });
+      } else {
+        throw new Error("Unexpected response status");
+      }
+    } catch (error) {
+      const errorMsg =
+      error.response?.data?.message || "An error occurred while creating the trainer.";
+      alert(errorMsg);
+      console.error("Signup error:", error);
+    }
   };
 
   return (
