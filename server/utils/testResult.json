@@ -2,9 +2,9 @@
   {
     "className": "Yoga",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T08:00:00-04:00",
     "endDateTime": "2025-04-05T09:00:00-04:00",
     "studentCapacity": 5,
@@ -12,33 +12,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-05T08:00:00-04:00",
-    "endDateTime": "2025-04-05T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T09:00:00-04:00",
     "endDateTime": "2025-04-05T10:00:00-04:00",
     "studentCapacity": 5,
@@ -46,16 +29,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "className": "Yoga",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T10:00:00-04:00",
     "endDateTime": "2025-04-05T11:00:00-04:00",
     "studentCapacity": 5,
@@ -63,33 +46,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-05T11:00:00-04:00",
-    "endDateTime": "2025-04-05T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T13:00:00-04:00",
     "endDateTime": "2025-04-05T14:00:00-04:00",
     "studentCapacity": 5,
@@ -97,50 +63,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
+    "className": "Pilates",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-05T14:00:00-04:00",
-    "endDateTime": "2025-04-05T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T15:00:00-04:00",
     "endDateTime": "2025-04-05T16:00:00-04:00",
     "studentCapacity": 5,
@@ -148,50 +80,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-05T16:00:00-04:00",
-    "endDateTime": "2025-04-05T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-05T17:00:00-04:00",
     "endDateTime": "2025-04-05T18:00:00-04:00",
     "studentCapacity": 5,
@@ -199,16 +97,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-06T08:00:00-04:00",
     "endDateTime": "2025-04-06T09:00:00-04:00",
     "studentCapacity": 5,
@@ -216,50 +114,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-06T08:00:00-04:00",
-    "endDateTime": "2025-04-06T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-06T09:00:00-04:00",
-    "endDateTime": "2025-04-06T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-06T10:00:00-04:00",
     "endDateTime": "2025-04-06T11:00:00-04:00",
     "studentCapacity": 5,
@@ -267,101 +131,50 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-06T11:00:00-04:00",
-    "endDateTime": "2025-04-06T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-06T11:00:00-04:00",
-    "endDateTime": "2025-04-06T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-06T13:00:00-04:00",
-    "endDateTime": "2025-04-06T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-06T14:00:00-04:00",
-    "endDateTime": "2025-04-06T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-06T14:00:00-04:00",
-    "endDateTime": "2025-04-06T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-06T11:00:00-04:00",
+    "endDateTime": "2025-04-06T12:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-06T14:00:00-04:00",
+    "endDateTime": "2025-04-06T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-06T15:00:00-04:00",
     "endDateTime": "2025-04-06T16:00:00-04:00",
     "studentCapacity": 5,
@@ -369,16 +182,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
+    "className": "Pilates",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-06T16:00:00-04:00",
     "endDateTime": "2025-04-06T17:00:00-04:00",
     "studentCapacity": 5,
@@ -386,33 +199,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-06T17:00:00-04:00",
-    "endDateTime": "2025-04-06T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-07T09:00:00-04:00",
     "endDateTime": "2025-04-07T10:00:00-04:00",
     "studentCapacity": 5,
@@ -420,33 +216,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-07T09:00:00-04:00",
-    "endDateTime": "2025-04-07T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-07T10:00:00-04:00",
     "endDateTime": "2025-04-07T11:00:00-04:00",
     "studentCapacity": 5,
@@ -454,33 +233,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-07T10:00:00-04:00",
-    "endDateTime": "2025-04-07T11:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-07T11:00:00-04:00",
     "endDateTime": "2025-04-07T12:00:00-04:00",
     "studentCapacity": 5,
@@ -488,67 +250,33 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-07T14:00:00-04:00",
+    "endDateTime": "2025-04-07T15:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T13:00:00-04:00",
-    "endDateTime": "2025-04-07T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-07T14:00:00-04:00",
-    "endDateTime": "2025-04-07T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-07T15:00:00-04:00",
     "endDateTime": "2025-04-07T16:00:00-04:00",
     "studentCapacity": 5,
@@ -556,50 +284,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-07T15:00:00-04:00",
-    "endDateTime": "2025-04-07T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-07T16:00:00-04:00",
-    "endDateTime": "2025-04-07T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-07T17:00:00-04:00",
     "endDateTime": "2025-04-07T18:00:00-04:00",
     "studentCapacity": 5,
@@ -607,50 +301,33 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T08:00:00-04:00",
-    "endDateTime": "2025-04-08T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-08T08:00:00-04:00",
-    "endDateTime": "2025-04-08T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-08T08:00:00-04:00",
+    "endDateTime": "2025-04-08T09:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-08T09:00:00-04:00",
     "endDateTime": "2025-04-08T10:00:00-04:00",
     "studentCapacity": 5,
@@ -658,16 +335,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-08T10:00:00-04:00",
     "endDateTime": "2025-04-08T11:00:00-04:00",
     "studentCapacity": 5,
@@ -675,33 +352,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-08T11:00:00-04:00",
-    "endDateTime": "2025-04-08T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-08T13:00:00-04:00",
     "endDateTime": "2025-04-08T14:00:00-04:00",
     "studentCapacity": 5,
@@ -709,33 +369,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-08T13:00:00-04:00",
-    "endDateTime": "2025-04-08T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-08T14:00:00-04:00",
     "endDateTime": "2025-04-08T15:00:00-04:00",
     "studentCapacity": 5,
@@ -743,50 +386,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
+    "className": "Pilates",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-08T14:00:00-04:00",
-    "endDateTime": "2025-04-08T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-08T15:00:00-04:00",
-    "endDateTime": "2025-04-08T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-08T16:00:00-04:00",
     "endDateTime": "2025-04-08T17:00:00-04:00",
     "studentCapacity": 5,
@@ -794,67 +403,33 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-08T16:00:00-04:00",
-    "endDateTime": "2025-04-08T17:00:00-04:00",
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-09T08:00:00-04:00",
+    "endDateTime": "2025-04-09T09:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T08:00:00-04:00",
-    "endDateTime": "2025-04-09T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-09T08:00:00-04:00",
-    "endDateTime": "2025-04-09T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-09T09:00:00-04:00",
     "endDateTime": "2025-04-09T10:00:00-04:00",
     "studentCapacity": 5,
@@ -862,50 +437,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T11:00:00-04:00",
-    "endDateTime": "2025-04-09T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-09T11:00:00-04:00",
-    "endDateTime": "2025-04-09T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-09T13:00:00-04:00",
     "endDateTime": "2025-04-09T14:00:00-04:00",
     "studentCapacity": 5,
@@ -913,50 +454,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
     "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-09T14:00:00-04:00",
-    "endDateTime": "2025-04-09T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-09T15:00:00-04:00",
     "endDateTime": "2025-04-09T16:00:00-04:00",
     "studentCapacity": 5,
@@ -964,16 +471,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-09T16:00:00-04:00",
     "endDateTime": "2025-04-09T17:00:00-04:00",
     "studentCapacity": 5,
@@ -981,16 +488,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
+    "className": "Pilates",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-09T17:00:00-04:00",
     "endDateTime": "2025-04-09T18:00:00-04:00",
     "studentCapacity": 5,
@@ -998,33 +505,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-09T17:00:00-04:00",
-    "endDateTime": "2025-04-09T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-10T08:00:00-04:00",
     "endDateTime": "2025-04-10T09:00:00-04:00",
     "studentCapacity": 5,
@@ -1032,16 +522,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-10T09:00:00-04:00",
     "endDateTime": "2025-04-10T10:00:00-04:00",
     "studentCapacity": 5,
@@ -1049,33 +539,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-10T09:00:00-04:00",
-    "endDateTime": "2025-04-10T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-10T10:00:00-04:00",
     "endDateTime": "2025-04-10T11:00:00-04:00",
     "studentCapacity": 5,
@@ -1083,50 +556,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T11:00:00-04:00",
-    "endDateTime": "2025-04-10T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-10T11:00:00-04:00",
-    "endDateTime": "2025-04-10T12:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-10T13:00:00-04:00",
     "endDateTime": "2025-04-10T14:00:00-04:00",
     "studentCapacity": 5,
@@ -1134,16 +573,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-10T14:00:00-04:00",
     "endDateTime": "2025-04-10T15:00:00-04:00",
     "studentCapacity": 5,
@@ -1151,84 +590,33 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "HIIT",
+    "className": "Pilates",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-10T14:00:00-04:00",
-    "endDateTime": "2025-04-10T15:00:00-04:00",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-10T16:00:00-04:00",
+    "endDateTime": "2025-04-10T17:00:00-04:00",
     "studentCapacity": 5,
     "currentReserved": 0,
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Yoga",
+    "className": "Pilates",
     "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T15:00:00-04:00",
-    "endDateTime": "2025-04-10T16:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-10T16:00:00-04:00",
-    "endDateTime": "2025-04-10T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-10T16:00:00-04:00",
-    "endDateTime": "2025-04-10T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-11T08:00:00-04:00",
     "endDateTime": "2025-04-11T09:00:00-04:00",
     "studentCapacity": 5,
@@ -1236,50 +624,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-11T08:00:00-04:00",
-    "endDateTime": "2025-04-11T09:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Cardio",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-11T09:00:00-04:00",
-    "endDateTime": "2025-04-11T10:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Cardio-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Beginner",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-11T10:00:00-04:00",
     "endDateTime": "2025-04-11T11:00:00-04:00",
     "studentCapacity": 5,
@@ -1287,16 +641,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Beginner class taught by Anthony Sin.",
+      "description": "A Yoga-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
-    "className": "Cardio",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "className": "Pilates",
+    "difficultyLevel": "Beginner",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-11T11:00:00-04:00",
     "endDateTime": "2025-04-11T12:00:00-04:00",
     "studentCapacity": 5,
@@ -1304,67 +658,33 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Cardio-Advanced class taught by Luis Agreda.",
+      "description": "A Pilates-Beginner class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-11T13:00:00-04:00",
-    "endDateTime": "2025-04-11T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-11T13:00:00-04:00",
-    "endDateTime": "2025-04-11T14:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Intermediate class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-11T14:00:00-04:00",
-    "endDateTime": "2025-04-11T15:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
     "difficultyLevel": "Beginner",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
+    "startDateTime": "2025-04-11T13:00:00-04:00",
+    "endDateTime": "2025-04-11T14:00:00-04:00",
+    "studentCapacity": 5,
+    "currentReserved": 0,
+    "studentList": [],
+    "location": "online",
+    "classDetails": {
+      "description": "A Yoga-Beginner class taught by Ava Thompson.",
+      "equipmentRequired": []
+    }
+  },
+  {
+    "className": "Pilates",
+    "difficultyLevel": "Intermediate",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-11T14:00:00-04:00",
     "endDateTime": "2025-04-11T15:00:00-04:00",
     "studentCapacity": 5,
@@ -1372,16 +692,16 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A HIIT-Beginner class taught by Luis Agreda.",
+      "description": "A Pilates-Intermediate class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   },
   {
     "className": "Yoga",
-    "difficultyLevel": "Intermediate",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
+    "difficultyLevel": "Advanced",
+    "instructorId": "67f1dcd9d553eee380747a7c",
+    "instructorFirstName": "Ava",
+    "instructorLastName": "Thompson",
     "startDateTime": "2025-04-11T16:00:00-04:00",
     "endDateTime": "2025-04-11T17:00:00-04:00",
     "studentCapacity": 5,
@@ -1389,41 +709,7 @@
     "studentList": [],
     "location": "online",
     "classDetails": {
-      "description": "A Yoga-Intermediate class taught by Anthony Sin.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "HIIT",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f195fbfd33a7080030bc7f",
-    "instructorFirstName": "Luis",
-    "instructorLastName": "Agreda",
-    "startDateTime": "2025-04-11T16:00:00-04:00",
-    "endDateTime": "2025-04-11T17:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A HIIT-Advanced class taught by Luis Agreda.",
-      "equipmentRequired": []
-    }
-  },
-  {
-    "className": "Yoga",
-    "difficultyLevel": "Advanced",
-    "instructorId": "67f00bf5b1f884aede5e8edd",
-    "instructorFirstName": "Anthony",
-    "instructorLastName": "Sin",
-    "startDateTime": "2025-04-11T17:00:00-04:00",
-    "endDateTime": "2025-04-11T18:00:00-04:00",
-    "studentCapacity": 5,
-    "currentReserved": 0,
-    "studentList": [],
-    "location": "online",
-    "classDetails": {
-      "description": "A Yoga-Advanced class taught by Anthony Sin.",
+      "description": "A Yoga-Advanced class taught by Ava Thompson.",
       "equipmentRequired": []
     }
   }

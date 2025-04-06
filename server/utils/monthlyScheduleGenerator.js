@@ -120,11 +120,12 @@ function generateMonthlySchedule(trainers) {
   });
 
   //   fs.writeFileSync("schedule.json", JSON.stringify(schedule, null, 2), "utf-8");
-  fs.writeFileSync(
-    path.join(__dirname, "testResult.json"),
-    JSON.stringify(schedule, null, 2),
-    "utf-8"
-  );
+  // this doesn't work in vercel
+  // fs.writeFileSync(
+  //   path.join(__dirname, "testResult.json"),
+  //   JSON.stringify(schedule, null, 2),
+  //   "utf-8"
+  // );
 
   return schedule;
 }
