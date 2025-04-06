@@ -2,17 +2,22 @@ import { useState } from "react";
 import "../pages/styles/CreateProfile.css";
 
 const specialties = [
-  "Yoga", "Pilates", "Zumba", "HIIT", "Cardio", "Strength Training", "CrossFit"
+  "Cardio",
+  "HIIT",
+  "Yoga",
+  "Weight Training",
+  "Pilates",
+  "Meditation",
 ];
 
-const teachingModes = ["Online", "Onsite", "Both"];
+const teachingModes = ["online", "on-site"];
 
 const CreateTrainer = () => {
   const [trainerData, setTrainerData] = useState({
     firstName: "",
     lastName: "",
     gender: "",
-    dob: "",
+    dateOfBirth: "",
     phone: "",
     specialty: [],
     teachingMode: "",
@@ -31,7 +36,10 @@ const CreateTrainer = () => {
   };
 
   const handleSpecialtyChange = (e) => {
-    const options = Array.from(e.target.selectedOptions, (option) => option.value);
+    const options = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
     setTrainerData({ ...trainerData, specialty: options });
   };
 
@@ -42,7 +50,7 @@ const CreateTrainer = () => {
       firstName: "",
       lastName: "",
       gender: "",
-      dob: "",
+      dateOfBirth: "",
       phone: "",
       specialty: [],
       teachingMode: "",
@@ -73,7 +81,12 @@ const CreateTrainer = () => {
           onChange={handleChange}
           required
         />
-        <select name="gender" value={trainerData.gender} onChange={handleChange} required>
+        <select
+          name="gender"
+          value={trainerData.gender}
+          onChange={handleChange}
+          required
+        >
           <option value="">Select Gender</option>
           <option value="Female">Female</option>
           <option value="Male">Male</option>
@@ -81,8 +94,8 @@ const CreateTrainer = () => {
         </select>
         <input
           type="date"
-          name="dob"
-          value={trainerData.dob}
+          name="dateOfBirth"
+          value={trainerData.dateOfBirth}
           onChange={handleChange}
           required
         />
