@@ -313,16 +313,11 @@ body{
   border-radius: 5px;
   display: none;
   width: 180px;
-  z-index: 1000;  /* Ensure this is above other elements */
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .navbar-links .profile-dropdown:hover .dropdown-menu {
   display: block;
-  visibility: visible;
-  opacity: 1;
 }
 
 /* Dropdown item */
@@ -357,16 +352,11 @@ body{
   border-radius: 5px;
   display: none;
   width: 180px;
-  z-index: 1010;  /* Ensure this is above the parent dropdown */
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .create-profile-dropdown:hover .nested-dropdown {
   display: block;
-  visibility: visible;
-  opacity: 1;
 }
 
 .create-profile-dropdown .dropdown-item {
@@ -376,7 +366,7 @@ body{
 }
 
 .create-profile-dropdown .dropdown-item::after {
-  content: "→"; /* Right arrow indicator */
+  content: "�"; /* Right arrow indicator */
   font-size: 20px;
   color: #333;
 }
