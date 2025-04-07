@@ -40,6 +40,14 @@ body {
   margin-top: 100px;
 }
 
+.member-tier-word{
+  color: #48d1cc;
+}
+
+.membership-level h3{
+  color: #1e1e1e;
+}
+
 .hero-section {
   text-align: center;
   width: 100%;

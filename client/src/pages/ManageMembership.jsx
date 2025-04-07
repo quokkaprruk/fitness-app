@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./styles/Membership.css";
+import { MembershipContext } from "../context/MembershipContext";
 
 const ManageMembership = () => {
+  //const membershipTiers = ["None", "Basic", "Standard", "Premium"];
+  //const [membership, setMembership] = useState("Premium");
+
+  const { membership, setMembership } = useContext(MembershipContext); // Access global state
   const membershipTiers = ["None", "Basic", "Standard", "Premium"];
-  const [membership, setMembership] = useState("Premium");
 
   const handleUpgrade = () => {
     const currentIndex = membershipTiers.indexOf(membership);

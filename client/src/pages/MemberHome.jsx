@@ -1,17 +1,64 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import "./styles/Home.css";
 import MainImg from "../homePicture.png";
 import Benefits from "../benefits.png";
 import Free from "../free.png";
 import Calendar from "../noCommit.png";
+import { MembershipContext } from "../context/MembershipContext";
 
 const MemberHome = () => {
   const navigate = useNavigate();
+  const { membership } = useContext(MembershipContext);
+
+  const renderMembershipBenefits = () => {
+    switch (membership) {
+      case "Basic":
+        return (
+          <div className="membership-level">
+            <h3>
+              You&apos;re a valued{" "}
+              <span className="member-tier-word">Basic</span> Member!
+              Here&apos;s to a stronger, healthier you on your fitness journey!
+            </h3>
+          </div>
+        );
+      case "Standard":
+        return (
+          <div className="membership-level">
+            <h3>
+              You&apos;re a valued{" "}
+              <span className="member-tier-word">Standard</span> Member!
+              Here&apos;s to a stronger, healthier you on your fitness journey!
+            </h3>
+          </div>
+        );
+      case "Premium":
+        return (
+          <div className="membership-level">
+            <h3>
+              You&apos;re a valued{" "}
+              <span className="member-tier-word">Premium</span> Member!
+              Here&apos;s to a stronger, healthier you on your fitness journey!
+            </h3>
+          </div>
+        );
+      default:
+        return (
+          <div className="membership-level">
+            <h3>Sign Up as a Paying Member to enjoy various benefits!</h3>
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="member-home">
       <div className="member-navbar-spacer"></div>
       {/* Hero Section */}
+      <section className="membership-benefits-section">
+        {renderMembershipBenefits()}
+      </section>
       <header className="hero-section">
         <img
           src={MainImg}
