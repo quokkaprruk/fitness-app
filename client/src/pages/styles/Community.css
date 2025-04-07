@@ -1,138 +1,196 @@
-/* COMMUNITY STYLES */
-
-:root {
-  --primary-color: #40e0d0;
-  --highlight-color: #32cd32;
-  --secondary-color: #007bff;
-  --text-color: #333;
-  --gray-text: #666;
-  --light-hover: #e6f7ff;
-  --error-color: #ff6347;
-  --bg-color: #f4f4f4;
-  --white: #fff;
-}
-
+/* Global Styles */
 body {
   font-family: "Rokkitt", serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  background-color: #f4f4f4; /* Background color */
+  color: #333;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-h1, h2, h3 {
-  font-weight: bold;
-  color: var(--primary-color);
+h1,
+h2 {
+  font-family: "Rokkitt", serif;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--highlight-color);
-}
-
-button {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--highlight-color);
-}
-
-/* Class Cards */
-
-.class-card {
-  background-color: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 20px;
+.community-page {
   padding: 20px;
-  transition: transform 0.2s ease;
+  padding-top: 80px; /* Added padding-top to offset navbar */
 }
 
-.class-card:hover {
-  transform: translateY(-5px);
-}
-
-.class-card h3 {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  padding: 10px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  margin: -20px -20px 20px -20px;
-}
-
-/* Dropdowns */
-
-.filter-dropdown {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  transition: background-color 0.3s ease;
-}
-
-.filter-dropdown:hover {
-  background-color: var(--light-hover);
-}
-
-/* Forms & Errors */
-
-.form-control {
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.error-message {
-  color: var(--error-color);
+.coming-soon-title {
+  text-align: center;
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
+  color: #40e0d0; /* Turquoise */
+  letter-spacing: 2px;
 }
 
-/* Membership */
+.coming-soon-subtext {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 40px;
+}
 
-.membership-container {
-  background-color: var(--white);
+/* Container for sections */
+.community-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Calendar Section */
+.calendar-section {
+  background-color: white;
   padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  margin: 40px auto;
-  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-.membership-container h2 {
-  color: var(--secondary-color);
+.calendar-section h2 {
+  color: #007bff; /* Blue */
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
+.calendar {
+  border: 2px solid #40e0d0; /* Turquoise */
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  transition: border 0.3s ease;
+}
+
+.calendar p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Announcements Section */
+.announcements-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.announcement-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.announcement-item {
+  margin-bottom: 25px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.announcement-item:hover {
+  transform: translateY(-10px);
+}
+
+.announcement-item h4 {
+  color: #007bff; /* Blue */
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.announcement-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.announcement-date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Events Section */
+.events-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h4 {
+  color: #40e0d0; /* Turquoise */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.event-item p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Challenges & Tips Section */
+.challenges-tips-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.challenges-tips-section h2 {
+  color: #32cd32; /* Green */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.challenges-tips-section p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
 /* Responsive Design */
-
 @media (max-width: 768px) {
-  .class-card {
-    margin: 10px;
-    padding: 15px;
+  .community-container {
+    padding: 10px;
   }
 
-  button {
-    width: 100%;
-  }
-
-  .membership-container {
+  .calendar-section,
+  .announcements-section,
+  .events-section,
+  .challenges-tips-section {
     padding: 20px;
-    margin: 20px;
+  }
+
+  .calendar {
+    max-width: 100%;
+  }
+
+  .coming-soon-title {
+    font-size: 2rem;
+  }
+
+  .coming-soon-subtext {
+    font-size: 1rem;
   }
 }
