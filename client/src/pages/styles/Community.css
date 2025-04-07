@@ -1,23 +1,242 @@
-﻿.quote-banner {
-  background: linear-gradient(to right, #40e0d0, #32cd32);
-  color: white;
+﻿/* Global Styles */
+body {
+  font-family: "Rokkitt", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Background color */
+  color: #333;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+h1,
+h2 {
+  font-family: "Rokkitt", serif;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.community-page {
+  padding: 20px;
+  padding-top: 80px; /* Added padding-top to offset navbar */
+}
+
+.coming-soon-title {
   text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #40e0d0; /* Turquoise */
+  letter-spacing: 2px;
+}
+
+.coming-soon-subtext {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* Container for sections */
+.community-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Calendar Section */
+.calendar-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.calendar-section h2 {
+  color: #007bff; /* Blue */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.calendar {
+  border: 2px solid #40e0d0; /* Turquoise */
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  transition: border 0.3s ease;
+}
+
+.calendar p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Announcements Section */
+.announcements-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.announcement-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.announcement-item {
+  margin-bottom: 25px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.announcement-item:hover {
+  transform: translateY(-10px);
+}
+
+.announcement-item h4 {
+  color: #007bff; /* Blue */
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.announcement-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.announcement-date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Events Section */
+.events-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h4 {
+  color: #40e0d0; /* Turquoise */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.event-item p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Challenges & Tips Section */
+.challenges-tips-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.challenges-tips-section h2 {
+  color: #32cd32; /* Green */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.challenges-tips-section p {
+  color: #555;
   font-size: 1.1rem;
-  padding: 15px 20px;
-  border-radius: 16px;
-  margin-bottom: 30px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  line-height: 1.5;
 }
 
-/* Animate section appearance */
-.community-container > div {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .community-container {
+    padding: 10px;
+  }
+
+  .calendar-section,
+  .announcements-section,
+  .events-section,
+  .challenges-tips-section {
+    padding: 20px;
+  }
+
+  .calendar {
+    max-width: 100%;
+  }
+
+  .coming-soon-title {
+    font-size: 2rem;
+  }
+
+  .coming-soon-subtext {
+    font-size: 1rem;
+  }
 }
 
-.community-container > div:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+/* Glowing Title */
+.title-glow {
+  background: linear-gradient(to right, #40e0d0, #32cd32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 800;
 }
 
-.announcement-date::before {
-  content: "📅 ";
+/* Announcement Buttons */
+.announcement-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.like-button,
+.delete-button {
+  background-color: transparent;
+  border: 1px solid #40e0d0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #40e0d0;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #ff6347;
+  border-color: #ff6347;
+  color: white;
+}
+
+.liked {
+  background-color: #40e0d0;
+  color: white;
 }
