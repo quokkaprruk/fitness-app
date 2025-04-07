@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // Import API routes
 const userRoutes = require("./routes/user");
-const announcementsRoutes = require("./routes/announcements");
+const announcementRoutes = require("./routes/announcements");
 const trainerRoutes = require("./routes/trainer");
 const adminRoutes = require("./routes/admin");
 const scheduleRoutes = require("./routes/schedule");
@@ -73,7 +73,7 @@ mongoose
     app.use("/api/classes", scheduleRoutes);
     app.use("/api/upcoming", upcomingRoutes);
     app.use("/api/payment", paymentRoutes);
-    app.use("/api/announcements", announcementsRoutes);
+    app.use("/api/announcements", announcementRoutes);
     app.use("/api/events", eventRoutes);
     app.use("/api/community", communityRoutes);
     app.use("/api/goals", goalsRoutes);
