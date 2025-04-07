@@ -71,3 +71,35 @@ body{
 .trainer-form button:hover {
   background-color: #32cd32;
 }
+
+/* Style for the multi-select dropdown */
+.trainer-form select[multiple] {
+  height: auto; 
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.trainer-form select[multiple] option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.trainer-form select[multiple] option:hover {
+  background-color: #f0f0f0;
+}
+
+.trainer-form select[multiple] option:checked {
+  background-color: #40e0d0;
+  color: white;
+}
+
+/* Make it more obvious it's multi-select */
+.trainer-form select[multiple]::after {
+  content: " (Multiple selection)";
+  font-size: 0.9em;
+  color: #666;
+}
+
