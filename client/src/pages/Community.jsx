@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { motion } from "framer-motion";
+import { FaBullhorn, FaCalendarAlt, FaRunning } from "react-icons/fa";
 import "./styles/Community.css";
 
 const Community = () => {
@@ -29,22 +31,33 @@ const Community = () => {
     return new Date(item.eventDate).toLocaleDateString() === date.toLocaleDateString();
   });
 
+  const todayQuote = "Push yourself, because no one else is going to do it for you 💪";
+
   return (
     <div className="community-page">
-      <h1 className="coming-soon-title">Fitness Community</h1>
+      <h1 className="coming-soon-title">💬 Fitness Community</h1>
       <p className="coming-soon-subtext">
-        Join our vibrant fitness community for classes, events, and exclusive offers!
+        Join our vibrant community for classes, events, and exclusive offers!
       </p>
 
+      <motion.div 
+        className="quote-banner"
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <strong>🔥 Quote of the Day:</strong> {todayQuote}
+      </motion.div>
+
       <div className="community-container">
-        <div className="calendar-section">
-          <h2>Events Calendar</h2>
+        <motion.div className="calendar-section" whileHover={{ scale: 1.02 }}>
+          <h2><FaCalendarAlt /> Events Calendar</h2>
           <Calendar onChange={handleDateChange} value={date} className="calendar" />
           <p>Selected Date: {date.toLocaleDateString()}</p>
-        </div>
+        </motion.div>
 
-        <div className="announcements-section">
-          <h2>Latest Announcements</h2>
+        <motion.div className="announcements-section" whileHover={{ scale: 1.02 }}>
+          <h2><FaBullhorn /> Latest Announcements</h2>
           {announcements.length === 0 ? (
             <p>No announcements yet. Check back later!</p>
           ) : (
@@ -54,16 +67,16 @@ const Community = () => {
                   <h4>{a.title}</h4>
                   <p>{a.message}</p>
                   <span className="announcement-date">
-                    {new Date(a.eventDate).toLocaleDateString()}
+                    📅 {new Date(a.eventDate).toLocaleDateString()}
                   </span>
                 </li>
               ))}
             </ul>
           )}
-        </div>
+        </motion.div>
 
-        <div className="events-section">
-          <h2>Events on Selected Date</h2>
+        <motion.div className="events-section" whileHover={{ scale: 1.02 }}>
+          <h2><FaRunning /> Events on Selected Date</h2>
           {filteredEvents.length === 0 ? (
             <p>No events on this date.</p>
           ) : (
@@ -76,7 +89,7 @@ const Community = () => {
               ))}
             </ul>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
