@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 //import data from "../data/fitnessClasses.json"; //test data
 import axios from "axios";
-import logo from "../logo.png";
+//import logo from "../logo.png";
 import "./styles/TrainerHome.css";
-import { FaCog, FaUser } from "react-icons/fa";
+//import { FaCog, FaUser } from "react-icons/fa";
 import { AuthContext } from "../context/authContextValue";
 
 const TrainerHome = () => {
@@ -53,9 +53,9 @@ const TrainerHome = () => {
           <ul className="class-list">
             {schedule.map((classItem) => (
               <li key={classItem._id} className="class-item">
-                <h3>{classItem.className}</h3>
+                <h3>{classItem.className} - {classItem.difficultyLevel}</h3>
                 <p>
-                  <strong>Type:</strong> {classItem.classType}
+                  <strong>Type:</strong> {classItem.className}
                 </p>
                 <p>
                   <strong>Time:</strong>{" "}
