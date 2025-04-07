@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../pages/styles/Navbar.css";
 import logo from "../logo.png";
-import { FaSignOutAlt, FaUser, FaUserPlus } from "react-icons/fa";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { AuthContext } from "../context/authContextValue";
 
 const Navbar = () => {
@@ -48,46 +48,6 @@ const Navbar = () => {
   }
 
   // Admin users
-  // Admin users
-  if (user && user.role === "admin") {
-    return (
-      <nav className="navbar">
-        <div className="navbar-welcome">Welcome, {user.username}!</div>
-        <div className="navbar-links">
-          <Link to="/admin">Dashboard</Link>
-          <Link to="/admin/create-trainer">Create Trainer</Link>
-          <Link to="/admin/create-admin">Create Admin</Link>
-          <Link to="/admin/post-announcement">Post Announcement</Link>
-          <Link to="/community">Community</Link>
-          <Link to="/contact">Contact</Link>
-
-          <div className="profile-dropdown">
-            <FaUser
-              className="icon"
-              title="Profile"
-              onClick={toggleLoginDropdown}
-            />
-            {showDropdown && (
-              <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
-                  Profile
-                </Link>
-                <Link to="/manage-membership" className="dropdown-item">
-                  Manage Membership
-                </Link>
-                <div className="dropdown-item" onClick={handleLogout}>
-                  <FaSignOutAlt className="icon" /> Logout
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="navbar-logo">
-          <img src={logo} alt="Logo" />
-        </div>
-      </nav>
-    );
-  }
   if (user && user.role === "admin") {
     return (
       <nav className="navbar">
@@ -141,7 +101,6 @@ const Navbar = () => {
       </nav>
     );
   }
-
 
   // Trainers
   if (user && user.role === "trainer") {

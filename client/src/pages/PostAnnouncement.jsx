@@ -15,7 +15,7 @@ const PostAnnouncement = () => {
     const newAnnouncement = {
       title,
       message: announcement,
-      eventDate: selectedDate,
+      eventDate: selectedDate.toISOString(),
     };
 
     try {
