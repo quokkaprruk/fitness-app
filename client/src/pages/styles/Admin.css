@@ -1,189 +1,277 @@
-/* admin.css */
+/* Admin Styles */
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap');
 
-/* General Reset and Font */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Rokkitt', serif;
+  font-family: "Rokkitt", serif;
   background-color: #f4f4f4;
   color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-/* Header Styles */
-header {
+/* General Layout */
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #00d2d2;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sidebar {
+  width: 250px;
   background-color: #007bff;
   color: white;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #e6f7ff;
+.sidebar a {
+  display: block;
   padding: 10px;
-  gap: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #40e0d0;
-}
-
-/* Admin Dashboard Container */
-.admin-dashboard {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-/* Section Titles */
-.admin-dashboard h2 {
-  font-size: 1.75rem;
-  color: #007bff;
-  margin-bottom: 20px;
-}
-
-/* Action Buttons */
-.button {
-  background-color: #40e0d0;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #32cd32;
-}
-
-/* Admin Cards or Panels */
-.admin-card {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  padding: 20px;
-  transition: transform 0.2s ease;
-}
-
-.admin-card:hover {
-  transform: translateY(-5px);
-}
-
-.admin-card h3 {
-  color: #007bff;
+  text-decoration: none;
+  font-size: 18px;
   margin-bottom: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-/* Table for Listings */
-.admin-table {
+.sidebar a:hover {
+  background-color: #005f8b;
+}
+
+.sidebar .active {
+  background-color: #00b0b0;
+}
+
+.content {
+  margin-left: 270px;
+  padding: 30px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 4px 4px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+}
+
+.table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.admin-table th,
-.admin-table td {
+.table th, .table td {
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  padding: 12px;
   text-align: left;
 }
 
-.admin-table th {
-  background-color: #007bff;
-  color: white;
+.table th {
+  background-color: #f1f1f1;
+  font-weight: 600;
 }
 
-.admin-table tr:nth-child(even) {
+.table tbody tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-.admin-table tr:hover {
-  background-color: #e6f7ff;
+.table tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
-/* Error and Success Messages */
-.message {
-  margin: 20px 0;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.message.error {
-  background-color: #ff6347;
+.table .actions button {
+  background-color: #00d2d2;
   color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.message.success {
-  background-color: #32cd32;
-  color: white;
+.table .actions button:hover {
+  background-color: #00b0b0;
 }
 
-/* Forms */
-form {
+.input-group {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
+  margin-bottom: 20px;
 }
 
-input, select, textarea {
+.input-group input,
+.input-group select,
+.input-group button {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
-input:focus, select:focus, textarea:focus {
-  border-color: #40e0d0;
-  outline: none;
-}
-
-/* Footer */
-footer {
-  background-color: #007bff;
+.input-group button {
+  background-color: #00d2d2;
   color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
-  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .admin-dashboard {
-    padding: 10px;
-  }
+.input-group button:hover {
+  background-color: #00b0b0;
+}
 
-  .admin-card {
-    padding: 15px;
-  }
+.error-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-top: 10px;
+}
 
-  header h1 {
-    font-size: 1.5rem;
-  }
+.success-message {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 10px;
+}
 
-  nav {
-    flex-direction: column;
-    align-items: center;
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-footer {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.modal-footer button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00d2d2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-footer button:hover {
+  background-color: #00b0b0;
+}
+
+/* Calendar Number Styles */
+.react-calendar__tile {
+  font-size: 1.2rem; /* Increased font size for better visibility */
+  color: #333; /* Dark color for better contrast */
+  font-weight: bold; /* Makes the numbers stand out */
+}
+
+.react-calendar__tile--active {
+  background-color: #00d2d2; /* Turquoise for active day */
+  color: white; /* White text for active day */
+  border-radius: 50%; /* Round the active day */
+}
+
+.react-calendar__tile--now {
+  background-color: #32cd32; /* Green for current day */
+  color: white; /* White text for current day */
+  border-radius: 50%; /* Round the current day */
+}
+
+/* Hover Effect for Calendar Numbers */
+.react-calendar__tile:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: white; /* White text on hover */
+  border-radius: 50%; /* Round the hovered day */
+}
+
+/* Neighboring Month Days */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc; /* Light color for neighboring month days */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .content {
+    margin-left: 0;
   }
 }
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 20px;
+  }
+  .sidebar a {
+    font-size: 16px;
+  }
+  .card-header {
+    font-size: 18px;
+  }
+  .table th, .table td {
+    padding: 8px 10px;
+  }
+  .input-group input,
+  .input-group select,
+  .input-group button {
+    padding: 8px;
+  }
+}
+
+
