@@ -10,9 +10,6 @@ const PostAnnouncement = () => {
   const [title, setTitle] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const [showEventForm, setShowEventForm] = useState(false);
-  const [eventTitle, setEventTitle] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newAnnouncement = {
@@ -22,14 +19,17 @@ const PostAnnouncement = () => {
     };
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newAnnouncement),
         },
-        body: JSON.stringify(newAnnouncement),
-      });
+      );
 
       if (response.ok) {
         alert("Announcement posted successfully!");
@@ -44,43 +44,14 @@ const PostAnnouncement = () => {
     }
   };
 
-  const handleEventSubmit = async () => {
-    const eventAnnouncement = {
-      title: eventTitle ? `Event: ${eventTitle}` : "Scheduled Event",
-      message: "An event has been scheduled.",
-      eventDate: selectedDate,
-    };
-
-    try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(eventAnnouncement),
-      });
-
-      if (response.ok) {
-        alert("Event scheduled successfully!");
-        setEventTitle("");
-        setShowEventForm(false);
-      } else {
-        alert("Failed to schedule event.");
-      }
-    } catch (err) {
-      console.error("Error scheduling event:", err);
-    }
-  };
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setShowEventForm(true);
   };
 
   return (
     <div className="admin-page">
       <div className="admin-container">
+        {/* Left Side - Announcement Form */}
         <div className="announcement-form-container">
           <h2 className="section-title">Post an Announcement</h2>
           <form onSubmit={handleSubmit} className="announcement-form">
@@ -118,21 +89,6 @@ const PostAnnouncement = () => {
               {selectedDate.toLocaleDateString()}
             </span>
           </div>
-
-          {showEventForm && (
-            <div className="event-form">
-              <input
-                type="text"
-                placeholder="Enter Event Title"
-                value={eventTitle}
-                onChange={(e) => setEventTitle(e.target.value)}
-                className="input-field"
-              />
-              <button onClick={handleEventSubmit} className="submit-btn">
-                Add Event
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
