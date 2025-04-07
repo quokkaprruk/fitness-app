@@ -3,14 +3,14 @@
     "",
     "\\client",
     "\\client\\src",
-    "\\client\\src\\pages",
-    "\\client\\src\\pages\\styles",
-    "\\client\\src\\public",
+    "\\client\\src\\assets",
+    "\\client\\src\\components",
+    "\\client\\src\\context",
+    "\\client\\src\\data",
     "\\server",
     "\\server\\middleware",
-    "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\src\\pages\\styles\\Admin.css",
+  "SelectedNode": "\\client\\src\\pages\\PostAnnouncement.jsx",
   "PreviewInSolutionExplorer": false
 }
