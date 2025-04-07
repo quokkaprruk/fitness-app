@@ -37,11 +37,20 @@ const CreateTrainer = () => {
   };
 
   const handleSpecialtyChange = (e) => {
-    const options = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setTrainerData({ ...trainerData, specialty: options });
+    const { value, checked } = e.target;
+    setTrainerData((prevData) => {
+      if (checked) {
+        return {
+          ...prevData,
+          specialty: [...prevData.specialty, value],
+        };
+      } else {
+        return {
+          ...prevData,
+          specialty: prevData.specialty.filter((item) => item !== value),
+        };
+      }
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -60,7 +69,6 @@ const CreateTrainer = () => {
   
       if (response.status === 201) {
         alert("Trainer profile created successfully!");
-
         setTrainerData({
           firstName: "",
           lastName: "",
@@ -79,7 +87,7 @@ const CreateTrainer = () => {
       }
     } catch (error) {
       const errorMsg =
-      error.response?.data?.message || "An error occurred while creating the trainer.";
+        error.response?.data?.message || "An error occurred while creating the trainer.";
       alert(errorMsg);
       console.error("Signup error:", error);
     }
@@ -131,20 +139,24 @@ const CreateTrainer = () => {
           onChange={handleChange}
           required
         />
-        <label>Specialties (Select multiple):</label>
-        <select
-          name="specialty"
-          multiple
-          value={trainerData.specialty}
-          onChange={handleSpecialtyChange}
-          required
-        >
-          {specialties.map((spec, index) => (
-            <option key={index} value={spec}>
-              {spec}
-            </option>
-          ))}
-        </select>
+        
+        <div className="specialty-checkbox-group">
+          <label>Specialties:</label>
+          <div className="checkbox-options">
+            {specialties.map((spec, index) => (
+              <label key={index} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="specialty"
+                  value={spec}
+                  checked={trainerData.specialty.includes(spec)}
+                  onChange={handleSpecialtyChange}
+                />
+                {spec}
+              </label>
+            ))}
+          </div>
+        </div>
 
         <select
           name="teachingMode"

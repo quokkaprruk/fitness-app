@@ -1,6 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-body{
+body {
   font-family: "Rokkitt", serif;
 }
 
@@ -15,7 +15,7 @@ body{
   font-family: 'Rokkitt', serif;
 }
 
-.CA-nav-spacer{
+.CA-nav-spacer {
   height: 10px;
 }
 
@@ -53,10 +53,6 @@ body{
   color: #007bff;
 }
 
-.trainer-form select[multiple] {
-  height: 100px;
-}
-
 .trainer-form button {
   padding: 12px;
   background-color: #40e0d0;
@@ -72,39 +68,37 @@ body{
   background-color: #32cd32;
 }
 
-.trainer-form select[multiple] {
-  height: auto;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: white;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+/* Checkbox Group Styles */
+.specialty-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
-.trainer-form select[multiple] option {
-  padding: 8px 12px;
-  position: relative;
+.checkbox-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
-/* Fake "checkbox" effect */
-.trainer-form select[multiple] option::before {
-  content: "⬜";
-  margin-right: 8px;
-  font-size: 1.1em;
+.checkbox-label:hover {
+  background: #f5f5f5;
 }
 
-.trainer-form select[multiple] option:checked::before {
-  content: "✅";
-}
-
-.trainer-form select[multiple] option:checked {
-  background-color: transparent;
-  color: inherit;
-}
-
-.trainer-form select[multiple] option:hover {
-  background-color: #f0f0f0;
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #40e0d0;
+  cursor: pointer;
 }
