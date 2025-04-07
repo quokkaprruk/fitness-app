@@ -25,7 +25,7 @@ router.post("/", checkAdminRole, async (req, res) => {
 // Get all announcements (no admin restriction for reading)
 router.get("/", async (req, res) => {
   try {
-    const announcements = await Announcement.find.sort({ createdAt: -1 });
+    const announcements = await Announcement.find().sort({ createdAt: -1 });
     res.status(200).json(announcements);
   } catch (err) {
     res
