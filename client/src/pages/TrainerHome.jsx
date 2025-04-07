@@ -17,12 +17,12 @@ const TrainerHome = () => {
     if (token && user) {
       console.log(
         "Making API request for schedule with instructorId:",
-        user.id,
+        user.profileObjectId,
       );
 
       axios
         .get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedule/${user.id}`,
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/${user.profileObjectId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
