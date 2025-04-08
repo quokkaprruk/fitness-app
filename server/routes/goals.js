@@ -230,7 +230,7 @@ router.get("/log-workout/status", checkUserOwnership, async (req, res) => {
   const { profileId } = req.user;
 
   if (!profileId) {
-    logger.warn('Missing profileId in token');
+    logger.warn("Missing profileId in token");
     return res.status(400).json({ message: "profileId is required." });
   }
 
@@ -251,37 +251,47 @@ router.get("/log-workout/status", checkUserOwnership, async (req, res) => {
       return res.status(404).json({ message: "Member Todo not found" });
     }
 
+    // Get data from memberTodo
+    const workoutLoggedToday = memberTodo.workoutLogged;
+    const lastWorkoutDate = memberTodo.updatedAt;
+
     // Calculate streak
+    let workoutStreak = 0;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let workoutStreak = 0;
-    if (memberTodo.workoutLogged) {
-      const lastWorkoutDate = new Date(memberTodo.updatedAt);
-      lastWorkoutDate.setHours(0, 0, 0, 0);
+    if (workoutLoggedToday && lastWorkoutDate) {
+      const lastWorkout = new Date(lastWorkoutDate);
+      lastWorkout.setHours(0, 0, 0, 0);
 
-      if (lastWorkoutDate.getTime() === today.getTime()) {
+      if (lastWorkout.getTime() === today.getTime()) {
         workoutStreak = 1;
-      } else if (
-        lastWorkoutDate.getTime() ===
-        new Date(today.setDate(today.getDate() - 1)).getTime()
-      ) {
-        workoutStreak = 1;
+      } else {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday.setHours(0, 0, 0, 0);
+
+        if (lastWorkout.getTime() === yesterday.getTime()) {
+          workoutStreak = 1;
+        }
       }
     }
 
-    logger.info(`Successfully fetched workout status for profileId: ${profileId}`);
+    logger.info(
+      `Successfully fetched workout status for profileId: ${profileId}`
+    );
     res.status(200).json({
-      workoutLoggedToday: memberTodo.workoutLogged,
-      lastWorkoutDate: memberTodo.updatedAt || null,
-      workoutStreak,
+      workoutLoggedToday: workoutLoggedToday,
+      lastWorkoutDate: lastWorkoutDate || null,
+      workoutStreak: workoutStreak,
     });
-
   } catch (error) {
-    logger.error(`Error fetching workout status for profileId: ${profileId} - ${error.message}`);
-    res.status(500).json({ 
+    logger.error(
+      `Error fetching workout status for profileId: ${profileId} - ${error.message}`
+    );
+    res.status(500).json({
       message: "Server error",
-      error: error.message 
+      error: error.message,
     });
   }
 });
@@ -291,7 +301,7 @@ router.post("/log-workout", checkUserOwnership, async (req, res) => {
   const { profileId } = req.user;
 
   if (!profileId) {
-    logger.warn('Missing profileId in token');
+    logger.warn("Missing profileId in token");
     return res.status(400).json({ message: "profileId is required." });
   }
 
@@ -322,26 +332,30 @@ router.post("/log-workout", checkUserOwnership, async (req, res) => {
 
       if (lastWorkoutDate.getTime() === today.getTime()) {
         logger.warn(`Duplicate workout attempt for profileId: ${profileId}`);
-        return res.status(400).json({ message: "Workout already logged today" });
+        return res
+          .status(400)
+          .json({ message: "Workout already logged today" });
       }
     }
 
     // Update workout data
     memberTodo.workoutLogged = true;
     memberTodo.workout += 1;
+
     const updatedTodo = await memberTodo.save();
 
     logger.info(`Workout logged successfully for profileId: ${profileId}`);
-    res.status(200).json({ 
+    res.status(200).json({
       message: "Workout logged successfully",
-      workoutCount: updatedTodo.workout 
+      workoutCount: updatedTodo.workout,
     });
-
   } catch (error) {
-    logger.error(`Error logging workout for profileId: ${profileId} - ${error.message}`);
-    res.status(500).json({ 
+    logger.error(
+      `Error logging workout for profileId: ${profileId} - ${error.message}`
+    );
+    res.status(500).json({
       message: "Server error",
-      error: error.message 
+      error: error.message,
     });
   }
 });
