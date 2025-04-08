@@ -25,7 +25,7 @@ const corsOptions = {
     "http://localhost:5173",
     "https://fitness-app-frontend-prj666.vercel.app",
   ], // Local development frontend & Vercel production frontend
-  methods: ["GET,POST,PUT,DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true, // if using cookies or sessions
   allowedHeaders: ["Content-Type", "Authorization"],
 };
