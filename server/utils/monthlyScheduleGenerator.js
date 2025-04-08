@@ -21,8 +21,8 @@ const afternoonSlots = ["13:00", "14:00", "15:00"];
 const eveningSlots = ["16:00", "17:00"];
 
 function getRandomSlots(slots, count) {
-  const shuffled = [...slots].sort(() => Math.random() - 0.5); // Shuffle the array
-  return shuffled.slice(0, count); // Take the first 'count' elements
+  const shuffled = [...slots].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
 }
 
 const year = moment().format("YYYY"); // current month
@@ -45,7 +45,7 @@ function generateMonthlySchedule(trainers) {
   trainers.forEach((trainer) => {
     for (let day = todayDay; day <= endDay; day++) {
       // for (let day = 1; day <= daysInMonth; day++) {
-      // Initialize a set to keep track of used time slots for that day
+
       const usedTimeSlots = new Set();
 
       let selectedSlots = [];
@@ -65,17 +65,16 @@ function generateMonthlySchedule(trainers) {
       const additionalSlot = getRandomSlots(remainingSlots, 1);
       selectedSlots = [...selectedSlots, ...additionalSlot];
 
-      // Shuffle the selected slots to randomize the order
       selectedSlots = selectedSlots.sort(() => Math.random() - 0.5);
 
       let currentStartTime;
       selectedSlots.forEach((slot, i) => {
-        // Ensure the selected slot has not been used yet on this day
         if (!usedTimeSlots.has(slot)) {
-          usedTimeSlots.add(slot); // Mark the slot as used
+          usedTimeSlots.add(slot);
           currentStartTime = moment.tz(
             `${year}-${month}-${day} ${slot}`,
-            "YYYY-MM-DD HH:mm"
+            "YYYY-MM-DD HH:mm",
+            TIMEZONE
           );
 
           const location =
@@ -114,18 +113,9 @@ function generateMonthlySchedule(trainers) {
     }
   });
 
-  // Sort the schedule by startDateTime, with the most upcoming first
   schedule.sort((a, b) => {
     return moment(a.startDateTime).isBefore(moment(b.startDateTime)) ? -1 : 1;
   });
-
-  //   fs.writeFileSync("schedule.json", JSON.stringify(schedule, null, 2), "utf-8");
-  // this doesn't work in vercel
-  // fs.writeFileSync(
-  //   path.join(__dirname, "testResult.json"),
-  //   JSON.stringify(schedule, null, 2),
-  //   "utf-8"
-  // );
 
   return schedule;
 }
