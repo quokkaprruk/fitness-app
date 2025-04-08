@@ -1,5 +1,5 @@
-import "./styles/AdminGenSchedule.css";
 import { AuthContext } from "../context/authContextValue";
+import "./styles/AdminGenSchedule.css";
 import axios from "axios";
 import React, { useState, useContext, useEffect, useMemo } from "react";
 import {
@@ -113,22 +113,31 @@ const AdminGenSchedule = () => {
     setIsSaving(true);
     try {
       console.log("Schedule data sent from frontEnd:", schedule);
-
-      const response = await axios.post(
+      const response = await fetch(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-        }/api/schedules/save-generated-schedule`,
+        }/api/admin/save-generated-schedule`,
         {
-          schedule: schedule,
-        },
-        {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
+          body: JSON.stringify({ schedule: schedule }),
         }
       );
-      console.log("Schedule saved successfully:", response.data);
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${
+            errorData.message || "Unknown error"
+          }`
+        );
+      }
+
+      const responseData = await response.json();
+      console.log("Schedule saved successfully:", responseData);
 
       setSchedule([]); // clear the schedule
       if (

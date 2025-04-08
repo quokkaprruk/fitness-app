@@ -38,15 +38,15 @@ router.post("/generate-schedule", async (req, res) => {
 // : use when want to save the generated schedule to the database
 router.post("/save-generated-schedule", async (req, res) => {
   try {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://fitness-app-frontend-prj666.vercel.app"
-    );
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
-    );
+    // res.setHeader(
+    //   "Access-Control-Allow-Origin",
+    //   "https://fitness-app-frontend-prj666.vercel.app"
+    // );
+    // res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    // res.setHeader(
+    //   "Access-Control-Allow-Headers",
+    //   "Content-Type, Authorization"
+    // );
     console.log("Parsing schedule data...");
     const scheduleData = req.body.schedule;
 

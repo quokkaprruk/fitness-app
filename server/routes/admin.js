@@ -131,4 +131,86 @@ router.post("/add-schedule", async (req, res) => {
   }
 });
 
+router.post("/save-generated-schedule", async (req, res) => {
+  try {
+    // res.setHeader(
+    //   "Access-Control-Allow-Origin",
+    //   "https://fitness-app-frontend-prj666.vercel.app"
+    // );
+    // res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    // res.setHeader(
+    //   "Access-Control-Allow-Headers",
+    //   "Content-Type, Authorization"
+    // );
+    console.log("Parsing schedule data...");
+    const scheduleData = req.body.schedule;
+
+    if (!Array.isArray(scheduleData)) {
+      return res
+        .status(400)
+        .json({ message: "Schedule data must be an array" });
+    }
+
+    console.log("Deleting existing schedules...");
+    await Schedule.deleteMany({});
+
+    const savedSchedules = [];
+
+    console.log("Starting schedule item loop...");
+    for (const classItem of scheduleData) {
+      // Validate each classItem before saving
+      if (
+        !classItem.className ||
+        !classItem.difficultyLevel ||
+        !classItem.instructorId ||
+        !classItem.instructorFirstName ||
+        !classItem.instructorLastName ||
+        !classItem.startDateTime ||
+        !classItem.endDateTime ||
+        !classItem.studentCapacity ||
+        !classItem.location
+      ) {
+        return res.status(400).json({ message: "Invalid schedule item data." });
+      }
+
+      console.log("Parsing date strings...");
+      // Ensure date strings are correctly parsed
+      const startDateTime = moment(classItem.startDateTime).toDate();
+      const endDateTime = moment(classItem.endDateTime).toDate();
+
+      if (!moment(startDateTime).isValid() || !moment(endDateTime).isValid()) {
+        return res.status(400).json({ message: "Invalid date format." });
+      }
+
+      console.log("Creating schedule document...");
+      const schedule = new Schedule({
+        className: classItem.className,
+        difficultyLevel: classItem.difficultyLevel,
+        instructorId: classItem.instructorId,
+        instructorFirstName: classItem.instructorFirstName,
+        instructorLastName: classItem.instructorLastName,
+        startDateTime: startDateTime,
+        endDateTime: endDateTime,
+        studentCapacity: classItem.studentCapacity,
+        location: classItem.location,
+      });
+
+      console.log("Saving schedule document...");
+      const savedSchedule = await schedule.save();
+      savedSchedules.push(savedSchedule);
+      console.log("Schedule document saved:", savedSchedule);
+    }
+
+    res.status(201).json({
+      message: "Schedules saved successfully",
+      savedSchedules: savedSchedules,
+    });
+  } catch (err) {
+    console.error("Error saving schedules:", err);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: err.message });
+  }
+});
+
 module.exports = router;
