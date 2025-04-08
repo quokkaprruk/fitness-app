@@ -31,9 +31,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
 
-app.use(pino);
 app.use((req, res, next) => {
   const allowedOrigins = [
     "http://localhost:5173",
@@ -51,6 +49,10 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use(express.json());
+
+app.use(pino);
 
 const mongoURL = `${process.env.MONGO_URL}/${process.env.DB_NAME}`;
 
