@@ -27,7 +27,7 @@ const corsOptions = {
   ], // Local development frontend & Vercel production frontend
   methods: "GET,POST,PUT,DELETE",
   credentials: true, // if using cookies or sessions
-  allowedHeaders: "Content-Type, Authorization",
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
