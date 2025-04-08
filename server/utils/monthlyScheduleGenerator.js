@@ -1,11 +1,11 @@
-const moment = require("moment");
+const moment = require("moment-timezone");
 const fs = require("fs");
 const path = require("path");
 const levels = ["Beginner", "Intermediate", "Advanced"];
 const dailyHours = 6; // 6 hr a day
 const classDuration = 1;
 // const startTime = "08:00";
-
+const TIMEZONE = "America/Toronto";
 // const equipmentForSpecialty = [
 const classes = [
   "Cardio",
@@ -73,7 +73,7 @@ function generateMonthlySchedule(trainers) {
         // Ensure the selected slot has not been used yet on this day
         if (!usedTimeSlots.has(slot)) {
           usedTimeSlots.add(slot); // Mark the slot as used
-          currentStartTime = moment(
+          currentStartTime = moment.tz(
             `${year}-${month}-${day} ${slot}`,
             "YYYY-MM-DD HH:mm"
           );

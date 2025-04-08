@@ -20,6 +20,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
+    "moment-timezone": "^0.5.48",
     "mongoose": "^8.9.5",
     "nodemailer": "^6.9.16",
     "pino": "^9.6.0",

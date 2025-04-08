@@ -2,14 +2,7 @@ import { AuthContext } from "../context/authContextValue";
 import "./styles/AdminGenSchedule.css";
 import axios from "axios";
 import React, { useState, useContext, useEffect, useMemo } from "react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaEdit,
-  FaSave,
-  FaTrash,
-  FaTimes,
-} from "react-icons/fa";
+import { FaEdit, FaSave, FaTrash, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
@@ -111,6 +104,7 @@ const AdminGenSchedule = () => {
   //For SaveToDB
   const saveToDb = async (schedule) => {
     setIsSaving(true);
+
     try {
       console.log("Schedule data sent from frontEnd:", schedule);
       const response = await fetch(
