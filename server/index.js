@@ -26,11 +26,14 @@ const corsOptions = {
     "https://fitness-app-frontend-prj666.vercel.app",
   ], // Local development frontend & Vercel production frontend
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true, // if using cookies or sessions
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // if using cookies or sessions
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
+
+app.use(pino);
 
 app.use((req, res, next) => {
   const allowedOrigins = [
@@ -49,10 +52,6 @@ app.use((req, res, next) => {
 
   next();
 });
-
-app.use(express.json());
-
-app.use(pino);
 
 const mongoURL = `${process.env.MONGO_URL}/${process.env.DB_NAME}`;
 
