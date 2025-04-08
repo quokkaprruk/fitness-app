@@ -16,6 +16,7 @@ import moment from "moment";
 const AdminGenSchedule = () => {
   const { token, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isSaving, setIsSaving] = useState(false);
   const [schedule, setSchedule] = useState([]);
   const [trainers, setTrainers] = useState([]);
   const [editMode, setEditMode] = useState(null);
@@ -109,6 +110,7 @@ const AdminGenSchedule = () => {
 
   //For SaveToDB
   const saveToDb = async (schedule) => {
+    setIsSaving(true);
     try {
       console.log("Schedule data sent from frontEnd:", schedule);
       const response = await fetch(
@@ -133,11 +135,14 @@ const AdminGenSchedule = () => {
         );
       }
 
-      const responseData = await response.json(); // Parse the JSON response body
-      console.log("Schedule saved successfully:", responseData); // Use responseData
+      const responseData = await response.json();
+      console.log("Schedule saved successfully:", responseData);
 
       setSchedule([]); // clear the schedule
-      alert("Schedule saved successfully!");
+      alert(
+        "Schedule saved successfully.\nYou will be redirected to the Admin Dashboard."
+      );
+
       navigate("/admin");
     } catch (err) {
       const errorMessage = err.response
@@ -149,6 +154,8 @@ const AdminGenSchedule = () => {
         err.response ? err.response.data.message : err.message
       );
       alert(`Error saving schedule: ${errorMessage}`);
+    } finally {
+      setIsSaving(false); //end loading
     }
   };
 
@@ -274,8 +281,9 @@ const AdminGenSchedule = () => {
               onClick={() => {
                 saveToDb(schedule);
               }}
+              disabled={isSaving}
             >
-              Save To Database
+              {isSaving ? "Saving..." : "Save To Database"}
             </button>
           </>
         )}
@@ -411,7 +419,7 @@ const AdminGenSchedule = () => {
 
                 {trainers.map((trainer) => (
                   <option key={trainer._id} value={`${trainer._id}`}>
-                    {trainer.firstName} {trainer.lastName} - {trainer._id}
+                    {trainer.firstName} {trainer.lastName}
                   </option>
                 ))}
               </select>

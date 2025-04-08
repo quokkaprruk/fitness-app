@@ -25,6 +25,8 @@ router.post("/add-schedule", async (req, res) => {
         startDateTime,
         endDateTime,
         instructorId,
+        instructorFirstName,
+        instructorLastName,
       } = classData;
 
       if (
@@ -59,6 +61,8 @@ router.post("/add-schedule", async (req, res) => {
           startDateTime,
           endDateTime,
           instructorId,
+          instructorFirstName,
+          instructorLastName,
           studentCapacity,
         });
         savedSchedule = await newSchedule.save();
@@ -71,6 +75,8 @@ router.post("/add-schedule", async (req, res) => {
           startDateTime,
           endDateTime,
           instructorId,
+          instructorFirstName,
+          instructorLastName,
           studentCapacity,
         });
         savedSchedule = await newSchedule.save();
@@ -97,6 +103,7 @@ router.post("/add-schedule", async (req, res) => {
           const message = `
             New class has been scheduled:
             Class: ${className}
+            Instructor: ${instructorFirstName} ${instructorLastName}
             Type: ${difficultyLevel}
             Date: ${dateStr}
             Time: ${startTimeStr} - ${endTimeStr}
@@ -123,6 +130,5 @@ router.post("/add-schedule", async (req, res) => {
       .json({ message: "Error saving class schedules", error: error.message });
   }
 });
-
 
 module.exports = router;
