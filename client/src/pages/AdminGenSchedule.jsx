@@ -113,31 +113,22 @@ const AdminGenSchedule = () => {
     setIsSaving(true);
     try {
       console.log("Schedule data sent from frontEnd:", schedule);
-      const response = await fetch(
+
+      const response = await axios.post(
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
         }/api/schedules/save-generated-schedule`,
         {
-          method: "POST",
+          schedule: schedule,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ schedule: schedule }),
         }
       );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          `HTTP error! status: ${response.status}, message: ${
-            errorData.message || "Unknown error"
-          }`
-        );
-      }
-
-      const responseData = await response.json();
-      console.log("Schedule saved successfully:", responseData);
+      console.log("Schedule saved successfully:", response.data);
 
       setSchedule([]); // clear the schedule
       if (
