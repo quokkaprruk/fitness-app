@@ -121,6 +121,7 @@ const AdminGenSchedule = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ schedule: schedule }),
         }
@@ -139,11 +140,13 @@ const AdminGenSchedule = () => {
       console.log("Schedule saved successfully:", responseData);
 
       setSchedule([]); // clear the schedule
-      alert(
-        "Schedule saved successfully.\nYou will be redirected to the Admin Dashboard."
-      );
-
-      navigate("/admin");
+      if (
+        window.confirm(
+          "Schedule saved successfully.\nYou will be redirected to the Admin Dashboard."
+        )
+      ) {
+        navigate("/admin");
+      }
     } catch (err) {
       const errorMessage = err.response
         ? err.response.data.message
