@@ -1,5 +1,5 @@
 /* Admin Styles */
-@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap");
 
 body {
   font-family: "Rokkitt", serif;
@@ -10,6 +10,11 @@ body {
   overflow-x: hidden;
 }
 
+textarea.admin-post-announcement-input {
+  margin-top: 50px;
+  height: 50px;
+  /* padding-left: 10px !important; */
+}
 /* General Layout */
 .container {
   width: 100%;
@@ -93,7 +98,8 @@ body {
   margin-top: 20px;
 }
 
-.table th, .table td {
+.table th,
+.table td {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: left;
@@ -212,90 +218,6 @@ body {
   background-color: #00b0b0;
 }
 
-/* Calendar Number Styles */
-.react-calendar__tile {
-  font-size: 1.2rem; /* Increased font size for better visibility */
-  color: #333; /* Dark color for better contrast */
-  font-weight: bold; /* Makes the numbers stand out */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px; /* Ensure tiles are uniform */
-  width: 50px;
-  border-radius: 50%; /* Round edges for all tiles */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Active Day */
-.react-calendar__tile--active {
-  background-color: #00d2d2; /* Turquoise for active day */
-  color: white; /* White text for active day */
-  border-radius: 50%; /* Round the active day */
-  font-weight: 700; /* Bold text for emphasis */
-}
-
-/* Current Day */
-.react-calendar__tile--now {
-  background-color: #32cd32; /* Green for current day */
-  color: white; /* White text for current day */
-  font-weight: 700; /* Bold text for emphasis */
-  border-radius: 50%; /* Round the current day */
-}
-
-/* Hover Effect for Calendar Numbers */
-.react-calendar__tile:hover {
-  background-color: #007bff; /* Blue background on hover */
-  color: white; /* White text on hover */
-  border-radius: 50%; /* Round the hovered day */
-}
-
-/* Neighboring Month Days */
-.react-calendar__month-view__days__day--neighboringMonth {
-  color: #ccc; /* Light color for neighboring month days */
-  font-style: italic; /* Italicize neighboring days */
-}
-
-/* Month Header (Months Visible and Clear) */
-.react-calendar__navigation__label {
-  font-size: 1.4rem; /* Larger font size for better visibility */
-  font-weight: 600; /* Bold month labels */
-  color: #007bff; /* Blue color for month */
-  text-transform: uppercase; /* All caps for month names */
-  padding: 10px 0;
-  background-color: #f0f0f0; /* Light background for better contrast */
-  border-radius: 8px;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Hover Effect for Month Labels */
-.react-calendar__navigation__label:hover {
-  background-color: #00b0b0; /* Turquoise hover effect */
-  color: white; /* White text when hovering */
-}
-
-/* Calendar Navigation Arrows */
-.react-calendar__navigation__arrow {
-  font-size: 1.2rem;
-  color: #007bff; /* Blue arrows */
-  padding: 10px;
-  transition: background-color 0.3s ease;
-}
-
-/* Hover Effect for Arrows */
-.react-calendar__navigation__arrow:hover {
-  background-color: #00b0b0;
-  color: white;
-}
-
-/* Month Name Visibility */
-.react-calendar__month-view__month {
-  font-size: 1.4rem; /* Ensuring month names are prominent */
-  font-weight: bold;
-  color: #333; /* Dark color for clarity */
-}
-
-
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -317,7 +239,8 @@ body {
   .card-header {
     font-size: 18px;
   }
-  .table th, .table td {
+  .table th,
+  .table td {
     padding: 8px 10px;
   }
   .input-group input,
@@ -325,4 +248,85 @@ body {
   .input-group button {
     padding: 8px;
   }
+}
+
+/*Calendar*/
+.react-calendar__tile {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.react-calendar__tile--active {
+  /* background-color: #00d2d2 !important; */
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+}
+.react-calendar__tile--hasActive {
+  /* background: white !important; */
+}
+/*style of today date*/
+.react-calendar__tile--now {
+  color: black;
+  font-weight: 700;
+  border-radius: 50%;
+}
+/*calendar number*/
+.react-calendar__tile:hover {
+  background-color: #007bff;
+  color: black;
+  border-radius: 50%;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #ccc;
+  font-style: italic;
+}
+
+/*calendar label*/
+.react-calendar__navigation__label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #48d1cc;
+  text-transform: uppercase;
+  padding: 0px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.react-calendar__navigation__label:hover {
+  background-color: #00b0b0;
+  color: black;
+}
+
+/*calendar arrow*/
+.react-calendar__navigation__arrow {
+  font-size: 1.2rem;
+  color: #48d1cc;
+  padding: 0px;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__navigation__arrow:hover {
+  color: black;
+}
+
+.react-calendar__month-view__month {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.react-calendar__tile--active {
+  background: #48d1cc !important;
 }

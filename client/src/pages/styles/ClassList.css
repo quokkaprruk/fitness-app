@@ -7,6 +7,17 @@ body {
   background-color: #f4f4f4;
 }
 
+.class-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc6c6;
+  border-radius: 8px;
+  background-color: white;
+  width: 1000px;
+  height: 270px;
+  box-sizing: border-box;
+}
+
 .class-list {
   position: relative;
   margin-top: 40px; /* Adjust this value to match your navbar height */

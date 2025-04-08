@@ -2,7 +2,13 @@
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { motion } from "framer-motion";
-import { FaBullhorn, FaCalendarAlt, FaRunning, FaHeart, FaTrash } from "react-icons/fa";
+import {
+  FaBullhorn,
+  FaCalendarAlt,
+  FaRunning,
+  FaHeart,
+  FaTrash,
+} from "react-icons/fa";
 import "./styles/Community.css";
 
 const Community = () => {
@@ -13,7 +19,9 @@ const Community = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`);
+        const response = await fetch(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/announcements`
+        );
         const data = await response.json();
         setAnnouncements(data);
       } catch (err) {
@@ -39,28 +47,30 @@ const Community = () => {
   };
 
   const filteredEvents = announcements.filter((item) => {
-    return new Date(item.eventDate).toLocaleDateString() === date.toLocaleDateString();
+    return (
+      new Date(item.eventDate).toLocaleDateString() ===
+      date.toLocaleDateString()
+    );
   });
 
-  const todayQuote = "Push yourself, because no one else is going to do it for you 💪";
+  const todayQuote =
+    "Push yourself, because no one else is going to do it for you 🔥";
 
   return (
     <div className="community-page">
-      <motion.h1 
+      <motion.h1
         className="coming-soon-title"
+        style={{ textAlign: "center" }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        💬 <span className="title-glow">Fitness Community</span>
+        💬<span className="title-glow">Fitness Community</span>
       </motion.h1>
 
-      <p className="coming-soon-subtext">
-        Join our vibrant community for classes, events, and exclusive offers!
-      </p>
-
-      <motion.div 
+      <motion.div
         className="quote-banner"
+        style={{ marginBottom: "3rem", textAlign: "center" }}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
@@ -68,16 +78,28 @@ const Community = () => {
         <strong>🔥 Quote of the Day:</strong> {todayQuote}
       </motion.div>
 
-      <div className="community-container">
+      {/* <p className="coming-soon-subtext">
+        Join our vibrant community for classes, events, and exclusive offers!
+      </p> */}
 
+      <div className="community-container">
         <motion.div className="calendar-section" whileHover={{ scale: 1.01 }}>
-          <h2><FaCalendarAlt /> Events Calendar</h2>
-          <Calendar onChange={handleDateChange} value={date} className="calendar" />
+          <h2 style={{ marginBottom: "2rem", color: "#fc762d" }}>
+            <FaCalendarAlt /> Events Calendar
+          </h2>
+          <Calendar
+            onChange={handleDateChange}
+            value={date}
+            className="calendar"
+          />
           <p>Selected Date: {date.toLocaleDateString()}</p>
         </motion.div>
 
         <motion.div className="events-section" whileHover={{ scale: 1.01 }}>
-          <h2><FaRunning /> Events on Selected Date</h2>
+          <h2 style={{ marginBottom: "2rem", color: "#00b0b0" }}>
+            {/* <FaRunning />  */}
+            Events on Selected Date
+          </h2>
           {filteredEvents.length === 0 ? (
             <p>No events on this date.</p>
           ) : (
@@ -92,8 +114,14 @@ const Community = () => {
           )}
         </motion.div>
 
-        <motion.div className="announcements-section" whileHover={{ scale: 1.01 }}>
-          <h2><FaBullhorn /> Latest Announcements</h2>
+        <motion.div
+          className="announcements-section"
+          whileHover={{ scale: 1.01 }}
+        >
+          <h2 style={{ marginBottom: "2rem", color: "#00b0b0" }}>
+            {/* <FaBullhorn />  */}
+            Latest Announcements
+          </h2>
           {announcements.length === 0 ? (
             <p>No announcements yet. Check back later!</p>
           ) : (
@@ -101,30 +129,29 @@ const Community = () => {
               {announcements.map((a, index) => (
                 <li key={index} className="announcement-item">
                   <h4>{a.title}</h4>
+                  <span className="announcement-date">
+                    📅 {new Date(a.eventDate).toLocaleDateString()}
+                  </span>
                   <p>{a.message}</p>
                   <div className="announcement-controls">
-                    <button 
-                      className={`like-button ${liked[index] ? "liked" : ""}`} 
+                    <button
+                      className={`like-button ${liked[index] ? "liked" : ""}`}
                       onClick={() => toggleLike(index)}
                     >
                       <FaHeart /> {liked[index] ? "Liked" : "Like"}
                     </button>
-                    <button 
-                      className="delete-button" 
+                    {/* <button
+                      className="delete-button"
                       onClick={() => deleteAnnouncement(index)}
                     >
                       <FaTrash /> Delete
-                    </button>
+                    </button> */}
                   </div>
-                  <span className="announcement-date">
-                    📅 {new Date(a.eventDate).toLocaleDateString()}
-                  </span>
                 </li>
               ))}
             </ul>
           )}
         </motion.div>
-
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/CreateProfile.css"; 
+import "./styles/CreateProfile.css";
 import axios from "axios";
 
 const CreateAdmin = () => {
@@ -23,19 +23,19 @@ const CreateAdmin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const payload = {
       ...adminData,
       role: "admin",
       dateOfBirth: adminData.dob,
     };
-  
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
         payload
       );
-  
+
       if (response.status === 201) {
         alert("Admin created successfully!");
         setAdminData({
@@ -52,7 +52,8 @@ const CreateAdmin = () => {
       }
     } catch (error) {
       const errorMsg =
-        error.response?.data?.message || "An error occurred while creating the admin.";
+        error.response?.data?.message ||
+        "An error occurred while creating the admin.";
       alert(errorMsg);
       console.error("Create admin error:", error);
     }
@@ -64,6 +65,7 @@ const CreateAdmin = () => {
       <h2>Create Admin</h2>
       <form onSubmit={handleSubmit} className="trainer-form">
         <input
+          className="create-trainer-firstName-text"
           type="text"
           name="firstName"
           placeholder="First Name"
@@ -72,6 +74,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-firstName-text"
           type="text"
           name="lastName"
           placeholder="Last Name"
@@ -80,6 +83,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-date-input"
           type="date"
           name="dob"
           value={adminData.dob}
@@ -87,6 +91,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-phone-input"
           type="tel"
           name="phone"
           placeholder="Phone"
@@ -95,6 +100,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-username-input"
           type="text"
           name="username"
           placeholder="Username"
@@ -103,6 +109,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-email-input"
           type="email"
           name="email"
           placeholder="Email"
@@ -111,6 +118,7 @@ const CreateAdmin = () => {
           required
         />
         <input
+          className="create-trainer-pwd-input"
           type="password"
           name="password"
           placeholder="Password"

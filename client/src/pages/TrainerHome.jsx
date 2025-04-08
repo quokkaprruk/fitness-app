@@ -17,17 +17,19 @@ const TrainerHome = () => {
     if (token && user) {
       console.log(
         "Making API request for schedule with instructorId:",
-        user.profileObjectId,
+        user.profileObjectId
       );
 
       axios
         .get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/${user.profileObjectId}`,
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/${
+            user.profileObjectId
+          }`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          },
+          }
         )
         .then((response) => {
           console.log("Schedule data received:", response.data);
@@ -45,17 +47,19 @@ const TrainerHome = () => {
   return (
     <div>
       <div className="trainer-home">
-        <h2>Your Schedule:</h2>
+        <h2>Your Schedule</h2>
         {/*if no classes scheduled*/}
         {schedule.length === 0 ? (
           <p>No classes scheduled.</p>
         ) : (
           <ul className="class-list">
             {schedule.map((classItem) => (
-              <li key={classItem._id} className="class-item">
-                <h3>{classItem.className} - {classItem.difficultyLevel}</h3>
+              <li key={classItem._id} className="trainer-class-item">
+                <h3>
+                  {classItem.className} - {classItem.difficultyLevel}
+                </h3>
                 <p>
-                  <strong>Type:</strong> {classItem.className}
+                  <strong>Location:</strong> {classItem.location}
                 </p>
                 <p>
                   <strong>Time:</strong>{" "}
@@ -64,7 +68,7 @@ const TrainerHome = () => {
                 </p>
                 <p>
                   <strong>Capacity: </strong>
-                  {classItem.studentCapacity} students
+                  {classItem.studentCapacity} seats left
                 </p>
               </li>
             ))}
@@ -75,7 +79,9 @@ const TrainerHome = () => {
         <button
           className="schedule-change-button"
           onClick={() => {
-            window.location.href = `mailto:?subject=${encodeURIComponent(emailSubject)}`;
+            window.location.href = `mailto:?subject=${encodeURIComponent(
+              emailSubject
+            )}`;
           }}
         >
           Request Schedule Change
