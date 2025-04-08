@@ -37,15 +37,21 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid username or password" });
     }
 
+    let profile = null;
+    if (user.role === "trainer") {
+      profile = await TrainerProfiles.findOne({ profileId: user.profileId });
+    }
+    const profileObjectId = profile ? profile._id : null;
     const token = jwt.sign(
       {
         id: user._id,
         username: user.username,
         role: user.role,
         profileId: user.profileId,
+        profileObjectId,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "5m" }, // Token Expiry = 5 minutes
+      { expiresIn: "15m" } // Token Expiry
     );
 
     res.json({
@@ -53,6 +59,7 @@ router.post("/login", async (req, res) => {
       token,
       username: user.username,
       role: user.role,
+      profileObjectId,
     });
   } catch (error) {
     console.error(error);
@@ -141,8 +148,8 @@ router.post("/signup", async (req, res) => {
     if (missingFields.length > 0) {
       throw new Error(
         `Missing required fields for ${role} profile: ${missingFields.join(
-          ", ",
-        )}`,
+          ", "
+        )}`
       );
     }
 
@@ -260,7 +267,7 @@ router.post("/forgot-password", async (req, res) => {
     const emailSent = await notify(
       email,
       "Password Reset Request",
-      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`,
+      `Click the link below to reset your password:\n\n${resetLink}\n\nThis link will expire in 15 minutes.`
     );
 
     if (emailSent) {
@@ -274,17 +281,17 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
-// GET profile using token's profileId
-router.get("/profile", checkUserOwnership, async (req, res) => {
-  const profileId = req.user.profileId; // Use profileId from the token
+// Siripa: GET profile by all_users's profileId
+router.get("/profile/:profileId", checkUserOwnership, async (req, res) => {
+  const { profileId } = req.params;
 
   if (!profileId) {
-    logger.warn("Missing profileId in token.");
+    logger.warn("Missing profileId in GET request.");
     return res.status(400).json({ message: "profileId is required." });
   }
 
   try {
-    logger.debug(`Fetching profile for profileId: ${profileId}`);
+    logger.debug(`Checking user existence with profileId: ${profileId}`);
 
     const user = await AllUsers.findOne({ profileId });
 
@@ -293,7 +300,7 @@ router.get("/profile", checkUserOwnership, async (req, res) => {
       return res.status(404).json({ message: "User not found." });
     }
 
-    const { role } = user;
+    const { role } = user; // Extract role from the user
     logger.info(`User found: ${user.username} (${role})`);
 
     let profile;
@@ -308,34 +315,39 @@ router.get("/profile", checkUserOwnership, async (req, res) => {
         profile = await TrainerProfiles.findOne({ profileId });
         break;
       default:
-        logger.warn(`Invalid role for profileId: ${profileId}`);
+        logger.warn(
+          `Invalid role found in database for profileId: ${profileId}`
+        );
         return res.status(400).json({ message: "Invalid role in database." });
     }
 
     if (!profile) {
-      logger.warn(`Profile not found for profileId: ${profileId}`);
+      logger.warn(
+        `Profile not found for profileId: ${profileId} (Role: ${role})`
+      );
       return res.status(404).json({ message: "Profile not found." });
     }
 
-    logger.info(`Profile found for profileId: ${profileId}`);
+    logger.info(`Profile found for ${role} with profileId: ${profileId}`);
     logger.debug(`Profile details: ${JSON.stringify(profile)}`);
 
     res.status(200).json({ user, profile });
   } catch (err) {
     logger.error(
-      `Error fetching profile for profileId: ${profileId} - ${err.message}`,
+      `Error fetching profile for profileId: ${profileId} - ${err.message}`
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
-// POST to update profile using token's profileId
-router.post("/profile", checkUserOwnership, async (req, res) => {
-  const profileId = req.user.profileId; // Use profileId from the token
-  const updatedProfileData = req.body;
+//Siripa
+//POST to save profile using all_users's profileId
+router.post("/profile/:profileId", checkUserOwnership, async (req, res) => {
+  const { profileId } = req.params;
+  const updatedProfileData = req.body; //get the submitted profileData from req.body
 
   if (!profileId) {
-    logger.warn("Missing profileId in token.");
+    logger.warn("Missing profileId in POST request.");
     return res.status(400).json({ message: "profileId is required." });
   }
 
@@ -347,9 +359,9 @@ router.post("/profile", checkUserOwnership, async (req, res) => {
     }
 
     const { role } = user;
-    logger.info(`User found: ${user.username} (${role})`);
+    logger.info(`User found: ${user.username} (Role: ${role})`);
 
-    // Choose the appropriate profile model based on role
+    // find the schema that we need to update the profileId
     let profileModel;
     switch (role) {
       case "admin":
@@ -362,7 +374,7 @@ router.post("/profile", checkUserOwnership, async (req, res) => {
         profileModel = TrainerProfiles;
         break;
       default:
-        logger.warn(`Invalid role for profileId: ${profileId}`);
+        logger.warn(`Invalid role in database for profileId: ${profileId}`);
         return res.status(400).json({ message: "Invalid role in database." });
     }
 
@@ -370,12 +382,13 @@ router.post("/profile", checkUserOwnership, async (req, res) => {
 
     const updatedProfile = await profileModel.findOneAndUpdate(
       { profileId },
-      { $set: updatedProfileData },
-      { new: true, runValidators: true },
+      { $set: updatedProfileData }, // modify only the provided fields
+      { new: true, runValidators: true } // Return updated document & apply validation
     );
 
     if (!updatedProfile) {
-      logger.warn(`Profile not found for profileId: ${profileId}`);
+      logger.warn(`Profile not found for profileId: ${profileId}
+        => signup login didn't properly setup user's profile. If the profileId is in the all_users, it should be in the profiles schema as well`);
       return res.status(404).json({ message: "Profile not found." });
     }
 
@@ -388,7 +401,7 @@ router.post("/profile", checkUserOwnership, async (req, res) => {
     });
   } catch (err) {
     logger.error(
-      `Error updating profile for profileId: ${profileId} - ${err.message}`,
+      `Error updating profile for profileId: ${profileId} - ${err.message}`
     );
     res.status(500).json({ message: "Server error", error: err.message });
   }

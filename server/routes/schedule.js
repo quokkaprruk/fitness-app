@@ -244,7 +244,7 @@ router.get("/member/:profileId", async (req, res) => {
 router.get("/:instructorId", async (req, res) => {
   const { instructorId } = req.params;
   try {
-    const schedules = await Schedule.find({ instructorId: instructorId });
+    const schedules = await Schedule.find({ instructorId });
     res.json(schedules);
   } catch (error) {
     console.error("Error fetching schedules:", error);

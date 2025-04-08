@@ -23,11 +23,13 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import { AuthProvider } from "./context/AuthContext";
+import { MembershipProvider } from "./context/MembershipContext";
 import Community from "./pages/Community";
 import AdminGenSchedule from "./pages/AdminGenSchedule";
 const App = () => {
   return (
     <AuthProvider>
+      <MembershipProvider>
       <Router>
         <Routes>
           {/* Routes with common layout and navbar */}
@@ -129,6 +131,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      </MembershipProvider>
     </AuthProvider>
   );
 };

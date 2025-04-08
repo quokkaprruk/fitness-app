@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
+﻿@import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-body{
+body {
   font-family: "Rokkitt", serif;
 }
 
@@ -15,7 +15,7 @@ body{
   font-family: 'Rokkitt', serif;
 }
 
-.CA-nav-spacer{
+.CA-nav-spacer {
   height: 10px;
 }
 
@@ -53,10 +53,6 @@ body{
   color: #007bff;
 }
 
-.trainer-form select[multiple] {
-  height: 100px;
-}
-
 .trainer-form button {
   padding: 12px;
   background-color: #40e0d0;
@@ -70,4 +66,39 @@ body{
 
 .trainer-form button:hover {
   background-color: #32cd32;
+}
+
+/* Checkbox Group Styles */
+.specialty-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.checkbox-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.checkbox-label:hover {
+  background: #f5f5f5;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #40e0d0;
+  cursor: pointer;
 }

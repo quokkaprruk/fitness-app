@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/CreateProfile.css"; 
+import axios from "axios";
 
 const CreateAdmin = () => {
   const [adminData, setAdminData] = useState({
@@ -20,18 +21,41 @@ const CreateAdmin = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Admin created successfully!");
-    setAdminData({
-      firstName: "",
-      lastName: "",
-      dob: "",
-      phone: "",
-      username: "",
-      email: "",
-      password: "",
-    });
+  
+    const payload = {
+      ...adminData,
+      role: "admin",
+      dateOfBirth: adminData.dob,
+    };
+  
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
+        payload
+      );
+  
+      if (response.status === 201) {
+        alert("Admin created successfully!");
+        setAdminData({
+          firstName: "",
+          lastName: "",
+          dob: "",
+          phone: "",
+          username: "",
+          email: "",
+          password: "",
+        });
+      } else {
+        throw new Error("Unexpected response from server");
+      }
+    } catch (error) {
+      const errorMsg =
+        error.response?.data?.message || "An error occurred while creating the admin.";
+      alert(errorMsg);
+      console.error("Create admin error:", error);
+    }
   };
 
   return (

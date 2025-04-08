@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../pages/styles/CreateProfile.css";
+import axios from "axios";
 
 const specialties = [
   "Cardio",
@@ -36,29 +37,60 @@ const CreateTrainer = () => {
   };
 
   const handleSpecialtyChange = (e) => {
-    const options = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setTrainerData({ ...trainerData, specialty: options });
+    const { value, checked } = e.target;
+    setTrainerData((prevData) => {
+      if (checked) {
+        return {
+          ...prevData,
+          specialty: [...prevData.specialty, value],
+        };
+      } else {
+        return {
+          ...prevData,
+          specialty: prevData.specialty.filter((item) => item !== value),
+        };
+      }
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Trainer profile created successfully!");
-    setTrainerData({
-      firstName: "",
-      lastName: "",
-      gender: "",
-      dateOfBirth: "",
-      phone: "",
-      specialty: [],
-      teachingMode: "",
-      experience: "",
-      username: "",
-      email: "",
-      password: "",
-    });
+  
+    const payload = {
+      ...trainerData,
+      role: "trainer", 
+    };
+  
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
+        payload
+      );
+  
+      if (response.status === 201) {
+        alert("Trainer profile created successfully!");
+        setTrainerData({
+          firstName: "",
+          lastName: "",
+          gender: "",
+          dateOfBirth: "",
+          phone: "",
+          specialty: [],
+          teachingMode: "",
+          experience: "",
+          username: "",
+          email: "",
+          password: "",
+        });
+      } else {
+        throw new Error("Unexpected response status");
+      }
+    } catch (error) {
+      const errorMsg =
+        error.response?.data?.message || "An error occurred while creating the trainer.";
+      alert(errorMsg);
+      console.error("Signup error:", error);
+    }
   };
 
   return (
@@ -107,20 +139,24 @@ const CreateTrainer = () => {
           onChange={handleChange}
           required
         />
-        <label>Specialties (Select multiple):</label>
-        <select
-          name="specialty"
-          multiple
-          value={trainerData.specialty}
-          onChange={handleSpecialtyChange}
-          required
-        >
-          {specialties.map((spec, index) => (
-            <option key={index} value={spec}>
-              {spec}
-            </option>
-          ))}
-        </select>
+        
+        <div className="specialty-checkbox-group">
+          <label>Specialties:</label>
+          <div className="checkbox-options">
+            {specialties.map((spec, index) => (
+              <label key={index} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="specialty"
+                  value={spec}
+                  checked={trainerData.specialty.includes(spec)}
+                  onChange={handleSpecialtyChange}
+                />
+                {spec}
+              </label>
+            ))}
+          </div>
+        </div>
 
         <select
           name="teachingMode"
