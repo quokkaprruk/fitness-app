@@ -83,9 +83,9 @@ input.gen-studentCapacity,
 
 .admin-edit-button,
 .admin-delete-button {
-  display: inline-flex; /* Use inline-flex for horizontal alignment */
-  align-items: center; /* Vertically align icons and text */
-  justify-content: center; /* Horizontally align icons and text */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 5px;
   border: none;
   cursor: pointer;
@@ -163,10 +163,3 @@ input.gen-studentCapacity,
 .gen-schedule-list-header > div:nth-child(7) {
   width: 30%;
 }
-/* .gen-schedule-list-header > div {
-  flex: 1;
-}
-.gen-schedule-list-header > div:nth-child(6),
-.gen-schedule-list-header > div:nth-child(7) {
-  flex: 0.5;
-} */

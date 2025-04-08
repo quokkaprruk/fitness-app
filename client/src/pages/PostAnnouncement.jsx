@@ -28,7 +28,7 @@ const PostAnnouncement = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(newAnnouncement),
-        },
+        }
       );
 
       if (response.ok) {
@@ -50,18 +50,32 @@ const PostAnnouncement = () => {
 
   return (
     <div className="admin-page">
+      <div className="calendar-container">
+        <h2 className="section-title">Schedule Events</h2>
+        <ReactCalendar
+          onChange={handleDateChange}
+          value={selectedDate}
+          className="calendar"
+        />
+        <div className="calendar-footer">
+          <span>
+            {/* <strong>Selected Date: </strong>
+            {selectedDate.toLocaleDateString()} */}
+          </span>
+        </div>
+      </div>
       <div className="admin-container">
         {/* Left Side - Announcement Form */}
         <div className="announcement-form-container">
-          <h2 className="section-title">Post an Announcement</h2>
+          {/* <h2 className="section-title">Post an Announcement</h2> */}
           <form onSubmit={handleSubmit} className="announcement-form">
-            <input
+            <textarea
+              className="admin-post-announcement-input"
               type="text"
-              placeholder="Enter announcement title"
+              placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="input-field"
             />
             <textarea
               placeholder="Write your detailed announcement here..."
@@ -70,25 +84,14 @@ const PostAnnouncement = () => {
               required
               className="textarea-field"
             ></textarea>
-            <button type="submit" className="submit-btn">
+            <button
+              type="submit"
+              className="submit-btn"
+              style={{ marginTop: "20px" }}
+            >
               Post Announcement
             </button>
           </form>
-        </div>
-
-        <div className="calendar-container">
-          <h2 className="section-title">Schedule Events</h2>
-          <ReactCalendar
-            onChange={handleDateChange}
-            value={selectedDate}
-            className="calendar"
-          />
-          <div className="calendar-footer">
-            <span>
-              <strong>Selected Date: </strong>
-              {selectedDate.toLocaleDateString()}
-            </span>
-          </div>
         </div>
       </div>
     </div>

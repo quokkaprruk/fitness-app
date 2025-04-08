@@ -9,9 +9,10 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: "Rokkitt", serif;
-  color: #333;
+  color: #333333f4;
   margin-bottom: 10px;
 }
 
@@ -53,16 +54,16 @@ h2 {
 }
 
 .calendar-section h2 {
-  color: #007bff; /* Blue */
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
 .calendar {
-  border: 2px solid #40e0d0; /* Turquoise */
+  border: 2px solid #48d1cc;
+  padding: 20px;
   border-radius: 12px;
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   margin: 20px auto;
   transition: border 0.3s ease;
 }
@@ -98,13 +99,6 @@ h2 {
   transform: translateY(-10px);
 }
 
-.announcement-item h4 {
-  color: #007bff; /* Blue */
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
 .announcement-item p {
   font-size: 1rem;
   color: #555;
@@ -138,9 +132,16 @@ h2 {
 }
 
 .event-item h4 {
-  color: #40e0d0; /* Turquoise */
-  font-size: 1.4rem;
+  color: #fc762d;
+  font-size: 1.2rem;
   font-weight: bold;
+}
+
+.announcement-item h4 {
+  color: #48d1cc;
+  font-size: 1.2rem;
+  /* font-weight: bold; */
+  /* margin-bottom: 10px; */
 }
 
 .event-item p {
@@ -202,6 +203,7 @@ h2 {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   font-weight: 800;
+  margin-top: 5rem;
 }
 
 /* Announcement Buttons */
@@ -235,7 +237,7 @@ h2 {
 }
 
 /* Like Button */
-.like-button {
+/* .like-button {
   color: #40e0d0;
   border-color: #40e0d0;
   background-color: #e6fafa;
@@ -244,17 +246,20 @@ h2 {
 .like-button:hover {
   background-color: #40e0d0;
   color: white;
+  border: 2px solid #40e0d0;
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 6px 12px rgba(64, 224, 208, 0.4);
-}
+} */
 
 /* Delete Button */
+.like-button,
 .delete-button {
   color: #ff6347;
-  border-color: #ff6347;
+  border: 2px solid #ff6347 !important;
   background-color: #fff5f2;
 }
 
+.like-button:hover,
 .delete-button:hover {
   background-color: #ff6347;
   color: white;

@@ -22,6 +22,7 @@ const AdminHome = () => {
   const [fitnessClasses, setFitnessClasses] = useState([]); //for showing all classes from db
   const [trainers, setTrainers] = useState([]); // for getting trainer
   const [editingClassId, setEditingClassId] = useState(null); // track class being edited
+  const [editedClass, setEditedClass] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1); //for pagination
@@ -93,24 +94,41 @@ const AdminHome = () => {
   //4.0 Admin select row to edit
   const handleEdit = (classItem) => {
     setEditingClassId(classItem ? classItem._id : null);
+    setEditedClass({ ...classItem }); // make a copy to edit
   };
 
   //4.2 for confirm save update to database
-  const handleSave = async (classItem) => {
+  const handleSave = async () => {
+    const selectedTrainer = trainers.find(
+      (trainer) => trainer._id === editedClass.instructorId
+    );
+
+    if (selectedTrainer) {
+      console.log(
+        "Instructor first name change to:",
+        selectedTrainer.firstName
+      );
+      console.log("Instructor last name change to:", selectedTrainer.lastName);
+    } else {
+      console.log("Instructor not found for ID:", editedClass.instructorId);
+    }
     //prepare updateData
     const updatedData = {
-      className: classItem.className,
-      difficultyLevel: classItem.difficultyLevel,
-      startDateTime: classItem.startDateTime,
-      endDateTime: classItem.endDateTime,
-      instructorId: classItem.instructorId,
-      studentCapacity: classItem.studentCapacity,
-      location: classItem.location,
+      className: editedClass.className,
+      difficultyLevel: editedClass.difficultyLevel,
+      startDateTime: editedClass.startDateTime,
+      endDateTime: editedClass.endDateTime,
+      instructorId: editedClass.instructorId,
+      instructorFirstName: selectedTrainer ? selectedTrainer.firstName : "",
+      instructorLastName: selectedTrainer ? selectedTrainer.lastName : "",
+      studentCapacity: editedClass.studentCapacity,
+      location: editedClass.location,
     };
+
     try {
       await axios.put(
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/schedules/${
-          classItem._id
+          editedClass._id
         }`,
         updatedData,
         {
@@ -121,6 +139,8 @@ const AdminHome = () => {
       );
       alert("Class updated successfully");
       setEditingClassId(null); // set editing row to null
+      setEditedClass(null);
+      await fetchSchedule();
     } catch (error) {
       alert("Error updating class");
       console.error(error);
@@ -142,8 +162,9 @@ const AdminHome = () => {
           }
         );
 
-        setFitnessClasses(fitnessClasses.filter((c) => c._id !== classId));
+        // setFitnessClasses(fitnessClasses.filter((c) => c._id !== classId));
         alert("Schedule deleted successfully!");
+        await fetchSchedule();
       } catch (error) {
         console.error("Error deleting class:", error);
         setError(error.response ? error.response.data.message : error.message);
@@ -197,6 +218,7 @@ const AdminHome = () => {
   const [classEntries, setClassEntries] = useState([
     {
       className: "",
+      classLevel: "",
       classLocation: "online",
       startDateTime: "",
       endDateTime: "",
@@ -221,6 +243,12 @@ const AdminHome = () => {
     const newClasses = classEntries.map((entry) => {
       const selectedTrainer = trainers.find(
         (trainer) => trainer._id === entry.instructorId
+      );
+
+      console.log(
+        "Instructor:",
+        selectedTrainer ? selectedTrainer.firstName : "N/A",
+        selectedTrainer ? selectedTrainer.lastName : "N/A"
       );
 
       return {
@@ -258,12 +286,14 @@ const AdminHome = () => {
         console.log("Classes saved:", data);
         alert("Classes saved successfully!");
         // for fitness classes show in frontend
-        setFitnessClasses((prev) => [...prev, ...newClasses]);
+        await fetchSchedule();
+        // setFitnessClasses((prev) => [...prev, ...newClasses]);
         // clear the form
         setTimeout(() => {
           setClassEntries([
             {
               className: "",
+              classLevel: "",
               classLocation: "online",
               startDateTime: "",
               endDateTime: "",
@@ -287,6 +317,7 @@ const AdminHome = () => {
       ...classEntries,
       {
         className: "",
+        classLevel: "",
         classLocation: "online",
         startDateTime: "",
         endDateTime: "",
@@ -305,13 +336,13 @@ const AdminHome = () => {
   };
 
   // 10. For scheduled class
-  const handleClassChange = (e, index) => {
-    const { name, value } = e.target;
-    const updatedClasses = fitnessClasses.map((classItem, idx) =>
-      idx === index ? { ...classItem, [name]: value } : classItem
-    );
-    setFitnessClasses(updatedClasses);
-  };
+  // const handleClassChange = (e, index) => {
+  //   const { name, value } = e.target;
+  //   const updatedClasses = fitnessClasses.map((classItem, idx) =>
+  //     idx === index ? { ...classItem, [name]: value } : classItem
+  //   );
+  //   // setFitnessClasses(updatedClasses);
+  // };
 
   return (
     <div className="app-container">
@@ -536,7 +567,9 @@ const AdminHome = () => {
                   <th>Actions</th>
                 </tr> */}
                 <tr>
-                  <th>Scheduled Classes</th>
+                  <th>
+                    {loading ? "Loading Schedules..." : "Scheduled Classes"}
+                  </th>
                 </tr>
               </thead>
 
@@ -546,46 +579,71 @@ const AdminHome = () => {
                   <tr key={classItem._id}>
                     <td>
                       <select
-                        value={classItem.className}
-                        onChange={(e) => handleClassChange(e, index)}
-                        className="gena-className"
+                        className="gena-difficultyLevel"
+                        value={
+                          editingClassId === classItem._id
+                            ? editedClass.className
+                            : classItem.className
+                        }
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            className: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       >
                         <option value="">Select Class</option>
-                        {classes.map((className) => (
-                          <option key={className} value={className}>
-                            {className}
+                        {classes.map((cls, idx) => (
+                          <option key={idx} value={cls}>
+                            {cls}
                           </option>
                         ))}
                       </select>
                     </td>
                     <td>
                       <select
-                        value={classItem.difficultyLevel}
-                        onChange={(e) => handleClassChange(e, index)}
                         className="gena-difficultyLevel"
+                        value={
+                          editingClassId === classItem._id
+                            ? editedClass.difficultyLevel
+                            : classItem.difficultyLevel
+                        }
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            difficultyLevel: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       >
                         <option value="">Select Level</option>
-                        {levels.map((level) => (
-                          <option key={level} value={level}>
-                            {level}
+                        {levels.map((lvl, idx) => (
+                          <option key={idx} value={lvl}>
+                            {lvl}
                           </option>
                         ))}
                       </select>
                     </td>
                     <td>
                       <input
+                        className="gena-startDateTime"
                         type="datetime-local"
                         value={
-                          classItem.startDateTime
-                            ? moment(classItem.startDateTime).format(
+                          editingClassId === classItem._id
+                            ? moment(editedClass.startDateTime).format(
                                 "YYYY-MM-DDTHH:mm"
                               )
-                            : ""
+                            : moment(classItem.startDateTime).format(
+                                "YYYY-MM-DD HH:mm"
+                              )
                         }
-                        onChange={(e) => handleClassChange(e, index)}
-                        className="gena-startDateTime"
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            startDateTime: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       />
                     </td>
@@ -593,65 +651,91 @@ const AdminHome = () => {
                       <input
                         type="datetime-local"
                         value={
-                          classItem.endDateTime
-                            ? moment(classItem.endDateTime).format(
+                          editingClassId === classItem._id
+                            ? moment(editedClass.endDateTime).format(
                                 "YYYY-MM-DDTHH:mm"
                               )
-                            : ""
+                            : moment(classItem.endDateTime).format(
+                                "YYYY-MM-DDTHH:mm"
+                              )
                         }
-                        onChange={(e) => handleClassChange(e, index)}
-                        className="gena-endDateTime"
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            endDateTime: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       />
                     </td>
                     <td>
                       <select
-                        name="instructorId"
-                        value={classItem.instructorId}
-                        onChange={(e) => handleClassChange(e, index)}
-                        required
                         className="gena-instructorFirstName"
+                        value={
+                          editingClassId === classItem._id
+                            ? editedClass.instructorId
+                            : classItem.instructorId
+                        }
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            instructorId: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       >
-                        <option value="">Select Instructor</option>{" "}
+                        <option value="">Select Trainer</option>
                         {trainers.map((trainer) => (
                           <option key={trainer._id} value={trainer._id}>
-                            {trainer.firstName} - {trainer._id}
+                            {trainer.firstName} {trainer.lastName}
                           </option>
                         ))}
                       </select>
                     </td>
                     <td>
-                      <select
+                      <input
+                        className="gena-studentCapacity"
                         name="studentCapacity"
-                        value={classItem.studentCapacity}
-                        onChange={(e) => handleClassChange(e, index)}
-                        required
-                        className="gena-difficultyLevel"
+                        type="number"
+                        value={
+                          editingClassId === classItem._id
+                            ? editedClass.studentCapacity
+                            : classItem.studentCapacity
+                        }
+                        min={1}
+                        max={15}
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            studentCapacity: Math.max(
+                              1,
+                              Math.min(15, Number(e.target.value))
+                            ),
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
-                      >
-                        <option value="">Select Capacity</option>{" "}
-                        {[...Array(15)].map((_, i) => (
-                          <option key={i + 1} value={i + 1}>
-                            {i + 1}
-                          </option>
-                        ))}
-                      </select>
+                      />
                     </td>
                     <td>
-                      {" "}
                       <select
-                        name="location"
-                        value={classItem.location}
-                        onChange={(e) => handleClassChange(e, index)}
-                        required
                         className="gena-difficultyLevel"
+                        value={
+                          editingClassId === classItem._id
+                            ? editedClass.location
+                            : classItem.location
+                        }
+                        onChange={(e) =>
+                          setEditedClass({
+                            ...editedClass,
+                            location: e.target.value,
+                          })
+                        }
                         disabled={editingClassId !== classItem._id}
                       >
-                        <option value="">Select Location</option>{" "}
-                        {locations.map((location) => (
-                          <option key={location} value={location}>
-                            {location}
+                        <option value="">Select Location</option>
+                        {locations.map((loc, idx) => (
+                          <option key={idx} value={loc}>
+                            {loc}
                           </option>
                         ))}
                       </select>
@@ -661,13 +745,16 @@ const AdminHome = () => {
                         <div style={{ display: "flex" }}>
                           {/* is Editing */}
                           <button
-                            onClick={() => handleSave(classItem)}
+                            onClick={() => handleSave()}
                             className="admin-edit-button"
                           >
                             <FaSave />
                           </button>
                           <button
-                            onClick={() => handleEdit(null)}
+                            onClick={() => {
+                              setEditingClassId(null);
+                              setEditedClass(null);
+                            }}
                             className="admin-delete-button"
                           >
                             <FaTimes />

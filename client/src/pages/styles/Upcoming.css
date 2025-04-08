@@ -24,6 +24,7 @@ body {
 .cancel-booking-button,
 .booking-button {
   margin-top: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .cancel-booking-button:hover {

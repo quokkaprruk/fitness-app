@@ -55,18 +55,18 @@ const CreateTrainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const payload = {
       ...trainerData,
-      role: "trainer", 
+      role: "trainer",
     };
-  
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/signup`,
         payload
       );
-  
+
       if (response.status === 201) {
         alert("Trainer profile created successfully!");
         setTrainerData({
@@ -87,7 +87,8 @@ const CreateTrainer = () => {
       }
     } catch (error) {
       const errorMsg =
-        error.response?.data?.message || "An error occurred while creating the trainer.";
+        error.response?.data?.message ||
+        "An error occurred while creating the trainer.";
       alert(errorMsg);
       console.error("Signup error:", error);
     }
@@ -98,6 +99,7 @@ const CreateTrainer = () => {
       <h2>Create Trainer Profile</h2>
       <form onSubmit={handleSubmit} className="trainer-form">
         <input
+          className="create-trainer-firstName-text"
           type="text"
           name="firstName"
           placeholder="First Name"
@@ -106,6 +108,7 @@ const CreateTrainer = () => {
           required
         />
         <input
+          className="create-trainer-lastName-text"
           type="text"
           name="lastName"
           placeholder="Last Name"
@@ -114,6 +117,7 @@ const CreateTrainer = () => {
           required
         />
         <select
+          className="create-trainer-gender-select"
           name="gender"
           value={trainerData.gender}
           onChange={handleChange}
@@ -125,6 +129,7 @@ const CreateTrainer = () => {
           <option value="Other">Other</option>
         </select>
         <input
+          className="create-trainer-date-input"
           type="date"
           name="dateOfBirth"
           value={trainerData.dateOfBirth}
@@ -132,6 +137,7 @@ const CreateTrainer = () => {
           required
         />
         <input
+          className="create-trainer-phone-input"
           type="tel"
           name="phone"
           placeholder="Phone"
@@ -139,13 +145,14 @@ const CreateTrainer = () => {
           onChange={handleChange}
           required
         />
-        
+
         <div className="specialty-checkbox-group">
           <label>Specialties:</label>
           <div className="checkbox-options">
             {specialties.map((spec, index) => (
               <label key={index} className="checkbox-label">
                 <input
+                  className="create-trainer-specialty-checkbox-input"
                   type="checkbox"
                   name="specialty"
                   value={spec}
@@ -159,6 +166,7 @@ const CreateTrainer = () => {
         </div>
 
         <select
+          className="create-trainer-teaching-select"
           name="teachingMode"
           value={trainerData.teachingMode}
           onChange={handleChange}
@@ -173,6 +181,7 @@ const CreateTrainer = () => {
         </select>
 
         <input
+          className="create-trainer-experience-input"
           type="number"
           name="experience"
           placeholder="Years of Experience"
@@ -181,6 +190,7 @@ const CreateTrainer = () => {
           required
         />
         <input
+          className="create-trainer-username-input"
           type="text"
           name="username"
           placeholder="Username"
@@ -189,6 +199,7 @@ const CreateTrainer = () => {
           required
         />
         <input
+          className="create-trainer-email-input"
           type="email"
           name="email"
           placeholder="Email"
@@ -197,6 +208,7 @@ const CreateTrainer = () => {
           required
         />
         <input
+          className="create-trainer-pwd-input"
           type="password"
           name="password"
           placeholder="Password"

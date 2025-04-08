@@ -1,7 +1,6 @@
 /* Import Font */
 @import url("https://fonts.googleapis.com/css?family=Rokkitt:400,600,700,800");
 
-/* General Body Styles */
 body {
   font-family: "Rokkitt", serif;
   margin: 0;
@@ -91,9 +90,9 @@ h1 {
   margin-top: 5rem;
   /* border: 1px solid #ddd; */
   border-radius: 8px;
-  display: flex; /* Enables flexbox */
-  align-items: left; /* Align items vertically in the center */
-  gap: 10px; /* Adds spacing between elements */
+  display: flex;
+  align-items: left;
+  gap: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -154,19 +153,6 @@ h1 {
   font-weight: bold;
 }
 
-/* .add-class-button {
-  background-color: #48d1cc;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 25px;
-}
-.add-class-button:hover {
-  background-color: #007aff;
-   background-image: linear-gradient(144deg, #af40ff, #5b42f3 20%, #00ddeb); 
-} */
 .admin-edit-button,
 .admin-delete-button {
   background-color: transparent;
@@ -214,9 +200,9 @@ h1 {
 .input-row1,
 .input-row2 {
   display: flex;
-  gap: 15px; /* Space between inputs */
+  gap: 15px;
   align-items: center;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .form-container h3 {
@@ -245,8 +231,8 @@ h1 {
   background: white;
   display: flex;
   color: #ff4c4c;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 4px;
   padding: 10px;
@@ -262,8 +248,8 @@ h1 {
 }
 
 .remove-class-button svg {
-  width: 20px; /* Adjust icon size */
-  height: 20px; /* Adjust icon size */
+  width: 20px;
+  height: 20px;
 }
 
 /* Form Actions */
@@ -327,10 +313,6 @@ h1 {
   .form-input {
     width: 100%;
   }
-
-  /* .class-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  } */
 }
 
 .date-input {
@@ -362,7 +344,6 @@ h1 {
   height: 100%;
   overflow: hidden;
   background-color: rgba(255, 0, 0, 0.5);
-  /* background-color: rgba(0, 0, 0, 0.4); */
 }
 
 .modal-content {
@@ -439,7 +420,6 @@ h1 {
 
 .generate-btn:hover {
   background-color: #007bff;
-  /* background-image: linear-gradient(144deg, #af40ff, #5b42f3 20%, #00ddeb); */
 }
 
 .manage-gen {
@@ -450,30 +430,30 @@ h1 {
 
 /* pagination */
 .admin-dash-pagination {
-  display: flex; /* Makes the list items align horizontally */
-  list-style: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 20px auto; /* Add margin, and center the pagination. */
-  justify-content: center; /* Center the buttons horizontally */
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  justify-content: center;
 }
 
 .admin-dash-pagination .page-item {
-  margin: 0 5px; /* Adds spacing between buttons */
+  margin: 0 5px;
 }
 
 .admin-dash-pagination .page-link {
-  padding: 8px 12px; /* Adjust padding for button size */
-  border: 1px solid #ddd; /* Adds a border */
-  background-color: white; /* Sets background color */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  border-radius: 4px; /* Optional: adds rounded corners */
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
   color: #333;
 }
 
 .admin-dash-pagination .page-item.active .page-link {
-  background-color: #007bff; /* Sets active button background */
-  color: white; /* Sets active button text color */
-  border-color: #007bff; /* Sets active button border color */
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }
 
 /*input customize*/
@@ -482,7 +462,6 @@ h1 {
 .gena-instructorFirstName,
 .gena-startDateTime,
 .gena-endDateTime,
-.gena-studentCapacity,
 .gena-location {
   margin-right: 10px;
   /* width: 100% !important; */
@@ -492,9 +471,18 @@ h1 {
   height: 50px;
 }
 
+input[type="number"].gena-studentCapacity {
+  width: 150px !important;
+  padding: 5px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  height: 50px;
+}
+
 .gena-className,
 .gena-difficultyLevel,
 .gena-instructorFirstName,
-.gena-location {
+.gena-location,
+.gena-studentCapacity {
   font-size: 18px;
 }

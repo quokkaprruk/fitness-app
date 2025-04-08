@@ -88,14 +88,14 @@ p {
   padding: 0;
 }
 
-.class-item {
+.trainer-class-item {
   margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #ccc6c6;
   border-radius: 8px;
   background-color: white;
   width: 1000px;
-  height: 250px;
+  height: 220px;
   box-sizing: border-box;
 }
 
