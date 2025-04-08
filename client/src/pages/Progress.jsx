@@ -202,19 +202,10 @@ const Progress = () => {
       );
 
       if (response.status === 200) {
-        const today = new Date();
-        setWorkoutStreak((prev) => {
-          if (lastWorkoutDate) {
-            const lastDate = new Date(lastWorkoutDate);
-            const yesterday = new Date(today);
-            yesterday.setDate(yesterday.getDate() - 1);
-            if (lastDate.toDateString() === yesterday.toDateString()) {
-              return prev + 1;
-            }
-          }
-          return 1;
-        });
-        setLastWorkoutDate(today.toISOString());
+        const data = response.data;
+        // const today = new Date();
+        setWorkoutStreak(data.workoutStreak);
+        setLastWorkoutDate(new Date().toISOString());
         setWorkoutLoggedToday(true);
         setLogError("");
 
@@ -252,10 +243,6 @@ const Progress = () => {
       setTimeout(() => setLogError(""), 3000);
     }
   };
-
-  useEffect(() => {
-    fetchWorkoutData(); // Fetch initial data on component mount
-  }, []);
 
   // Fetch food data from API
   const fetchFoodData = async () => {
