@@ -39,12 +39,12 @@ router.post("/checkout", async (req, res) => {
       paymentStatus: price === 0 ? "N/A" : "pending",
     });
 
-    if (price === 0) {
-      return res.status(200).json({
-        message: "Free subscription activated",
-        subscriptionId: newSubscription._id,
-      });
-    }
+    // if (price === 0) {
+    //   return res.status(200).json({
+    //     message: "Free subscription activated",
+    //     subscriptionId: newSubscription._id,
+    //   });
+    // }
 
     memberProfile.subscriptionPlan = newSubscription._id;
     await memberProfile.save();
