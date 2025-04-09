@@ -18,10 +18,6 @@ router.post("/checkout", async (req, res) => {
       return res.status(404).json({ error: "Member profile not found" });
     }
 
-    await MemberSubscriptionPlan.deleteMany({
-      memberProfileObjectId: memberProfile._id,
-    });
-
     // from member_subscription schema
     // const subscription = await MemberSubscriptionPlan.findOne({
     //   memberProfileObjectId: profile._id,
@@ -38,13 +34,6 @@ router.post("/checkout", async (req, res) => {
       subscriptionStatus: "active",
       paymentStatus: price === 0 ? "N/A" : "pending",
     });
-
-    // if (price === 0) {
-    //   return res.status(200).json({
-    //     message: "Free subscription activated",
-    //     subscriptionId: newSubscription._id,
-    //   });
-    // }
 
     memberProfile.subscriptionPlan = newSubscription._id;
     await memberProfile.save();
