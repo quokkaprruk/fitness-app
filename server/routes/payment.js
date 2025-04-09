@@ -67,4 +67,35 @@ router.post("/checkout", async (req, res) => {
   }
 });
 
+router.get("/getPlan", async (req, res) => {
+  const { user } = req.body;
+  console.log("User info received:", user);
+  try {
+    // from member_profiles schema
+    const memberProfile = await MemberProfiles.findOne({
+      profileId: user.profileId,
+    });
+
+    if (!memberProfile) {
+      return res.status(404).json({ error: "Member profile not found" });
+    }
+
+    // from member_subscription schema
+    const subscription = await MemberSubscriptionPlan.findOne({
+      memberProfileObjectId: memberProfile._id,
+    });
+
+    if (!subscription) {
+      return res.status(404).json({ error: "Subscription not found" });
+    }
+
+    return res.status(200).json({ planType: subscription.planType });
+  } catch (error) {
+    console.error("Error retrieving plan type:", error);
+    return res
+      .status(500)
+      .json({ error: "Server error while retrieving plan type" });
+  }
+});
+
 module.exports = router;
