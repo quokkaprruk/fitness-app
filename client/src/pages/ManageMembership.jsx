@@ -68,7 +68,7 @@ const ManageMembership = () => {
             }`}
           >
             <h3>Basic</h3>
-            <p>$10/month</p>
+            <p>$0/month</p>
             <ul>
               <li>Off-peak gym access</li>
               <li>Standard equipment usage</li>

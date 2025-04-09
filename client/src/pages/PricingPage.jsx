@@ -34,7 +34,7 @@ const PricingPage = () => {
         <div className="pricing-grid">
           <div className="pricing-card">
             <h3>Basic</h3>
-            <p>$10/month</p>
+            <p>Free</p>
             <ul>
               <li>Off-peak gym access</li>
               <li>Standard equipment usage</li>
@@ -44,7 +44,7 @@ const PricingPage = () => {
               <li>Real-time chat with trainers</li>
             </ul>
             <button
-              onClick={() => handleCheckout("Basic Plan", 10)} //call the post backend with name: basic and price 10
+              onClick={() => handleCheckout("Basic Plan", 0)} //call the post backend with name: basic and price 10
               className="pricing-button"
             >
               Select
