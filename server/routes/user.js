@@ -341,10 +341,9 @@ router.get("/profile/", checkUserOwnership, async (req, res) => {
   }
 });
 
-//Siripa
 //POST to save profile using all_users's profileId
-router.post("/profile/:profileId", checkUserOwnership, async (req, res) => {
-  const { profileId } = req.params;
+router.post("/profile/", checkUserOwnership, async (req, res) => {
+  const profileId = req.user.profileId;
   const updatedProfileData = req.body; //get the submitted profileData from req.body
 
   if (!profileId) {
