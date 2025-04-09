@@ -1,25 +1,57 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
+import axios from "axios";
 import "./styles/Membership.css";
 import { MembershipContext } from "../context/MembershipContext";
 
 const ManageMembership = () => {
-  //const membershipTiers = ["None", "Basic", "Standard", "Premium"];
-  //const [membership, setMembership] = useState("Premium");
+  const { membership, setMembership } = useContext(MembershipContext);
 
-  const { membership, setMembership } = useContext(MembershipContext); // Access global state
-  const membershipTiers = ["None", "Basic", "Standard", "Premium"];
+  // Reused from PricingPage.js
+  const handleCheckout = async (planName, price) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/payment/checkout`,
+        { plan_name: planName, price }
+      );
+
+      console.log({ data: response.data });
+      if (response.data?.session?.url) {
+        window.location.href = response.data.session.url;
+      } else {
+        alert("Error starting checkout");
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      alert("Payment failed, Server Error");
+    }
+  };
+
+  const membershipTiers = [
+    { name: "None", price: 0 },
+    { name: "Basic", price: 0 },
+    { name: "Standard", price: 20 }, // $20
+    { name: "Premium", price: 30 }, // $30
+  ];
 
   const handleUpgrade = () => {
-    const currentIndex = membershipTiers.indexOf(membership);
+    const currentIndex = membershipTiers.findIndex(tier => tier.name === membership);
     if (currentIndex < membershipTiers.length - 1) {
-      setMembership(membershipTiers[currentIndex + 1]);
+      const newTier = membershipTiers[currentIndex + 1];
+      setMembership(newTier.name);
+      if (newTier.price > 0) {
+        handleCheckout(newTier.name, newTier.price); // Trigger Stripe checkout
+      }
     }
   };
 
   const handleDowngrade = () => {
-    const currentIndex = membershipTiers.indexOf(membership);
+    const currentIndex = membershipTiers.findIndex(tier => tier.name === membership);
     if (currentIndex > 1) {
-      setMembership(membershipTiers[currentIndex - 1]);
+      const newTier = membershipTiers[currentIndex - 1];
+      setMembership(newTier.name);
+      if (newTier.price > 0) {
+        handleCheckout(newTier.name, newTier.price); // Trigger Stripe checkout
+      }
     }
   };
 
