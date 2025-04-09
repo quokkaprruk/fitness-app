@@ -1,8 +1,11 @@
 // import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authContextValue";
+import { useContext } from "react";
 import axios from "axios";
 import "./styles/PricingPage.css";
 
 const PricingPage = () => {
+  const { token, user } = useContext(AuthContext);
   const handleCheckout = async (planName, price) => {
     try {
       // Send POST request with axios
@@ -10,7 +13,7 @@ const PricingPage = () => {
         `${
           import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
         }/api/payment/checkout`,
-        { plan_name: planName, price }
+        { user, plan_name: planName, price }
       );
 
       // Log the response to see what data is returned
@@ -44,7 +47,7 @@ const PricingPage = () => {
               <li>Real-time chat with trainers</li>
             </ul>
             <button
-              onClick={() => handleCheckout("Basic Plan", 0)} //call the post backend with name: basic and price 10
+              onClick={() => handleCheckout("free", 0)} //call the post backend with name: basic and price 10
               className="pricing-button"
             >
               Select
@@ -63,7 +66,7 @@ const PricingPage = () => {
               <li>Equipment reservation</li>
             </ul>
             <button
-              onClick={() => handleCheckout("Standard Plan", 20)} //call the post backend with name: standard and price 20
+              onClick={() => handleCheckout("standard", 20)} //call the post backend with name: standard and price 20
               className="pricing-button"
             >
               Select
@@ -83,7 +86,7 @@ const PricingPage = () => {
               <li>Exclusive wellness events</li>
             </ul>
             <button
-              onClick={() => handleCheckout("Premium Plan", 30)} //call the post backend with name: premium and price 30
+              onClick={() => handleCheckout("premium", 30)} //call the post backend with name: premium and price 30
               className="pricing-button"
             >
               Select
