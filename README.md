@@ -1,18 +1,22 @@
-## Models
+## 1. System Architecture
 
-1. all_users: store login/signup information such as email and password. The `profileId` is generated on the backend during user signup and serves as a unique reference to the corresponding profile in one of the following schemas:
+- **Frontend:** React.js  
+- **Backend:** Node.js with Express  
+- **Database:** MongoDB  
+- **Authentication:** JSON Web Tokens (JWT)  
+- **Hosting:** Vercel  
 
-   1.1 member_profiles: contains specific profile details of `member` role and it serves a unique reference to the following schema.
 
-   &emsp;1.1.1 member_subscription: contains member's subscription information.
+## 2. Technologies Used
 
-   &emsp;1.1.2 member_todo: contains member's goals, current goal, achieved goal.
+| Component     | Technology              |
+|---------------|--------------------------|
+| **Frontend**  | React.js                 |
+| **Backend**   | Node.js + Express        |
+| **Database**  | MongoDB                  |
+| **Auth**      | JSON Web Tokens (JWT)    |
+| **Hosting**   | Vercel (Frontend & Backend) |
 
-   1.2 trainer_profiles: contains specific profile details of `trainer` role.
-
-   1.3 admin_profiles: contains specific profile details of `admin` role.
-
-2. schedule: store both online classes and on-site classes schedule.
 
 ## Frontend Routes
 
