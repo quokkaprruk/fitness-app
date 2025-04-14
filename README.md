@@ -45,7 +45,7 @@
 |               | /save-generated-schedule | POST   | confirm saving the generated schedule to db 
 |               | /reserve                 | POST   | reserve a class and save to db              
 |               | /member/:profileId       | GET    | get all schedules from member               
-|               | /:instructorId            | GET    | get all schedules for specific trainer     
+|               | /:instructorId           | GET    | get all schedules for specific trainer     
 | /api/users    | /login                   | POST   | login with user information stored in db   
 |               | /signup                  | POST   | signup with info that are stored in db      
 |               | /profile/:profileId      | GET    | return the { user, profile }               
@@ -68,7 +68,7 @@
 |               | /generate-schedule       | POST   | Generates a schedule
 |               | /save-generated-schedule | POST   | Saves the generated schedules to database
 |               | /online                  | GET    | Retrieve all schedules that are online
-|               | /onsite |                | GET    | Retrieves all schedules that are onsite
+|               | /onsite                  | GET    | Retrieves all schedules that are onsite
 |               | /reserve/:classId        | POST   | Create a schedule reservation based on classId
 |               | /member/:profileId       | GET    | Retrieve all schedules based on profileId
 |               | /:instructorId           | GET    | Retrieve all schedules base on instructorId
